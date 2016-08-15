@@ -19,6 +19,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/plots/new', function() {
-
+		return view('auth.plots.new');
 	});
 });
