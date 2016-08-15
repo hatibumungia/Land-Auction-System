@@ -29,3 +29,10 @@ $factory->define(App\Plot::class, function(Faker\Generator $faker) {
 		'price' => $faker->numberBetween(1000000, 3000000)
 	];
 });
+
+$factory->define(App\Area::class, function(Faker\Generator $faker) {
+	return [
+		'name' => $faker->city,
+		'area_type_id' => $faker->numberBetween(1, 4)
+	];
+});

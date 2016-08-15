@@ -11,11 +11,11 @@
 					<h3 class="panel-title">Area</h3>
 				</div>
 				<ul class="list-group">
-					<li class="list-group-item">Cras justo odio</li>
-					<li class="list-group-item">Dapibus ac facilisis in</li>
-					<li class="list-group-item">Morbi leo risus</li>
-					<li class="list-group-item">Porta ac consectetur ac</li>
-					<li class="list-group-item">Vestibulum at eros</li>
+					@foreach($areas as $area)
+						<li class="list-group-item">
+							<a href="#" data-id="{{ $area->id }}">{{ $area->name }}</a>
+						</li>
+					@endforeach
 				</ul>
 			</div>
         </div>
