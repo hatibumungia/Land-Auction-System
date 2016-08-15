@@ -21,4 +21,31 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/plots/new', function() {
 		return view('auth.plots.new');
 	});
+
+	Route::post('/plots/new', function(Request $request) {
+
+		$validator = Validator::make($request->all(), [
+			'plot_no' => 'required|max:255',
+			'size' => 'required|max:255',
+			'location' => 'required|max:255',
+			'type' => 'required|max:255',
+			'price' => 'required|max:255',
+		]);
+
+		if ($validator->fails()) {
+			return back()
+				->withInput()
+				->withErrors($validator);
+		}
+
+		$plot = new \App\Plot;
+		$plot->plot_no = $request->plot_no;
+		$plot->size = $request->size;
+		$plot->location = $request->location;
+		$plot->type = $request->type;
+		$plot->price = $request->price;
+		$plot->save();
+
+		return redirect('/home');
+	});
 });
