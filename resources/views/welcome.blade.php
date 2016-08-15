@@ -10,11 +10,9 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Area</h3>
 				</div>
-				<ul class="list-group">
+				<ul id="areaListView" class="list-group">
 					@foreach($areas as $area)
-						<li class="list-group-item">
-							<a href="#" data-id="{{ $area->id }}">{{ $area->name }}</a>
-						</li>
+						<li class="list-group-item" data-id="{{ $area->id }}">{{ $area->name }}</li>
 					@endforeach
 				</ul>
 			</div>

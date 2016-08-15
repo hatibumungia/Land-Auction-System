@@ -15,6 +15,17 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
+	<style type="text/css">
+		li.list-group-item:hover,
+		li.list-group-item:focus,
+		li.list-group-item.active {
+			background-color: #337ab7;
+			border-color: #337ab7;
+			color: #fff;
+		}
+
+	</style>
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -69,5 +80,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+	<script>
+
+		var areaId;
+
+		$('#areaListView').find('li').on('click', function() {
+			var areaListItem = $(this);
+			areaListItem.addClass('active');
+
+			var areaName = areaListItem.html();
+			areaId = areaListItem.data('id');
+
+			console.log("Clicked area(" + areaId + ")->" + areaName);
+		});
+
+	</script>
 </body>
 </html>
