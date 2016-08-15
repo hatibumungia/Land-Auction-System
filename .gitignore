@@ -1,0 +1,57 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Archives
+## These files are better unarchived and committed as raw source.
+## Git's compression methods are better rockstars.
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Artifacts
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+
+# IDEs
+.idea/
+.project/
+.sublime-project/
+.pydevproject/
+*.geany
+_ide_helper.php
+
+# NodeJS
+vendor/
+node_modules/
+
+# Bower
+resources/assets/vendor/
+
+# Laravel
+public/storage/
+Homestead.yaml
+Homestead.json
+.env
+
+# Logs and database
+*.log
+*.sql
+*.sqlite
