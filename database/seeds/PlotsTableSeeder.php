@@ -1,8 +1,9 @@
 <?php
 
+use App\Plot;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class PlotsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-		$this->call(PlotsTableSeeder::class);
+		Plot::truncate();
+
+		for($i = 0; $i < 7; $i++) {
+			factory(Plot::class)->create();
+		}
     }
 }

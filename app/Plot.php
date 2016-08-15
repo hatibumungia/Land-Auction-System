@@ -12,6 +12,6 @@ class Plot extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'plot_no', 'size', 'location', 'type', 'price'
+		'plot_no', 'size', 'area_id', 'area_type_id', 'price'
 	];
 }

@@ -19,3 +19,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Plot::class, function(Faker\Generator $faker) {
+	return [
+		'plot_no' => $faker->buildingNumber,
+		'size' => $faker->numberBetween(220, 750),
+		'area_id' => $faker->numberBetween(1, 4),
+		'area_type_id' => $faker->numberBetween(1, 4),
+		'price' => $faker->numberBetween(1000000, 3000000)
+	];
+});
