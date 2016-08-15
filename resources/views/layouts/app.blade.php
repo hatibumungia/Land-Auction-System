@@ -83,7 +83,8 @@
 
 	<script>
 
-		var areaId;
+		var areaId,
+			areaTypeId;
 
 		$('#areaListView').find('li').on('click', function() {
 			var areaListItem = $(this);
@@ -93,6 +94,16 @@
 			areaId = areaListItem.data('id');
 
 			console.log("Clicked area(" + areaId + ")->" + areaName);
+		});
+
+		$('#areaTypeListView').find('li').on('click', function() {
+			var areaTypeListItem = $(this);
+			areaTypeListItem.addClass('active');
+
+			var areaTypeName = areaTypeListItem.html();
+			areaTypeId = areaTypeListItem.data('id');
+
+			console.log("Clicked areaType(" + areaTypeId + ")->" + areaTypeName);
 		});
 
 	</script>
