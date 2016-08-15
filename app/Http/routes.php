@@ -16,3 +16,9 @@ Route::get('/',"WelcomeController@index");
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('/plots/new', function() {
+
+	});
+});
