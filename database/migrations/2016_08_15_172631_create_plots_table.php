@@ -16,8 +16,8 @@ class CreatePlotsTable extends Migration
             $table->increments('id');
 			$table->integer('plot_no')->unique();
 			$table->string('size');
-			$table->integer('area_id')->integer();
-			$table->string('area_type_id')->integer();
+			$table->integer('area_id')->unsigned();
+			$table->integer('area_type_id')->unsigned();
 			$table->string('price');
             $table->timestamps();
         });
