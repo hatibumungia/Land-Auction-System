@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<h1>Submit a plot</h1>
-			<form action={{ url('plots/new') }} method="post">
+			<form action={{ url('/plots/new') }} method="POST">
 				{!! csrf_field() !!}
 				<div class="form-group">
 					<label for="plot_no">Plot #</label>
@@ -13,14 +13,6 @@
 				<div class="form-group">
 					<label for="size">Size (sq. m)</label>
 					<input type="text" class="form-control" id="size" name="size" placeholder="Size (sq. m)">
-				</div>
-				<div class="form-group">
-					<label for="location">Location</label>
-					<input type="text" class="form-control" id="location" name="size" placeholder="Location">
-				</div>
-				<div class="form-group">
-					<label for="type">Type</label>
-					<input type="text" class="form-control" id="type" name="type" placeholder="Type">
 				</div>
 				<div class="form-group">
 					<label for="price">Price</label>

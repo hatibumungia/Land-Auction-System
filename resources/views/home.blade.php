@@ -19,18 +19,21 @@
 					<table class="table">
 						<tr>
 							<th>Plot #</th>
+							<th>Area</th>
+							<th>Area Type</th>
 							<th>Size (sq. m)</th>
-							<th>Location</th>
-							<th>Type</th>
 							<th>Price (TZS)</th>
 						</tr>
-						<tr>
-							<td>201</td>
-							<td>785</td>
-							<td>Kisasa</td>
-							<td>Residential</td>
-							<td>2,700,000</td>
-						</tr>
+						@foreach ($plots as $plot)
+							<tr>
+								<td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
+								<td><a href="#">{{ $plot->area_id }}</a></td>
+								<td><a href="#">{{ $plot->area_type_id }}</a></td>
+								<td>{{ $plot->size }}</td>
+								<td>{{ $plot->price }}</td>
+							</tr>
+						@endforeach
+
 					</table>
 				</div>
 			</div>

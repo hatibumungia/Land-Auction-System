@@ -22,28 +22,20 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('auth.plots.new');
 	});
 
-	Route::post('/plots/new', function(Request $request) {
+	Route::post('/plots/new', function(\Illuminate\Http\Request $request) {
 
-		$validator = Validator::make($request->all(), [
-			'plot_no' => 'required|max:255',
-			'size' => 'required|max:255',
-			'location' => 'required|max:255',
-			'type' => 'required|max:255',
-			'price' => 'required|max:255',
-		]);
-
-		if ($validator->fails()) {
-			return back()
-				->withInput()
-				->withErrors($validator);
-		}
+		// TODO: make a $validator;
+		// TODO: if it fails, return back()->withInput()->withErrors($validator)
 
 		$plot = new \App\Plot;
 		$plot->plot_no = $request->plot_no;
 		$plot->size = $request->size;
-		$plot->location = $request->location;
-		$plot->type = $request->type;
 		$plot->price = $request->price;
+
+		$faker = Faker\Factory::create();
+		$plot->area_id = $faker->numberBetween(1, 4);
+		$plot->area_type_id = $faker->numberBetween(1, 4);
+
 		$plot->save();
 
 		return redirect('/home');
