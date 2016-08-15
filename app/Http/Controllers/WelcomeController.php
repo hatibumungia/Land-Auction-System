@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Plot;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -11,7 +12,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 class WelcomeController extends Controller
 {
 
-    public function index() {
+    /*public function index() {
         $areas = array(
             array(
                 'name'=>'Kisasa',
@@ -26,8 +27,6 @@ class WelcomeController extends Controller
                 'id'=>'3',
             )
         );
-
-
 
         $areaTypes = array(
             array(
@@ -47,9 +46,6 @@ class WelcomeController extends Controller
                 'id'=>'4',
             )
         );
-
-
-
 
         $blocks = array(
             array(
@@ -74,9 +70,6 @@ class WelcomeController extends Controller
             )
         );
 
-
-
-
         $data = array(
             'areas'=>$areas,
             'area_types'=>$areaTypes,
@@ -86,5 +79,10 @@ class WelcomeController extends Controller
 
     public function firstpage() {
         return view('layouts.welcome');
-    }
+    }*/
+
+	public function index() {
+		$plots = Plot::all();
+		return view('welcome', compact('plots'));
+	}
 }
