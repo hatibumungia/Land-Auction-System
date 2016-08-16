@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
 		$this->call(PlotsTableSeeder::class);
 		$this->call(AreasTableSeeder::class);
 		$this->call(AreaTypesTableSeeder::class);
+		$this->call(BlocksTableSeeder::class);
     }
 }
