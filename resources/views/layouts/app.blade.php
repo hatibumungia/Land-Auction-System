@@ -83,16 +83,23 @@
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 	<script>
-
-		var areaTypeId;
-
 		var areaListView = $('#areaListView');
 		var areaTypeListView = $('#areaTypeListView');
-		areaTypeListView.find('li').hide();
+		var blockListView = $('#blockListView');
+		var plotPanel = $('#plotPanel');
+		var sitePlanPanel = $('#sitePlanPanel');
+
+		$(document).ready(function(){
+			areaTypeListView.find('li').hide();
+			blockListView.find('li').hide();
+			plotPanel.hide();
+			sitePlanPanel.hide();
+		});
 
 		areaListView.find('li').on('click', function() {
 			var areaListItem = $(this);
 
+			var areaTypeId;
 			areaTypeId = areaListItem.data('area-type');
 			console.log("areaTypeId: " + areaTypeId);
 
@@ -103,11 +110,18 @@
 		areaTypeListView.find('li').on('click', function() {
 			var areaTypeListItem = $(this);
 
-			var blockId = areaTypeListItem.data('block');
-			console.log("blockId: " + blockId);
+			var blockCount = areaTypeListItem.data('blocks');
+			console.log("blockCount: " + blockCount);
 
-			$('#blockListView').find('li').eq(blockId).show();
+			for(var i = 0; i < blockCount; i++) {
+				blockListView.find('li').eq(i).show()
+			}
 
+		});
+
+		blockListView.find('li').on('click', function() {
+			plotPanel.show();
+			sitePlanPanel.show();
 		});
 
 

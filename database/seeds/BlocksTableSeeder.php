@@ -14,10 +14,12 @@ class BlocksTableSeeder extends Seeder
     {
 		Block::truncate();
 
-		Block::create([ 'name' => 'A' ]);
-		Block::create([ 'name' => 'B' ]);
-		Block::create([ 'name' => 'C' ]);
-		Block::create([ 'name' => 'D' ]);
-		Block::create([ 'name' => 'E' ]);
+		$faker = Faker\Factory::create();
+
+		$limit = rand(5, 11);
+		for($i = 0; $i < $limit; $i++) {
+			Block::create(['name' => strtoupper($faker->randomLetter . $faker->randomLetter)]);
+		}
+
     }
 }
