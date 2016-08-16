@@ -4,6 +4,12 @@
 
 @section('content')
 <div class="container">
+	<div style="padding-left: 5px;padding-right: 5px;padding-top: 20px;padding-bottom: 20px ">
+		<h1>Welcome</h1>
+
+		<p>This is the skeleton system of CDA plot acquisition system for cda dodoma. feel free to contribute.</p>
+
+	</div>
     <div class="row">
         <div class="col-md-3">
 			<div class="panel panel-default">
@@ -45,13 +51,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
 			<div id="plotPanel" class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Plots</h3>
 				</div>
 				<ul class="list-group">
-					<table class="table table-hover">
+					<table id="plotDataTable" class="table table-hover display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th>Plot #</th>
@@ -73,7 +79,7 @@
 				</ul>
 			</div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-3">
 			<div id="sitePlanPanel" class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Siteplan</h3>

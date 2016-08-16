@@ -94,6 +94,9 @@
 			blockListView.find('li').hide();
 			plotPanel.hide();
 			sitePlanPanel.hide();
+
+			$('#plotDataTable').DataTable();
+
 		});
 
 		areaListView.find('li').on('click', function() {
