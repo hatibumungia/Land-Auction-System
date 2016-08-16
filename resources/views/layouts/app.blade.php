@@ -84,22 +84,30 @@
 
 	<script>
 
-		var areaId;
+		var areaTypeId;
 
-		$('#areaListView').find('li').on('click', function() {
+		var areaListView = $('#areaListView');
+		var areaTypeListView = $('#areaTypeListView');
+		areaTypeListView.find('li').hide();
+
+		areaListView.find('li').on('click', function() {
 			var areaListItem = $(this);
-			areaListItem.addClass('active');
 
-			areaId = areaListItem.data('id');
-			console.log("areaId: " + areaId);
+			areaTypeId = areaListItem.data('area-type');
+			console.log("areaTypeId: " + areaTypeId);
+
+			$('#areaTypeListView').find('li').eq(areaTypeId).show();
+
 		});
 
-		$('#areaTypeListView').find('li').on('click', function() {
-			var areaListItem = $(this);
-			areaListItem.addClass('active');
+		areaTypeListView.find('li').on('click', function() {
+			var areaTypeListItem = $(this);
 
-			areaId = areaListItem.data('id');
-			console.log("areaId: " + areaId);
+			var blockId = areaTypeListItem.data('block');
+			console.log("blockId: " + blockId);
+
+			$('#blockListView').find('li').eq(blockId).show();
+
 		});
 
 

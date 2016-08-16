@@ -12,7 +12,7 @@
 				</div>
 				<ul id="areaListView" class="list-group">
 					@foreach($areas as $area)
-						<li class="list-group-item" data-id="{{ $area->id }}">{{ $area->name }}</li>
+						<li class="list-group-item" data-area-type="{{ $area->area_type_id }}">{{ $area->name }}</li>
 					@endforeach
 				</ul>
 			</div>
