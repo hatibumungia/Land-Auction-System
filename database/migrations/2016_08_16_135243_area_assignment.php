@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAreaAreas_typePivotTable extends Migration
+class AreaAssignment extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,18 @@ class CreateAreaAreas_typePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('area_areas_type', function (Blueprint $table) {
-            $table->increments('tid');
+        Schema::create('area_assignment', function (Blueprint $table) {
             $table->integer('area_id')->unsigned();
-            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
+            $table->foreign('area_id')->references('area_id')->on('areas')->onDelete('cascade');
+
+
             $table->integer('areas_type_id')->unsigned();
-            $table->foreign('areas_type_id')->references('id')->on('areas_types')->onDelete('cascade');
-            $table->primary(['area_id', 'areas_type_id']);
+            $table->foreign('areas_type_id')->references('areas_type_id')->on('area_types')->onDelete('cascade');
+
             $table->string('price');
 
-            //making composite keys
-            $table->primary(['area_id','areas_type_id']);
+            $table->primary(['area_id', 'areas_type_id']);
+
         });
     }
 

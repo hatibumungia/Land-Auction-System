@@ -13,7 +13,7 @@ class CreatePlotsTable extends Migration
     public function up()
     {
         Schema::create('plots', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('plot_id');
 			$table->integer('plot_no')->unique();
 			$table->string('size');
 			$table->integer('area_id')->unsigned();
