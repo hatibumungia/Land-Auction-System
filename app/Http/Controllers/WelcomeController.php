@@ -20,6 +20,6 @@ class WelcomeController extends Controller
 		$blocks = Block::all();
 		$plots = Plot::all();
 
-		return view('welcome', compact('areas', 'area_types', 'blocks'));
+		return view('welcome', compact('areas', 'area_types', 'blocks', 'plots'));
 	}
 }

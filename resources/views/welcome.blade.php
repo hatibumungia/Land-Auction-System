@@ -45,21 +45,35 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Plots</h3>
 				</div>
 				<ul class="list-group">
-					<li class="list-group-item">Cras justo odio</li>
-					<li class="list-group-item">Dapibus ac facilisis in</li>
-					<li class="list-group-item">Morbi leo risus</li>
-					<li class="list-group-item">Porta ac consectetur ac</li>
-					<li class="list-group-item">Vestibulum at eros</li>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Plot #</th>
+								<th>Size (sq. m)</th>
+								<th>Price (TZS)</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($plots as $plot)
+								<tr>
+									<td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
+									<td>{{ $plot->size }}</td>
+									<td>{{ $plot->price }}</td>
+								</tr>
+							@endforeach
+						</tbody>
+
+					</table>
 				</ul>
 			</div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Siteplan</h3>
