@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>CDA Plots &middot; @yield('page_title')</title>
 
@@ -83,28 +84,25 @@
 
 	<script>
 
-		var areaId,
-			areaTypeId;
+		var areaId;
 
 		$('#areaListView').find('li').on('click', function() {
 			var areaListItem = $(this);
 			areaListItem.addClass('active');
 
-			var areaName = areaListItem.html();
 			areaId = areaListItem.data('id');
-
-			console.log("Clicked area(" + areaId + ")->" + areaName);
+			console.log("areaId: " + areaId);
 		});
 
 		$('#areaTypeListView').find('li').on('click', function() {
-			var areaTypeListItem = $(this);
-			areaTypeListItem.addClass('active');
+			var areaListItem = $(this);
+			areaListItem.addClass('active');
 
-			var areaTypeName = areaTypeListItem.html();
-			areaTypeId = areaTypeListItem.data('id');
-
-			console.log("Clicked areaType(" + areaTypeId + ")->" + areaTypeName);
+			areaId = areaListItem.data('id');
+			console.log("areaId: " + areaId);
 		});
+
+
 
 	</script>
 </body>

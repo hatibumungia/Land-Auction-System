@@ -11,11 +11,18 @@
 |
 */
 
+use App\AreaType;
+
 Route::get('/',"WelcomeController@index");
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/areas/{id}/types/', function($id) {
+	$area_types = AreaType::all();
+	return view('welcome', compact('area_types'));
+});
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/plots/new', function() {

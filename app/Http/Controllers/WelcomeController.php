@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\AreaType;
 use App\Plot;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -14,9 +15,10 @@ class WelcomeController extends Controller
 {
 	public function index() {
 		$areas = Area::all();
+		$area_types = AreaType::all();
 		$plots = Plot::all();
 
 		return view('welcome',
-			compact('areas'));
+			compact('areas', 'area_types'));
 	}
 }

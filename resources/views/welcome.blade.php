@@ -22,12 +22,11 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Area Type</h3>
 				</div>
-				<ul class="list-group">
-					<li class="list-group-item">Cras justo odio</li>
-					<li class="list-group-item">Dapibus ac facilisis in</li>
-					<li class="list-group-item">Morbi leo risus</li>
-					<li class="list-group-item">Porta ac consectetur ac</li>
-					<li class="list-group-item">Vestibulum at eros</li>
+				<ul id="areaTypeListView" class="list-group">
+					<li class="list-group-item">...</li>
+					@foreach($area_types as $area_type)
+						<li class="list-group-item" data-id="{{ $area_type->id }}">{{ $area_type->name }}</li>
+					@endforeach
 				</ul>
 			</div>
         </div>
@@ -66,7 +65,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Siteplan</h3>
 				</div>
-				<img src="http://placehold.it/1024x720" alt="..." class="img-responsive">
+				<img src="" alt="..." class="img-responsive">
 			</div>
         </div>
     </div>
