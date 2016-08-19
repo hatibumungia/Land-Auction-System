@@ -27,36 +27,40 @@
       </div>
     </div>
     <hr>
-    <section>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-        <div class="media-object-default">
-          <div class="media">
-            <div class="media-left"> <a href="#"> <img class="media-object img-circle" src="/img/100X100.gif" alt="placeholder image"> </a> </div>
-            <div class="media-body">
-              <h4 class="media-heading">DG Meessage</h4>
-              Put here</div>
+<div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
+            <div class="caption">
+              <h3>Heading</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <hr>
+              <p class="text-center"><a href="#" class="btn btn-success" role="button">For Sale</a></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-        <div class="media">
-          <div class="media-left"> <a href="#"> <img class="media-object img-circle" src="/img/100X100.gif" alt="placeholder image"></a></div>
-          <div class="media-body">
-            <h4 class="media-heading">DED Message</h4>
-            Put here</div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
+            <div class="caption">
+              <h3>Heading</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <hr>
+              <p class="text-center"><a href="#" class="btn btn-info" role="button">For Rent</a></p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
-        <div class="media">
-          <div class="media-left"> <a href="#"> <img class="media-object img-circle" src="/img/100X100.gif" alt="placeholder image"></a></div>
-          <div class="media-body">
-            <h4 class="media-heading">Instructions</h4>
-            Put  here</div>
+        <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
+          <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
+            <div class="caption">
+              <h3>Heading</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <hr>
+              <p class="text-center"><a href="#" class="btn btn-success" role="button">For Sale</a></p>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </div>    
+    <section>
+  <div class="container">
   </div>
 </section>
 <hr>
@@ -65,14 +69,8 @@
     <div class="col-lg-9 col-md-12">
 
 <div class="container">
-	<div style="padding-left: 5px;padding-right: 5px;padding-top: 20px;padding-bottom: 20px ">
-		<h1>Welcome</h1>
-
-		<p>This is the skeleton system of CDA plot acquisition system for cda dodoma. feel free to contribute.</p>
-
-	</div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Area</h3>
@@ -84,7 +82,7 @@
 				</ul>
 			</div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Area Type</h3>
@@ -97,7 +95,7 @@
 				</ul>
 			</div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Blocks</h3>
@@ -105,14 +103,14 @@
 				<ul id="blockListView" class="list-group">
 					<li class="list-group-item">...</li>
 					@foreach($blocks as $block)
-						<li class="list-group-item" data-id="{{ $block->id }}">{{ $block->name }}</li>
+						<li class="list-group-item" data-block-id="{{ $block->block_id }}">{{ $block->name }}</li>
 					@endforeach
 				</ul>
 			</div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
 			<div id="plotPanel" class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Plots</h3>
@@ -131,7 +129,7 @@
 								<tr>
 									<td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
 									<td>{{ $plot->size }}</td>
-									<td>{{ $plot->price }}</td>
+									<td>{{ $plot->size }}</td>
 								</tr>
 							@endforeach
 						</tbody>
@@ -140,7 +138,7 @@
 				</ul>
 			</div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
 			<div id="sitePlanPanel" class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Siteplan</h3>
@@ -151,67 +149,6 @@
     </div>
 </div>
 
-
-    </div>
-    <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
-      <div class="well">
-        <h3 class="text-center">Find Your Plot</h3>
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="location1" class="control-label">Area</label>
-            <select class="form-control" name="" id="location1">
-              <option value="">Any</option>
-              <option value="">Kisasa</option>
-              <option value="">Ilazo</option>
-              <option value="">Iyumbu</option>
-              <option value="">Mkalama</option>
-              <option value="">Ntyuka</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="type1" class="control-label">Type</label>
-            <select class="form-control" name="" id="type1">
-              <option value="">Any</option>
-              <option value="">Residential</option>
-              <option value="">Institution</option>
-              <option value="">Commercial</option>
-              <option value="">Residential & Commercial</option>
-              <option value="">Ntyuka</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="pricefrom" class="control-label">Size From</label>
-            <div class="input-group">
-              <div class="input-group-addon">Sqrm</div>
-              <input type="text" class="form-control" id="pricefrom">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="priceto" class="control-label">Size To</label>
-            <div class="input-group">
-              <div class="input-group-addon">Sqrm</div>
-              <input type="text" class="form-control" id="priceto">
-            </div>
-          </div>
-          <p class="text-center"><a href="#" class="btn btn-danger" role="button">Search </a></p>
-        </form>
-      </div>
-      <hr>
-      <h3 class="text-center">Inquries</h3>
-      <div class="media-object-default">
-        <div class="media">
-          <div class="media-left"> <a href="#"> <img class="media-object img-rounded" src="/img/64X64.gif" alt="placeholder image"> </a> </div>
-          <div class="media-body">
-            <h4 class="media-heading">Alfred Rutae</h4>
-            <abbr title="Phone">P:</abbr> 0713882972   <a href="mailto:#">ruta@cda.go.tz</a> </div>
-        </div>
-        <div class="media">
-          <div class="media-left"> <a href="#"> <img class="media-object img-rounded" src="/img/64X64.gif" alt="placeholder image"> </a> </div>
-          <div class="media-body">
-            <h4 class="media-heading">Emmanuela Masawika</h4>
-            <abbr title="Phone">P:</abbr> 0766242974   <a href="mailto:#">masawika@cda.go.tz</a> </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

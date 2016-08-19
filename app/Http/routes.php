@@ -52,3 +52,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/search/getAreaType', 'SearchController@getAreaType');
 Route::get('/search/getBlock', 'SearchController@getBlock');
+Route::get('/search/getPlot', 'SearchController@getPlot');
+
+Route::get('/search', 'SearchController@index');

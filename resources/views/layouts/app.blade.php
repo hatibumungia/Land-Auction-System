@@ -51,6 +51,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/search') }}">Search</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -125,7 +126,7 @@
 		areaTypeListView.find('li').on('click', function() {
 			var areaTypeListItem = $(this);
 
-            var area_type_id = areaTypeListItem.data('area-type-id');
+            area_type_id = areaTypeListItem.data('area-type-id');
 			console.log("area_id: " + areaId);
             console.log("area_type_id: " + area_type_id);
 
@@ -148,8 +149,42 @@
 		});
 
 		blockListView.find('li').on('click', function() {
+            var blockListItem = $(this);
+            block_id = blockListItem.data('block-id');
+            console.log("clicked block id = "+block_id);
+
 			plotPanel.show();
 			sitePlanPanel.show();
+
+
+            var url = "http://localhost:8080/search/getPlot";
+            $.get(url,{area_id:areaId, area_type_id:area_type_id,block_id:block_id},function (data,status){
+                console.log("json received = "+data);
+
+                var jsonData = JSON.parse(data);
+                plotPanel.hide();
+                plotPanel.show();
+
+                var html = "";
+
+                html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Size (sq. m)</th><th>Price (TZS)</th></tr></thead><tbody>";
+
+
+                for (var i = 0; i < jsonData.length; i++) {
+                    var counter = jsonData[i];
+                     html += "<tr>";
+                        html += "<td>"+ counter.plot_no +"</td>";
+                        html += "<td>"+ counter.size +"</td>";
+                        html += "<td>"+ counter.size*counter.price+"</td>";
+                    html += "</tr>";
+
+                }
+                
+                html += "</tbody></table></ul>";
+                
+                $("#plotPanel").html(html);
+            });
+
 		});
 
 
