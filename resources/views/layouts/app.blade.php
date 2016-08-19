@@ -103,7 +103,7 @@
 			var areaListItem = $(this);
 
 			areaId = areaListItem.data('area-id');
-            var url = "http://localhost:8000/search/getAreaType";
+            var url = "http://localhost:8080/search/getAreaType";
             $.get(url,{area_id:areaId},function (data,status){
                 console.log("json received = "+data);
 
@@ -129,7 +129,7 @@
 			console.log("area_id: " + areaId);
             console.log("area_type_id: " + area_type_id);
 
-            var url = "http://localhost:8000/search/getBlock";
+            var url = "http://localhost:8080/search/getBlock";
             $.get(url,{area_id:areaId, area_type_id:area_type_id},function (data,status){
                 console.log("json received = "+data);
 
