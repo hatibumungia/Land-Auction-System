@@ -13,6 +13,7 @@ class PlotAssignment extends Migration
     public function up()
     {
         Schema::create('plot_assignment', function (Blueprint $table) {
+            $table->increments('plot_assignment_id');
             $table->integer('area_id')->unsigned();
             $table->foreign('area_id')->references('area_id')->on('block_assignment')->onDelete('cascade');
             $table->integer('areas_type_id')->unsigned();
@@ -24,6 +25,8 @@ class PlotAssignment extends Migration
 
             $table->integer('plot_id')->unsigned()->index();
             $table->foreign('plot_id')->references('plot_id')->on('plots')->onDelete('cascade');
+
+            $table->double('size');
 
             $table->primary(['area_id','areas_type_id','block_id','plot_id']);
         });

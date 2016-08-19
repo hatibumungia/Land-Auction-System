@@ -15,10 +15,6 @@ class CreatePlotsTable extends Migration
         Schema::create('plots', function (Blueprint $table) {
             $table->increments('plot_id');
 			$table->integer('plot_no')->unique();
-			$table->string('size');
-			$table->integer('area_id')->unsigned();
-			$table->integer('area_type_id')->unsigned();
-			$table->string('price');
             $table->timestamps();
         });
     }
