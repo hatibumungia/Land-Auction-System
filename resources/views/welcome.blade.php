@@ -63,6 +63,7 @@
 								<th>Plot #</th>
 								<th>Size (sq. m)</th>
 								<th>Price (TZS)</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -71,6 +72,8 @@
 									<td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
 									<td>{{ $plot->size }}</td>
 									<td>{{ $plot->price }}</td>
+									<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#researvationModal">Reserve</button>
+									</td>
 								</tr>
 							@endforeach
 						</tbody>
@@ -88,5 +91,31 @@
 			</div>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="researvationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Sign In/Register</h4>
+      </div>
+      <div class="modal-body">
+        
+      	@if (Auth::guest())
+      		User is not logged in
+      	@else
+      		User is logged in
+      	@endif
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
