@@ -17,6 +17,12 @@
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
 	<style type="text/css">
+        body{
+            padding:0 0;
+            margin:0 0; 
+            font-family: 'OpenSans-Regular';
+
+        }
 		li.list-group-item:hover,
 		li.list-group-item:focus,
 		li.list-group-item.active {
