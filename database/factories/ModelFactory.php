@@ -32,7 +32,7 @@ $factory->define(App\Plot::class, function(Faker\Generator $faker) {
 
 $factory->define(App\Area::class, function(Faker\Generator $faker) {
 	return [
-		'name' => $faker->city,
-		'area_type_id' => $faker->numberBetween(1, 4)
+		'name' => $faker->city/*,
+		'area_type_id' => $faker->numberBetween(1, 4)*/
 	];
 });

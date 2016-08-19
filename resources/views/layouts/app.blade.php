@@ -9,11 +9,11 @@
     <title>CDA Plots &middot; @yield('page_title')</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
 	<style type="text/css">
@@ -77,9 +77,9 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.dataTables.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 	<script>
@@ -102,23 +102,48 @@
 		areaListView.find('li').on('click', function() {
 			var areaListItem = $(this);
 
-			var areaTypeId;
-			areaTypeId = areaListItem.data('area-type');
-			console.log("areaTypeId: " + areaTypeId);
+			areaId = areaListItem.data('area-id');
+            var url = "http://localhost:8000/search/getAreaType";
+            $.get(url,{area_id:areaId},function (data,status){
+                console.log("json received = "+data);
 
-			$('#areaTypeListView').find('li').eq(areaTypeId).show();
+                var jsonData = JSON.parse(data);
+                areaTypeListView.find('li').hide();
+                blockListView.find('li').hide();
+                plotPanel.hide();
+                sitePlanPanel.hide();
+
+                for (var i = 0; i < jsonData.length; i++) {
+                    var counter = jsonData[i];
+                    console.log(counter.name);
+                    $('#areaTypeListView').find('li').eq(counter.areas_type_id).show();
+                }
+            });
 
 		});
 
 		areaTypeListView.find('li').on('click', function() {
 			var areaTypeListItem = $(this);
 
-			var blockCount = areaTypeListItem.data('blocks');
-			console.log("blockCount: " + blockCount);
+            var area_type_id = areaTypeListItem.data('area-type-id');
+			console.log("area_id: " + areaId);
+            console.log("area_type_id: " + area_type_id);
 
-			for(var i = 0; i < blockCount; i++) {
-				blockListView.find('li').eq(i).show()
-			}
+            var url = "http://localhost:8000/search/getBlock";
+            $.get(url,{area_id:areaId, area_type_id:area_type_id},function (data,status){
+                console.log("json received = "+data);
+
+                var jsonData = JSON.parse(data);
+                blockListView.find('li').hide();
+                plotPanel.hide();
+                sitePlanPanel.hide();
+
+                for (var i = 0; i < jsonData.length; i++) {
+                    var counter = jsonData[i];
+                    console.log(counter.name);
+                    $('#blockListView').find('li').eq(counter.block_id).show();
+                }
+            });
 
 		});
 

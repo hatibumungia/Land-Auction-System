@@ -12,7 +12,7 @@ class PlotsTableSeeder extends Seeder
      */
     public function run()
     {
-		Plot::truncate();
+		// Plot::truncate();
 
 		for($i = 0; $i < 7; $i++) {
 			factory(Plot::class)->create();

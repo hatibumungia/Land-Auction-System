@@ -12,7 +12,7 @@ class AreasTableSeeder extends Seeder
      */
     public function run()
     {
-		Area::truncate();
+		// Area::truncate();
 
 		for($i = 0; $i < 5; $i++) {
 			factory(Area::class)->create();

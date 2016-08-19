@@ -48,3 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return redirect('/home');
 	});
 });
+
+
+Route::get('/search/getAreaType', 'SearchController@getAreaType');
+Route::get('/search/getBlock', 'SearchController@getBlock');

@@ -12,7 +12,7 @@ class BlocksTableSeeder extends Seeder
      */
     public function run()
     {
-		Block::truncate();
+		// Block::truncate();
 
 		$faker = Faker\Factory::create();
 

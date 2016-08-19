@@ -18,7 +18,7 @@
 				</div>
 				<ul id="areaListView" class="list-group">
 					@foreach($areas as $area)
-						<li class="list-group-item" data-area-type="{{ $area->area_type_id }}">{{ $area->name }}</li>
+						<li class="list-group-item" data-area-id="{{ $area->area_id }}">{{ $area->name }}</li>
 					@endforeach
 				</ul>
 			</div>
@@ -31,7 +31,7 @@
 				<ul id="areaTypeListView" class="list-group">
 					<li class="list-group-item">...</li>
 					@foreach($area_types as $area_type)
-						<li class="list-group-item" data-blocks="{{ rand(1, rand(1, 9)) }}" data-id="{{ $area_type->id }}">{{ $area_type->name }}</li>
+						<li class="list-group-item" data-area-type-id="{{ $area_type->areas_type_id }}">{{ $area_type->name }}</li>
 					@endforeach
 				</ul>
 			</div>
@@ -84,7 +84,7 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">Siteplan</h3>
 				</div>
-				<img src="http://placehold.it/720x400" alt="..." class="img-responsive">
+				<img src="/image.png" alt="..." class="img-responsive">
 			</div>
         </div>
     </div>

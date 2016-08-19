@@ -12,7 +12,7 @@ class AreaTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        AreaType::truncate();
+        // AreaType::truncate();
 
 		AreaType::create([
 			'name' => "Residential"
