@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/jquery.dataTables.min.css">
+    
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
 	<style type="text/css">
@@ -85,6 +86,7 @@
 
     <!-- JavaScripts -->
     <script src="/js/jquery.min.js"></script>
+    <script src="/js/search.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.dataTables.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

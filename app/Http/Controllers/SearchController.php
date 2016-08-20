@@ -50,4 +50,14 @@ class SearchController extends Controller
         return json_encode(DB::SELECT($sql,$area_id));
     }
 
+    public function performSearch(){
+        $area_id['area_id'] = $_GET['area_id'];
+        $area_id['area_type_id'] = $_GET['area_type_id'];
+/*        $area_id['min_size'] = $_GET['min_size'];
+        $area_id['max_size'] = $_GET['max_size'];*/
+
+        $sql = "SELECT areas.name as area_name, area_types.name as area_type_name, blocks.name as block_name, plots.plot_no as plot_no, plot_assignment.size as plot_size, area_assignment.price as price FROM plot_assignment,plots,area_assignment, areas, area_types,blocks WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.plot_id = plots.plot_id and plot_assignment.areas_type_id=area_types.areas_type_id and areas.area_id=plot_assignment.area_id and plot_assignment.block_id=blocks.block_id and plot_assignment.area_id=:area_id and plot_assignment.areas_type_id=:area_type_id";
+        return json_encode(DB::SELECT($sql,$area_id));
+    }
+
 }
