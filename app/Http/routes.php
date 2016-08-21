@@ -61,3 +61,5 @@ Route::get('/search/performSearch', 'SearchController@performSearch');
 Route::resource('/locations', 'AreaController');
 
 Route::resource('/land-uses', 'AreaTypeController');
+
+Route::resource('/blocks', 'BlockController');
