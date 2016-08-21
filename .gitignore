@@ -37,6 +37,7 @@ Thumbs.db
 .pydevproject/
 *.geany
 _ide_helper.php
+.phpintel
 
 # NodeJS
 vendor/
