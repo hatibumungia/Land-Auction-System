@@ -15,13 +15,19 @@
             <li data-target="#carousel-299058" data-slide-to="2" class=""> </li>
           </ol>
           <div class="carousel-inner">
-            <div class="item"> <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
+            <div class="item">
+              <!-- <img class="img-responsive" src="/img/1920x500.gif" alt="thumb"> -->
+              <img class="img-responsive" src="http://lorempixel.com/1920/500/city/8" alt="thumb">
               <div class="carousel-caption"> Carousel caption. Here goes slide description. Lorem ipsum dolor set amet. </div>
             </div>
-            <div class="item active"> <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
+            <div class="item active"> 
+              <!-- <img class="img-responsive" src="/img/1920x500.gif" alt="thumb"> -->
+              <img class="img-responsive" src="http://lorempixel.com/1920/500/city/9" alt="thumb">
               <div class="carousel-caption"> Carousel caption 2. Here goes slide description. Lorem ipsum dolor set amet. </div>
             </div>
-            <div class="item"> <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
+            <div class="item"> 
+              <!-- <img class="img-responsive" src="/img/1920x500.gif" alt="thumb"> -->
+              <img class="img-responsive" src="http://lorempixel.com/1920/500/city/10" alt="thumb">
               <div class="carousel-caption"> Carousel caption 3. Here goes slide description. Lorem ipsum dolor set amet. </div>
             </div>
           </div>
@@ -37,13 +43,13 @@
 
 
 
-<div class="panel panel-success">
+<div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Search Results</h3>
   </div>
   <div class="panel-body">
-    <div id="searchResults">
-  </div>
+    <div id="searchResults"></div>
+</div>
 </div>
           
 
@@ -74,7 +80,7 @@
 			</div>
 
             --}}
-          </div>
+          
 
         </div>
     </div>

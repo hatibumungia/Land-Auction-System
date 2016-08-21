@@ -5,7 +5,7 @@ $(function () {
 
     area_id = 0,
         area_type_id = 0,
-        min_size = 0,
+        min_size = 0, 
         max_size = 0;
 
 
@@ -41,15 +41,31 @@ $(function () {
 
             var html = "";
 
-            html += "<table class='table table-hover table-stripped'>";
+            if(jsonData.length === 0){
+                html += "<div class='alert alert-warning'><h3 class='text-center'>No matches Found</h3><div>";
+            }else{
+
+            html += "<table id='example' class='table table-hover table-stripped display' cellspacing='0' width='100'>";
                 html += "<thead>";
-                    html += "<th>Area</th>";
-                    html += "<th>Type</th>";
-                    html += "<th>Block</th>";
-                    html += "<th>Plot#</th>";
-                    html += "<th>Size</th>";
-                    html += "<th>Price</th>";
+                    html += "<tr>";
+                        html += "<th>Area</th>";
+                        html += "<th>Type</th>";
+                        html += "<th>Block</th>";
+                        html += "<th>Plot#</th>";
+                        html += "<th>Size</th>";
+                        html += "<th>Price</th>";
+                    html += "</tr>";    
                 html += "</thead>";
+                html += "<tfoot>";
+                    html += "<tr>";
+                        html += "<th>Area</th>";
+                        html += "<th>Type</th>";
+                        html += "<th>Block</th>";
+                        html += "<th>Plot#</th>";
+                        html += "<th>Size</th>";
+                        html += "<th>Price</th>";
+                    html += "</tr>";    
+                html += "</tfoot>";                
             html += "<tbody>";
 
 
@@ -72,6 +88,9 @@ $(function () {
             }
 
             html += "</tbody></table>";
+
+            }
+
 
             $("#searchResults").html(html);
         });
