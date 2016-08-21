@@ -3,99 +3,35 @@
  */
 $(function () {
 
-    area_id = 0,
-        area_type_id = 0,
-        min_size = 0, 
-        max_size = 0;
+    getSearchResults();
 
+    function getSearchResults(params = ''){
 
-    function getValues() {
-        area_id = $("#area_id").val();
-        area_type_id = $("#area_type_id").val();
+        $('#searchResults').html("<table id='example' class='display' cellspacing='0' width='100%'><thead><tr><th>Area</th><th>Type</th><th>Block</th><th>Plot#</th><th>Size</th><th>Price</th></tr></thead><tfoot><tr><th>Name</th><th>Position</th><th>Office</th><th>Extn.</th><th>Start date</th><th>Salary</th></tr></tfoot></table>");
 
-        if ($("#min_size").val() === null || $("#min_size").val() === "") {
-            min_size = 0;
-        } else {
-            min_size = $("#min_size").val();
-        }
-
-        if ($("#max_size").val() === null || $("#max_size").val() === "") {
-            min_size = 0;
-        } else {
-            min_size = $("#max_size").val();
-        }
+        var url = '/search/performSearch' + params;
+        $('#example').DataTable( {
+            "ajax": url
+        }); 
+       console.log(url);   
     }
 
     $("#btn-search").on("click", function () {
 
-        getValues();
+        // check if user has not specified both the area name and area type name
+        if($('#area_id').val() == 0 && $('#area_type_id').val() == 0){
+            getSearchResults();
 
-        var url = "http://localhost:8080/search/performSearch";
-        $.get(url,{area_id:area_id, area_type_id:area_type_id, min_size:min_size, max_size:max_size},function (data,status){
-            console.log("json received = "+data);
-
-            var jsonData = JSON.parse(data);
-/*            blockListView.find('li').hide();
-            plotPanel.hide();
-            sitePlanPanel.hide();*/
-
-            var html = "";
-
-            if(jsonData.length === 0){
-                html += "<div class='alert alert-warning'><h3 class='text-center'>No matches Found</h3><div>";
-            }else{
-
-            html += "<table id='example' class='table table-hover table-stripped display' cellspacing='0' width='100'>";
-                html += "<thead>";
-                    html += "<tr>";
-                        html += "<th>Area</th>";
-                        html += "<th>Type</th>";
-                        html += "<th>Block</th>";
-                        html += "<th>Plot#</th>";
-                        html += "<th>Size</th>";
-                        html += "<th>Price</th>";
-                    html += "</tr>";    
-                html += "</thead>";
-                html += "<tfoot>";
-                    html += "<tr>";
-                        html += "<th>Area</th>";
-                        html += "<th>Type</th>";
-                        html += "<th>Block</th>";
-                        html += "<th>Plot#</th>";
-                        html += "<th>Size</th>";
-                        html += "<th>Price</th>";
-                    html += "</tr>";    
-                html += "</tfoot>";                
-            html += "<tbody>";
-
-
-            if(jsonData.length > 0){
-                for (var i = 0; i < jsonData.length; i++) {
-                    var counter = jsonData[i];
-                    console.log(counter.name);
-                    html += "<tr>";
-                    html += "<td>" + counter.area_name + "</td>";
-                    html += "<td>" + counter.area_type_name + "</td>";
-                    html += "<td>" + counter.block_name + "</td>";
-                    html += "<td>" + counter.plot_no + "</td>";
-                    html += "<td>" + counter.plot_size + "</td>";
-                    html += "<td>" + counter.price + "</td>";
-                    html += "</tr>";
-                }
-            }else{
-                $("#searchResults").html("<div class='alert alert-info'>No Matches</div>");
-
-            }
-
-            html += "</tbody></table>";
-
-            }
-
-
-            $("#searchResults").html(html);
-        });
-
-        console.log("Area Id = " + area_id + "\nArea Type Id = " + area_type_id + "\nMin_size = " + min_size + "\nMax size = " + max_size);
+        // check if user has specified both the area name and area type name  
+        }else if($('#area_id').val() != 0 && $('#area_type_id').val() != 0){
+            getSearchResults('?area_id=' + $('#area_id').val() + '&area_type_id=' + $('#area_type_id').val());
+        // check if user has specified the area name only     
+        }else if($('#area_id').val() != 0){
+            getSearchResults('?area_id=' + $('#area_id').val());
+        // check if user has specified the area type name only     
+        }else if($('#area_type_id').val() != 0){
+            getSearchResults('?area_type_id=' + $('#area_type_id').val());
+        }
 
     });
 });

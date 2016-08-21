@@ -16,18 +16,18 @@
           </ol>
           <div class="carousel-inner">
             <div class="item">
-              <!-- <img class="img-responsive" src="/img/1920x500.gif" alt="thumb"> -->
-              <img class="img-responsive" src="http://lorempixel.com/1920/500/city/8" alt="thumb">
+              <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
+              <!-- <img class="img-responsive" src="http://lorempixel.com/1920/500/city/8" alt="thumb"> -->
               <div class="carousel-caption"> Carousel caption. Here goes slide description. Lorem ipsum dolor set amet. </div>
             </div>
             <div class="item active"> 
-              <!-- <img class="img-responsive" src="/img/1920x500.gif" alt="thumb"> -->
-              <img class="img-responsive" src="http://lorempixel.com/1920/500/city/9" alt="thumb">
+              <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
+              <!-- <img class="img-responsive" src="http://lorempixel.com/1920/500/city/9" alt="thumb"> -->
               <div class="carousel-caption"> Carousel caption 2. Here goes slide description. Lorem ipsum dolor set amet. </div>
             </div>
             <div class="item"> 
-              <!-- <img class="img-responsive" src="/img/1920x500.gif" alt="thumb"> -->
-              <img class="img-responsive" src="http://lorempixel.com/1920/500/city/10" alt="thumb">
+              <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
+              <!-- <img class="img-responsive" src="http://lorempixel.com/1920/500/city/10" alt="thumb"> -->
               <div class="carousel-caption"> Carousel caption 3. Here goes slide description. Lorem ipsum dolor set amet. </div>
             </div>
           </div>
@@ -48,7 +48,34 @@
     <h3 class="panel-title">Search Results</h3>
   </div>
   <div class="panel-body">
-    <div id="searchResults"></div>
+    <div id="searchResults">
+
+<!--       <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Extn.</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+</table> -->
+
+  </div>
+
+
 </div>
 </div>
           
@@ -95,7 +122,7 @@
       <div class="form-group">
         <label for="area_id" class="control-label">Area</label>
         <select class="form-control" name="area_id" id="area_id">
-          <option value="0">Any</option>
+          <option class="list-group-item" value="0">Any</option>
           @foreach($areas as $area)
 						<option class="list-group-item" value="{{ $area->area_id }}">{{ $area->name }}</<option>
 			  @endforeach
@@ -104,7 +131,7 @@
       <div class="form-group">
         <label for="area_type_id" class="control-label">Area Type</label>
         <select class="form-control" name="area_type_id" id="area_type_id">
-          <option value="0">Any</option>
+          <option class="list-group-item" value="0">Any</option>
           @foreach($area_types as $area_type)
 						<option value="{{ $area_type->areas_type_id }}">{{ $area_type->name }}</option>	
 			  @endforeach
