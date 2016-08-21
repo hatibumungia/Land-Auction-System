@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Http\Requests\CreateLocationRequest;
+use App\AreaType;
 
-use App\Area;
+use App\Http\Requests\CreateAreaTypeRequest;
 
-class AreaController extends Controller
+class AreaTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,9 @@ class AreaController extends Controller
      */
     public function index()
     {
+        $land_uses = AreaType::all();
 
-        $locations = Area::all();
-
-        return view('locations.index', compact('locations'));
+        return view('land-uses.index', compact('land_uses'));
     }
 
     /**
@@ -32,7 +31,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('locations.create');
+        return view('land-uses.create');
     }
 
     /**
@@ -41,13 +40,13 @@ class AreaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateLocationRequest $request)
+    public function store(CreateAreaTypeRequest $request)
     {
-        Area::create($request->all());
+        AreaType::create($request->all());
 
         flash()->success($request->input('name'). ' added successfully');
 
-        return redirect('locations/create');        
+        return redirect('land-uses/create');
     }
 
     /**
@@ -56,11 +55,11 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($area_id)
+    public function show($areas_type_id)
     {
-        $location = Area::findOrFail($area_id);
+        $land_use = AreaType::findOrFail($areas_type_id);
 
-        return view('locations.show', compact('location'));
+        return view('land-uses.show', compact('land_use'));
     }
 
     /**
@@ -69,11 +68,11 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($area_id)
+    public function edit($areas_type_id)
     {
-        $location = Area::findOrFail($area_id);
+        $land_use = AreaType::findOrFail($areas_type_id);
 
-        return view('locations.edit', compact('location'));
+        return view('land-uses.edit', compact('land_use'));
     }
 
     /**
@@ -83,16 +82,15 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateLocationRequest $request, $area_id)
+    public function update(CreateAreaTypeRequest $request, $areas_type_id)
     {
-        $location = Area::findOrFail($area_id);
+        $land_use = AreaType::findOrFail($areas_type_id);
 
-        $location->update($request->all());
+        $land_use->update($request->all());
 
         flash()->success('Updated successfully');
 
-        return redirect('locations'); 
-
+        return redirect('land-uses'); 
     }
 
     /**
@@ -101,15 +99,14 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($area_id)
+    public function destroy($areas_type_id)
     {
-        $location = Area::findOrFail($area_id);
+        $land_use = AreaType::findOrFail($areas_type_id);
 
-        $location->delete();
+        $land_use->delete();
 
-        flash()->success($location->name . ' deleted successfully');
+        flash()->success($land_use->name . ' deleted successfully');
 
-        return redirect('locations'); 
-
+        return redirect('land-uses');
     }
 }

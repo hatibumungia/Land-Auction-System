@@ -20,66 +20,11 @@
     <h3 class="panel-title">Search Results</h3>
   </div>
   <div class="panel-body">
-    <div id="searchResults">
-
-<!--       <table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Extn.</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-</table> -->
-
-  </div>
-
+    
+    <div id="searchResults"></div>
 
 </div>
-</div>
-          
-
-          
-
-{{--			<div id="plotPanel2" class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Plots</h3>
-				</div>
-				<ul class="list-group">
-					<table id="plotDataTable" class="table table-hover display" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>Area</th>
-								<th>Type</th>
-								<th>Block</th>
-								<th>Plot#</th>
-								<th>Size</th>
-								<th>Price (TZS)</th>
-							</tr>
-						</thead>
-						<tbody>
-
-						</tbody>
-
-					</table>
-				</ul>
-			</div>
-
-            --}}
-          
+</div>          
 
         </div>
     </div>
@@ -135,5 +80,7 @@
 </div>
 <hr>
 
+
+<script src="/js/search.js"></script>
 
 @endsection

@@ -113,7 +113,6 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="/js/search.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.dataTables.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
