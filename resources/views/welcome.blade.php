@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs">
         <div id="carousel-299058" class="carousel slide">
@@ -28,9 +28,9 @@
       </div>
     </div>
     <hr>
-</div>
+</div> -->
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
           <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
@@ -64,7 +64,7 @@
         </div>
       </div>
       <hr>
-</div>
+</div> -->
 
 <div class="container">
     <div class="row">
