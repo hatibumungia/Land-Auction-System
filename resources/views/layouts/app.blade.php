@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="/favicon.ico">
+
     <title>CDA Plots &middot; @yield('page_title')</title>
 
     <!-- Fonts -->
@@ -36,6 +38,15 @@
 
 </head>
 <body id="app-layout">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <img src="/img/banner.png" class="img-responsive" alt="Banner">
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
