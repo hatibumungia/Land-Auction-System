@@ -15,7 +15,6 @@ class AreaController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -29,7 +28,6 @@ class AreaController extends Controller
      */
     public function index()
     {
-
         $locations = Area::all();
 
         return view('locations.index', compact('locations'));
@@ -48,7 +46,7 @@ class AreaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CreateLocationRequest|Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateLocationRequest $request)
@@ -63,8 +61,9 @@ class AreaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $area_id
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function show($area_id)
     {
@@ -76,8 +75,9 @@ class AreaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param $area_id
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function edit($area_id)
     {
@@ -89,9 +89,10 @@ class AreaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param CreateLocationRequest|Request $request
+     * @param $area_id
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function update(CreateLocationRequest $request, $area_id)
     {
@@ -108,8 +109,9 @@ class AreaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param $area_id
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function destroy($area_id)
     {

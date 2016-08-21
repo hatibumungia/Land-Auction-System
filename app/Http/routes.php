@@ -13,40 +13,40 @@
 
 use App\AreaType;
 
-Route::get('/',"WelcomeController@index");
+Route::get('/', "WelcomeController@index");
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/areas/{id}/types/', function($id) {
-	$area_types = AreaType::all();
-	return view('welcome', compact('area_types'));
+Route::get('/areas/{id}/types/', function ($id) {
+    $area_types = AreaType::all();
+    return view('welcome', compact('area_types'));
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/plots/new', function() {
-		return view('auth.plots.new');
-	});
+    Route::get('/plots/new', function () {
+        return view('auth.plots.new');
+    });
 
-	Route::post('/plots/new', function(\Illuminate\Http\Request $request) {
+    Route::post('/plots/new', function (\Illuminate\Http\Request $request) {
 
-		// TODO: make a $validator;
-		// TODO: if it fails, return back()->withInput()->withErrors($validator)
+        // TODO: make a $validator;
+        // TODO: if it fails, return back()->withInput()->withErrors($validator)
 
-		$plot = new \App\Plot;
-		$plot->plot_no = $request->plot_no;
-		$plot->size = $request->size;
-		$plot->price = $request->price;
+        $plot = new \App\Plot;
+        $plot->plot_no = $request->plot_no;
+        $plot->size = $request->size;
+        $plot->price = $request->price;
 
-		$faker = Faker\Factory::create();
-		$plot->area_id = $faker->numberBetween(1, 4);
-		$plot->area_type_id = $faker->numberBetween(1, 4);
+        $faker = Faker\Factory::create();
+        $plot->area_id = $faker->numberBetween(1, 4);
+        $plot->area_type_id = $faker->numberBetween(1, 4);
 
-		$plot->save();
+        $plot->save();
 
-		return redirect('/home');
-	});
+        return redirect('/home');
+    });
 });
 
 
@@ -63,3 +63,5 @@ Route::resource('/locations', 'AreaController');
 Route::resource('/land-uses', 'AreaTypeController');
 
 Route::resource('/blocks', 'BlockController');
+
+Route::resource('/plot-assignment', 'PlotAssignmentController');
