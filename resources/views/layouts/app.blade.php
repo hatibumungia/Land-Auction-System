@@ -37,6 +37,8 @@
 
 	</style>
 
+    <script src="/js/jquery.min.js"></script>
+
 </head>
 <body id="app-layout">
 
@@ -94,12 +96,23 @@
                 </div>
             </div>
         </nav>
-    </div>    
+    </div> 
+
+    <div class="container text-center"> 
+
+        @if (session()->has('flash_notification.message'))
+            <div class="alert alert-{{ session('flash_notification.level') }}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                {!! session('flash_notification.message') !!}
+            </div>
+        @endif 
+    
+    </div>      
 
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="/js/jquery.min.js"></script>
     <script src="/js/search.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.dataTables.min.js"></script>
