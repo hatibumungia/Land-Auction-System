@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AreaType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Area;
-use App\AreaType;
+use App\Http\Requests\CreateAreaAssignmentRequest;
+use App\AreaAssignment;
 
 class AreaAssignmentController extends Controller
 {
@@ -18,8 +20,7 @@ class AreaAssignmentController extends Controller
      */
     public function index()
     {
-        $locations = Area::all();
-        /*return view('admin.location-assignments.index');*/
+        
     }
 
     /**
@@ -30,19 +31,24 @@ class AreaAssignmentController extends Controller
     public function create()
     {
         $locations = Area::all();
+        $land_uses = AreaType::all();
 
-        return view('admin.location-assignments.create', compact('locations'));
+        return view('admin.location-assignments.create', compact('locations', 'land_uses'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param CreateAreaAssignmentRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAreaAssignmentRequest $request)
     {
-        //
+        AreaAssignment::create($request->all());
+
+        flash()->success('Added successfully');
+
+        return redirect('admin/location-assignments/create');
     }
 
     /**

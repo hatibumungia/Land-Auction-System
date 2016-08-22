@@ -15,4 +15,6 @@ class AreaAssignment extends Model
     protected  $table = 'area_assignment';
 
     protected  $primaryKey = 'area_id';
+
+    public $timestamps = false;
 }

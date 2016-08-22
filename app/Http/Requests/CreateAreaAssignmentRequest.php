@@ -13,7 +13,7 @@ class CreateAreaAssignmentRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class CreateAreaAssignmentRequest extends Request
     public function rules()
     {
         return [
-            //
+            'area_id' => 'required',
+            'areas_type_id' => 'required',
+            'price' => 'required'
         ];
     }
 }
