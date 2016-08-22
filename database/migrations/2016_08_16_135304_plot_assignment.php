@@ -23,12 +23,13 @@ class PlotAssignment extends Migration
             $table->foreign('block_id')->references('block_id')->on('block_assignment')->onDelete('cascade');
 
 
-            $table->integer('plot_id')->unsigned()->index();
-            $table->foreign('plot_id')->references('plot_id')->on('plots')->onDelete('cascade');
+            $table->integer('plot_no')->index();
+            /*$table->integer('plot_id')->unsigned()->index();*/
+            /*$table->foreign('plot_id')->references('plot_id')->on('plots')->onDelete('cascade');*/
 
             $table->double('size');
 
-            $table->primary(['area_id','areas_type_id','block_id','plot_id']);
+            /*$table->primary(['area_id','areas_type_id','block_id','plot_id']);*/
         });
     }
 
