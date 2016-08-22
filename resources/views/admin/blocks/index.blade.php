@@ -106,7 +106,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3>No location added yet</h3>
+                <h3>No block added yet</h3>
             </div>
 
         @endif

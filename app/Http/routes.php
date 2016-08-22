@@ -71,4 +71,5 @@ $router->group([
     Route::resource('/admin/land-uses', 'AreaTypeController');
     Route::resource('/admin/blocks', 'BlockController');
     Route::resource('/admin/plot-assignment', 'PlotAssignmentController');
+    Route::resource('/admin/block-assignments', 'BlockAssignmentController');
 });

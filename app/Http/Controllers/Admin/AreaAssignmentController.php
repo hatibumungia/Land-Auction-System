@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Area;
 use App\Http\Requests\CreateAreaAssignmentRequest;
 use App\AreaAssignment;
+use DB;
 
 class AreaAssignmentController extends Controller
 {
@@ -19,8 +20,12 @@ class AreaAssignmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {        
+        $sql = "SELECT areas.name AS location, area_types.name as land_use, area_assignment.price as price FROM areas, area_types, area_assignment WHERE areas.area_id=area_assignment.area_id and area_types.areas_type_id=area_assignment.areas_type_id";
+
+        $location_assignments = DB::select($sql);
+
+        return view('admin.location-assignments.index', compact('location_assignments'));
     }
 
     /**
@@ -30,6 +35,8 @@ class AreaAssignmentController extends Controller
      */
     public function create()
     {
+        // TODO: make the queries return locations which are not assigned
+        
         $locations = Area::all();
         $land_uses = AreaType::all();
 
