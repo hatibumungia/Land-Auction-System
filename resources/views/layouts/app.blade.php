@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="/favicon.ico">
 
@@ -16,211 +16,215 @@
     <!-- Styles -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/app.css">
-	<link rel="stylesheet" href="/css/jquery.dataTables.min.css">
-    
+    <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
+
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-	<style type="text/css">
-        body{
-            padding:0 0;
-            margin:0 0; 
+    <style type="text/css">
+        body {
+            padding: 0 0;
+            margin: 0 0;
             font-family: 'OpenSans-Regular';
 
         }
-		li.list-group-item:hover,
-		li.list-group-item:focus,
-		li.list-group-item.active {
-			background-color: #337ab7;
-			border-color: #337ab7;
-			color: #fff;
-		}
 
-	</style>
+        li.list-group-item:hover,
+        li.list-group-item:focus,
+        li.list-group-item.active {
+            background-color: #337ab7;
+            border-color: #337ab7;
+            color: #fff;
+        }
+
+    </style>
 
     <script src="/js/jquery.min.js"></script>
 
 </head>
 <body id="app-layout">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <img src="/img/banner.png" class="img-responsive" alt="Banner" style="width: 100%;">
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <img src="/img/banner.png" class="img-responsive" alt="Banner" style="width: 100%;">
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
+<div class="container">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        CDA Plots
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/home') }}">Home</a></li>
-                        <li><a href="{{ url('/search') }}">Search</a></li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
-                        @else
-    						<li class="dropdown">
-    							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    								<i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    CDA Plots
+                </a>
             </div>
-        </nav>
-    </div> 
 
-    <div class="container text-center"> 
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/search') }}">Search</a></li>
+                </ul>
 
-        @if (session()->has('flash_notification.message'))
-            <div class="alert alert-{{ session('flash_notification.level') }}">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-
-                {!! session('flash_notification.message') !!}
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
+                                <i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
             </div>
-        @endif 
-    
-    </div>      
+        </div>
+    </nav>
+</div>
 
-    @yield('content')
+<div class="container text-center">
 
-    <!-- JavaScripts -->
-    <script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.dataTables.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    @if (session()->has('flash_notification.message'))
+        <div class="alert alert-{{ session('flash_notification.level') }}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
-	<script>
-		var areaListView = $('#areaListView');
-		var areaTypeListView = $('#areaTypeListView');
-		var blockListView = $('#blockListView');
-		var plotPanel = $('#plotPanel');
-		var sitePlanPanel = $('#sitePlanPanel');
+            {!! session('flash_notification.message') !!}
+        </div>
+    @endif
 
-		$(document).ready(function(){
-			areaTypeListView.find('li').hide();
-			blockListView.find('li').hide();
-			plotPanel.hide();
-			sitePlanPanel.hide();
+</div>
 
-			$('#plotDataTable').DataTable();
+@yield('content')
 
-		});
+        <!-- JavaScripts -->
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-		areaListView.find('li').on('click', function() {
-			var areaListItem = $(this);
+<script>
+    var areaListView = $('#areaListView');
+    var areaTypeListView = $('#areaTypeListView');
+    var blockListView = $('#blockListView');
+    var plotPanel = $('#plotPanel');
+    var sitePlanPanel = $('#sitePlanPanel');
 
-			areaId = areaListItem.data('area-id');
-            var url = "http://localhost:8080/search/getAreaType";
-            $.get(url,{area_id:areaId},function (data,status){
-                console.log("json received = "+data);
+    $(document).ready(function () {
+        areaTypeListView.find('li').hide();
+        blockListView.find('li').hide();
+        plotPanel.hide();
+        sitePlanPanel.hide();
 
-                var jsonData = JSON.parse(data);
-                areaTypeListView.find('li').hide();
-                blockListView.find('li').hide();
-                plotPanel.hide();
-                sitePlanPanel.hide();
+        $('#plotDataTable').DataTable();
 
-                for (var i = 0; i < jsonData.length; i++) {
-                    var counter = jsonData[i];
-                    console.log(counter.name);
-                    $('#areaTypeListView').find('li').eq(counter.areas_type_id).show();
-                }
-            });
+    });
 
-		});
+    areaListView.find('li').on('click', function () {
+        var areaListItem = $(this);
 
-		areaTypeListView.find('li').on('click', function() {
-			var areaTypeListItem = $(this);
+        areaId = areaListItem.data('area-id');
+        var url = "http://localhost:8080/search/getAreaType";
+        $.get(url, {area_id: areaId}, function (data, status) {
+            console.log("json received = " + data);
 
-            area_type_id = areaTypeListItem.data('area-type-id');
-			console.log("area_id: " + areaId);
-            console.log("area_type_id: " + area_type_id);
+            var jsonData = JSON.parse(data);
+            areaTypeListView.find('li').hide();
+            blockListView.find('li').hide();
+            plotPanel.hide();
+            sitePlanPanel.hide();
 
-            var url = "http://localhost:8080/search/getBlock";
-            $.get(url,{area_id:areaId, area_type_id:area_type_id},function (data,status){
-                console.log("json received = "+data);
+            for (var i = 0; i < jsonData.length; i++) {
+                var counter = jsonData[i];
+                console.log(counter.name);
+                $('#areaTypeListView').find('li').eq(counter.areas_type_id).show();
+            }
+        });
 
-                var jsonData = JSON.parse(data);
-                blockListView.find('li').hide();
-                plotPanel.hide();
-                sitePlanPanel.hide();
+    });
 
-                for (var i = 0; i < jsonData.length; i++) {
-                    var counter = jsonData[i];
-                    console.log(counter.name);
-                    $('#blockListView').find('li').eq(counter.block_id).show();
-                }
-            });
+    areaTypeListView.find('li').on('click', function () {
+        var areaTypeListItem = $(this);
 
-		});
+        area_type_id = areaTypeListItem.data('area-type-id');
+        console.log("area_id: " + areaId);
+        console.log("area_type_id: " + area_type_id);
 
-		blockListView.find('li').on('click', function() {
-            var blockListItem = $(this);
-            block_id = blockListItem.data('block-id');
-            console.log("clicked block id = "+block_id);
+        var url = "http://localhost:8080/search/getBlock";
+        $.get(url, {area_id: areaId, area_type_id: area_type_id}, function (data, status) {
+            console.log("json received = " + data);
 
-			plotPanel.show();
-			sitePlanPanel.show();
+            var jsonData = JSON.parse(data);
+            blockListView.find('li').hide();
+            plotPanel.hide();
+            sitePlanPanel.hide();
+
+            for (var i = 0; i < jsonData.length; i++) {
+                var counter = jsonData[i];
+                console.log(counter.name);
+                $('#blockListView').find('li').eq(counter.block_id).show();
+            }
+        });
+
+    });
+
+    blockListView.find('li').on('click', function () {
+        var blockListItem = $(this);
+        block_id = blockListItem.data('block-id');
+        console.log("clicked block id = " + block_id);
+
+        plotPanel.show();
+        sitePlanPanel.show();
 
 
-            var url = "http://localhost:8080/search/getPlot";
-            $.get(url,{area_id:areaId, area_type_id:area_type_id,block_id:block_id},function (data,status){
-                console.log("json received = "+data);
+        var url = "http://localhost:8080/search/getPlot";
+        $.get(url, {area_id: areaId, area_type_id: area_type_id, block_id: block_id}, function (data, status) {
+            console.log("json received = " + data);
 
-                var jsonData = JSON.parse(data);
-                plotPanel.hide();
-                plotPanel.show();
+            var jsonData = JSON.parse(data);
+            plotPanel.hide();
+            plotPanel.show();
 
-                var html = "";
+            var html = "";
 
-                html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Size (sq. m)</th><th>Price (TZS)</th></tr></thead><tbody>";
+            html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Size (sq. m)</th><th>Price (TZS)</th><th></th></tr></thead><tbody>";
 
 
-                for (var i = 0; i < jsonData.length; i++) {
-                    var counter = jsonData[i];
-                     html += "<tr>";
-                        html += "<td>"+ counter.plot_no +"</td>";
-                        html += "<td>"+ counter.size +"</td>";
-                        html += "<td>"+ counter.size*counter.price+"</td>";
-                    html += "</tr>";
+            for (var i = 0; i < jsonData.length; i++) {
+                var counter = jsonData[i];
+                html += "<tr>";
+                html += "<td>" + counter.plot_no + "</td>";
+                html += "<td>" + counter.size + "</td>";
+                html += "<td>" + counter.size * counter.price + "</td>";
+                html += "<td><a href='#' class='btn btn-primary'>Reserve</a></td>";
+                html += "</tr>";
 
-                }
-                
-                html += "</tbody></table></ul>";
-                
-                $("#plotPanel").html(html);
-            });
+            }
 
-		});
-	</script>
+            html += "</tbody></table></ul>";
+
+            $("#plotPanel").html(html);
+        });
+
+    });
+</script>
 
 </body>
 </html>

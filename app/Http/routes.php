@@ -58,10 +58,16 @@ Route::get('/search', 'SearchController@index');
 
 Route::get('/search/performSearch', 'SearchController@performSearch');
 
-Route::resource('/locations', 'AreaController');
 
-Route::resource('/land-uses', 'AreaTypeController');
+// Admin only routes
 
-Route::resource('/blocks', 'BlockController');
-
-Route::resource('/plot-assignment', 'PlotAssignmentController');
+$router->group([
+    'namespace' => 'Admin',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/admin/dashboard', 'DashboardController@index');
+    Route::resource('/admin/locations', 'AreaController');
+    Route::resource('/admin/land-uses', 'AreaTypeController');
+    Route::resource('/admin/blocks', 'BlockController');
+    Route::resource('/admin/plot-assignment', 'PlotAssignmentController');
+});

@@ -120,6 +120,7 @@
                 <th>Plot #</th>
                 <th>Size (sq. m)</th>
                 <th>Price (TZS)</th>
+                <th><i class="fa fa-sign-out"></i></th>
               </tr>
             </thead>
             <tbody>
@@ -128,6 +129,7 @@
                   <td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
                   <td>{{ $plot->size }}</td>
                   <td>{{ $plot->size }}</td>
+                  <td><a href="#" class="btn btn-primary">Reserve</a></td>
                 </tr>
               @endforeach
             </tbody>
