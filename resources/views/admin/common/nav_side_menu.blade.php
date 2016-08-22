@@ -4,7 +4,7 @@
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                    aria-expanded="true" aria-controls="collapseOne">
-                    Locations
+                    <i class="fa fa-location-arrow"></i> Locations
                 </a>
             </h4>
         </div>
@@ -26,7 +26,7 @@
             <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
                    aria-expanded="false" aria-controls="collapseTwo">
-                    Land use
+                    <i class="fa fa-location-arrow"></i> Land use
                 </a>
             </h4>
         </div>
@@ -48,7 +48,7 @@
             <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
                    aria-expanded="false" aria-controls="collapseThree">
-                    Blocks
+                    <i class="fa fa-location-arrow"></i> Blocks
                 </a>
             </h4>
         </div>
@@ -70,7 +70,7 @@
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
                    aria-expanded="true" aria-controls="collapseFour">
-                    Plot Assignment
+                    <i class="fa fa-location-arrow"></i> Plot Assignment
                 </a>
             </h4>
         </div>
