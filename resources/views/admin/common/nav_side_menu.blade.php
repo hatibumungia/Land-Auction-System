@@ -1,3 +1,4 @@
+{{--
 <div class="list-group">
     <a href="/admin/locations"
        class="list-group-item @if(Request::is('admin/locations')) active @endif"><i
@@ -32,4 +33,4 @@
     <a href="/admin/plot-assignment/create"
        class="list-group-item @if(Request::is('admin/plot-assignment/create')) active @endif"><i
                 class="fa fa-plus"></i> Add</a>
-</div>
+</div>--}}

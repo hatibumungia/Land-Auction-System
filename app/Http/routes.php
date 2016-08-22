@@ -67,6 +67,7 @@ $router->group([
 ], function () {
     Route::get('/admin/dashboard', 'DashboardController@index');
     Route::resource('/admin/locations', 'AreaController');
+    Route::resource('/admin/location-assignments', 'AreaAssignmentController');
     Route::resource('/admin/land-uses', 'AreaTypeController');
     Route::resource('/admin/blocks', 'BlockController');
     Route::resource('/admin/plot-assignment', 'PlotAssignmentController');
