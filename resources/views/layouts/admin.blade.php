@@ -32,7 +32,7 @@
         <div class="col-sm-3">
             @yield('side_bar')
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
 
             <div class="container text-center">
 
@@ -47,6 +47,7 @@
             </div>
 
             @yield('main_content')
+
         </div>
     </div>
 </div>

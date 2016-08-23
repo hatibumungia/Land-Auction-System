@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -43,6 +44,7 @@
 </head>
 <body id="app-layout">
 
+{{--Banner--}}
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -50,9 +52,12 @@
         </div>
     </div>
 </div>
+{{--//Banner--}}
 
+
+{{--Navbar--}}
 <div class="container">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav id="admin-nav" class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
 
@@ -74,8 +79,8 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ url('/search') }}">Search</a></li>
+                    <li @if(Request::is('home')) class="active" @endif><a href="{{ url('/home') }}">Home</a></li>
+                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -100,7 +105,9 @@
         </div>
     </nav>
 </div>
+{{--//Navbar--}}
 
+{{--Notification--}}
 <div class="container text-center">
 
     @if (session()->has('flash_notification.message'))
@@ -112,6 +119,7 @@
     @endif
 
 </div>
+{{--//Notification--}}
 
 @yield('content')
 
