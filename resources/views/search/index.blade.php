@@ -50,7 +50,7 @@
         <select class="form-control" name="area_type_id" id="area_type_id">
           <option class="list-group-item" value="0">Any</option>
           @foreach($area_types as $area_type)
-						<option value="{{ $area_type->areas_type_id }}">{{ $area_type->name }}</option>	
+						<option class="list-group-item" value="{{ $area_type->areas_type_id }}">{{ $area_type->name }}</option>
 			  @endforeach
   
         </select>

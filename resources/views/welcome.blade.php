@@ -3,69 +3,7 @@
 @section('page_title', 'Welcome')
 
 @section('content')
-
-<!-- <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs">
-        <div id="carousel-299058" class="carousel slide">
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-299058" data-slide-to="0" class=""> </li>
-            <li data-target="#carousel-299058" data-slide-to="1" class="active"> </li>
-            <li data-target="#carousel-299058" data-slide-to="2" class=""> </li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item"> <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
-              <div class="carousel-caption"> Carousel caption. Here goes slide description. Lorem ipsum dolor set amet. </div>
-            </div>
-            <div class="item active"> <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
-              <div class="carousel-caption"> Carousel caption 2. Here goes slide description. Lorem ipsum dolor set amet. </div>
-            </div>
-            <div class="item"> <img class="img-responsive" src="/img/1920x500.gif" alt="thumb">
-              <div class="carousel-caption"> Carousel caption 3. Here goes slide description. Lorem ipsum dolor set amet. </div>
-            </div>
-          </div>
-          <a class="left carousel-control" href="#carousel-299058" data-slide="prev"><span class="icon-prev"></span></a> <a class="right carousel-control" href="#carousel-299058" data-slide="next"><span class="icon-next"></span></a></div>
-      </div>
-    </div>
-    <hr>
-</div> -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-          <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
-            <div class="caption">
-              <h3>Heading</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              <hr>
-              <p class="text-center"><a href="#" class="btn btn-success" role="button">For Sale</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-          <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
-            <div class="caption">
-              <h3>Heading</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              <hr>
-              <p class="text-center"><a href="#" class="btn btn-info" role="button">For Rent</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
-          <div class="thumbnail"> <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
-            <div class="caption">
-              <h3>Heading</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              <hr>
-              <p class="text-center"><a href="#" class="btn btn-success" role="button">For Sale</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-</div> -->
-
+  
 <div class="container">
     <div class="row">
         <div class="col-md-4">

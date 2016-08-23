@@ -16,6 +16,8 @@
 
 @section('main_content')
 
+    <h3>Add a Location</h3>
+
     <div class="well">
 
         @include('common.errors')
