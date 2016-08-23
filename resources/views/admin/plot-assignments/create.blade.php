@@ -22,7 +22,7 @@
 
         @include('common.errors')
 
-        {!! Form::open(['url' => 'admin/plot-assignment', 'class' => 'form-horizontal', 'files' => true]) !!}
+        {!! Form::open(['url' => 'admin/plot-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
 
         @include('admin.plot-assignments._form')
 

@@ -11,6 +11,7 @@ use App\PlotAssignment;
 use App\Area;
 use App\AreaType;
 use App\Block;
+use DB;
 
 class PlotAssignmentController extends Controller
 {
@@ -21,7 +22,10 @@ class PlotAssignmentController extends Controller
      */
     public function index()
     {
-        $plot_assignments = PlotAssignment::all();
+        $sql = "SELECT plot_assignment.plot_assignment_id as id, areas.name AS location, area_types.name
+ as land_use, blocks.name as block, plot_assignment.plot_no, plot_assignment.size FROM areas, area_types, blocks, plot_assignment WHERE areas.area_id=plot_assignment.area_id AND area_types.areas_type_id=plot_assignment.areas_type_id;";
+
+        $plot_assignments = DB::select($sql);
 
         return view('admin.plot-assignments.index', compact('plot_assignments'));
     }
@@ -34,6 +38,8 @@ class PlotAssignmentController extends Controller
     public function create()
     {
 
+        // TODO: don't fetch the rows which are already assigned 
+        
         $areas = Area::all();
         $area_types = AreaType::all();
         $blocks = Block::all();
@@ -53,7 +59,7 @@ class PlotAssignmentController extends Controller
 
         })->get();
 
-        foreach ($results as $row){
+        foreach ($results as $row) {
             /** @var TYPE_NAME $plot_assignment */
             $plot_assignment = new PlotAssignment();
             $plot_assignment->area_id = $request->input('area_id');
@@ -67,7 +73,7 @@ class PlotAssignmentController extends Controller
 
         flash()->success('Added successfully');
 
-        return redirect('admin/plot-assignment');
+        return redirect('admin/plot-assignments');
 
     }
 

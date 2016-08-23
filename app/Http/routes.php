@@ -70,6 +70,6 @@ $router->group([
     Route::resource('/admin/location-assignments', 'AreaAssignmentController');
     Route::resource('/admin/land-uses', 'AreaTypeController');
     Route::resource('/admin/blocks', 'BlockController');
-    Route::resource('/admin/plot-assignment', 'PlotAssignmentController');
+    Route::resource('/admin/plot-assignments', 'PlotAssignmentController');
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
 });
