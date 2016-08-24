@@ -16,6 +16,21 @@
 
 @section('main_content')
 
+<div class="row">
+    
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin/dashboard">Home</a>
+            </li>
+            <li>
+                <a href="/admin/locations">Locations</a>
+            </li>
+            <li>
+                <a href="/admin/locations/{{ $location->area_id }}">{{ $location->name }}</a>
+            </li>            
+            <li class="active">Edit</li>
+        </ol>
+
     <h3>Edit {{ $location->name }}</h3>
 
     <div class="well">
@@ -35,5 +50,8 @@
         {!! Form::close() !!}
 
     </div>
+
+</div>
+
 
 @endsection

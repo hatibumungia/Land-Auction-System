@@ -18,9 +18,7 @@ class CreatePlotReservationTable extends Migration
             
             $table->integer('user_detail_id')->unsigned();
             $table->foreign('user_detail_id')->references('user_detail_id')->on('user_details')->onDelete('cascade');
-
-            $table->primary('plot_assignment_id');
-
+            
             $table->timestamps();
         });
     }

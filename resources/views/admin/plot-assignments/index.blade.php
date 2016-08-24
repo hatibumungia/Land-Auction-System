@@ -56,7 +56,7 @@
                 @foreach($plot_assignments as $plot_assignment)
 
                     <tr>
-                        <td>{{ $plot_assignment->id }}</td>
+                        <td>{{ $plot_assignment->plot_assignment_id }}</td>
                         <td>{{ $plot_assignment->location }}</td>
                         <td>{{ $plot_assignment->land_use }}</td>
                         <td>{{ $plot_assignment->block }}</td>

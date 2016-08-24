@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\AreaType;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +20,7 @@ class AreaAssignmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
         $sql = "SELECT areas.name AS location, area_types.name as land_use, area_assignment.price as price FROM areas, area_types, area_assignment WHERE areas.area_id=area_assignment.area_id and area_types.areas_type_id=area_assignment.areas_type_id";
 
         $location_assignments = DB::select($sql);
@@ -35,13 +35,9 @@ class AreaAssignmentController extends Controller
      */
     public function create()
     {
-        // TODO: make the queries return locations which are not assigned
-        
-        $locations = DB::select("SELECT areas.area_id as area_id, areas.name as name FROM areas WHERE area_id IN (SELECT area_id FROM areas WHERE area_id NOT IN (SELECT DISTINCT area_assignment.area_id FROM `areas`, area_assignment WHERE areas.area_id=area_assignment.area_id))");
+        $locations = Area::all();
 
-        $land_uses = AreaType::all();
-
-        return view('admin.location-assignments.create', compact('locations', 'land_uses'));
+        return view('admin.location-assignments.create', compact('locations'));
     }
 
     /**
@@ -52,6 +48,7 @@ class AreaAssignmentController extends Controller
      */
     public function store(CreateAreaAssignmentRequest $request)
     {
+
         AreaAssignment::create($request->all());
 
         flash()->success('Added successfully');
@@ -62,7 +59,7 @@ class AreaAssignmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -73,30 +70,46 @@ class AreaAssignmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($location, $land_use, $price)
     {
-        //
+        $data = [
+            'location' => $location,
+            'land_use' => $land_use,
+            'price' => $price
+        ];
+
+        return view('admin.location-assignments.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateAreaAssignmentRequest $request, $location, $land_use)
     {
-        //
+
+        $data[] = DB::select("SELECT areas.area_id FROM areas WHERE areas.name = '".$location."'");
+        $data[] = DB::select("SELECT area_types.areas_type_id FROM area_types WHERE area_types.name = '".$land_use."'");
+
+        return $data;
+
+        $affected = DB::update('update users set votes = 100 where name = ?', ['John']);
+
+        flash()->success('Edited successfully');
+
+        return redirect('admin/location-assignments/create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

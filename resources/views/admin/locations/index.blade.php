@@ -17,6 +17,17 @@
 @section('main_content')
 
     <div class="row">
+
+		<ol class="breadcrumb">
+			<li>
+				<a href="/admin/dashboard">Home</a>
+			</li>
+			<li>
+				<a href="/admin/locations">Locations</a>
+			</li>
+			<li class="active">All</li>
+		</ol>
+
         <a href="/admin/locations/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
             Add</a>
     </div>
@@ -57,12 +68,12 @@
                         <td><a href="/admin/locations/{{ $location->area_id }}">{{ $location->name }}</a></td>
                         <td>{{ $location->created_at }}</td>
                         <td>{{ $location->updated_at }}</td>
-                        <td><a href="/admin/locations/{{ $location->area_id }}/edit" class="btn btn-default"><i
+                        <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/locations/{{ $location->area_id }}/edit" class="btn btn-default"><i
                                         class="fa fa-edit"></i></a></td>
                         <td>
 
 
-                            <a class="btn btn-danger" data-toggle="modal" href='#{{ $location->area_id }}'><i
+                            <a data-toggle="tooltip" data-placement="right" title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $location->area_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $location->area_id }}">
                                 <div class="modal-dialog">

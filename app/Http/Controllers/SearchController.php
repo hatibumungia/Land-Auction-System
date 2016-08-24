@@ -51,7 +51,8 @@ class SearchController extends Controller
         $area_id['area_type_id'] = $_GET['area_type_id'];
         $area_id['block_id'] = $_GET['block_id'];
 
-        $sql = "SELECT * FROM plot_assignment,area_assignment WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.area_id=:area_id and plot_assignment.areas_type_id=:area_type_id and plot_assignment.block_id=:block_id";
+        $sql = "SELECT * FROM plot_assignment,area_assignment, block_assignment WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and block_assignment.area_id=plot_assignment.area_id and block_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.block_id=block_assignment.block_id and plot_assignment.area_id=:area_id and plot_assignment.areas_type_id=:area_type_id and plot_assignment.block_id=:block_id";
+
         return json_encode(DB::SELECT($sql, $area_id));
     }
 

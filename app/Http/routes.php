@@ -67,9 +67,28 @@ $router->group([
 ], function () {
     Route::get('/admin/dashboard', 'DashboardController@index');
     Route::resource('/admin/locations', 'AreaController');
-    Route::resource('/admin/location-assignments', 'AreaAssignmentController');
+
+    /*Route::resource('/admin/location-assignments', 'AreaAssignmentController');*/
+    Route::get('/admin/location-assignments', 'AreaAssignmentController@index');
+    Route::post('/admin/location-assignments', 'AreaAssignmentController@store');
+    Route::get('/admin/location-assignments/create', 'AreaAssignmentController@create');
+    Route::delete('/admin/location-assignments/{location}/{land_use}', 'AreaAssignmentController@destroy');
+    Route::patch('/admin/location-assignments/{location}/{land_use}', 'AreaAssignmentController@update');
+    Route::get('/admin/location-assignments/{location}/{land_use}/{price}/edit', 'AreaAssignmentController@edit');
+
     Route::resource('/admin/land-uses', 'AreaTypeController');
     Route::resource('/admin/blocks', 'BlockController');
     Route::resource('/admin/plot-assignments', 'PlotAssignmentController');
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
+    Route::get('/admin/location-assignments/getLandUse', 'AreaAssignmentController@getLandUse');
+});
+
+// Routes for ajax requests
+$router->group([
+    'namespace' => 'Admin',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/admin/ajax/locationAssignmentsGetLandUse', 'AjaxController@locationAssignmentsGetLandUse');
+    Route::get('/admin/ajax/blockAssignmentsGetLandUse', 'AjaxController@blockAssignmentsGetLandUse');
+    Route::get('/admin/ajax/blockAssignmentsGetBlock', 'AjaxController@blockAssignmentsGetBlock');
 });

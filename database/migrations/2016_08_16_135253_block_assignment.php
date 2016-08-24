@@ -13,7 +13,6 @@ class BlockAssignment extends Migration
     public function up()
     {
         Schema::create('block_assignment', function (Blueprint $table) {
-
             $table->integer('area_id')->unsigned();
             $table->foreign('area_id')->references('area_id')->on('area_assignment')->onDelete('cascade');
             $table->integer('areas_type_id')->unsigned();
@@ -35,6 +34,6 @@ class BlockAssignment extends Migration
      */
     public function down()
     {
-        Schema::drop('area_type_block');
+        Schema::drop('block_assignment');
     }
 }

@@ -16,6 +16,18 @@
 
 @section('main_content')
 
+<div class="row">
+	
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin/dashboard">Home</a>
+            </li>
+            <li>
+                <a href="/admin/locations">Locations</a>
+            </li>           
+            <li class="active">{{ $location->name }}</li>
+        </ol>
+
 	<h2>{{ $location->name }}</h2>
 
 	<a class="btn btn-danger btn-lg" data-toggle="modal" href='#{{ $location->area_id }}'><i class="fa fa-trash"></i> Delete</a>
@@ -42,5 +54,8 @@
 			</div>
 		</div>
 	</div>
+
+</div>
+
 
 @endsection

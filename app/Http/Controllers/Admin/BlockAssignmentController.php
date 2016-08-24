@@ -37,13 +37,9 @@ class BlockAssignmentController extends Controller
      */
     public function create()
     {
-        // TODO: make the queries return locations which are not assigned
-
         $locations = Area::all();
-        $land_uses = AreaType::all();
-        $blocks = Block::all();
 
-        return view('admin.block-assignments.create', compact('locations', 'land_uses', 'blocks'));
+        return view('admin.block-assignments.create', compact('locations'));
     }
 
     /**

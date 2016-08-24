@@ -149,7 +149,7 @@
         var areaListItem = $(this);
 
         areaId = areaListItem.data('area-id');
-        var url = "http://localhost:8080/search/getAreaType";
+        var url = "/search/getAreaType";
         $.get(url, {area_id: areaId}, function (data, status) {
             console.log("json received = " + data);
 
@@ -202,7 +202,7 @@
         sitePlanPanel.show();
 
 
-        var url = "http://localhost:8080/search/getPlot";
+        var url = "/search/getPlot";
         $.get(url, {area_id: areaId, area_type_id: area_type_id, block_id: block_id}, function (data, status) {
             console.log("json received = " + data);
 
@@ -217,16 +217,22 @@
 
             for (var i = 0; i < jsonData.length; i++) {
                 var counter = jsonData[i];
+                site_plan = counter.file_name;
                 html += "<tr>";
-                html += "<td>" + counter.plot_no + "</td>";
-                html += "<td>" + counter.size + "</td>";
-                html += "<td>" + counter.size * counter.price + "</td>";
-                html += "<td><a href='#' class='btn btn-primary'>Reserve</a></td>";
+                    html += "<td>" + counter.plot_no + "</td>";
+                    html += "<td>" + counter.size + "</td>";
+                    html += "<td>" + counter.size * counter.price + "</td>";
+                    html += "<td><a href='#' class='btn btn-primary'>Reserve</a></td>";
                 html += "</tr>";
-
             }
 
             html += "</tbody></table></ul>";
+
+            var site_plan_html = "<img src='" + "/img/uploads/plots/" + site_plan + "' alt='...' class='img-responsive'>";
+
+            console.log(site_plan_html);
+
+            $("#site-plan").html("<a href='" + "/img/uploads/plots/" + site_plan + "'>" + site_plan_html + "</a>");
 
             $("#plotPanel").html(html);
         });

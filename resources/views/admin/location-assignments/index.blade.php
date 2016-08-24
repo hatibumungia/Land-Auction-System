@@ -17,6 +17,17 @@
 @section('main_content')
 
     <div class="row">
+
+		<ol class="breadcrumb">
+			<li>
+				<a href="/admin/dashboard">Home</a>
+			</li>
+			<li>
+				<a href="/admin/location-assignments">Location Assignments</a>
+			</li>
+			<li class="active">All</li>
+		</ol>
+
         <a href="/admin/location-assignments/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
             Add</a>
     </div>
@@ -33,8 +44,8 @@
                     <th>Location</th>
                     <th>Land use</th>
                     <th>Price</th>
-{{--                    <th><i class="fa fa-cog"></i></th>
-                    <th><i class="fa fa-cog"></i></th>--}}
+                    <th><i class="fa fa-cog"></i></th>
+                    <th><i class="fa fa-cog"></i></th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -42,8 +53,8 @@
                     <th>Location</th>
                     <th>Land use</th>
                     <th>Price</th>
-{{--                    <th><i class="fa fa-cog"></i></th>
-                    <th><i class="fa fa-cog"></i></th>--}}
+                    <th><i class="fa fa-cog"></i></th>
+                    <th><i class="fa fa-cog"></i></th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -54,9 +65,9 @@
                         <td>{{ $location_assignment->location }}</td>
                         <td>{{ $location_assignment->land_use }}</td>
                         <td>{{ $location_assignment->price }}</td>
-{{--                        <td><a href="/admin/location-assignments/{{ $location_assignment->location }}/edit" class="btn btn-default"><i
+                        <td><a href="/admin/location-assignments/{{ $location_assignment->location }}/{{ $location_assignment->land_use }}/{{ $location_assignment->price }}/edit" class="btn btn-default"><i
                                         class="fa fa-edit"></i></a></td>
-                        <td>
+{{--                        <td>
 
 
                             <a class="btn btn-danger" data-toggle="modal" href='#{{ $location_assignment->location }}'><i

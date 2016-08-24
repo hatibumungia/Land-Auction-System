@@ -11,12 +11,12 @@
     <a href="/admin/blocks"
        class="list-group-item @if(Request::is('admin/blocks')) active @endif"><i
                 class="fa fa-angle-double-right"></i> Blocks</a>
-    <a href="/admin/block-assignments"
-       class="list-group-item @if(Request::is('admin/block-assignments')) active @endif"><i
-                class="fa fa-angle-double-right"></i> Block Assignments</a>
     <a href="/admin/location-assignments"
        class="list-group-item @if(Request::is('admin/location-assignments')) active @endif"><i
                 class="fa fa-angle-double-right"></i> Location Assignment</a>
+    <a href="/admin/block-assignments"
+       class="list-group-item @if(Request::is('admin/block-assignments')) active @endif"><i
+                class="fa fa-angle-double-right"></i> Block Assignments</a>
     <a href="/admin/plot-assignments"
        class="list-group-item @if(Request::is('admin/plot-assignments')) active @endif"><i
                 class="fa fa-angle-double-right"></i> Plot Assignment</a>

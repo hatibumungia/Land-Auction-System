@@ -22,8 +22,8 @@ class PlotAssignmentController extends Controller
      */
     public function index()
     {
-        $sql = "SELECT plot_assignment.plot_assignment_id as id, areas.name AS location, area_types.name
- as land_use, blocks.name as block, plot_assignment.plot_no, plot_assignment.size FROM areas, area_types, blocks, plot_assignment WHERE areas.area_id=plot_assignment.area_id AND area_types.areas_type_id=plot_assignment.areas_type_id;";
+        $sql = "SELECT plot_assignment.plot_assignment_id, areas.name AS location, area_types.name
+ as land_use, blocks.name as block, plot_assignment.plot_no, plot_assignment.size FROM areas, area_types, blocks, plot_assignment WHERE areas.area_id=plot_assignment.area_id AND area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id;";
 
         $plot_assignments = DB::select($sql);
 

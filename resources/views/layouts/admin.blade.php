@@ -56,6 +56,9 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/admin.js"></script>
+<script>
+    $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+</script>
 
 </body>
 </html>

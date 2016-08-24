@@ -16,6 +16,18 @@
 
 @section('main_content')
 
+<div class="row">
+	
+		<ol class="breadcrumb">
+			<li>
+				<a href="/admin/dashboard">Home</a>
+			</li>
+			<li>
+				<a href="/admin/locations">Locations</a>
+			</li>
+			<li class="active">Add</li>
+		</ol>
+
     <h3>Add a Location</h3>
 
     <div class="well">
@@ -35,5 +47,8 @@
         {!! Form::close() !!}
 
     </div>
+
+</div>
+
 
 @endsection
