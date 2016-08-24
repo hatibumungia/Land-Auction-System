@@ -27,7 +27,7 @@ class CreateBlockAssignmentRequest extends Request
             'area_id' => 'required',
             'areas_type_id' => 'required',
             'block_id' => 'required',
-            'file_name' => 'required|image|max:200'
+            'file_name' => 'required|image|max:2000'
         ];
     }
 }

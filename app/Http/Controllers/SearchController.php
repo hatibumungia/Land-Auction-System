@@ -51,7 +51,7 @@ class SearchController extends Controller
         $area_id['area_type_id'] = $_GET['area_type_id'];
         $area_id['block_id'] = $_GET['block_id'];
 
-        $sql = "SELECT * FROM plot_assignment,plots,area_assignment WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.plot_id = plots.plot_id and plot_assignment.area_id=:area_id and plot_assignment.areas_type_id=:area_type_id and plot_assignment.block_id=:block_id";
+        $sql = "SELECT * FROM plot_assignment,area_assignment WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.area_id=:area_id and plot_assignment.areas_type_id=:area_type_id and plot_assignment.block_id=:block_id";
         return json_encode(DB::SELECT($sql, $area_id));
     }
 
@@ -60,7 +60,6 @@ class SearchController extends Controller
 
 
         // default query
-        /*$sql = "SELECT areas.name as area_name, area_types.name as area_type_name, blocks.name as block_name, plots.plot_no as plot_no, plot_assignment.size as plot_size, area_assignment.price as price FROM plot_assignment,plots,area_assignment, areas, area_types,blocks WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.plot_id = plots.plot_id and plot_assignment.areas_type_id=area_types.areas_type_id and areas.area_id=plot_assignment.area_id and plot_assignment.block_id=blocks.block_id";*/
         $sql = "SELECT areas.name AS location, area_types.name AS land_use, blocks.name AS block, plot_assignment.plot_no AS plot_no, plot_assignment.size AS size, area_assignment.price as price FROM areas, area_types, blocks, plot_assignment, area_assignment WHERE areas.area_id=plot_assignment.area_id and area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id";
 
         // check if user has not specified both the area name and area type name

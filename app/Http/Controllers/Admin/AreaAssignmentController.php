@@ -37,7 +37,8 @@ class AreaAssignmentController extends Controller
     {
         // TODO: make the queries return locations which are not assigned
         
-        $locations = Area::all();
+        $locations = DB::select("SELECT areas.area_id as area_id, areas.name as name FROM areas WHERE area_id IN (SELECT area_id FROM areas WHERE area_id NOT IN (SELECT DISTINCT area_assignment.area_id FROM `areas`, area_assignment WHERE areas.area_id=area_assignment.area_id))");
+
         $land_uses = AreaType::all();
 
         return view('admin.location-assignments.create', compact('locations', 'land_uses'));

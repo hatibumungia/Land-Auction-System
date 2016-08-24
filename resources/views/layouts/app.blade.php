@@ -175,7 +175,7 @@
         console.log("area_id: " + areaId);
         console.log("area_type_id: " + area_type_id);
 
-        var url = "http://localhost:8080/search/getBlock";
+        var url = "/search/getBlock";
         $.get(url, {area_id: areaId, area_type_id: area_type_id}, function (data, status) {
             console.log("json received = " + data);
 
