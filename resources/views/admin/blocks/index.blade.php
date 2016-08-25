@@ -17,6 +17,17 @@
 @section('main_content')
 
     <div class="row">
+
+<ol class="breadcrumb">
+	<li>
+		<a href="/admin/dashboard">Home</a>
+	</li>
+	<li>
+		<a href="/admin/blocks">Blocks</a>
+	</li>
+	<li class="active">All</li>
+</ol>
+
         <a href="/admin/blocks/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
             Add</a>
     </div>
@@ -56,14 +67,14 @@
                     <tr>
                         <td>{{ $block->block_id }}</td>
                         <td><a href="/admin/blocks/{{ $block->block_id }}">{{ $block->name }}</a></td>
-                        <td>{{ $block->created_at }}</td>
-                        <td>{{ $block->updated_at }}</td>
-                        <td><a href="/admin/blocks/{{ $block->block_id }}/edit" class="btn btn-default"><i
+                        <td>{{ $block->created_at->diffForHumans() }}</td>
+                        <td>{{ $block->updated_at->diffForHumans() }}</td>
+                        <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/blocks/{{ $block->block_id }}/edit" class="btn btn-default"><i
                                         class="fa fa-edit"></i></a></td>
                         <td>
 
 
-                            <a class="btn btn-danger" data-toggle="modal" href='#{{ $block->block_id }}'><i
+                            <a data-toggle="tooltip" data-placement="right" title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $block->block_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $block->block_id }}">
                                 <div class="modal-dialog">

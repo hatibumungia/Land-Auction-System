@@ -78,7 +78,12 @@ $router->group([
 
     Route::resource('/admin/land-uses', 'AreaTypeController');
     Route::resource('/admin/blocks', 'BlockController');
-    Route::resource('/admin/plot-assignments', 'PlotAssignmentController');
+
+    Route::get('/admin/plot-assignments', 'PlotAssignmentController@index');
+    Route::post('/admin/plot-assignments', 'PlotAssignmentController@store');
+    Route::get('/admin/plot-assignments', 'PlotAssignmentController@create');
+    Route::get('/plot-assignments/download-sample', 'PlotAssignmentController@downloadSample');
+
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
     Route::get('/admin/location-assignments/getLandUse', 'AreaAssignmentController@getLandUse');
 });

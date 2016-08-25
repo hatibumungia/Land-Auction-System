@@ -16,6 +16,18 @@
 
 @section('main_content')
 
+ <div class="row">
+ 	
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin/dashboard">Home</a>
+            </li>
+            <li>
+                <a href="/admin/land-uses">Land use</a>
+            </li>
+            <li class="active">{{ $land_use->name }}</li>
+        </ol>
+
     <h2>{{ $land_use->name }}</h2>
 
     <a class="btn btn-danger btn-lg" data-toggle="modal" href='#{{ $land_use->areas_type_id }}'><i
@@ -43,5 +55,7 @@
             </div>
         </div>
     </div>
+
+ </div>
 
 @endsection

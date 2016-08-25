@@ -34,7 +34,7 @@
         <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Blocks</h3>
+          <h3 class="panel-title">Block</h3>
         </div>
         <ul id="blockListView" class="list-group">
           <li class="list-group-item">...</li>

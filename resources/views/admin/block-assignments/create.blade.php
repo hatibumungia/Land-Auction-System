@@ -16,6 +16,17 @@
 
 @section('main_content')
 
+<div class="row">
+	<ol class="breadcrumb">
+		<li>
+			<a href="/admin/dashboard">Home</a>
+		</li>
+		<li>
+			<a href="/admin/block-assignments">Block Assignment</a>
+		</li>
+		<li class="active">Assign</li>
+	</ol>
+
     <h3>Block Assignment</h3>
 
     <div class="well">
@@ -28,12 +39,14 @@
 
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
             </div>
         </div>
 
         {!! Form::close() !!}
 
     </div>
+	
+</div>
 
 @endsection

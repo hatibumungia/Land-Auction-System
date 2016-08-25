@@ -66,8 +66,8 @@
                     <tr>
                         <td>{{ $location->area_id }}</td>
                         <td><a href="/admin/locations/{{ $location->area_id }}">{{ $location->name }}</a></td>
-                        <td>{{ $location->created_at }}</td>
-                        <td>{{ $location->updated_at }}</td>
+                        <td>{{ $location->created_at->diffForHumans() }}</td>
+                        <td>{{ $location->updated_at->diffForHumans() }}</td>
                         <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/locations/{{ $location->area_id }}/edit" class="btn btn-default"><i
                                         class="fa fa-edit"></i></a></td>
                         <td>

@@ -121,4 +121,9 @@ class PlotAssignmentController extends Controller
     {
         //
     }
+
+    public function downloadSample()
+    {
+        return response()->download(public_path() . "/contents/samples/plot assignment.xlsx");
+    }
 }

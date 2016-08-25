@@ -16,24 +16,39 @@
 
 @section('main_content')
 
-    <h3 class="text-center">Plot Assignment</h3>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin/dashboard">Home</a>
+            </li>
+            <li>
+                <a href="/admin/plot-assignments">Plot Assignments</a>
+            </li>
+            <li class="active">Assign</li>
+        </ol>
 
-    <div class="well">
 
-        @include('common.errors')
+        <h3>Plot Assignment</h3>
 
-        {!! Form::open(['url' => 'admin/plot-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
+        <div class="well">
 
-        @include('admin.plot-assignments._form')
+            @include('common.errors')
 
-        <div class="form-group">
-            <div class="col-sm-6 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+            {!! Form::open(['url' => 'admin/plot-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
+
+            @include('admin.plot-assignments._form')
+
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
+                </div>
             </div>
+
+            {!! Form::close() !!}
+
         </div>
 
-        {!! Form::close() !!}
-
     </div>
+
 
 @endsection

@@ -17,8 +17,19 @@
 @section('main_content')
 
     <div class="row">
+
+<ol class="breadcrumb">
+	<li>
+		<a href="/admin/dashboard">Home</a>
+	</li>
+	<li>
+		<a href="/admin/block-assignments">Block Assignment</a>
+	</li>
+	<li class="active">All</li>
+</ol>
+
         <a href="/admin/block-assignments/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Add</a>
+            Assign</a>
     </div>
 
     <br>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Area;
-use App\AreaType;
-use App\Block;
+
 use App\Http\Requests\CreateBlockAssignmentRequest;
 use App\BlockAssignment;
 use DB;
@@ -51,19 +51,24 @@ class BlockAssignmentController extends Controller
     public function store(CreateBlockAssignmentRequest $request)
     {
         if ($request->hasFile('file_name') && $request->file('file_name')->isValid()) {
+
             $image = $request->file('file_name')->getClientOriginalName();
-            $request->file('file_name')->move(public_path() . '/img/uploads/plots/', $image);
+
+            $new_file = time() . " - " . $image;
+
+            $request->file('file_name')->move(public_path() . '/img/uploads/plots/', $new_file);
 
             BlockAssignment::create([
                 'area_id' => $request->input('area_id'),
                 'areas_type_id' => $request->input('areas_type_id'),
                 'block_id' => $request->input('block_id'),
-                'file_name' => $image
+                'file_name' => $new_file
             ]);
 
             flash()->success('Assigned successfully');
 
             return redirect('admin/block-assignments/create');
+
         } else {
             flash()->error('File upload failed. Please try again later.');
 

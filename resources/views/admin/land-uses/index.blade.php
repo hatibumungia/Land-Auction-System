@@ -17,6 +17,17 @@
 @section('main_content')
 
     <div class="row">
+
+		<ol class="breadcrumb">
+			<li>
+				<a href="/admin/dashboard">Home</a>
+			</li>
+			<li>
+				<a href="/admin/land-uses">Land use</a>
+			</li>
+			<li class="active">All</li>
+		</ol>
+
         <a href="/admin/land-uses/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
             Add</a>
     </div>
@@ -56,16 +67,16 @@
                     <tr>
                         <td>{{ $land_use->areas_type_id }}</td>
                         <td><a href="/admin/land-uses/{{ $land_use->areas_type_id }}">{{ $land_use->name }}</a></td>
-                        <td>{{ $land_use->created_at }}</td>
-                        <td>{{ $land_use->updated_at }}</td>
-                        <td><a href="/admin/land-uses/{{ $land_use->areas_type_id }}/edit"><i
+                        <td>{{ $land_use->created_at->diffForHumans() }}</td>
+                        <td>{{ $land_use->updated_at->diffForHumans() }}</td>
+                        <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/land-uses/{{ $land_use->areas_type_id }}/edit"><i
                                         class="fa fa-edit"></i></a>
                         </td>
 
                         <td>
 
 
-                            <a class="btn btn-danger" data-toggle="modal" href='#{{ $land_use->areas_type_id }}'><i
+                            <a data-toggle="tooltip" data-placement="right" title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $land_use->areas_type_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $land_use->areas_type_id }}">
                                 <div class="modal-dialog">
