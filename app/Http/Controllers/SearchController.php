@@ -87,7 +87,7 @@ class SearchController extends Controller
                         $result->block,
                         $result->plot_no,
                         $result->size,
-                        $result->price
+                        ($result->size * $result->price)
                     ];
                 }
 
@@ -133,7 +133,7 @@ class SearchController extends Controller
                         $result->block,
                         $result->plot_no,
                         $result->size,
-                        $result->price
+                        ($result->size * $result->price)
                     ];
                 }
 
@@ -177,7 +177,7 @@ class SearchController extends Controller
                         $result->block,
                         $result->plot_no,
                         $result->size,
-                        $result->price
+                        ($result->size * $result->price)
                     ];
                 }
 
@@ -222,7 +222,7 @@ class SearchController extends Controller
                     $result->block,
                     $result->plot_no,
                     $result->size,
-                    $result->price
+                    ($result->size * $result->price)
                 ];
             }
 
