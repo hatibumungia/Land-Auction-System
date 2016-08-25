@@ -56,20 +56,20 @@
 
                             </select>
                         </div>
-                        {{--      <div class="form-group">
-                                <label for="min_size" class="control-label">Min Size</label>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" id="min_size">
-                                  <div class="input-group-addon">Sqrm</div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label for="max_size" class="control-label">Max Size</label>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" id="max_size">
-                                  <div class="input-group-addon">Sqrm</div>
-                                </div>
-                              </div>--}}
+                        <div class="form-group">
+                            <label for="min_size" class="control-label">Min Size</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="min_size" id="min_size" value="0">
+                                <div class="input-group-addon">Sqrm</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="max_size" class="control-label">Max Size</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="max_size" id="max_size" value="600">
+                                <div class="input-group-addon">Sqrm</div>
+                            </div>
+                        </div>
                         <p class="text-center">
                             <button type="button" id="btn-search" class="btn btn-primary btn-block">Search</button>
                         </p>

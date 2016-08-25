@@ -3,34 +3,47 @@
  */
 $(function () {
 
-    getSearchResults();
+    min_size = $("#min_size").val();
+    max_size = $("#max_size").val();
 
-    function getSearchResults(params = ''){
+    add_params = "min_size=" + min_size + "&max_size=" + max_size;
+
+    getSearchResults(add_params);
+
+    function getSearchResults(params = '') {
 
         $('#searchResults').html("<table id='example' class='display' cellspacing='0' width='100%'><thead><tr><th>Location</th><th>Land use</th><th>Block</th><th>Plot#</th><th>Size</th><th>Price</th></tr></thead><tfoot><tr><th>Location</th><th>Land use</th><th>Block</th><th>Plot#</th><th>Size</th><th>Price</th></tr></tfoot></table>");
 
-        var url = '/search/performSearch' + params;
-        $('#example').DataTable( {
+        var url = '/search/performSearch?' + params;
+        $('#example').DataTable({
             "ajax": url
-        }); 
-       console.log(url);   
+        });
+        console.log(url);
     }
 
     $("#btn-search").on("click", function () {
 
-        // check if user has not specified both the area name and area type name
-        if($('#area_id').val() == 0 && $('#area_type_id').val() == 0){
-            getSearchResults();
+        var min_size = $("#min_size").val();
+        var max_size = $("#max_size").val();
 
-        // check if user has specified both the area name and area type name  
-        }else if($('#area_id').val() != 0 && $('#area_type_id').val() != 0){
-            getSearchResults('?area_id=' + $('#area_id').val() + '&area_type_id=' + $('#area_type_id').val());
-        // check if user has specified the area name only     
-        }else if($('#area_id').val() != 0){
-            getSearchResults('?area_id=' + $('#area_id').val());
-        // check if user has specified the area type name only     
-        }else if($('#area_type_id').val() != 0){
-            getSearchResults('?area_type_id=' + $('#area_type_id').val());
+        var add_params = "min_size=" + min_size + "&max_size=" + max_size;
+
+        console.log("Min size = " + min_size + "\nMax size = " + max_size);
+
+        console.log("Additional params = " + add_params);
+
+        // check if user has not specified both the area name and area type name
+        if ($('#area_id').val() == 0 && $('#area_type_id').val() == 0) {
+            getSearchResults(add_params);
+            // check if user has specified both the area name and area type name
+        } else if ($('#area_id').val() != 0 && $('#area_type_id').val() != 0) {
+            getSearchResults('area_id=' + $('#area_id').val() + '&area_type_id=' + $('#area_type_id').val() + "&" + add_params);
+            // check if user has specified the area name only
+        } else if ($('#area_id').val() != 0) {
+            getSearchResults('area_id=' + $('#area_id').val() + "&" + add_params);
+            // check if user has specified the area type name only
+        } else if ($('#area_type_id').val() != 0) {
+            getSearchResults('area_type_id=' + $('#area_type_id').val() + "&" + add_params);
         }
 
     });

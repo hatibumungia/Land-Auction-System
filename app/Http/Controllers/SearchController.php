@@ -59,9 +59,11 @@ class SearchController extends Controller
     public function performSearch()
     {
 
+        $min_size = $_GET['min_size'];
+        $max_size = $_GET['max_size'];
 
         // default query
-        $sql = "SELECT areas.name AS location, area_types.name AS land_use, blocks.name AS block, plot_assignment.plot_no AS plot_no, plot_assignment.size AS size, area_assignment.price as price FROM areas, area_types, blocks, plot_assignment, area_assignment WHERE areas.area_id=plot_assignment.area_id and area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id";
+        $sql = "SELECT areas.name AS location, area_types.name AS land_use, blocks.name AS block, plot_assignment.plot_no AS plot_no, plot_assignment.size AS size, area_assignment.price as price FROM areas, area_types, blocks, plot_assignment, area_assignment WHERE areas.area_id=plot_assignment.area_id and area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id and plot_assignment.area_id = area_assignment.area_id and plot_assignment.areas_type_id=area_assignment.areas_type_id AND plot_assignment.size >= $min_size AND plot_assignment.size <= $max_size";
 
         // check if user has not specified both the area name and area type name
         if ((isset($_GET['area_id']) && $_GET['area_id'] != 0) && (isset($_GET['area_type_id']) && $_GET['area_type_id'] != 0)) {
