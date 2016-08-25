@@ -70,16 +70,17 @@ $(document).ready(function () {
 
 
     $("#block_assignment_areas_type_id").change(function () {
-        var area_id = $("#block_assignment_area_id").val();
-        var areas_type_id = $("#block_assignment_areas_type_id").val();
 
-        console.log(" area_id = " + area_id + "\nareas_type_id = " + areas_type_id);
+        var area_id = $("#block_assignment_area_id").val();
+        var block_assignment_areas_type_id = $("#block_assignment_areas_type_id").val();
+
+        console.log(" area_id = " + area_id + "\nareas_type_id = " + block_assignment_areas_type_id);
 
         var url = "/admin/ajax/blockAssignmentsGetBlock";
 
         console.log(" url = " + url);
 
-        $.get(url, {area_id: area_id, areas_type_id: areas_type_id}, function (data, status) {
+        $.get(url, {area_id: area_id, areas_type_id: block_assignment_areas_type_id}, function (data, status) {
 
             console.log(" json status = " + status);
             console.log(" json received = " + data);

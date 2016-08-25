@@ -22,8 +22,7 @@ class AjaxController extends Controller
     {
         $area_id = $_GET['area_id'];
 
-        /*$land_uses = DB::select("SELECT area_types.areas_type_id, area_types.name FROM area_types WHERE area_types.areas_type_id NOT IN (SELECT block_assignment.areas_type_id FROM block_assignment WHERE block_assignment.area_id=$area_id)")*/;
-        $land_uses = AreaType::all();
+        $land_uses = DB::select("SELECT area_types.areas_type_id, area_types.name FROM area_types WHERE area_types.areas_type_id IN (SELECT area_types.areas_type_id FROM area_types, area_assignment WHERE area_types.areas_type_id=area_assignment.areas_type_id AND area_assignment.area_id=$area_id)");
 
         return json_encode($land_uses);
     }

@@ -13,7 +13,7 @@
                 class="fa fa-angle-double-right"></i> Blocks</a>
     <a href="/admin/location-assignments"
        class="list-group-item @if(Request::is('admin/location-assignments')) active @endif"><i
-                class="fa fa-angle-double-right"></i> Location Assignment</a>
+                class="fa fa-angle-double-right"></i> Land use Assignment</a>
     <a href="/admin/block-assignments"
        class="list-group-item @if(Request::is('admin/block-assignments')) active @endif"><i
                 class="fa fa-angle-double-right"></i> Block Assignments</a>

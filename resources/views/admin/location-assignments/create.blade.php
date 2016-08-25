@@ -28,7 +28,7 @@
 			<li class="active">Assign</li>
 		</ol>
 
-        <h3>Location Assignment</h3>
+        <h3>Land use Assignment</h3>
     </div>
 
     <div class="row">

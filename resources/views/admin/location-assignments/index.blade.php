@@ -29,7 +29,7 @@
 		</ol>
 
         <a href="/admin/location-assignments/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Add</a>
+            Assign</a>
     </div>
 
     <br>

@@ -70,8 +70,11 @@ class AreaAssignmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param $location
+     * @param $land_use
+     * @param $price
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function edit($location, $land_use, $price)
     {
@@ -87,9 +90,11 @@ class AreaAssignmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param CreateAreaAssignmentRequest|Request $request
+     * @param $location
+     * @param $land_use
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function update(CreateAreaAssignmentRequest $request, $location, $land_use)
     {
