@@ -11,6 +11,7 @@ use App\Area;
 use App\Http\Requests\CreateAreaAssignmentRequest;
 use App\AreaAssignment;
 use DB;
+use phpDocumentor\Reflection\Types\Integer;
 
 class AreaAssignmentController extends Controller
 {
@@ -99,16 +100,32 @@ class AreaAssignmentController extends Controller
     public function update(CreateAreaAssignmentRequest $request, $location, $land_use)
     {
 
-        $data[] = DB::select("SELECT areas.area_id FROM areas WHERE areas.name = '".$location."'");
-        $data[] = DB::select("SELECT area_types.areas_type_id FROM area_types WHERE area_types.name = '".$land_use."'");
+        $area_id = DB::select("SELECT areas.area_id FROM areas WHERE areas.name = '" . $location . "'");
+        $area_type_id = DB::select("SELECT area_types.areas_type_id FROM area_types WHERE area_types.name = '" . $land_use . "'");
 
-        return $data;
+        $data[] = $price = $request->input('price');
 
-        $affected = DB::update('update users set votes = 100 where name = ?', ['John']);
+        foreach ($area_id as $a_id){
+            $data[] = $a_id->area_id;
+        }
 
-        flash()->success('Edited successfully');
+        foreach ($area_type_id as $at_id){
+            $data[] = $at_id->areas_type_id;
+        }
 
-        return redirect('admin/location-assignments/create');
+
+        $affected = DB::update('update area_assignment set price = ? where area_id = ? and areas_type_id = ?', $data);
+
+        if($affected == 1){
+            flash()->success('Edited successfully');
+
+            return redirect('admin/location-assignments');
+        }else{
+            flash()->error('Failed to edit');
+
+            return redirect('admin/location-assignments');
+        }
+
     }
 
     /**
@@ -117,8 +134,8 @@ class AreaAssignmentController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($location)
     {
-        //
+        return 'deleting ' . $location;
     }
 }

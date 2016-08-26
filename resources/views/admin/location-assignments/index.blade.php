@@ -18,15 +18,15 @@
 
     <div class="row">
 
-		<ol class="breadcrumb">
-			<li>
-				<a href="/admin/dashboard">Home</a>
-			</li>
-			<li>
-				<a href="/admin/location-assignments">Location Assignments</a>
-			</li>
-			<li class="active">All</li>
-		</ol>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin/dashboard">Home</a>
+            </li>
+            <li>
+                <a href="/admin/location-assignments">Location Assignments</a>
+            </li>
+            <li class="active">All</li>
+        </ol>
 
         <a href="/admin/location-assignments/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
             Assign</a>
@@ -65,14 +65,16 @@
                         <td>{{ $location_assignment->location }}</td>
                         <td>{{ $location_assignment->land_use }}</td>
                         <td>{{ $location_assignment->price }}</td>
-                        <td><a href="/admin/location-assignments/{{ $location_assignment->location }}/{{ $location_assignment->land_use }}/{{ $location_assignment->price }}/edit" class="btn btn-default"><i
+                        <td>
+                            <a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/location-assignments/{{ $location_assignment->location }}/{{ $location_assignment->land_use }}/{{ $location_assignment->price }}/edit"
+                               class="btn btn-default"><i
                                         class="fa fa-edit"></i></a></td>
-{{--                        <td>
+                        <td>
 
 
-                            <a class="btn btn-danger" data-toggle="modal" href='#{{ $location_assignment->location }}'><i
+                            <a data-toggle="tooltip" data-placement="right" title="Delete" class="btn btn-danger" data-toggle="modal" href='#1'><i
                                         class="fa fa-trash"></i></a>
-                            <div class="modal fade" id="{{ $location_assignment->location }}">
+                            <div class="modal fade" id="1">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -83,12 +85,12 @@
                                         <div class="modal-body">
 
                                             <p class="lead">Are you sure that you want to delete
-                                                <strong>{{ $$location_assignment->location }}</strong> ?</p>
+                                                <strong>{{ $location_assignment->location }}</strong> ?</p>
 
                                         </div>
                                         <div class="modal-footer">
 
-                                            {!! Form::open(['method' => 'DELETE', 'route' => ['admin.locations.destroy', $location->area_id]]) !!}
+                                            {!! Form::open(['method' => 'DELETE', 'url' => ['admin\location-assignments\destroy', $location_assignment->location]]) !!}
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
                                             </button>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
@@ -102,7 +104,7 @@
                             </div>
 
 
-                        </td>--}}
+                        </td>
                     </tr>
 
                 @endforeach
