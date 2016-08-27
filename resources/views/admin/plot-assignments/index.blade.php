@@ -82,8 +82,8 @@
 
         @else
 
-            <div class="alert alert-info">
-                <h3 class="text-center">No plot is assigned added yet</h3>
+            <div class="alert alert-info alert-important">
+                <h3 class="text-center">No plot is assigned yet</h3>
             </div>
 
         @endif

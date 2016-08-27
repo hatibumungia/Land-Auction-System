@@ -73,7 +73,7 @@
                         <td>
 
 
-                            <a data-toggle="tooltip" data-placement="right" title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $location->area_id }}'><i
+                            <a title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $location->area_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $location->area_id }}">
                                 <div class="modal-dialog">

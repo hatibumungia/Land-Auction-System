@@ -72,7 +72,7 @@
                         <td>
 
 
-                            <a data-toggle="tooltip" data-placement="right" title="Delete" class="btn btn-danger" data-toggle="modal" href='#1'><i
+                            <a title="Delete" class="btn btn-danger" data-toggle="modal" href='#1'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="1">
                                 <div class="modal-dialog">

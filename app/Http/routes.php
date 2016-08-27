@@ -81,7 +81,7 @@ $router->group([
 
     Route::get('/admin/plot-assignments', 'PlotAssignmentController@index');
     Route::post('/admin/plot-assignments', 'PlotAssignmentController@store');
-    Route::get('/admin/plot-assignments', 'PlotAssignmentController@create');
+    Route::get('/admin/plot-assignments/create', 'PlotAssignmentController@create');
     Route::get('/plot-assignments/download-sample', 'PlotAssignmentController@downloadSample');
 
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');

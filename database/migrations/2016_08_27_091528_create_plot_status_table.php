@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlotReservationTable extends Migration
+class CreatePlotStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreatePlotReservationTable extends Migration
      */
     public function up()
     {
-        Schema::create('plot_reservation', function (Blueprint $table) {
+        Schema::create('plot_status', function (Blueprint $table) {
             $table->integer('area_id')->unsigned();
             $table->foreign('area_id')->references('area_id')->on('plot_assignment')->onDelete('cascade');
 
@@ -25,12 +25,17 @@ class CreatePlotReservationTable extends Migration
             $table->integer('plot_id')->unsigned();
             $table->foreign('plot_id')->references('plot_id')->on('plot_assignment')->onDelete('cascade');
 
+            $table->double('balance');
+
             $table->integer('user_detail_id')->unsigned();
             $table->foreign('user_detail_id')->references('user_detail_id')->on('user_details')->onDelete('cascade');
-            
+
+            $table->timestamp('deadline');
+
             $table->timestamps();
 
             $table->primary(['area_id','areas_type_id','plot_id','block_id']);
+
         });
     }
 
@@ -41,6 +46,6 @@ class CreatePlotReservationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('plot_reservation');
+        Schema::drop('plot_status');
     }
 }

@@ -64,8 +64,6 @@ $(document).ready(function () {
             $("#block_assignment_areas_type_id").html(html);
 
         });
-
-
     });
 
 
@@ -102,8 +100,7 @@ $(document).ready(function () {
             $("#block_assignment_areas_type_id_div").html(html);
 
         });
-
-
+        
     });
-
+    
 });

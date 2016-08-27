@@ -38,8 +38,8 @@ class PlotAssignmentController extends Controller
     public function create()
     {
 
-        // TODO: don't fetch the rows which are already assigned 
-        
+        // TODO: don't fetch the rows which are already assigned
+
         $areas = Area::all();
         $area_types = AreaType::all();
         $blocks = Block::all();

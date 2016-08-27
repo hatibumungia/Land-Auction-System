@@ -13,11 +13,12 @@ class AreaAssignment extends Migration
     public function up()
     {
         Schema::create('area_assignment', function (Blueprint $table) {
-            $table->integer('area_id')->unsigned();
-            $table->foreign('area_id')->references('area_id')->on('areas')->onDelete('cascade');
-            
+
             $table->integer('areas_type_id')->unsigned();
             $table->foreign('areas_type_id')->references('areas_type_id')->on('area_types')->onDelete('cascade');
+
+            $table->integer('area_id')->unsigned();
+            $table->foreign('area_id')->references('area_id')->on('areas')->onDelete('cascade');
 
             $table->string('price');
 

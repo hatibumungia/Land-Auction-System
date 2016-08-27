@@ -40,7 +40,7 @@
 
             <div class="form-group">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
+                    <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
                 </div>
             </div>
 
