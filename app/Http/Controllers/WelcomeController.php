@@ -6,6 +6,7 @@ use App\Area;
 use App\AreaType;
 use App\Block;
 use App\Plot;
+use Auth;
 
 
 class WelcomeController extends Controller
@@ -18,5 +19,17 @@ class WelcomeController extends Controller
         $plots = Plot::all();
 
         return view('welcome', compact('areas', 'area_types', 'blocks', 'plots'));
+    }
+
+    public function checkAuth()
+    {
+        if(Auth::guest())
+        {
+            return 'guest';
+        }
+        else
+        {
+            return 'logged in';
+        }
     }
 }

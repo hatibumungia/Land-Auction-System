@@ -3,7 +3,7 @@
 @section('page_title', 'Welcome')
 
 @section('content')
-  
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -67,7 +67,34 @@
                   <td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
                   <td>{{ $plot->size }}</td>
                   <td>{{ $plot->size }}</td>
-                  <td><a href="#" class="btn btn-primary">Reserve</a></td>
+                  <td>
+                  	
+<!-- Modal for reservation -->
+
+<a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a>
+<div class="modal fade" id="modal-id">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Modal title</h4>
+			</div>
+			<div class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- //Modal for reservation -->
+
+
+                  </td>
                 </tr>
               @endforeach
             </tbody>
