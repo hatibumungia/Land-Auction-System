@@ -86,6 +86,4 @@
 
     <script src="/js/search.js"></script>
 
-    @include('common.footer');
-
 @endsection

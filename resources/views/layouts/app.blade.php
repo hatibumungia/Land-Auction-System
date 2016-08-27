@@ -79,8 +79,8 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li @if(Request::is('home')) class="active" @endif><a href="{{ url('/home') }}">Home</a></li>
-                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search</a></li>
+                    {{-- <li @if(Request::is('home')) class="active" @endif><a href="{{ url('/home') }}">Home</a></li>--}}
+                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search <i class="fa fa-search"></i></a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -219,7 +219,7 @@
                 var counter = jsonData[i];
                 site_plan = counter.file_name;
                 html += "<tr>";
-                    html += "<td>" + counter.plot_no + "</td>";
+                    html += "<td>" + counter.plot_id + "</td>";
                     html += "<td>" + counter.size + "</td>";
                     html += "<td>" + counter.size * counter.price + "</td>";
                     html += "<td><a href='#' class='btn btn-primary'>Reserve</a></td>";

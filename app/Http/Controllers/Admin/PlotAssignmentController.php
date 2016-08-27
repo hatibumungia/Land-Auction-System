@@ -43,7 +43,11 @@ class PlotAssignmentController extends Controller
 
         $areas = Area::all();
 
-        return view('admin.plot-assignments.create', compact('areas'));
+        $area_types = AreaType::all();
+
+        $blocks = Block::all();
+
+        return view('admin.plot-assignments.create', compact('areas', 'area_types', 'blocks'));
     }
 
     /**

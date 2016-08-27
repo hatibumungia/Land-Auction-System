@@ -14,21 +14,27 @@
 <div class="form-group">
     <label for="areas_type_id" class="col-sm-3 control-label">Land use</label>
     <div class="col-sm-6">
-        <div id="div1">
-            <select name="areas_type_id" id="plot_assignment_areas_type_id" class="form-control">
-                <option value="">-Select Location First-</option>
-            </select>
-        </div>
+      <select name="areas_type_id" id="areas_type_id" class="form-control">
+        <option value="">-Select-</option>
+        @foreach($area_types as $area_type)
+
+            <option value="{{ $area_type->areas_type_id }}">{{ $area_type->name }}</option>
+
+        @endforeach
+      </select>
     </div>
 </div>
 <div class="form-group">
     <label for="block_id" class="col-sm-3 control-label">Block</label>
     <div class="col-sm-6">
-        <select name="block_id" id="plot_assignment_block_id" class="form-control">
-            <div id="div2">
-                <option value="">-Select land use first</option>
-            </div>
-        </select>
+      <select name="block_id" id="block_id" class="form-control">
+        <option value="">-Select-</option>
+        @foreach($blocks as $block)
+
+            <option value="{{ $block->block_id }}">{{ $block->name }}</option>
+
+        @endforeach
+      </select>
     </div>
 </div>
 <div class="form-group">
