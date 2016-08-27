@@ -44,7 +44,6 @@
             <table id="locationsTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Location</th>
                     <th>Land use</th>
                     <th>Block</th>
@@ -54,7 +53,6 @@
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>ID</th>
                     <th>Location</th>
                     <th>Land use</th>
                     <th>Block</th>
@@ -67,7 +65,6 @@
                 @foreach($plot_assignments as $plot_assignment)
 
                     <tr>
-                        <td>{{ $plot_assignment->plot_assignment_id }}</td>
                         <td>{{ $plot_assignment->location }}</td>
                         <td>{{ $plot_assignment->land_use }}</td>
                         <td>{{ $plot_assignment->block }}</td>

@@ -28,7 +28,9 @@ class CreatePlotReservationTable extends Migration
             $table->integer('user_detail_id')->unsigned();
             $table->foreign('user_detail_id')->references('user_detail_id')->on('user_details')->onDelete('cascade');
             
-            $table->timestamps();
+            $table->timestamp('deadline');
+
+            $table->timestamp('created_at');
 
             $table->primary(['area_id','areas_type_id','plot_id','block_id']);
         });

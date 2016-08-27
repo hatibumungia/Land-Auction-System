@@ -25,14 +25,14 @@ class CreatePlotTransactionsTable extends Migration
             $table->integer('plot_id')->unsigned();
             $table->foreign('plot_id')->references('plot_id')->on('plot_reservation')->onDelete('cascade');
 
+            $table->string('transaction_number')->unique();
+
             $table->double('amount');
 
             $table->integer('user_detail_id')->unsigned();
             $table->foreign('user_detail_id')->references('user_detail_id')->on('user_details')->onDelete('cascade');
 
             $table->string('payment_type');
-
-            $table->integer('status');
 
             $table->timestamps();
         });
