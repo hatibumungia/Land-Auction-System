@@ -9,6 +9,8 @@ use App\Http\Requests;
 
 use App\UserDetail;
 
+use Illuminate\Support\Facades\Hash;
+
 class ApplicantsController extends Controller
 {
 
@@ -31,6 +33,7 @@ class ApplicantsController extends Controller
             'last_name' => $request->input('last_name'),
             'email_address' => $request->input('email_address'),
             'phone_number' => $request->input('phone_number'),
+            'password' => Hash::make($request->input('password')),
         ]);
 
         flash()->success('Registered successfully. Now login');
