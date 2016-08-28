@@ -28,11 +28,11 @@ class PlotAssignment extends Migration
 
             $table->double('size');
 
-            $table->integer('status', 1)->default(0);
+            $table->tinyInteger('status')->unsigned()->default(0);
 
             //making composite keys
-            $table->primary(['area_id','areas_type_id','plot_id','block_id']);
-            
+            $table->primary(['area_id', 'areas_type_id', 'plot_id', 'block_id']);
+
         });
     }
 
