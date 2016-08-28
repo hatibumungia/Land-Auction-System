@@ -15,7 +15,7 @@
 
                         @include('common.errors')
 
-                        {!! Form::open(['url' => '/applicants', 'class' => 'form-horizontal']) !!}
+                        {!! Form::open(['url' => '/applicants/auth/register', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
                             {!! Form::label('first_name', 'First Name', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('password_confirmation', 'Password Again', ['class' => 'col-sm-3 control-label']) !!}
+                            {!! Form::label('password_confirmation', 'Confirm Password', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
                                 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                             </div>

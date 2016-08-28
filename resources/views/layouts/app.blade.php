@@ -79,16 +79,21 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    {{-- <li @if(Request::is('home')) class="active" @endif><a href="{{ url('/home') }}">Home</a></li>--}}
-                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search <i class="fa fa-search"></i></a></li>
+                    @if(Session::has('username'))
+                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Home</a>
+                        </li>
+                    @endif
+                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search <i
+                                    class="fa fa-search"></i></a></li>
                 </ul>
 
+                {{--
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
-                        {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -101,6 +106,30 @@
                         </li>
                     @endif
                 </ul>
+                --}}
+
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (!Session::has('username'))
+                        <li @if(Request::is('applicants/login')) class="active" @endif><a
+                                    href="{{ url('/applicants/login') }}">Login</a></li>
+                        <li @if(Request::is('applicants/register')) class="active" @endif><a
+                                    href="{{ url('/applicants/register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
+                                <i class="fa fa-user"></i> {{{ Session::get('username')  }}} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/reservation/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+
+
             </div>
         </div>
     </nav>
@@ -129,6 +158,7 @@
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 <script src="{{ URL::to('js/reservation.js') }}"></script>
+<script src="{{ URL::to('js/front-button-confirm.js') }}"></script>
 
 </body>
 </html>

@@ -249,4 +249,43 @@ class SearchController extends Controller
 
     }
 
+    public function getReservationSummaryNames()
+    {
+        $params['area_id'] = $_GET['area_id'];
+        $params['areas_type_id'] = $_GET['areas_type_id'];
+        $params['block_id'] = $_GET['block_id'];
+
+        $sql = "SELECT areas.name as location, area_types.name as land_use, blocks.name as block FROM areas, area_types, blocks WHERE areas.area_id=:area_id AND area_types.areas_type_id=:areas_type_id AND blocks.block_id=:block_id";
+
+        $results = DB::select($sql, $params);
+
+        if (sizeof($results) > 0) {
+
+            $results_array = [];
+            foreach ($results as $result) {
+                $results_array = [
+                    'location' => $result->location,
+                    'land_use' => $result->land_use,
+                    'block' => $result->block
+                ];
+            }
+
+        } else {
+
+            $results_array = [];
+
+            foreach ($results as $result) {
+                $results_array[] = [
+                    '',
+                    '',
+                    ''
+                ];
+            }
+
+            return response()->json(['data' => $results_array]);
+        }
+
+        return $results_array;
+    }
+
 }

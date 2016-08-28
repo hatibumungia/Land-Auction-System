@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\RegisterAnApplicantRequest;
+use App\Http\Requests\LoginAnApplicantRequest;
 
 use App\Http\Requests;
 
 use App\UserDetail;
+use App\UserCredential;
+use DB;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -24,7 +27,7 @@ class ApplicantsController extends Controller
         return view('applicants/login');
     }
 
-    public function store(RegisterAnApplicantRequest $request)
+    public function processRegister(RegisterAnApplicantRequest $request)
     {
 
         UserDetail::create([
@@ -40,4 +43,28 @@ class ApplicantsController extends Controller
 
         return redirect('applicants/login');
     }
+
+    public function processLogin(LoginAnApplicantRequest $request)
+    {
+
+        $user = UserCredential::checkLogin($request->input('username'), $request->input('password'));
+
+        if (!$user) {
+            flash()->error('Invalid username or password');
+
+            return redirect('/applicants/login');
+
+        } else {
+            $request->session()->put('id', $user->id);
+            $request->session()->put('username', $user->username);
+
+            return redirect('/reservation');
+        }
+
+        flash()->success('Registered successfully. Now login');
+
+        return redirect('applicants/login');
+    }
+
+
 }

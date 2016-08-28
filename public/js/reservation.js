@@ -20,6 +20,8 @@ $(function () {
         var areaListItem = $(this);
 
         areaId = areaListItem.data('area-id');
+
+
         var url = "/search/getAreaType";
         $.get(url, {area_id: areaId}, function (data, status) {
             console.log("json received = " + data);
@@ -43,6 +45,7 @@ $(function () {
         var areaTypeListItem = $(this);
 
         area_type_id = areaTypeListItem.data('area-type-id');
+
         console.log("area_id: " + areaId);
         console.log("area_type_id: " + area_type_id);
 
@@ -75,9 +78,15 @@ $(function () {
 
         var url = "/search/getPlot";
         $.get(url, {area_id: areaId, area_type_id: area_type_id, block_id: block_id}, function (data, status) {
-            console.log("json received = " + data);
+
+            // console.log("json received = " + data);
 
             var jsonData = JSON.parse(data);
+
+            /*            console.log("aread id = " + jsonData[0].area_id);
+             console.log("area type id = " + jsonData[0].areas_type_id);
+             console.log("block id = " + jsonData[0].block_id);*/
+
             plotPanel.hide();
             plotPanel.show();
 
@@ -111,6 +120,31 @@ $(function () {
 
                 html += "<h4>Reservation Summary</h4>";
 
+                html += "<div class='row'>";
+                html += "<div class='col-sm-4'>";
+                html += "Location";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "Land use";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "Block";
+                html += "</div>";
+                html += "</div>";
+
+                html += "<div class='row'>";
+                html += "<div class='col-sm-4'>";
+                html += "<strong>" + counter.plot_id + "</strong>";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "<strong>" + counter.size + "</strong>";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "<strong>" + counter.size * counter.price + "</strong>";
+                html += "</div>";
+                html += "</div>";
+
+                html += "<hr>";
 
                 html += "<div class='row'>";
                 html += "<div class='col-sm-4'>";
@@ -123,6 +157,7 @@ $(function () {
                 html += "Price (TZS)";
                 html += "</div>";
                 html += "</div>";
+
                 html += "<div class='row'>";
                 html += "<div class='col-sm-4'>";
                 html += "<strong>" + counter.plot_id + "</strong>";
@@ -139,11 +174,11 @@ $(function () {
                 html += "<div class='modal-footer'>";
                 html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
 
-                var reservation_url = "/reservation";
-                var reservation_text = "<i class='fa fa-check'></i> Confirm";
-                var confirm_reservation_html = "<a href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
+                var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_id;
 
-                html += confirm_reservation_html;
+                var reservation_text = "<i class='fa fa-check'></i> Continue";
+                html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
+
                 html += "</div>";
                 html += "</div>";
                 html += "</div>";
@@ -165,6 +200,5 @@ $(function () {
         });
 
     });
-
 
 });

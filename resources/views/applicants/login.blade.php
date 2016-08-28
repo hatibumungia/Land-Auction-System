@@ -12,10 +12,13 @@
                         <h3 class="panel-title">Login</h3>
                     </div>
                     <div class="panel-body">
-                        {!! Form::open(['url' => '/applicants/index']) !!}
+
+                        @include('common.errors')
+
+                        {!! Form::open(['url' => '/applicants/auth/login']) !!}
                         <div class="form-group">
-                            {!! Form::label('phone', 'Phone Number') !!}
-                            {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => '+255719961077']) !!}
+                            {!! Form::label('username', 'Phone Number') !!}
+                            {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => '+255719961077']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('password', 'Password') !!}
