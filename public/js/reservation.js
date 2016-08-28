@@ -1,4 +1,4 @@
-$(function(){
+$(function () {
 
     var areaListView = $('#areaListView');
     var areaTypeListView = $('#areaTypeListView');
@@ -90,67 +90,69 @@ $(function(){
                 var counter = jsonData[i];
                 site_plan = counter.file_name;
                 html += "<tr>";
-                    html += "<td>" + counter.plot_id + "</td>";
-                    html += "<td>" + counter.size + "</td>";
-                    html += "<td>" + counter.size * counter.price + "</td>";
+                html += "<td>" + counter.plot_id + "</td>";
+                html += "<td>" + counter.size + "</td>";
+                html += "<td>" + counter.size * counter.price + "</td>";
 
-                    html += "<td>";
+                html += "<td>";
 
-                        html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_id + "'>Reserve</a>";
+                html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_id + "'>Reserve</a>";
 
-                    html += "</td>";
+                html += "</td>";
 
-                        html += "<div class='modal fade' id='" + counter.plot_id + "'>";
-                            html += "<div class='modal-dialog'>";
-                                html += "<div class='modal-content'>";
-                                    html += "<div class='modal-header'>";
-                                        html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
-                                        html += "<h4 class='modal-title'>" + "#" + counter.plot_id + "</h4>";
-                                    html += "</div>";
-                                    html += "<div class='modal-body'>";
+                html += "<div class='modal fade' id='" + counter.plot_id + "'>";
+                html += "<div class='modal-dialog'>";
+                html += "<div class='modal-content'>";
+                html += "<div class='modal-header'>";
+                html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
+                html += "<h4 class='modal-title'>" + "#" + counter.plot_id + "</h4>";
+                html += "</div>";
+                html += "<div class='modal-body'>";
 
-                                    html += "<h4>Reservation Summary</h4>";
+                html += "<h4>Reservation Summary</h4>";
 
 
-                                        html += "<div class='row'>";
-                                            html += "<div class='col-sm-4'>";
-                                                html += "Plot#";
-                                            html += "</div>";  
-                                            html += "<div class='col-sm-4'>";
-                                                html += "Size (sqm)";
-                                            html += "</div>";
-                                            html += "<div class='col-sm-4'>";
-                                                html += "Price (TZS)";
-                                            html += "</div>";                                                                                                                                   
-                                        html += "</div>"; 
-                                        html += "<div class='row'>";
-                                            html += "<div class='col-sm-4'>";
-                                                html += "<strong>" + counter.plot_id + "</strong>";
-                                            html += "</div>";  
-                                            html += "<div class='col-sm-4'>";
-                                                html += "<strong>" + counter.size + "</strong>";
-                                            html += "</div>";
-                                            html += "<div class='col-sm-4'>";
-                                                html += "<strong>" + counter.size * counter.price + "</strong>";
-                                            html += "</div>";                                                                                                                                   
-                                        html += "</div>";   
+                html += "<div class='row'>";
+                html += "<div class='col-sm-4'>";
+                html += "Plot#";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "Size (sqm)";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "Price (TZS)";
+                html += "</div>";
+                html += "</div>";
+                html += "<div class='row'>";
+                html += "<div class='col-sm-4'>";
+                html += "<strong>" + counter.plot_id + "</strong>";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "<strong>" + counter.size + "</strong>";
+                html += "</div>";
+                html += "<div class='col-sm-4'>";
+                html += "<strong>" + counter.size * counter.price + "</strong>";
+                html += "</div>";
+                html += "</div>";
 
-                                    html += "</div>";
-                                    html += "<div class='modal-footer'>";
-                                        html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
-                                        html += "<a href'#' class='btn btn-primary'><i class='fa fa-check'></i> Confirm</a>";
-                                    html += "</div>";
-                                html += "</div>";
-                        html += "</div>";
+                html += "</div>";
+                html += "<div class='modal-footer'>";
+                html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
+
+                var reservation_url = "/reservation";
+                var reservation_text = "<i class='fa fa-check'></i> Confirm";
+                var confirm_reservation_html = "<a href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
+
+                html += confirm_reservation_html;
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
 
 
                 html += "</tr>";
             }
 
             html += "</tbody></table></ul>";
-
-
-
 
 
             var site_plan_html = "<img src='" + "/img/uploads/plots/" + site_plan + "' alt='...' class='img-responsive'>";
