@@ -19,6 +19,7 @@ class CreateUserDetailsTable extends Migration
             $table->string('last_name');
             $table->string('email_address')->unique();
             $table->string('phone_number');
+            $table->string('password');
             $table->string('district')->nullable();
             $table->string('region')->nullable();
             $table->string('ward')->nullable();
