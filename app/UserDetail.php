@@ -17,9 +17,10 @@ class UserDetail extends Model
         'last_name',
         'email_address',
         'phone_number',
+        'password',
     ];
 
     protected $hidden = [
-        'phone_number'
+        'password'
     ];
 }
