@@ -1,3 +1,5 @@
+$(function(){
+
     var areaListView = $('#areaListView');
     var areaTypeListView = $('#areaTypeListView');
     var blockListView = $('#blockListView');
@@ -94,18 +96,18 @@
 
                     html += "<td>";
 
-						html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_id + "'>Reserve</a>";
+                        html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_id + "'>Reserve</a>";
 
-					html += "</td>";
+                    html += "</td>";
 
-						html += "<div class='modal fade' id='" + counter.plot_id + "'>";
-							html += "<div class='modal-dialog'>";
-								html += "<div class='modal-content'>";
-									html += "<div class='modal-header'>";
-										html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
-										html += "<h4 class='modal-title'>" + "#" + counter.plot_id + "</h4>";
-									html += "</div>";
-									html += "<div class='modal-body'>";
+                        html += "<div class='modal fade' id='" + counter.plot_id + "'>";
+                            html += "<div class='modal-dialog'>";
+                                html += "<div class='modal-content'>";
+                                    html += "<div class='modal-header'>";
+                                        html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
+                                        html += "<h4 class='modal-title'>" + "#" + counter.plot_id + "</h4>";
+                                    html += "</div>";
+                                    html += "<div class='modal-body'>";
 
                                     html += "<h4>Reservation Summary</h4>";
 
@@ -123,25 +125,23 @@
                                         html += "</div>"; 
                                         html += "<div class='row'>";
                                             html += "<div class='col-sm-4'>";
-                                                html += counter.plot_id;
+                                                html += "<strong>" + counter.plot_id + "</strong>";
                                             html += "</div>";  
                                             html += "<div class='col-sm-4'>";
-                                                html += counter.size;
+                                                html += "<strong>" + counter.size + "</strong>";
                                             html += "</div>";
                                             html += "<div class='col-sm-4'>";
-                                                html += counter.size * counter.price;
+                                                html += "<strong>" + counter.size * counter.price + "</strong>";
                                             html += "</div>";                                                                                                                                   
-                                        html += "</div>";    
+                                        html += "</div>";   
 
-                                    html += "<p>Confirm the reservation</p>";
-
-									html += "</div>";
-									html += "<div class='modal-footer'>";
-										html += "<button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>";
-										html += "<a href'#' class='btn btn-primary'>Confirm</a>";
-									html += "</div>";
-								html += "</div>";
-						html += "</div>";
+                                    html += "</div>";
+                                    html += "<div class='modal-footer'>";
+                                        html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
+                                        html += "<a href'#' class='btn btn-primary'><i class='fa fa-check'></i> Confirm</a>";
+                                    html += "</div>";
+                                html += "</div>";
+                        html += "</div>";
 
 
                 html += "</tr>";
@@ -163,3 +163,6 @@
         });
 
     });
+
+
+});
