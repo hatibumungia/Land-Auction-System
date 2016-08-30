@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <link href="/css/zoom.css" rel="stylesheet">
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
@@ -159,6 +160,7 @@
 
 <script src="{{ URL::to('js/reservation.js') }}"></script>
 <script src="{{ URL::to('js/front-button-confirm.js') }}"></script>
+<script src="/js/zoom.js"></script>
 
 </body>
 </html>

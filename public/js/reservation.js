@@ -190,11 +190,11 @@ $(function () {
             html += "</tbody></table></ul>";
 
 
-            var site_plan_html = "<img src='" + "/img/uploads/plots/" + site_plan + "' alt='...' class='img-responsive'>";
+            var site_plan_html = "<img src='" + "/img/uploads/plots/" + site_plan + "' alt='...' class='img-responsive' data-action='zoom'>";
 
             console.log(site_plan_html);
 
-            $("#site-plan").html("<a href='" + "/img/uploads/plots/" + site_plan + "'>" + site_plan_html + "</a>");
+            $("#site-plan").html(site_plan_html);
 
             $("#plotPanel").html(html);
         });
