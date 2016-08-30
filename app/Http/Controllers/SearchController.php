@@ -51,7 +51,27 @@ class SearchController extends Controller
         $area_id['area_type_id'] = $_GET['area_type_id'];
         $area_id['block_id'] = $_GET['block_id'];
 
-        $sql = "SELECT * FROM plot_assignment,area_assignment, block_assignment WHERE area_assignment.area_id = plot_assignment.area_id and area_assignment.areas_type_id=plot_assignment.areas_type_id and block_assignment.area_id=plot_assignment.area_id and block_assignment.areas_type_id=plot_assignment.areas_type_id and plot_assignment.block_id=block_assignment.block_id and plot_assignment.area_id=:area_id and plot_assignment.areas_type_id=:area_type_id and plot_assignment.block_id=:block_id";
+        $sql = "
+SELECT plots.plot_no as plot_no, 
+blocks.name as block, 
+areas.name as location, 
+plot_assignment.size as size, 
+area_assignment.price as price,
+block_assignment.file_name as file_name
+FROM areas, area_types, blocks, plots, plot_assignment,area_assignment, block_assignment 
+WHERE areas.area_id=plot_assignment.area_id 
+AND plots.plot_id=plot_assignment.plot_id
+AND area_types.areas_type_id=plot_assignment.areas_type_id 
+AND blocks.block_id=plot_assignment.block_id 
+AND area_assignment.area_id = plot_assignment.area_id 
+AND area_assignment.areas_type_id=plot_assignment.areas_type_id 
+AND block_assignment.area_id=plot_assignment.area_id 
+AND block_assignment.areas_type_id=plot_assignment.areas_type_id 
+AND plot_assignment.block_id=block_assignment.block_id 
+AND plot_assignment.area_id=:area_id
+AND plot_assignment.areas_type_id=:area_type_id 
+AND plot_assignment.block_id=:block_id        
+        ";
 
         return json_encode(DB::SELECT($sql, $area_id));
     }

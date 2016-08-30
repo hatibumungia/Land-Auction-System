@@ -92,29 +92,31 @@ $(function () {
 
             var html = "";
 
-            html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Size (sq. m)</th><th>Price (TZS)</th><th>Reservation</th></tr></thead><tbody>";
+            html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Block</th><th>Location</th><th>Size (sq. m)</th><th>Price (TZS)</th><th>Reservation</th></tr></thead><tbody>";
 
 
             for (var i = 0; i < jsonData.length; i++) {
                 var counter = jsonData[i];
                 site_plan = counter.file_name;
                 html += "<tr>";
-                html += "<td>" + counter.plot_id + "</td>";
+                html += "<td>" + counter.plot_no + "</td>";
+                html += "<td>" + counter.block + "</td>";
+                html += "<td>" + counter.location + "</td>";
                 html += "<td>" + counter.size + "</td>";
                 html += "<td>" + counter.size * counter.price + "</td>";
 
                 html += "<td>";
 
-                html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_id + "'>Reserve</a>";
+                html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_no + "'>Reserve</a>";
 
                 html += "</td>";
 
-                html += "<div class='modal fade' id='" + counter.plot_id + "'>";
+                html += "<div class='modal fade' id='" + counter.plot_no + "'>";
                 html += "<div class='modal-dialog'>";
                 html += "<div class='modal-content'>";
                 html += "<div class='modal-header'>";
                 html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
-                html += "<h4 class='modal-title'>" + "#" + counter.plot_id + "</h4>";
+                html += "<h4 class='modal-title'>" + "#" + counter.plot_no + "</h4>";
                 html += "</div>";
                 html += "<div class='modal-body'>";
 
@@ -134,7 +136,7 @@ $(function () {
 
                 html += "<div class='row'>";
                 html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.plot_id + "</strong>";
+                html += "<strong>" + counter.plot_no + "</strong>";
                 html += "</div>";
                 html += "<div class='col-sm-4'>";
                 html += "<strong>" + counter.size + "</strong>";
@@ -160,7 +162,7 @@ $(function () {
 
                 html += "<div class='row'>";
                 html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.plot_id + "</strong>";
+                html += "<strong>" + counter.plot_no + "</strong>";
                 html += "</div>";
                 html += "<div class='col-sm-4'>";
                 html += "<strong>" + counter.size + "</strong>";
@@ -174,7 +176,7 @@ $(function () {
                 html += "<div class='modal-footer'>";
                 html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
 
-                var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_id;
+                var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
 
                 var reservation_text = "<i class='fa fa-check'></i> Continue";
                 html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
