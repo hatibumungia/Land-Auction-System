@@ -123,53 +123,19 @@ $(function () {
                 html += "<h4>Reservation Summary</h4>";
 
                 html += "<div class='row'>";
-                html += "<div class='col-sm-4'>";
-                html += "Location";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "Land use";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "Block";
-                html += "</div>";
+                    html += "<div class='col-sm-2'><strong>Plot #</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Block</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Location</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Size (sqm)</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Price (TZS)</strong></div>";
                 html += "</div>";
 
                 html += "<div class='row'>";
-                html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.plot_no + "</strong>";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.size + "</strong>";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.size * counter.price + "</strong>";
-                html += "</div>";
-                html += "</div>";
-
-                html += "<hr>";
-
-                html += "<div class='row'>";
-                html += "<div class='col-sm-4'>";
-                html += "Plot#";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "Size (sqm)";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "Price (TZS)";
-                html += "</div>";
-                html += "</div>";
-
-                html += "<div class='row'>";
-                html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.plot_no + "</strong>";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.size + "</strong>";
-                html += "</div>";
-                html += "<div class='col-sm-4'>";
-                html += "<strong>" + counter.size * counter.price + "</strong>";
-                html += "</div>";
+                    html += "<div class='col-sm-2'>" + counter.plot_no + "</div>";
+                    html += "<div class='col-sm-2'>" + counter.block + "</div>";
+                    html += "<div class='col-sm-2'>" + counter.location + "</div>";
+                    html += "<div class='col-sm-2'>" + counter.size+ "</div>";
+                    html += "<div class='col-sm-2'>" + counter.size * counter.price + "</div>";
                 html += "</div>";
 
                 html += "</div>";

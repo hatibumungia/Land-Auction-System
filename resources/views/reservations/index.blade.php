@@ -30,7 +30,7 @@
                             <th>Plot number</th>
                             <th>Size (sqm)</th>
                             <th>Price (TZS)</th>
-                            <th>Confirm</th>
+                            <th>Application Payment</th>
                             <th>Remove</th>
                         </tr>
                         </thead>
@@ -44,7 +44,46 @@
                                 <td>{{ $row->size }}</td>
                                 <td>{{ $row->price }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-success"><i class="fa fa-check"></i></a>
+
+
+                                    <div class="alert alert-warning">Unpaind</div> <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Pay</a>
+                                    <div class="modal fade" id="modal-id">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">Application Payment</h4>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    @include('common.errors')
+
+                                                    {!! Form::open(['action' => ['PlotTransactionController@store']]) !!}
+                                                    <div class="form-group">
+                                                        {{ Form::hidden('area_id', $row->area_id) }}
+                                                        {{ Form::hidden('areas_type_id', $row->areas_type_id) }}
+                                                        {{ Form::hidden('block_id', $row->block_id) }}
+                                                        {{ Form::hidden('plot_id', $row->plot_id) }}
+                                                        {{ Form::hidden('user_detail_id', $user_detail->user_detail_id) }}
+                                                        {!! Form::label('transaction_number', 'Transaction Number') !!}
+                                                        {!! Form::text('transaction_number', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                                                    {!! Form::close() !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-danger" title="Remove"><i

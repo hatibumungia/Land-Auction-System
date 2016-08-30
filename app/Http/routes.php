@@ -110,3 +110,5 @@ Route::post('/applicants/auth/login', 'ApplicantsController@processLogin');
 
 Route::get('/applicants/register', 'ApplicantsController@register');
 Route::post('/applicants/auth/register', 'ApplicantsController@processRegister');
+
+Route::post('/plot_transactions', 'PlotTransactionController@store');
