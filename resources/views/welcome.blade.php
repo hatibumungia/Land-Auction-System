@@ -51,12 +51,17 @@
                 <div id="plotPanel"></div>
             </div>
             <div class="col-md-4">
-                <div id="sitePlanPanel" class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Siteplan</h3>
+
+                <div id="site-plan">
+                    <div id="sitePlanPanel" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Siteplan</h3>
+                        </div>
+
                     </div>
-                    <div id="site-plan"></div>
                 </div>
+
+
             </div>
         </div>
     </div>

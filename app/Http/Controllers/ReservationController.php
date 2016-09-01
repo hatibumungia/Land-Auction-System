@@ -26,30 +26,37 @@ class ReservationController extends Controller
         if ($this->checkForParameters()) {
             // return "no parameters";
             
-            // TODO: this query should be filtered more
+
 
             $sql = "
-               
 SELECT
-plots.plot_no AS  plot_no,
+plots.plot_no AS plot_no,
 blocks.name AS block,
 areas.name AS location,
 area_types.name AS land_use,
 plot_assignment.size AS size,
-area_assignment.price AS price,
+(plot_assignment.size * area_assignment.price) AS price,
 plot_reservation.deadline AS deadline
 FROM
 plots, blocks, areas, area_types, plot_assignment, area_assignment, plot_reservation
 WHERE
-plots.plot_id = plot_reservation.plot_id AND
-blocks.block_id = plot_reservation.block_id AND
-areas.area_id = plot_reservation.area_id AND
-area_types.areas_type_id = plot_reservation.areas_type_id AND
-plot_reservation.user_detail_id = :user_detail_id                
+plots.plot_id=plot_reservation.plot_id AND
+blocks.block_id=plot_reservation.block_id AND
+areas.area_id=plot_reservation.area_id AND
+area_types.areas_type_id=plot_reservation.areas_type_id AND
+plot_assignment.area_id=plot_reservation.area_id AND
+plot_assignment.areas_type_id=plot_reservation.areas_type_id AND
+plot_assignment.block_id=plot_reservation.block_id AND
+plot_assignment.plot_id=plot_reservation.plot_id AND
+area_assignment.areas_type_id=plot_reservation.areas_type_id AND
+area_assignment.area_id=plot_reservation.area_id AND
+plot_reservation.user_detail_id=:user_detail_id               
                
                 ";
 
             $plot_reservations = DB::select($sql, ['user_detail_id' => Session::get('id')]);
+
+            // return $plot_reservations;
             
             return view('reservations.all', compact('plot_reservations'));
         } else {
@@ -100,6 +107,25 @@ AND plot_assignment.plot_id=:plot_id
             return view('reservations.index', compact('user_detail', 'unconfirmed_reservation'));
 
 
+        }
+
+    }
+
+    public function print_preview($plot_no)
+    {
+
+        $params = [
+            'user_credential_id' => Session::get('id'),
+            'plot_no' => $plot_no
+        ];
+
+        $data = DB::select("SELECT * FROM plot_reservation_view WHERE plot_reservation_view.plot_no=:plot_no AND plot_reservation_view.user_credential_id=:user_credential_id LIMIT 0, 1", $params);
+
+
+        if (sizeof($data) == 1){
+            return view('reservations.print_preview', compact('data'));
+        }else{
+            return 'You are trying to steal. We will catch you.';
         }
 
     }

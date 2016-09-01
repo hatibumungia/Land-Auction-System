@@ -19,7 +19,7 @@
                             <th>Size</th>
                             <th>Price</th>
                             <th>Deadline</th>
-                            <th><i class="fa fa-file-text-o"></i></th>
+                            <th><i class="fa fa-print"></i></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,11 +33,8 @@
                                 <td>{{ $plot_reservation->size * $plot_reservation->price  }}</td>
                                 <td>{{ $plot_reservation->deadline  }}</td>
 
-                                {{--
-                                    TODO: the user should be able to print the letter
-                                --}}
-
-                                <td><button type="button" class="btn btn-primary btn-sm" title="Print"><i class="fa fa-print"></i></button></td>
+                                <td><a href="/reservation/print-preview/{{ $plot_reservation->plot_no }}"
+                                       class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>

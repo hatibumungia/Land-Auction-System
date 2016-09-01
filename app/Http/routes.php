@@ -103,6 +103,7 @@ $router->group([
 });
 
 Route::get('/reservation', 'ReservationController@index');
+Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
 Route::get('/reservation/logout', 'ReservationController@logout');
 
 Route::get('/applicants/login', 'ApplicantsController@login');
