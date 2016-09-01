@@ -70,7 +70,8 @@ AND block_assignment.areas_type_id=plot_assignment.areas_type_id
 AND plot_assignment.block_id=block_assignment.block_id 
 AND plot_assignment.area_id=:area_id
 AND plot_assignment.areas_type_id=:area_type_id 
-AND plot_assignment.block_id=:block_id        
+AND plot_assignment.block_id=:block_id  
+AND plot_assignment.status = 0      
         ";
 
         return json_encode(DB::SELECT($sql, $area_id));

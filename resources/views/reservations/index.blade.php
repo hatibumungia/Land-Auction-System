@@ -6,15 +6,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="list-group">
-                    <a href="#" class="list-group-item active"><i class="fa fa-cogs"></i></a>
-                    <a href="#" class="list-group-item">All</a>
-                    <a href="#" class="list-group-item">Pending</a>
-                    <a href="#" class="list-group-item">Paid</a>
-                </div>
-            </div>
-            <div class="col-sm-9">
+            <div class="col-sm-12">
 
                 <div class="page-header">
                     You have chose to reserve this plot
@@ -35,6 +27,9 @@
                         </tr>
                         </thead>
                         <tbody>
+                        {{--
+                            TODO: if user has already paid fot that plot, it should not appear here
+                        --}}
                         @foreach($unconfirmed_reservation as $row)
                             <tr>
                                 <td>{{ $row->location }}</td>

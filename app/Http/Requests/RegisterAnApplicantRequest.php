@@ -27,7 +27,6 @@ class RegisterAnApplicantRequest extends Request
 
         return [
             'first_name' => 'required|max:50',
-            'middle_name' => 'required|max:50',
             'last_name' => 'required|max:50',
             'email_address' => 'required|email|max:255|unique:user_details',
             'phone_number' => 'required|max:13|unique:user_details',

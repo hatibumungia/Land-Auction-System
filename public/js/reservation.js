@@ -83,88 +83,100 @@ $(function () {
 
             var jsonData = JSON.parse(data);
 
-            /*            console.log("aread id = " + jsonData[0].area_id);
-             console.log("area type id = " + jsonData[0].areas_type_id);
-             console.log("block id = " + jsonData[0].block_id);*/
+            if(jsonData.length !== 0){
 
-            plotPanel.hide();
-            plotPanel.show();
+                /*            console.log("aread id = " + jsonData[0].area_id);
+                 console.log("area type id = " + jsonData[0].areas_type_id);
+                 console.log("block id = " + jsonData[0].block_id);*/
 
-            var html = "";
+                plotPanel.hide();
+                plotPanel.show();
 
-            html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Block</th><th>Location</th><th>Size (sq. m)</th><th>Price (TZS)</th><th>Reservation</th></tr></thead><tbody>";
+                var html = "";
+
+                html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Block</th><th>Location</th><th>Size (sq. m)</th><th>Price (TZS)</th><th>Reservation</th></tr></thead><tbody>";
 
 
-            for (var i = 0; i < jsonData.length; i++) {
-                var counter = jsonData[i];
-                site_plan = counter.file_name;
-                html += "<tr>";
-                html += "<td>" + counter.plot_no + "</td>";
-                html += "<td>" + counter.block + "</td>";
-                html += "<td>" + counter.location + "</td>";
-                html += "<td>" + counter.size + "</td>";
-                html += "<td>" + counter.size * counter.price + "</td>";
+                for (var i = 0; i < jsonData.length; i++) {
+                    var counter = jsonData[i];
+                    site_plan = counter.file_name;
+                    html += "<tr>";
+                    html += "<td>" + counter.plot_no + "</td>";
+                    html += "<td>" + counter.block + "</td>";
+                    html += "<td>" + counter.location + "</td>";
+                    html += "<td>" + counter.size + "</td>";
+                    html += "<td>" + counter.size * counter.price + "</td>";
 
-                html += "<td>";
+                    html += "<td>";
 
-                html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_no + "'>Reserve</a>";
+                    html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_no + "'>Reserve</a>";
 
-                html += "</td>";
+                    html += "</td>";
 
-                html += "<div class='modal fade' id='" + counter.plot_no + "'>";
-                html += "<div class='modal-dialog'>";
-                html += "<div class='modal-content'>";
-                html += "<div class='modal-header'>";
-                html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
-                html += "<h4 class='modal-title'>" + "#" + counter.plot_no + "</h4>";
-                html += "</div>";
-                html += "<div class='modal-body'>";
+                    html += "<div class='modal fade' id='" + counter.plot_no + "'>";
+                    html += "<div class='modal-dialog'>";
+                    html += "<div class='modal-content'>";
+                    html += "<div class='modal-header'>";
+                    html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
+                    html += "<h4 class='modal-title'>" + "#" + counter.plot_no + "</h4>";
+                    html += "</div>";
+                    html += "<div class='modal-body'>";
 
-                html += "<h4>Reservation Summary</h4>";
+                    html += "<h4>Reservation Summary</h4>";
 
-                html += "<div class='row'>";
+                    html += "<div class='row'>";
                     html += "<div class='col-sm-2'><strong>Plot #</strong></div>";
                     html += "<div class='col-sm-2'><strong>Block</strong></div>";
                     html += "<div class='col-sm-2'><strong>Location</strong></div>";
                     html += "<div class='col-sm-2'><strong>Size (sqm)</strong></div>";
                     html += "<div class='col-sm-2'><strong>Price (TZS)</strong></div>";
-                html += "</div>";
+                    html += "</div>";
 
-                html += "<div class='row'>";
+                    html += "<div class='row'>";
                     html += "<div class='col-sm-2'>" + counter.plot_no + "</div>";
                     html += "<div class='col-sm-2'>" + counter.block + "</div>";
                     html += "<div class='col-sm-2'>" + counter.location + "</div>";
                     html += "<div class='col-sm-2'>" + counter.size+ "</div>";
                     html += "<div class='col-sm-2'>" + counter.size * counter.price + "</div>";
-                html += "</div>";
+                    html += "</div>";
 
-                html += "</div>";
-                html += "<div class='modal-footer'>";
-                html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
+                    html += "</div>";
+                    html += "<div class='modal-footer'>";
+                    html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
 
-                var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
+                    var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
 
-                var reservation_text = "<i class='fa fa-check'></i> Continue";
-                html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
+                    var reservation_text = "<i class='fa fa-check'></i> Continue";
+                    html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
 
-                html += "</div>";
-                html += "</div>";
-                html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
 
 
-                html += "</tr>";
+                    html += "</tr>";
+                }
+
+                html += "</tbody></table></ul>";
+
+
+                var site_plan_html = "<img src='" + "/img/uploads/plots/" + site_plan + "' alt='...' class='img-responsive' data-action='zoom'>";
+
+                console.log(site_plan_html);
+
+                $("#site-plan").html(site_plan_html);
+
+                $("#plotPanel").html(html);
+
+
+            }else{
+
+                $("#site-plan").html("");
+                $("#plotPanel").html("<div class='alert alert-info'>Not Found</div>");
+
+
             }
 
-            html += "</tbody></table></ul>";
-
-
-            var site_plan_html = "<img src='" + "/img/uploads/plots/" + site_plan + "' alt='...' class='img-responsive' data-action='zoom'>";
-
-            console.log(site_plan_html);
-
-            $("#site-plan").html(site_plan_html);
-
-            $("#plotPanel").html(html);
         });
 
     });
