@@ -6,7 +6,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-3">
+                @include('reservations.common.sidebar')
+            </div>
+            <div class="col-sm-9">
 
                 <div class="page-header">
                     You have chose to reserve this plot
@@ -41,7 +44,7 @@
                                 <td>
 
 
-                                    <div class="alert alert-warning">Unpaind</div> <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Pay</a>
+                                    <a class="btn btn-primary" data-toggle="modal" href='#modal-id'><i class="fa fa-money"></i> Pay</a>
                                     <div class="modal fade" id="modal-id">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

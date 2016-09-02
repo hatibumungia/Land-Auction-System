@@ -8,6 +8,7 @@ use App\UserCredential;
 use App\UserDetail;
 use Illuminate\Support\Facades\Session;
 use DB;
+use App\Http\Requests\CreateUserDetailRequest;
 
 class ReservationController extends Controller
 {
@@ -126,6 +127,54 @@ AND plot_assignment.plot_id=:plot_id
             return view('reservations.print_preview', compact('data'));
         }else{
             return 'You are trying to steal. We will catch you.';
+        }
+
+    }
+
+    public function completeRegistration()
+    {
+        $user_detail = UserDetail::findOrFail(Session::get('id'));
+
+        return view('reservations.complete_registration', compact('user_detail'));
+    }
+
+    public function processCompleteRegistration(CreateUserDetailRequest $request)
+    {
+
+
+        if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+
+            $image = $request->file('photo')->getClientOriginalName();
+
+            $new_file = Session::get('id') . " @ " . time() . " - " . $image;
+
+            $request->file('photo')->move(public_path() . '/img/uploads/avatars/', $new_file);
+
+            $user_detail = UserDetail::findOrFail(Session::get('id'));
+
+            $user_detail->update([
+                'first_name' => $request->input('first_name'),
+                'middle_name' => $request->input('middle_name'),
+                'last_name' => $request->input('last_name'),
+                'photo' => $new_file,
+                'email_address' => $request->input('email_address'),
+                'address' => nl2br($request->input('address')),
+                'region' => $request->input('region'),
+                'district' => $request->input('district'),
+                'ward' => $request->input('ward'),
+                'house_number' => $request->input('house_number'),
+                'registration_status' => 1,
+                ]);
+
+            flash()->success('Updated successfully');
+
+            return redirect('reservation/complete-registration');
+
+
+        } else {
+            flash()->error('File upload failed. Please try again later.');
+
+            return redirect('reservation/complete-registration');
         }
 
     }
