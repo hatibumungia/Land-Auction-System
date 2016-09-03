@@ -22,7 +22,40 @@
             background-color: #FF00CC;
             color: #FFF;
             padding: 10px 0 10px 0;
+            text-align: center;
+            font-size: 15px;
+            margin-top: 120px;
         }
+        .header-div {
+            width: auto;
+            height: 120px;
+            position: block;
+            float: right;
+        }
+
+        .header-content-div {
+            width: 20%;
+            height: 120px;
+            float: right;
+            position: block;
+        }
+        .header-content-div1 {
+            width: 20%;
+            height: 100px;
+            position: block;
+            float: left;
+        }
+        .header-content-div2 {
+            width: 20%;
+            height: 100px;
+            position: block;
+            float: left;
+            padding-left: 40%;
+        }
+        .uppercase { 
+            text-transform: uppercase; 
+        }
+    
     </style>
 
 </head>
@@ -33,26 +66,25 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <div class="row">
-                <div class="col-sm-3 text-right">
+            <div class="header-div">
+                <div class="header-content-div1">
                     <strong>
                         CAPITAL<br>
                         DEVELOPMENT<br>
                         AUTHORITY <br>
-                        POBOX 1 & 913<br>
+                        POBOX 1 &amp; 913<br>
                         DODOMA
                     </strong>
                 </div>
-                <div class="col-sm-2"></div>
-                <div class="col-sm-4 text-center">
-                    <img src="/img/logo.png">
+                <div class="header-content-div2">
+                    <img src="E:\PROJECTS\Land-Auction-System\public\img\logo.PNG">
                 </div>
-                <div class="col-sm-3 text-right">
+                <div class="header-content-div">
                     <strong>
                         MAMLAKA <br>
                         YA USTAWISHAJI<br>
                         MAKAO MAKUU<br>
-                        S.L.P 1 & 913<br>
+                        S.L.P 1 &amp; 913<br>
                         DODOMA
                     </strong>
                 </div>
@@ -88,7 +120,7 @@
                         Yah:&nbsp;KUPEWA KIWANJA NA.&nbsp;
                         <strong>{{ $data[0]->plot_no }}</strong>&nbsp;
                         KITALU&nbsp;<strong>{{ $data[0]->block }}</strong>&nbsp;
-                        ENEO LA &nbsp;<strong>{{ $data[0]->location }}</strong>&nbsp;
+                        ENEO LA &nbsp;<strong class="uppercase">{{ $data[0]->location }}</strong>&nbsp;
                         MANISPAA YA DODOMA
                     </u>
                 </div>
@@ -157,15 +189,12 @@
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text-center">
                     <hr>
-                    <i>Correspondence should be addressed to the Doctor - General</i>
+                    <i>Correspondence should be addressed to the Director - General</i>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-</div>
-
 <div class="container">
     <div class="row">
         <div class="pull-right">

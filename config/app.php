@@ -168,6 +168,10 @@ return [
         Collective\Bus\BusServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
 
+        /*
+         *--------------Genarate Data PDF-----------------
+        */
+        Barryvdh\DomPDF\serviceProvider::class,
     ],
 
     /*
@@ -217,6 +221,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'PDF'  => Barryvdh\DomPDF\Facade::class,
 
     ],
 
