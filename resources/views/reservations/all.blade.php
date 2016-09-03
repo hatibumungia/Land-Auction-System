@@ -6,7 +6,12 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-3">
+                @include('reservations.common.sidebar')
+            </div>            
+            <div class="col-sm-9">
+
+                @if(count($plot_reservations) > 0)
 
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -40,6 +45,15 @@
                         </tbody>
                     </table>
                 </div>
+
+                @else
+
+                    <div class="text-center" style="padding-top: 8em;">
+                        <p class="lead">You have not made any reservation, go to the welcome page to reserve a plot.</p>
+                        <h2>Click <a href="/">here</a> to choose a plot.</h2>
+                    </div>
+
+                @endif
 
             </div>
         </div>

@@ -17,6 +17,13 @@ class UserDetail extends Model
         'last_name',
         'email_address',
         'phone_number',
+        'region',
+        'district',
+        'ward',
+        'house_number',
+        'address',
+        'photo',
+        'registration_status',
         'password',
     ];
 

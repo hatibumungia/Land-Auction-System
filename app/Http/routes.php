@@ -105,7 +105,12 @@ $router->group([
 Route::get('/reservation', 'ReservationController@index');
 Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
 Route::get('/reservation/logout', 'ReservationController@logout');
+<<<<<<< HEAD
 Route::get('/reservation/testPrint', 'ReservationController@testPrint');
+=======
+Route::get('/reservation/complete-registration', 'ReservationController@completeRegistration');
+Route::post('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
+>>>>>>> d69ba028eb611d4cb90dade77d5dc98906022eb0
 
 Route::get('/applicants/login', 'ApplicantsController@login');
 Route::post('/applicants/auth/login', 'ApplicantsController@processLogin');
