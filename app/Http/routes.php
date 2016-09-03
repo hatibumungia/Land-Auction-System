@@ -105,16 +105,11 @@ $router->group([
 Route::get('/reservation', 'ReservationController@index');
 Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
 Route::get('/reservation/logout', 'ReservationController@logout');
-<<<<<<< HEAD
-=======
-Route::get('/reservation/complete-registration', 'ReservationController@completeRegistration');
-<<<<<<< HEAD
-Route::patch('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
-=======
-Route::post('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
->>>>>>> d69ba028eb611d4cb90dade77d5dc98906022eb0
->>>>>>> 79946b081fbdef80b2e3a84628758002a8ca2465
 
+Route::get('/reservation/complete-registration', 'ReservationController@completeRegistration');
+Route::patch('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
+
+Route::post('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
 Route::get('/applicants/login', 'ApplicantsController@login');
 Route::post('/applicants/auth/login', 'ApplicantsController@processLogin');
 
