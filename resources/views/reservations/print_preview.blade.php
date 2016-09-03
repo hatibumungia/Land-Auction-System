@@ -7,7 +7,7 @@
 
     <title>Print Preview</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css"  href="public/css/bootstrap.min.css"  />
 
     <style>
         body {
@@ -50,7 +50,7 @@
             height: 100px;
             position: block;
             float: left;
-            padding-left: 40%;
+            padding-left: 45%;
         }
         .uppercase { 
             text-transform: uppercase; 
@@ -77,7 +77,7 @@
                     </strong>
                 </div>
                 <div class="header-content-div2">
-                    <img src="E:\PROJECTS\Land-Auction-System\public\img\logo.PNG">
+                    <img src="../public/img/logo.png">
                 </div>
                 <div class="header-content-div">
                     <strong>
@@ -195,13 +195,5 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="pull-right">
-
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
