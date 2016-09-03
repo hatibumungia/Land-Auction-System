@@ -14,7 +14,7 @@
 
              @include('common.errors')
 
-            {!! Form::model($user_detail, ['action' => 'ReservationController@processCompleteRegistration', 'class' => 'form-horizontal', 'files' => true]) !!}
+            {!! Form::model($user_detail, ['method' => 'PATCH', 'action' => 'ReservationController@processCompleteRegistration', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                 @include('reservations.user._form')
 

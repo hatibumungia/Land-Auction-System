@@ -26,7 +26,6 @@ class CreateUserDetailRequest extends Request
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email_address' => 'required',
             'region' => 'required',
             'district' => 'required',
             'ward' => 'required',
