@@ -9,11 +9,9 @@ use App\UserCredential;
 use App\UserDetail;
 use Illuminate\Support\Facades\Session;
 use DB;
-<<<<<<< HEAD
 use PDF;
-=======
+
 use App\Http\Requests\CreateUserDetailRequest;
->>>>>>> d69ba028eb611d4cb90dade77d5dc98906022eb0
 
 class ReservationController extends Controller
 {
