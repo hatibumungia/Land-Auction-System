@@ -129,9 +129,6 @@ AND plot_assignment.plot_id=:plot_id
 
         if (sizeof($data) == 1){
 
-         /*   PDF::loadView('reservations.print_preview');
-            return stream('reservations.print_preview', compact('data')*/
-
         $getPDF=PDF::loadView('reservations.print_preview',compact('data'));
         return $getPDF->stream('reservations.print_preview.pdf',compact('data'));
 

@@ -7,8 +7,6 @@
 
     <title>Print Preview</title>
 
-   <link rel="stylesheet" type="text/css"  href="public/css/bootstrap.min.css"  />
-
     <style>
         body {
             font-family: "Times New Roman";
