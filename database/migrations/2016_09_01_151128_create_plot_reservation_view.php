@@ -29,7 +29,8 @@ user_details.last_name AS last_name,
 user_details.address AS address,
 user_details.region AS region,
 plot_reservation.created_at AS created_at,
-plot_reservation.user_detail_id AS user_credential_id
+plot_reservation.user_detail_id AS user_credential_id,
+user_details.photo AS photo
 FROM
 user_details, plots, blocks, areas, area_types, plot_assignment, area_assignment, plot_reservation
 WHERE
