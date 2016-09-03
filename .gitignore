@@ -54,5 +54,3 @@ Homestead.json
 
 # Logs and database
 *.log
-*.sql
-*.sqlite
