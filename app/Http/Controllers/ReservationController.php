@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests;
 use Auth;
 use App\UserCredential;
 use App\UserDetail;
 use Illuminate\Support\Facades\Session;
 use DB;
+use PDF;
 
 class ReservationController extends Controller
 {
@@ -114,6 +116,7 @@ AND plot_assignment.plot_id=:plot_id
     public function print_preview($plot_no)
     {
 
+
         $params = [
             'user_credential_id' => Session::get('id'),
             'plot_no' => $plot_no
@@ -123,7 +126,13 @@ AND plot_assignment.plot_id=:plot_id
 
 
         if (sizeof($data) == 1){
-            return view('reservations.print_preview', compact('data'));
+
+         /*   PDF::loadView('reservations.print_preview');
+            return stream('reservations.print_preview', compact('data')*/
+
+        $getPDF=PDF::loadView('reservations.print_preview',compact('data'));
+        return $getPDF->stream('reservations.print_preview.pdf',compact('data'));
+
         }else{
             return 'You are trying to steal. We will catch you.';
         }

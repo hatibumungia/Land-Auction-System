@@ -7,9 +7,14 @@
 
     <title>Print Preview</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ URL::to('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
+        @media print {
+            .container {
+                width: auto;
+            }
+        }
         body {
             font-family: "Times New Roman";
         }
@@ -163,9 +168,6 @@
         </div>
     </div>
 </div>
-
-</div>
-
 <div class="container">
     <div class="row">
         <div class="pull-right">
