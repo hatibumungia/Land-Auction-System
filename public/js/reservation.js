@@ -144,7 +144,7 @@ $(function () {
                     html += "<div class='modal-footer'>";
                     html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
 
-                    var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
+                    var reservation_url = "/createreservationsessioncontroller?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
 
                     var reservation_text = "<i class='fa fa-check'></i> Continue";
                     html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";

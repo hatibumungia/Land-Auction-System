@@ -27,4 +27,11 @@ class PlotTransactionRequest extends Request
             'transaction_number' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'transaction_number.required' => 'Tafadhali ingiza namba yako ya muamala'
+        ];
+    }
 }

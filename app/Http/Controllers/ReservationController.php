@@ -10,6 +10,7 @@ use App\UserDetail;
 use Illuminate\Support\Facades\Session;
 use DB;
 use PDF;
+use App\PlotReservation;
 
 use App\Http\Requests\CreateUserDetailRequest;
 
@@ -27,12 +28,90 @@ class ReservationController extends Controller
 
     public function index()
     {
-        if ($this->checkForParameters()) {
-            // return "no parameters";
-            
+        if (Session::has('temp_reservation_areaId') && Session::has('temp_reservation_area_type_id') && Session::has('temp_reservation_block_id') && Session::has('temp_reservation_plot_id')) {
 
 
-            $sql = "
+// Capture the session values
+            $params['temp_reservation_areaId'] = session('temp_reservation_areaId');
+            $params['temp_reservation_area_type_id'] = session('temp_reservation_area_type_id');
+            $params['temp_reservation_block_id'] = session('temp_reservation_block_id');
+            $params['temp_reservation_plot_id'] = session('temp_reservation_plot_id');
+
+            $areaId = session('temp_reservation_areaId');
+            $area_type_id = session('temp_reservation_area_type_id');
+            $block_id = session('temp_reservation_block_id');
+            $plot_id = session('temp_reservation_plot_id');
+
+            // Check if the plot is already taken
+            $sql_check_plot_status = '
+SELECT
+*
+FROM
+plot_assignment
+WHERE
+area_id=:temp_reservation_areaId AND
+areas_type_id=:temp_reservation_area_type_id AND
+block_id=:temp_reservation_block_id AND
+plot_id=:temp_reservation_plot_id AND
+status=0
+        ';
+
+            $plot_status = DB::select($sql_check_plot_status, $params);
+
+            if (count($plot_status) == 0) {
+                //session(['plot_status' => 'Sorry, The plot you chose has already been taken. Please choose another plot.']);
+                Session::flash('plot_status', 'Sorry, The plot you chose has already been taken. Please choose another plot.');
+            } else {
+                //session(['plot_status' => 'Thank you for reserving a plot, Now you must pay and complete the registration before printing the letter']);
+                Session::flash('plot_status', 'Thank you for reserving a plot, Now you must pay and complete the registration before printing the letter');
+
+                /* 1. insert into plot_reservations  table
+                 *
+                 *
+                 */
+
+                PlotReservation::create([
+                    'area_id' => $params['temp_reservation_areaId'],
+                    'areas_type_id' => $params['temp_reservation_area_type_id'],
+                    'block_id' => $params['temp_reservation_block_id'],
+                    'plot_id' => $params['temp_reservation_plot_id'],
+                    'user_detail_id' => session('id'),
+                    'deadline' => date('Y-m-d H:i:s', strtotime('+5 hours')),
+                    'created_at' => date('Y-m-d H:i:s')
+                ]);
+
+                // return 'plot_reservation inserted successfully';
+
+                /*
+                 * 2. Update the plot_assignment status
+                 */
+
+                $sql = "
+            UPDATE plot_assignment SET status = '1'
+            WHERE
+            plot_assignment.area_id = $areaId AND
+            plot_assignment.areas_type_id = $area_type_id AND
+            plot_assignment.block_id = $block_id AND
+            plot_assignment.plot_id = $plot_id
+        ";
+
+                $affected = DB::update($sql);
+
+                if (sizeof($affected) == 1) {
+                    // return "updatePlotAssignment succeeded";
+                } else {
+                    return "updatePlotAssignment failed";
+                }
+
+            }
+
+            Session::forget('temp_reservation_areaId');
+            Session::forget('temp_reservation_area_type_id');
+            Session::forget('temp_reservation_block_id');
+            Session::forget('temp_reservation_plot_id');
+        }
+
+        $sql = "
 SELECT
 plots.plot_no AS plot_no,
 blocks.name AS block,
@@ -40,7 +119,8 @@ areas.name AS location,
 area_types.name AS land_use,
 plot_assignment.size AS size,
 (plot_assignment.size * area_assignment.price) AS price,
-plot_reservation.deadline AS deadline
+plot_reservation.deadline AS deadline,
+plot_reservation.status
 FROM
 plots, blocks, areas, area_types, plot_assignment, area_assignment, plot_reservation
 WHERE
@@ -54,64 +134,16 @@ plot_assignment.block_id=plot_reservation.block_id AND
 plot_assignment.plot_id=plot_reservation.plot_id AND
 area_assignment.areas_type_id=plot_reservation.areas_type_id AND
 area_assignment.area_id=plot_reservation.area_id AND
-plot_reservation.user_detail_id=:user_detail_id               
-               
+plot_reservation.user_detail_id=:user_detail_id
+
                 ";
 
-            $plot_reservations = DB::select($sql, ['user_detail_id' => Session::get('id')]);
+        $plot_reservations = DB::select($sql, ['user_detail_id' => Session::get('id')]);
 
-            // return $plot_reservations;
-            
-            return view('reservations.all', compact('plot_reservations'));
-        } else {
-            // return "there is parameters";
+        // return $plot_reservations;
 
-            // TODO: make sure that the parameters are numbers and safe
+        return view('reservations.all', compact('plot_reservations'));
 
-            $params['area_id'] = $_GET['areaId'];
-            $params['area_type_id'] = $_GET['area_type_id'];
-            $params['block_id'] = $_GET['block_id'];
-            $params['plot_id'] = $_GET['plot_id'];
-
-            $sql = "
-SELECT
-plot_assignment.area_id,
-plot_assignment.areas_type_id,
-plot_assignment.block_id,
-plot_assignment.plot_id, 
-plots.plot_no as plot_no, 
-blocks.name as block, 
-areas.name as location, 
-area_types.name as land_use,
-plot_assignment.size as size, 
-area_assignment.price as price,
-block_assignment.file_name as file_name
-FROM areas, area_types, blocks, plots, plot_assignment,area_assignment, block_assignment 
-WHERE areas.area_id=plot_assignment.area_id 
-AND plots.plot_id=plot_assignment.plot_id
-AND area_types.areas_type_id=plot_assignment.areas_type_id 
-AND blocks.block_id=plot_assignment.block_id 
-AND area_assignment.area_id = plot_assignment.area_id 
-AND area_assignment.areas_type_id=plot_assignment.areas_type_id 
-AND block_assignment.area_id=plot_assignment.area_id 
-AND block_assignment.areas_type_id=plot_assignment.areas_type_id 
-AND plot_assignment.block_id=block_assignment.block_id 
-AND plot_assignment.area_id=:area_id
-AND plot_assignment.areas_type_id=:area_type_id
-AND plot_assignment.block_id=:block_id
-AND plot_assignment.plot_id=:plot_id        
-        ";
-
-            $unconfirmed_reservation = DB::select($sql, $params);
-
-            $user_credential = UserCredential::findOrFail(session('id'));
-
-            $user_detail = UserDetail::findOrFail($user_credential->user_detail_id);
-
-            return view('reservations.index', compact('user_detail', 'unconfirmed_reservation'));
-
-
-        }
 
     }
 
@@ -127,28 +159,30 @@ AND plot_assignment.plot_id=:plot_id
         $data = DB::select("SELECT * FROM plot_reservation_view WHERE plot_reservation_view.plot_no=:plot_no AND plot_reservation_view.user_credential_id=:user_credential_id LIMIT 0, 1", $params);
 
 
-        if (sizeof($data) == 1){
+        if (sizeof($data) == 1) {
 
-         /*   PDF::loadView('reservations.print_preview');
-            return stream('reservations.print_preview', compact('data')*/
+            /*   PDF::loadView('reservations.print_preview');
+               return stream('reservations.print_preview', compact('data')*/
 
-        $getPDF=PDF::loadView('reservations.print_preview',compact('data'));
-        return $getPDF->stream('reservations.print_preview.pdf',compact('data'));
+            $getPDF = PDF::loadView('reservations.print_preview', compact('data'));
+            return $getPDF->stream('reservations.print_preview.pdf', compact('data'));
 
-        }else{
+        } else {
             return 'You are trying to steal. We will catch you.';
         }
 
     }
 
-    public function completeRegistration()
+    public
+    function completeRegistration()
     {
         $user_detail = UserDetail::findOrFail(Session::get('id'));
 
         return view('reservations.complete_registration', compact('user_detail'));
     }
 
-    public function processCompleteRegistration(CreateUserDetailRequest $request)
+    public
+    function processCompleteRegistration(CreateUserDetailRequest $request)
     {
 
 
@@ -173,7 +207,7 @@ AND plot_assignment.plot_id=:plot_id
                 'ward' => $request->input('ward'),
                 'house_number' => $request->input('house_number'),
                 'registration_status' => 1,
-                ]);
+            ]);
 
             flash()->success('Updated successfully');
 
@@ -188,11 +222,12 @@ AND plot_assignment.plot_id=:plot_id
 
     }
 
-    public function logout()
+    public
+    function logout()
     {
-        
+
         // TODO: destory the session effectively
-        
+
         Session::flush();
 
         return redirect('/applicants/login');
