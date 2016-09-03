@@ -84,6 +84,7 @@ class PlotAssignmentController extends Controller
             }
 
             $plot_assignment->save();
+
         }
 
         flash()->success('Added successfully');
