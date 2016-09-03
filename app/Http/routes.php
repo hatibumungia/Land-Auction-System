@@ -106,7 +106,6 @@ Route::get('/reservation', 'ReservationController@index');
 Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
 Route::get('/reservation/logout', 'ReservationController@logout');
 <<<<<<< HEAD
-Route::get('/reservation/testPrint', 'ReservationController@testPrint');
 =======
 Route::get('/reservation/complete-registration', 'ReservationController@completeRegistration');
 <<<<<<< HEAD
