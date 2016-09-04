@@ -14,44 +14,51 @@ class PlotTransactionController extends Controller
 
     public function store(PlotTransactionRequest $request)
     {
+
         $transaction_number = $request->input('transaction_number');
         $plot_no = $request->input('plot_no');
         $user_detail_id = Session('id');
 
-        // check if the transaction number exists and has not been used
-        $operation1 = $this->updateTransactionNumbers($transaction_number, $user_detail_id);
-
-        // update the plot_reservation
-        $operation2 = $this->updatePlotReservation($plot_no, $user_detail_id);
-
-        if ($operation1 == 1 && $operation2 == 1) {
-            flash()->success('You have successfully paid for the plot');
+        if ($this->checkforTransactionNumberStatus($transaction_number) != 0) {
+            $this->updateTransactionNumbers($this->checkforTransactionNumberStatus($transaction_number), $user_detail_id);
+            $this->updatePlotReservation($plot_no, $user_detail_id);
+            flash()->success('Hongera, Umefanikiwa kulipia.');
+            return redirect('/reservation');
+        } else {
+            flash()->error('Namba ya muamala uliyo ingiza imeshatumika au haipo. Jaribu nyingine.');
             return redirect('/reservation');
         }
 
     }
 
-    public function updateTransactionNumbers($transaction_number, $user_detail_id)
+    public function checkforTransactionNumberStatus($transaction_number)
     {
-
         // get the ID of the transaction number
         $transaction_number_id = DB::SELECT('SELECT transaction_number_id FROM transaction_numbers WHERE transaction_number =:transaction_number AND status=0', ['transaction_number' => $transaction_number]);
 
         if (sizeof($transaction_number_id) == 1) {
-            $transaction_number_id = $transaction_number_id[0]->transaction_number_id;
-
-            $sql = "
-          UPDATE transaction_numbers SET 
-          status = '1',
-          user_detail_id = $user_detail_id, 
-          updated_at = date('Y-m-d H:i:s')
-          WHERE transaction_numbers.transaction_number_id = $transaction_number_id
-        ";
+            // has not been used
+            return $transaction_number_id[0]->transaction_number_id;
+        } else {
+            // has already been used
+            return 0;
         }
 
+    }
+
+    public function updateTransactionNumbers($transaction_number_id, $user_detail_id)
+    {
+
+        $sql = "
+                  UPDATE transaction_numbers SET
+                  status = '1',
+                  user_detail_id = $user_detail_id,
+                  updated_at = date('Y-m-d H:i:s')
+                  WHERE transaction_numbers.transaction_number_id = $transaction_number_id
+                ";
         $affected = DB::update($sql);
 
-        if (sizeof($affected) == 1) {
+        if ($affected == 1) {
             return 1;
         } else {
             return 0;
@@ -68,6 +75,10 @@ class PlotTransactionController extends Controller
 
         $affected = DB::update($sql, $params);
 
-        return $affected;
+        if ($affected == 1) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
