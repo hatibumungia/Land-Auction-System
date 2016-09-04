@@ -19,15 +19,15 @@
 <div class="row">
 	<ol class="breadcrumb">
 		<li>
-			<a href="/admin/dashboard">Home</a>
+			<a href="/admin/dashboard">Nyumbani</a>
 		</li>
 		<li>
-			<a href="/admin/block-assignments">Block Assignment</a>
+			<a href="/admin/block-assignments">Ramani za vitalu</a>
 		</li>
-		<li class="active">Assign</li>
+		<li class="active">Pakia</li>
 	</ol>
 
-    <h3>Block Assignment</h3>
+    <h3>Pakia ramani za vitalu</h3>
 
     <div class="well">
 
@@ -39,7 +39,7 @@
 
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-3">
-                <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
             </div>
         </div>
 

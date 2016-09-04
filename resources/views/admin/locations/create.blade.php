@@ -23,12 +23,12 @@
 				<a href="/admin/dashboard">Home</a>
 			</li>
 			<li>
-				<a href="/admin/locations">Locations</a>
+				<a href="/admin/locations">Maeneo</a>
 			</li>
-			<li class="active">Add</li>
+			<li class="active">Ongeza</li>
 		</ol>
 
-    <h3>Add a Location</h3>
+    <h3>Ongeza eneo</h3>
 
     <div class="well">
 
@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
             </div>
         </div>
 

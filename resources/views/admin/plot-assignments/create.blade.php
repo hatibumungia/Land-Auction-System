@@ -22,13 +22,13 @@
                 <a href="/admin/dashboard">Home</a>
             </li>
             <li>
-                <a href="/admin/plot-assignments">Plot Assignments</a>
+                <a href="/admin/plot-assignments">Ukubwa wa viwanja</a>
             </li>
-            <li class="active">Assign</li>
+            <li class="active">Weka</li>
         </ol>
 
 
-        <h3>Plot Assignment</h3>
+        <h3>Ukubwa wa viwanja</h3>
 
         <div class="well">
 
@@ -40,7 +40,7 @@
 
             <div class="form-group">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-upload"></i> Upload</button>
+                    <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-upload"></i> Pakia</button>
                 </div>
             </div>
 

@@ -18,37 +18,40 @@
 
     <ol class="breadcrumb">
         <li>
-            <a href="#">Home</a>
+            <a href="/admin/dashboard">Nyumbani</a>
         </li>
         <li>
-            <a href="#">Link</a>
+            Admini
         </li>
-        <li class="active">Current</li>
     </ol>
 
     <div class="row text-center">
         <div class="col-xs-12 col-sm-3">
             <div class="well">
+                <small>Jumla ya Maeneo</small>
                 <h2>10</h2>
-                <small>Locations</small>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-3">
             <div class="well">
+                <small>Jumla ya Matumizi ya ardhi</small>
                 <h2>7</h2>
-                <small>Land uses</small>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-3">
             <div class="well">
+                <small>Jumla ya Vitalu</small>
                 <h2>15</h2>
-                <small>Blocks</small>
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-3">
             <div class="well">
+                <small>Jumla ya Viwanja</small>
                 <h2>43</h2>
-                <small>Plots</small>
+
             </div>
         </div>
     </div>
