@@ -10,6 +10,7 @@ class CreateReservationSessionController extends Controller
 {
     public function index()
     {
+
         session([
             'temp_reservation_areaId' => $_GET['areaId'],
             'temp_reservation_area_type_id' => $_GET['area_type_id'],

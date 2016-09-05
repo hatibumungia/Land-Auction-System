@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title', 'All Reservations')
+@section('page_title', 'Viwanja Vyako')
 
 @section('content')
 
@@ -19,7 +19,7 @@
                 @if(count($plot_reservations) > 0)
 
                     <div class="page-header">
-                        <h3>Your Plots</h3>
+                        <h3>Viwanja Ulivyovihifadhi</h3>
                     </div>
 
 
@@ -29,51 +29,50 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Plot #</th>
-                                <th>Block</th>
-                                <th>Location</th>
-                                <th>Land Use</th>
-                                <th>Size</th>
-                                <th>Price</th>
-                                <th>Deadline</th>
-                                <th>Status</th>
+                                <th>Namba ya Kiwanja</th>
+                                <th>Kitalu</th>
+                                <th>Eneo</th>
+                                <th>Matumizi ya Ardhi</th>
+                                <th>Ukubwa (Mita za Mraba)</th>
+                                <th>Gharama</th>
+                                <th>Mwisho wa Kulipia</th>
+                                <th>Hadhi</th>
                                 <th><i class="fa fa-print"></i></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($plot_reservations as $plot_reservation)
                                 <tr>
-                                    <td>{{ $plot_reservation->plot_no  }}</td>
-                                    <td>{{ $plot_reservation->block  }}</td>
-                                    <td>{{ $plot_reservation->location  }}</td>
-                                    <td>{{ $plot_reservation->land_use  }}</td>
-                                    <td>{{ $plot_reservation->size  }}</td>
-                                    <td>{{ $plot_reservation->size * $plot_reservation->price  }}</td>
-                                    <td>{{ $plot_reservation->deadline  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->plot_no  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->block  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->location  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->land_use  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->size  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->size * $plot_reservation->price  }}</td>
+                                    <td class="text-center">{{ $plot_reservation->deadline  }}</td>
                                     <td>
                                         @if($plot_reservation->status == 0)
 
-                                            <a class="btn btn-primary btn-sm" data-toggle="modal"
-                                               href='#{{ $plot_reservation->plot_no  }}'><i
-                                                        class="fa fa-money"></i> Pay</a>
+                                            <a class="btn btn-primary" data-toggle="modal"
+                                               href='#{{ $plot_reservation->plot_no  }}'>Lipa</a>
                                             <div class="modal fade" id="{{ $plot_reservation->plot_no  }}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-hidden="true">&times;</button>
-                                                            <h4 class="modal-title">Application Payment</h4>
+                                                            <h4 class="modal-title">Malipa ya maombi ya kiwanja</h4>
                                                         </div>
                                                         <div class="modal-body">
 
                                                             {!! Form::open(['action' => ['PlotTransactionController@store']]) !!}
 
                                                             <div class="form-group">
-                                                                {!! Form::label('transaction_number') !!}
-                                                                {!! Form::text('transaction_number', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                                                {!! Form::label('transaction_number', 'Namba ya Muamala') !!}
+                                                                {!! Form::text('transaction_number', null, ['class' => 'form-control', 'placeholder' => 'Mfano. 3HS474J48', 'required' => 'required']) !!}
                                                             </div>
 
-                                                            {!! Form::hidden('plot_no', $plot_reservation->plot_no) !!}
+                                                            {!! Form::hidden('plot_id', $plot_reservation->plot_id) !!}
 
 
                                                             <div class="modal-footer">
@@ -81,22 +80,32 @@
                                                                         data-dismiss="modal">
                                                                     Cancel
                                                                 </button>
-                                                                <button type="submit" class="btn btn-primary">Submit
+                                                                <button type="submit" class="btn btn-primary"> Endelea
                                                                 </button>
                                                             </div>
 
-                                                                {!! Form::close() !!}
-                                                            </div>
+                                                            {!! Form::close() !!}
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
 
-                                                @else
-                                                    <span class="label label-success"><i class="fa fa-check"></i> Paid</span>
+                                        @else
+                                            <strong>Kimelipiwa</strong>
                                     @endif
-                                    <td><a href="/reservation/print-preview/{{ $plot_reservation->plot_no }}"
-                                           class="btn btn-primary btn-sm"><i class="fa fa-file-pdf-o"></i> Print</a>
+                                    <td>
+                                        @if($plot_reservation->status == 1)
+
+                                            <a href="/reservation/print-preview/{{ $plot_reservation->plot_no }}"
+                                               class="btn btn-primary">Barua</a>
+
+                                        @else
+
+                                            <strong>Hakijalipiwa
+                                            </strong>
+                                        @endif
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -107,8 +116,8 @@
                 @else
 
                     <div class="text-center" style="padding-top: 8em;">
-                        <p class="lead">You have not made any reservation, go to the welcome page to reserve a plot.</p>
-                        <h2>Click <a href="/">here</a> to choose a plot.</h2>
+                        <p class="lead">Paka sasa haujachagua kiwanja chochote.</p>
+                        <h2>Bonyeza <a href="/">hapa</a> kuchagua kiwanja.</h2>
                     </div>
 
                 @endif

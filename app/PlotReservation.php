@@ -13,7 +13,8 @@ class PlotReservation extends Model
         'plot_id',
         'user_detail_id',
         'deadline',
-        'created_at'
+        'created_at',
+        'status',
     ];
 
     protected $table = "plot_reservation";

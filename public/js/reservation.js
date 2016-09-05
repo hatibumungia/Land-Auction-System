@@ -129,7 +129,7 @@ $(function () {
                     html += "<div class='col-sm-2'><strong>Kitalu</strong></div>";
                     html += "<div class='col-sm-2'><strong>Eneo</strong></div>";
                     html += "<div class='col-sm-2'><strong>Ukubwa (mita za mraba)</strong></div>";
-                    html += "<div class='col-sm-2'><strong>Dgarama (TZS)</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Gharama (TZS)</strong></div>";
                     html += "</div>";
 
                     html += "<div class='row'>";
@@ -144,7 +144,7 @@ $(function () {
                     html += "<div class='modal-footer'>";
                     html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Sitisha</button>";
 
-                    var reservation_url = "/createreservationsessioncontroller?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
+                    var reservation_url = "/createreservationsessioncontroller?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_id;
 
                     var reservation_text = "<i class='fa fa-check'></i> Endelea";
                     html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";

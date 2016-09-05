@@ -15,13 +15,15 @@ class PlotTransactionController extends Controller
     public function store(PlotTransactionRequest $request)
     {
 
+
+
         $transaction_number = $request->input('transaction_number');
-        $plot_no = $request->input('plot_no');
+        $plot_id = $request->input('plot_id');
         $user_detail_id = Session('id');
 
         if ($this->checkforTransactionNumberStatus($transaction_number) != 0) {
             $this->updateTransactionNumbers($this->checkforTransactionNumberStatus($transaction_number), $user_detail_id);
-            $this->updatePlotReservation($plot_no, $user_detail_id);
+            $this->updatePlotReservation($plot_id, $user_detail_id);
             flash()->success('Hongera, Umefanikiwa kulipia.');
             return redirect('/reservation');
         } else {
@@ -53,7 +55,7 @@ class PlotTransactionController extends Controller
                   UPDATE transaction_numbers SET
                   status = '1',
                   user_detail_id = $user_detail_id,
-                  updated_at = date('Y-m-d H:i:s')
+                  updated_at = NOW()
                   WHERE transaction_numbers.transaction_number_id = $transaction_number_id
                 ";
         $affected = DB::update($sql);
@@ -71,7 +73,7 @@ class PlotTransactionController extends Controller
         $params['plot_id'] = $plot_id;
         $params['user_detail_id'] = $user_detail_id;
 
-        $sql = 'UPDATE plot_reservation SET plot_reservation.status="1" WHERE plot_reservation.plot_id=:plot_id AND plot_reservation.user_detail_id=:user_detail_id';
+        $sql = 'UPDATE plot_reservation SET plot_reservation.status=1 WHERE plot_reservation.plot_id=:plot_id AND plot_reservation.user_detail_id=:user_detail_id';
 
         $affected = DB::update($sql, $params);
 

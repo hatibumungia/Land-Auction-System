@@ -59,11 +59,10 @@ status=0
             $plot_status = DB::select($sql_check_plot_status, $params);
 
             if (count($plot_status) == 0) {
-                //session(['plot_status' => 'Sorry, The plot you chose has already been taken. Please choose another plot.']);
-                Session::flash('plot_status', 'Sorry, The plot you chose has already been taken. Please choose another plot.');
+                Session::flash('plot_status', 'Samahani, kiwanja ulichochagua kimeshachukuliwa. Tafadhali chagua kiwanja kingine.');
             } else {
                 //session(['plot_status' => 'Thank you for reserving a plot, Now you must pay and complete the registration before printing the letter']);
-                Session::flash('plot_status', 'Thank you for reserving a plot, Now you must pay and complete the registration before printing the letter');
+                Session::flash('plot_status', 'Ahsante kwa kuchagua kiwanja, Sasa unatakiwa ulipe gharama ya maombi ya kiwanja na ukamilishe usajili wako ili upate barua ya maombi.');
 
                 /* 1. insert into plot_reservations  table
                  *
@@ -77,7 +76,7 @@ status=0
                     'plot_id' => $params['temp_reservation_plot_id'],
                     'user_detail_id' => session('id'),
                     'deadline' => date('Y-m-d H:i:s', strtotime('+5 hours')),
-                    'created_at' => date('Y-m-d H:i:s')
+                    'created_at' => date('Y-m-d H:i:s'),
                 ]);
 
                 // return 'plot_reservation inserted successfully';
@@ -113,6 +112,7 @@ status=0
 
         $sql = "
 SELECT
+plots.plot_id as plot_id, 
 plots.plot_no AS plot_no,
 blocks.name AS block,
 areas.name AS location,
@@ -170,10 +170,10 @@ plot_reservation.user_detail_id=:user_detail_id
                 return $getPDF->stream('reservations.print_preview.pdf', compact('data'));
 
             } else {
-                return 'You are trying to steal. We will catch you.';
+                return 'Hauruhusiwi kufanya hivyo';
             }
         }else{
-            flash()->info('Kamilisha usajili kwanza ili uweze kuipata barua yako.');
+            flash()->info('Kamilisha usajili kwanza ili uweze kuipata barua yako ya maombi ya kiwanja.');
             return redirect('/reservation/complete-registration');
         }
 
@@ -223,13 +223,13 @@ plot_reservation.user_detail_id=:user_detail_id
                 'registration_status' => 1,
             ]);
 
-            flash()->success('Updated successfully');
+            flash()->success('Zimefanikiwa kuhifadhiwa');
 
             return redirect('reservation/complete-registration');
 
 
         } else {
-            flash()->error('File upload failed. Please try again later.');
+            flash()->error('Picha yako haijafanikiwa kupakiwa. Tafadhali jaribu tena baadae.');
 
             return redirect('reservation/complete-registration');
         }
