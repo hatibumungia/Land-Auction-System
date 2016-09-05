@@ -81,10 +81,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     @if(Session::has('username'))
-                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Home</a>
+                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Nyumbani</a>
                         </li>
                     @endif
-                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search <i
+                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta <i
                                     class="fa fa-search"></i></a></li>
                 </ul>
 
