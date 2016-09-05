@@ -85,12 +85,9 @@
                         <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Nyumbani</a>
                         </li>
                     @endif
-<<<<<<< HEAD
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta <i
                                     class="fa fa-search"></i></a></li>
-=======
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search </a></li>
->>>>>>> 659b22219fd8828cb485c77a92b71b654016be29
                 </ul>
 
                 {{--
