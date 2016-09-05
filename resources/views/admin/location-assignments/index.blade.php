@@ -115,7 +115,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3 class="text-center">No location added yet</h3>
+                <h3 class="text-center">Kwa muda huu hakuna</h3>
             </div>
 
         @endif

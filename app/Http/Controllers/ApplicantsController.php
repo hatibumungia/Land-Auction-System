@@ -39,7 +39,7 @@ class ApplicantsController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
-        flash()->success('Registered successfully. Now login');
+        flash()->success('Umefanikiwa kujisajili. Sasa ingia');
 
         return redirect('applicants/login');
     }
@@ -50,7 +50,7 @@ class ApplicantsController extends Controller
         $user = UserCredential::checkLogin($request->input('username'), $request->input('password'));
 
         if (!$user) {
-            flash()->error('Invalid username or password');
+            flash()->error('Umekosea namba ya simu au nywila');
 
             return redirect('/applicants/login');
 
@@ -60,10 +60,6 @@ class ApplicantsController extends Controller
 
             return redirect('/reservation');
         }
-
-        flash()->success('Registered successfully. Now login');
-
-        return redirect('applicants/login');
     }
 
 

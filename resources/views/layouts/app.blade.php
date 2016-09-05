@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    {{--<link rel="stylesheet" href="/css/bootstrap.min.css">--}}
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/css/admin.css">
