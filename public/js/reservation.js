@@ -122,7 +122,7 @@ $(function () {
                     html += "</div>";
                     html += "<div class='modal-body'>";
 
-                    html += "<h4>Reservation Summary</h4>";
+                    html += "<h4>Taarifa za kiwanja ulichochagua</h4>";
 
                     html += "<div class='row'>";
                     html += "<div class='col-sm-2'><strong>Namba ya kiwanja</strong></div>";

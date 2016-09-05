@@ -40,6 +40,12 @@ class CreateUserDetailRequest extends Request
         return [
             'first_name.required' => 'Jina la kwanza linahitajika',
             'last_name.required' => 'Jina la mwisho linahitajika',
+            'region.required' => 'Mkoa unahitajika',
+            'district.required' => 'Wilaya inahitajika',
+            'ward.required' => 'Kata inahitajika',
+            'house_number.required' => 'Namba ya nyumba inahitajika',
+            'address.required' => 'Unuani inahitajika',
+            'photo' => 'Pasipoti inahitajika',
         ];
     }
 }

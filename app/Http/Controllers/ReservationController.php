@@ -151,27 +151,44 @@ plot_reservation.user_detail_id=:user_detail_id
     {
 
 
-        $params = [
-            'user_credential_id' => Session::get('id'),
-            'plot_no' => $plot_no
-        ];
+        $registration_status = $this->checkRegistrationStatus(Session::get('id'));
 
-        $data = DB::select("SELECT * FROM plot_reservation_view WHERE plot_reservation_view.plot_no=:plot_no AND plot_reservation_view.user_credential_id=:user_credential_id LIMIT 0, 1", $params);
+        $registration_status = $registration_status[0]->registration_status;
+
+        if ($registration_status == 1) {
+            $params = [
+                'user_credential_id' => Session::get('id'),
+                'plot_no' => $plot_no
+            ];
+
+            $data = DB::select("SELECT * FROM plot_reservation_view WHERE plot_reservation_view.plot_no=:plot_no AND plot_reservation_view.user_credential_id=:user_credential_id LIMIT 0, 1", $params);
 
 
-        if (sizeof($data) == 1) {
+            if (sizeof($data) == 1) {
 
-        $getPDF=PDF::loadView('reservations.print_preview',compact('data'));
-        return $getPDF->stream('reservations.print_preview.pdf',compact('data'));
+                $getPDF = PDF::loadView('reservations.print_preview', compact('data'));
+                return $getPDF->stream('reservations.print_preview.pdf', compact('data'));
 
-        } else {
-            return 'You are trying to steal. We will catch you.';
+            } else {
+                return 'You are trying to steal. We will catch you.';
+            }
+        }else{
+            flash()->info('Kamilisha usajili kwanza ili uweze kuipata barua yako.');
+            return redirect('/reservation/complete-registration');
         }
 
     }
 
-    public
-    function completeRegistration()
+    public function checkRegistrationStatus($user_detail_id_)
+    {
+        $sql = "SELECT user_details.registration_status FROM user_details WHERE user_detail_id=:user_detail_id";
+
+        $registration_status = DB::select($sql, ['user_detail_id' => $user_detail_id_]);
+
+        return $registration_status;
+    }
+
+    public function completeRegistration()
     {
         $user_detail = UserDetail::findOrFail(Session::get('id'));
 
