@@ -20,23 +20,23 @@
 
 <ol class="breadcrumb">
 	<li>
-		<a href="/admin/dashboard">Home</a>
+		<a href="/admin/dashboard">Nyumbani</a>
 	</li>
 	<li>
-		<a href="/admin/plot-assignments">Plot Assignments</a>
+		<a href="/admin/plot-assignments">Ukubwa wa viwanja</a>
 	</li>
-	<li class="active">All</li>
+	<li class="active">Vyote</li>
 </ol>
 
-        <a href="/admin/plot-assignments/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Assign</a>
+        <a href="/admin/plot-assignments/create" class="btn btn-primary"><i class="fa fa-plus-square-o"></i>
+            Weka</a>
     </div>
 
     <br>
 
     <div class="row">
 
-        <h3>Plots</h3>
+        <h3>Viwanja</h3>
 
         @if(count($plot_assignments) > 0)
 
@@ -44,20 +44,20 @@
             <table id="locationsTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Location</th>
-                    <th>Land use</th>
-                    <th>Block</th>
-                    <th>Plot #</th>
-                    <th>Size</th>
+                    <th>Eneo</th>
+                    <th>Matumizi ya kiwanja</th>
+                    <th>Kitalu</th>
+                    <th>Namba ya kiwanja</th>
+                    <th>Ukubwa</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>Location</th>
-                    <th>Land use</th>
-                    <th>Block</th>
-                    <th>Plot #</th>
-                    <th>Size</th>
+                    <th>Eneo</th>
+                    <th>Matumizi ya kiwanja</th>
+                    <th>Kitalu</th>
+                    <th>Namba ya kiwanja</th>
+                    <th>Ukubwa</th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -80,7 +80,7 @@
         @else
 
             <div class="alert alert-info alert-important">
-                <h3 class="text-center">No plot is assigned yet</h3>
+                <h3 class="text-center">Hakuna ukubwa wa kiwanja chochote uliwekwa kwa muda huu</h3>
             </div>
 
         @endif

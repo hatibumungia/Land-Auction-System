@@ -87,7 +87,7 @@ class PlotAssignmentController extends Controller
 
         }
 
-        flash()->success('Added successfully');
+        flash()->success('Imefanikiwa kuwekwa');
 
         return redirect('admin/plot-assignments');
 

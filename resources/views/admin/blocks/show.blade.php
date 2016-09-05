@@ -28,7 +28,7 @@
 				</div>
 				<div class="modal-body">
 
-					<p class="lead">Are you sure that you want to delete <strong>{{ $block->name }}</strong> ?</p>
+					<p class="lead">Je, una uhakika kwamba unataka kufuta <strong>{{ $block->name }}</strong> ?</p>
 
 				</div>
 				<div class="modal-footer">

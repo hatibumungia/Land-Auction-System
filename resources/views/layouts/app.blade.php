@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {{--<link rel="stylesheet" href="/css/bootstrap.min.css">--}}
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/css/admin.css">
@@ -84,8 +85,12 @@
                         <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Nyumbani</a>
                         </li>
                     @endif
+<<<<<<< HEAD
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta <i
                                     class="fa fa-search"></i></a></li>
+=======
+                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search </a></li>
+>>>>>>> 659b22219fd8828cb485c77a92b71b654016be29
                 </ul>
 
                 {{--
@@ -113,9 +118,9 @@
                     <!-- Authentication Links -->
                     @if (!Session::has('username'))
                         <li @if(Request::is('applicants/login')) class="active" @endif><a
-                                    href="{{ url('/applicants/login') }}">Login</a></li>
+                                    href="{{ url('/applicants/login') }}">Ingia</a></li>
                         <li @if(Request::is('applicants/register')) class="active" @endif><a
-                                    href="{{ url('/applicants/register') }}">Register</a></li>
+                                    href="{{ url('/applicants/register') }}">Jisajili</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -123,7 +128,7 @@
                                 <i class="fa fa-user"></i> {{{ Session::get('username')  }}} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/reservation/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+                                <li><a href="{{ url('/reservation/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Toka</a>
                                 </li>
                             </ul>
                         </li>
