@@ -27,6 +27,6 @@ class CreateUserCredentialsTrigger extends Migration
      */
     public function down()
     {
-        //
+        DB::unprepared('DROP PROCEDURE IF EXISTS tr_User_Credentials');
     }
 }
