@@ -120,7 +120,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                <i class="fa fa-user"></i> {{{ Session::get('username')  }}} <span class="caret"></span>
+                                <i class="fa fa-user"></i> {{ Session::get('username') }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/reservation/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Toka</a>
