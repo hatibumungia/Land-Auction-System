@@ -12,7 +12,10 @@ class CreatePlotReservationTable extends Migration
      */
     public function up()
     {
-        Schema::create('plot_reservation', function (Blueprint $table) {
+        Schema::create(/**
+         * @param Blueprint $table
+         */
+            'plot_reservation', function (Blueprint $table) {
             $table->integer('area_id')->unsigned();
             $table->foreign('area_id')->references('area_id')->on('plot_assignment')->onDelete('cascade');
 
@@ -31,6 +34,8 @@ class CreatePlotReservationTable extends Migration
             $table->timestamp('deadline');
 
             $table->timestamp('created_at');
+
+            $table->integer('status')->unsigned()->length(1)->defalt(0);
 
             $table->primary(['area_id','areas_type_id','plot_id','block_id']);
         });

@@ -17,7 +17,7 @@
 
                         {!! Form::open(['url' => '/applicants/auth/register', 'class' => 'form-horizontal']) !!}
                         <div class="form-group">
-                            {!! Form::label('first_name', 'Jina la kwanza *', ['class' => 'col-sm-3 control-label']) !!}
+                            {!! Form::label('first_name', 'Jina la kwanza * ', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
                                 {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Joseph']) !!}
                             </div>
