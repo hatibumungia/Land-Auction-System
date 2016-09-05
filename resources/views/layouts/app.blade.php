@@ -87,7 +87,6 @@
                     @endif
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta <i
                                     class="fa fa-search"></i></a></li>
-                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Search </a></li>
                 </ul>
 
                 {{--
