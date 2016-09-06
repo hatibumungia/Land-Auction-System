@@ -151,8 +151,10 @@
         @else
 
             <div class="row">
-                <div class="col-sm-12-text-center">
-                    <h2>Hakuna viwanja vyovyote kwa sasa. Tafadhali tutembelee baada ya muda.</h2>
+                <div class="col-sm-12 text-center">
+                    <div class="alert alert-danger">
+                        <h3>Hakuna viwanja vyovyote kwa sasa. Tafadhali tutembelee baada ya muda.</h3>
+                    </div>
                 </div>
             </div>
 
