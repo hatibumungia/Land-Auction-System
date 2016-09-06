@@ -45,19 +45,9 @@
 </head>
 <body id="app-layout">
 
-{{--Banner--}}
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <img src="/img/banner.png" class="img-responsive" alt="Banner" style="width: 100%;">
-        </div>
-    </div>
-</div>
-{{--//Banner--}}
-
 
 {{--Navbar--}}
-<div class="container">
+<div class="container-fluid">
     <nav id="admin-nav" class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">

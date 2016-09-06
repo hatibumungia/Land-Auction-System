@@ -1,19 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.auth-user')
 
 @section('page_title', 'Viwanja Vyako')
 
 @section('content')
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 @include('reservations.common.sidebar')
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-10">
 
 
                 <div class="text-center">
-                    <p class="lead">{{ Session::get('plot_status') }}</p>
+                    @if(Session::has('plot_status'))
+                        <div class="alert alert-info">
+
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                            <p class="lead">{{ Session::get('plot_status') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 @if(count($plot_reservations) > 0)
@@ -36,7 +43,6 @@
                                 <th>Ukubwa (Mita za Mraba)</th>
                                 <th>Gharama</th>
                                 <th>Mwisho wa Kulipia</th>
-                                <th>Hadhi</th>
                                 <th><i class="fa fa-print"></i></th>
                             </tr>
                             </thead>
@@ -54,7 +60,9 @@
                                         @if($plot_reservation->status == 0)
 
                                             <a class="btn btn-primary" data-toggle="modal"
-                                               href='#{{ $plot_reservation->plot_no  }}'>Lipa</a>
+                                               href='#{{ $plot_reservation->plot_no  }}'
+                                               title="Bonyeza hapa ulipie maombi ya hiki kiwanja"><i
+                                                        class="fa fa-mobile-phone"></i> Lipa</a>
                                             <div class="modal fade" id="{{ $plot_reservation->plot_no  }}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -92,21 +100,10 @@
 
 
                                         @else
-                                            <strong>Kimelipiwa</strong>
-                                    @endif
-                                    <td>
-                                        @if($plot_reservation->status == 1)
-
                                             <a href="/reservation/print-preview/{{ $plot_reservation->plot_no }}"
-                                               class="btn btn-primary">Barua</a>
-
-                                        @else
-
-                                            <strong>Hakijalipiwa
-                                            </strong>
-                                        @endif
-
-                                    </td>
+                                               class="btn btn-success"
+                                               title="Bonyeza hapa kupata barua ya maombi ya hiki kiwanja">Barua</a>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

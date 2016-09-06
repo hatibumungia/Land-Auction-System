@@ -21,22 +21,27 @@
                 {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Hatibu']) !!}
             </div>
         </div>
-        <div class="form-group">
-            <label for="photo" class="col-sm-3 control-label">Picha * </label>
-            <div class="col-sm-9">
-                <div class="thumbnail">
-                    <img src="/img/uploads/avatars/{{ $user_detail->photo }}" class="img-responsive" height="320"
-                         width="240"
-                         alt="{{ $user_detail->first_name }}&nbsp;{{ $user_detail->middle_name }}&nbsp;{{ $user_detail->last_name }}">
+        @if($user_detail->photo == null)
+            <div class="form-group">
+                <label for="photo" class="col-sm-3 control-label">Badilisha</label>
+                <div class="col-sm-9">
+                    <input type="file" name="photo" value="{{ $user_detail->photo }}">
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="photo" class="col-sm-3 control-label">Badilisha</label>
-            <div class="col-sm-9">
-                <input type="file" name="photo" value="{{ $user_detail->photo }}">
+        @else
+            {!! Form::hidden('photo') !!}
+            <div class="form-group">
+                <label for="photo" class="col-sm-3 control-label">Picha * </label>
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img src="/img/uploads/avatars/{{ $user_detail->photo }}" class="img-responsive" height="280"
+                             width="200"
+                             alt="{{ $user_detail->first_name }}&nbsp;{{ $user_detail->middle_name }}&nbsp;{{ $user_detail->last_name }}">
+                    </div>
+                </div>
             </div>
-        </div>
+        @endif
+
     </div>
 </div>
 

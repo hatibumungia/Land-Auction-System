@@ -13,7 +13,7 @@ $(function () {
     function getSearchResults(parameters) {
         var params = parameters.params;
 
-        $('#searchResults').html("<table id='example' class='display' cellspacing='0' width='100%'><thead><tr><th>Location</th><th>Matumizi ya Ardhi</th><th>Kitalu</th><th>Namba ya Kiwanja</th><th>Ukubwa</th><th>Gharama</th></tr></thead><tfoot><tr><th>Eneo</th><th>Matumizi ya Ardhi</th><th>kitalu</th><th>Namba ya Kiwanja</th><th>Ukubwa</th><th>Gharama</th></tr></tfoot></table>");
+        $('#searchResults').html("<table id='example' class='display' cellspacing='0' width='100%'><thead><tr><th>Eneo</th><th>Matumizi ya Ardhi</th><th>Kitalu</th><th>Namba ya Kiwanja</th><th>Ukubwa</th><th>Gharama</th></tr></thead><tfoot><tr><th>Eneo</th><th>Matumizi ya Ardhi</th><th>kitalu</th><th>Namba ya Kiwanja</th><th>Ukubwa</th><th>Gharama</th></tr></tfoot></table>");
 
         var url = '/search/performSearch?' + params;
         $('#example').DataTable({

@@ -117,7 +117,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3>No block added yet</h3>
+                <h3>Hakuna kitalu kilichowekwa kwa sasa</h3>
             </div>
 
         @endif

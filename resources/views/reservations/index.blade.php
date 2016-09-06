@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth-user')
 
 @section('page_title', 'Reservation')
 

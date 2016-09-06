@@ -94,7 +94,7 @@ $(function () {
 
                 var html = "";
 
-                html += "<div class='panel-heading'><h3 class='panel-title'>Viwanja</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Namba ya Kiwanja</th><th>Kitalu</th><th>Eneo</th><th>Ukubwa (Mita za Mraba)</th><th>Gharama (TZS)</th><th>Hifadhi</th></tr></thead><tbody>";
+                html += "<div class='panel-heading'><h3 class='panel-title'><strong>Orodha ya Viwanja</strong></h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Namba ya Kiwanja</th><th>Kitalu</th><th>Eneo</th><th>Ukubwa (Mita za Mraba)</th><th>Gharama (TZS)</th><th>Hifadhi</th></tr></thead><tbody>";
 
 
                 for (var i = 0; i < jsonData.length; i++) {
@@ -118,11 +118,9 @@ $(function () {
                     html += "<div class='modal-content'>";
                     html += "<div class='modal-header'>";
                     html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
-                    html += "<h4 class='modal-title'>" + "#" + counter.plot_no + "</h4>";
+                    html += "<h4 class='modal-title'>Taarifa za kiwanja ulichochagua</h4>";
                     html += "</div>";
                     html += "<div class='modal-body'>";
-
-                    html += "<h4>Taarifa za kiwanja ulichochagua</h4>";
 
                     html += "<div class='row'>";
                     html += "<div class='col-sm-2'><strong>Namba ya kiwanja</strong></div>";
