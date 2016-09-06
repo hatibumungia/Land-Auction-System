@@ -63,9 +63,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="address" class="col-sm-3 control-label">Anuwani * </label>
+            <label for="address" class="col-sm-3 control-label">S.L.P * </label>
             <div class="col-sm-9">
-                {!! Form::textarea('address', null, ['class' => 'form-control', 'placeholder' => '5500']) !!}
+                {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '5500']) !!}
             </div>
         </div>
     </div>

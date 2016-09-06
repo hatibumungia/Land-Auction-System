@@ -54,7 +54,6 @@ class PlotTransactionController extends Controller
         $sql = "
                   UPDATE transaction_numbers SET
                   status = '1',
-                  user_detail_id = $user_detail_id,
                   updated_at = NOW()
                   WHERE transaction_numbers.transaction_number_id = $transaction_number_id
                 ";
