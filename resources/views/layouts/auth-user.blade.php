@@ -129,13 +129,17 @@
 {{--Notification--}}
 <div class="container text-center">
 
-    @if (session()->has('flash_notification.message'))
-        <div class="alert alert-{{ session('flash_notification.level') }}">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            @if (session()->has('flash_notification.message'))
+                <div class="alert alert-{{ session('flash_notification.level') }}">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
-            {!! session('flash_notification.message') !!}
+                    {!! session('flash_notification.message') !!}
+                </div>
+            @endif
         </div>
-    @endif
+    </div>
 
 </div>
 {{--//Notification--}}

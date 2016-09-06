@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Taarifa Binafsi</h3>
     </div>
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title">Taarifa za Mawasiliano</h3>
     </div>
@@ -63,15 +63,18 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="address" class="col-sm-3 control-label">S.L.P * </label>
+            <label for="address" class="col-sm-3 control-label">Anuani</label>
             <div class="col-sm-9">
-                {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '5500']) !!}
+                <div class="input-group">
+                    <div class="input-group-addon">S.L.P *</div>
+                    {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => '5500']) !!}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">Mahali Unapoishi</h3>
     </div>
