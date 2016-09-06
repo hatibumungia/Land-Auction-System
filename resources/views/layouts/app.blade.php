@@ -161,6 +161,7 @@
 <script src="{{ URL::to('js/reservation.js') }}"></script>
 <script src="{{ URL::to('js/front-button-confirm.js') }}"></script>
 <script src="/js/zoom.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>

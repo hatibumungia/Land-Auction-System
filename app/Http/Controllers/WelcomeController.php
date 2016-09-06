@@ -2,23 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Area;
-use App\AreaType;
-use App\Block;
-use App\Plot;
+
+use App\Http\Requests\Request;
 use Auth;
+use App\PlotsSelectionMainView;
 
 
 class WelcomeController extends Controller
 {
     public function index()
     {
-        $areas = Area::all();
-        $area_types = AreaType::all();
-        $blocks = Block::all();
-        $plots = Plot::all();
 
-        return view('welcome', compact('areas', 'area_types', 'blocks', 'plots'));
+        $areas_locations = PlotsSelectionMainView::getAreas();
+
+        $params = [];
+        $areatypenames = [];
+
+        if(isset($_GET['eneo'])){
+            $params['areaname'] = $_GET['eneo'];
+            $areatypenames = PlotsSelectionMainView::getLandUses($params);
+        }
+        if(isset($_GET['matumizi-ya-ardhi'])){
+            $params['matumizi-ya-ardhi'] = $_GET['matumizi-ya-ardhi'];
+        }
+
+        $available_plots = PlotsSelectionMainView::getPlots($params);
+
+        return view('welcome-main', compact('areas_locations','available_plots', 'areatypenames'));
+
     }
 
     public function checkAuth()

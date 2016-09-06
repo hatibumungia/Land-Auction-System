@@ -118,5 +118,5 @@ Route::post('/applicants/auth/register', 'ApplicantsController@processRegister')
 
 Route::post('/plot_transactions', 'PlotTransactionController@store');
 
-Route::get('/createreservationsessioncontroller', 'CreateReservationSessionController@index');
+Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');
 
