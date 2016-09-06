@@ -45,7 +45,7 @@ class CreateUserDetailRequest extends Request
             'ward.required' => 'Kata inahitajika',
             'house_number.required' => 'Namba ya nyumba inahitajika',
             'address.required' => 'Unuani inahitajika',
-            'photo' => 'Pasipoti inahitajika',
+            'photo.required' => 'Pasipoti inahitajika',
         ];
     }
 }

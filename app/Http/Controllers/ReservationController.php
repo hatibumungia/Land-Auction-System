@@ -135,7 +135,7 @@ plot_assignment.plot_id=plot_reservation.plot_id AND
 area_assignment.areas_type_id=plot_reservation.areas_type_id AND
 area_assignment.area_id=plot_reservation.area_id AND
 plot_reservation.user_detail_id=:user_detail_id
-
+order by plot_reservation.created_at desc
                 ";
 
         $plot_reservations = DB::select($sql, ['user_detail_id' => Session::get('id')]);
@@ -167,12 +167,12 @@ plot_reservation.user_detail_id=:user_detail_id
             if (sizeof($data) == 1) {
 
                 $getPDF = PDF::loadView('reservations.print_preview', compact('data'));
-                return $getPDF->stream('reservations.print_preview.pdf', compact('data'));
+                return $getPDF->stream('reservations.print_preview.pdf', ['Attachment' => 0], compact('data'));
 
             } else {
                 return 'Hauruhusiwi kufanya hivyo';
             }
-        }else{
+        } else {
             flash()->info('Kamilisha usajili kwanza ili uweze kuipata barua yako ya maombi ya kiwanja.');
             return redirect('/reservation/complete-registration');
         }
@@ -199,6 +199,7 @@ plot_reservation.user_detail_id=:user_detail_id
     function processCompleteRegistration(CreateUserDetailRequest $request)
     {
 
+        $user_detail = UserDetail::findOrFail(Session::get('id'));
 
         if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
 
@@ -207,8 +208,6 @@ plot_reservation.user_detail_id=:user_detail_id
             $new_file = Session::get('id') . " @ " . time() . " - " . $image;
 
             $request->file('photo')->move(public_path() . '/img/uploads/avatars/', $new_file);
-
-            $user_detail = UserDetail::findOrFail(Session::get('id'));
 
             $user_detail->update([
                 'first_name' => $request->input('first_name'),
@@ -223,15 +222,29 @@ plot_reservation.user_detail_id=:user_detail_id
                 'registration_status' => 1,
             ]);
 
-            flash()->success('Zimefanikiwa kuhifadhiwa');
+            flash()->success('Taarifa zako zimefanikiwa kuhifadhiwa');
 
-            return redirect('reservation/complete-registration');
+            return redirect('reservation');
 
 
         } else {
-            flash()->error('Picha yako haijafanikiwa kupakiwa. Tafadhali jaribu tena baadae.');
 
-            return redirect('reservation/complete-registration');
+            $user_detail->update([
+                'first_name' => $request->input('first_name'),
+                'middle_name' => $request->input('middle_name'),
+                'last_name' => $request->input('last_name'),
+                'address' => $request->input('address'),
+                'region' => $request->input('region'),
+                'district' => $request->input('district'),
+                'ward' => $request->input('ward'),
+                'house_number' => $request->input('house_number'),
+                'registration_status' => 1,
+            ]);
+
+            flash()->success('Taarifa zako zimefanikiwa kuhifadhiwa');
+
+            return redirect('reservation');
+
         }
 
     }

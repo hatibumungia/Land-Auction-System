@@ -1,15 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.auth-user')
 
 @section('page_title', 'Complete Registration')
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             @include('reservations.common.sidebar')
         </div>        
-        <div class="col-sm-9">
+        <div class="col-sm-6">
             <h3>Kamilisha Usajili</h3>
 
              @include('common.errors')

@@ -121,7 +121,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3>No land use added yet</h3>
+                <h3>Hakuna matumizi ya ardhi yaliwekwa sasa hivi.</h3>
             </div>
 
         @endif

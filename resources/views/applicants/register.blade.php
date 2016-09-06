@@ -47,13 +47,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('password', 'Nywila', ['class' => 'col-sm-3 control-label']) !!}
+                            {!! Form::label('password', 'Neno Siri', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
                                 {!! Form::password('password', ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
-                            {!! Form::label('password_confirmation', 'Thibitisha Nywila', ['class' => 'col-sm-3 control-label']) !!}
+                            {!! Form::label('password_confirmation', 'Thibitisha Neno Siri', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
                                 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                             </div>
