@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save"></i> Hifadhi</button>
                     </div>
                 </div>
 
