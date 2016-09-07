@@ -44,7 +44,7 @@
         {!! Form::file('user_file') !!}
 
         <p class="help-block">
-            <a href="/plot-assignments/download-sample"><i class="fa fa-download">Pakua sampuli na uijaze kama itakavyo oneshwa.</i></a>
+            <a href="/plot-assignments/download-sample"><i class="fa fa-download"> Pakua sampuli na uijaze kama ilivyo onyeshwa.</i></a>
         </p>
 
     </div>

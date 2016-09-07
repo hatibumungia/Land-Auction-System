@@ -42,7 +42,7 @@ class BlockController extends Controller
     {
         Block::create($request->all());
 
-        flash()->success($request->input('name'). ' imefanikiwa kuongezwa');
+        flash()->success('Kitalu ' . $request->input('name') . ' kimefanikiwa kuongezwa');
 
         return redirect('admin/blocks/create');
     }
@@ -89,7 +89,7 @@ class BlockController extends Controller
 
         $block->update($request->all());
 
-        flash()->success('Imefanikiwa kuhaririwa');
+        flash()->success('Kitalu ' . $block->name . ' kimefanikiwa kuhaririwa');
 
         return redirect('admin/blocks');
     }
@@ -107,7 +107,7 @@ class BlockController extends Controller
 
         $block->delete();
 
-        flash()->success($block->name . ' imefanikiwa kufutwa');
+        flash()->success('Kitalu ' . $block->name . ' kimefanikiwa kufutwa');
 
         return redirect('admin/blocks');
     }

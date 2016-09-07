@@ -152,7 +152,7 @@
 
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger not-plots">
                         <h3>Hakuna viwanja vyovyote kwa sasa. Tafadhali tutembelee baada ya muda.</h3>
                     </div>
                 </div>

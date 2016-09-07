@@ -7,9 +7,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Jisajili</h3>
+                        <h3 class="panel-title">Usajili</h3>
                     </div>
                     <div class="panel-body">
 
@@ -19,31 +19,31 @@
                         <div class="form-group">
                             {!! Form::label('first_name', 'Jina la kwanza * ', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
-                                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Joseph']) !!}
+                                {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             {!! Form::label('middle_name', 'Jina la kati * ', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
-                                {!! Form::text('middle_name', null, ['class' => 'form-control', 'placeholder' => 'Peter']) !!}
+                                {!! Form::text('middle_name', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             {!! Form::label('last_name', 'Jina la ukoo * ', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
-                                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Mtinangi']) !!}
+                                {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             {!! Form::label('email_address', 'Barua pepe * ', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
-                                {!! Form::text('email_address', null, ['class' => 'form-control', 'placeholder' => 'josephmtinangi@gmail.com']) !!}
+                                {!! Form::text('email_address', null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
                         <div class="form-group">
                             {!! Form::label('phone_number', 'Namba ya simu * ', ['class' => 'col-sm-3 control-label']) !!}
                             <div class="col-sm-9">
-                                {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => '0719961077']) !!}
+                                {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Mfano. 0719961077']) !!}
                             </div>
                         </div>
                         <div class="form-group">

@@ -35,15 +35,17 @@
         </div>
         <div class="col-sm-8">
 
-            <div class="container text-center">
+            <div class="row text-center">
+                <div class="col-sm-6 col-sm-offset-3">
+                    @if (session()->has('flash_notification.message'))
+                        <div class="alert alert-{{ session('flash_notification.level') }}">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
-                @if (session()->has('flash_notification.message'))
-                    <div class="alert alert-{{ session('flash_notification.level') }}">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {!! session('flash_notification.message') !!}
+                        </div>
+                    @endif
+                </div>
 
-                        {!! session('flash_notification.message') !!}
-                    </div>
-                @endif
 
             </div>
 
@@ -57,9 +59,6 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/admin.js"></script>
-<script>
-    $('div.alert').not('.alert-important').delay(3000).fadeOut(300);
-</script>
 
 </body>
 </html>

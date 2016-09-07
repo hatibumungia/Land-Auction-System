@@ -15,8 +15,8 @@
                 class="fa fa-angle-double-right"></i> Gharama za Maeneo</a>
     <a href="/admin/block-assignments"
        class="list-group-item @if(Request::is('admin/block-assignments')) active @endif"><i
-                class="fa fa-angle-double-right"></i> Picha za Vitalu</a>
+                class="fa fa-angle-double-right"></i> Ramani za Vitalu</a>
     <a href="/admin/plot-assignments"
        class="list-group-item @if(Request::is('admin/plot-assignments')) active @endif"><i
-                class="fa fa-angle-double-right"></i> Ukubwa wa viwanja</a>
+                class="fa fa-angle-double-right"></i> Viwanja</a>
 </div>

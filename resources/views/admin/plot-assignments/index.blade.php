@@ -80,7 +80,7 @@
         @else
 
             <div class="alert alert-info alert-important">
-                <h3 class="text-center">Hakuna ukubwa wa kiwanja chochote uliwekwa kwa muda huu</h3>
+                <h3 class="text-center">Hakuna kiwanja chochote kilichowekwa kwa muda huu</h3>
             </div>
 
         @endif
