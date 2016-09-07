@@ -31,7 +31,7 @@ class CreatePlotsSelectionMainView extends Migration
             area_image.file_name AS areafilename
             FROM 
             areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment, area_image WHERE 
-            (areas.area_id = area_assignment.area_id AND 
+            areas.area_id = area_assignment.area_id AND 
             area_types.areas_type_id = area_assignment.areas_type_id AND
             areas.area_id = area_assignment.area_id AND
             area_types.areas_type_id = area_assignment.areas_type_id AND 
@@ -42,9 +42,8 @@ class CreatePlotsSelectionMainView extends Migration
             block_assignment.area_id = plot_assignment.area_id AND 
             block_assignment.areas_type_id = plot_assignment.areas_type_id AND 
             block_assignment.block_id = plot_assignment.block_id AND
-            plot_assignment.status = 0) 
-            OR
-            (area_image.area_id = areas.area_id)
+            plot_assignment.status = 0 AND
+            area_image.area_id = areas.area_id
              
         
         )
