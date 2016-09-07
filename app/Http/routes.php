@@ -90,6 +90,8 @@ $router->group([
 
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
     Route::get('/admin/location-assignments/getLandUse', 'AreaAssignmentController@getLandUse');
+
+    Route::resource('/admin/location-images', 'AreaImageController');
 });
 
 // Routes for ajax requests

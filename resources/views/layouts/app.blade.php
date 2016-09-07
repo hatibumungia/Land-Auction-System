@@ -100,28 +100,11 @@
                         </li>
                     @endif
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>
-                </ul>
-
-                {{--
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                                <i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                    @if(!Auth::guest())
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
                     @endif
                 </ul>
-                --}}
+
 
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
@@ -152,16 +135,19 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-xs-5 pull-right">
-                                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Ingia</button>
+                                                <button type="submit" class="btn btn-primary"><i
+                                                            class="fa fa-sign-in"></i> Ingia
+                                                </button>
                                             </div>
                                             {!! Form::close() !!}
                                             <div class="col-xs-7">
-                                                Hujajisajili?  Jisajili <a href="/applicants/register"> hapa </a>.
+                                                Hujajisajili? Jisajili <a href="/applicants/register"> hapa </a>.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </ul>
+
                         </li>
 
                     @else

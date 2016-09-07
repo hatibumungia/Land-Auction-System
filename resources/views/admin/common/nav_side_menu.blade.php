@@ -4,6 +4,9 @@
     <a href="/admin/locations"
        class="list-group-item @if(Request::is('admin/locations')) active @endif"><i
                 class="fa fa-angle-double-right"></i> Maeneo</a>
+    <a href="/admin/location-images"
+       class="list-group-item @if(Request::is('admin/location-images')) active @endif"><i
+                class="fa fa-angle-double-right"></i> Ramani za maeneo</a>
     <a href="/admin/land-uses"
        class="list-group-item @if(Request::is('admin/land-uses')) active @endif"><i
                 class="fa fa-angle-double-right"></i> Matumizi ya ardhi</a>
