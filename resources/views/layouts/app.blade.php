@@ -124,12 +124,12 @@
                                     {!! Form::open(['url' => '/applicants/auth/login']) !!}
                                     <div class="form-group">
                                         {!! Form::label('username', 'Namba ya Simu') !!}
-                                        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => '+255719961077']) !!}
+                                        {!! Form::text('username', null, ['class' => 'form-control', 'required' => 'required']) !!}
                                     </div>
 
                                     <div class="form-group">
                                         {!! Form::label('password', 'Neno la Siri') !!}
-                                        {!! Form::password('password', ['class' => 'form-control','placeholder' => 'Ingiza Neno la Siri']) !!}
+                                        {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
                                     </div>
 
                                     <div class="form-group">

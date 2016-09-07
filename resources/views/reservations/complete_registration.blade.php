@@ -9,7 +9,7 @@
         <div class="col-sm-2">
             @include('reservations.common.sidebar')
         </div>        
-        <div class="col-sm-6">
+        <div class="col-sm-8">
             <h3>Kamilisha Usajili</h3>
 
              @include('common.errors')

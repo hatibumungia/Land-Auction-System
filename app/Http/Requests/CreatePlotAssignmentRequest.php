@@ -28,4 +28,13 @@ class CreatePlotAssignmentRequest extends Request
             'block_id' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'area_id.required' => 'Umesahau kuchagua eneo',
+            'areas_type_id.required' => 'Umesahau kuchagua matumizi ya ardhi',
+            'block_id.required' => 'Umesahau kuchagua kitalu'
+        ];
+    }
 }

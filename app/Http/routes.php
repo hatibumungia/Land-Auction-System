@@ -102,6 +102,8 @@ $router->group([
     Route::get('/admin/ajax/locationAssignmentsGetLandUse', 'AjaxController@locationAssignmentsGetLandUse');
     Route::get('/admin/ajax/blockAssignmentsGetLandUse', 'AjaxController@blockAssignmentsGetLandUse');
     Route::get('/admin/ajax/blockAssignmentsGetBlock', 'AjaxController@blockAssignmentsGetBlock');
+    Route::get('/admin/ajax/plotAssignmentsGetLandUses', 'AjaxController@plotAssignmentsGetLandUses');
+    Route::get('/admin/ajax/plotAssignmentsGetBlock', 'AjaxController@plotAssignmentsGetBlock');
 });
 
 Route::get('/reservation', 'ReservationController@index');
