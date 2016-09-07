@@ -27,10 +27,11 @@ class CreatePlotsSelectionMainView extends Migration
             plot_assignment.size AS size, 
             plot_assignment.status AS status,
             area_assignment.price as price,
-            block_assignment.file_name AS filename
+            block_assignment.file_name AS blockfilename,
+            area_image.file_name AS areafilename
             FROM 
-            areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment WHERE 
-            areas.area_id = area_assignment.area_id AND 
+            areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment, area_image WHERE 
+            (areas.area_id = area_assignment.area_id AND 
             area_types.areas_type_id = area_assignment.areas_type_id AND
             areas.area_id = area_assignment.area_id AND
             area_types.areas_type_id = area_assignment.areas_type_id AND 
@@ -40,8 +41,11 @@ class CreatePlotsSelectionMainView extends Migration
             plots.plot_id = plot_assignment.plot_id AND 
             block_assignment.area_id = plot_assignment.area_id AND 
             block_assignment.areas_type_id = plot_assignment.areas_type_id AND 
-            block_assignment.block_id = plot_assignment.block_id AND 
-            plot_assignment.status = 0 
+            block_assignment.block_id = plot_assignment.block_id AND
+            plot_assignment.status = 0) 
+            OR
+            (area_image.area_id = areas.area_id)
+             
         
         )
             
