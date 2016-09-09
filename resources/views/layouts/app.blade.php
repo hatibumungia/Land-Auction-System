@@ -119,6 +119,7 @@
                                     <div class="text-center">
                                         <h3><b>Ingia</b></h3>
                                     </div>
+
                                     @include('common.errors')
 
                                     {!! Form::open(['url' => '/applicants/auth/login']) !!}

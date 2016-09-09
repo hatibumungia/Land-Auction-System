@@ -28,4 +28,12 @@ class LoginAnApplicantRequest extends Request
             'password' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'username.required' => 'Umesahau kuweka namba ya simu',
+            'password.required' => 'Umesahau kuweka neno siri'
+        ];
+    }
 }
