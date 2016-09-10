@@ -11,6 +11,19 @@
 @section('content')
 
     <div class="row">
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ url('/') }}">CDA</a>
+            </li>
+            <li class="active">Reservations</li>
+        </ol>
+    </div>
+
+    <div class="row">
+
+
+
+
 
         <div role="tabpanel">
             <!-- Nav tabs -->
@@ -31,6 +44,24 @@
                 <div role="tabpanel" class="tab-pane active" id="all">
 
                     @if(count($all_plots_statuses) > 0)
+
+                        <div class="row">
+
+<div class="col-sm-12">
+    <ul class="pager">
+    <li class="previous"><a href="{{ $all_plots_statuses->previousPageUrl() }}">&larr; Previous</a></li>
+    <li class="next"><a href="{{ $all_plots_statuses->nextPageUrl() }}">Next &rarr;</a></li>
+</ul>
+</div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                Showing <strong>{{ $all_plots_statuses->count() }}</strong> of <strong>{{ $all_plots_statuses->total() }}</strong> reservations
+                            </div>
+                        </div>
+
 
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -109,12 +140,12 @@
                                         <td>{{ $reserved_plots_status->size }}</td>
                                         <td>{{ number_format($reserved_plots_status->size * $reserved_plots_status->price) }}</td>
                                         <td>
-                                            <a href="{{ $reserved_plots_status->userdetailid }}">{{ $reserved_plots_status->fname }} {{ $reserved_plots_status->mname }} {{ $reserved_plots_status->lname }}</a>
+                                            <a href="{{ url('/reports/clients/' . $reserved_plots_status->userdetailid) }}">{{ $reserved_plots_status->fname }} {{ $reserved_plots_status->mname }} {{ $reserved_plots_status->lname }}</a>
                                         </td>
                                         <td>{{ $reserved_plots_status->created_at }}</td>
                                         <td>{{ $reserved_plots_status->deadline }}</td>
                                         <td>
-                                            @if($reserved_plots_status->status = 1)
+                                            @if($reserved_plots_status->status == 1)
                                                 Paid
                                             @else
                                                 Unpaid

@@ -25,7 +25,7 @@ class CreateReservedPlotsStatusViewTable extends Migration
             plots.plot_id AS plotid, 
             plots.plot_no AS plotno, 
             plot_assignment.size AS size, 
-            plot_assignment.status AS status,
+            plot_reservation.status AS status,
             area_assignment.price as price,
             plot_reservation.user_detail_id AS userdetailid,
             user_details.first_name AS fname,
