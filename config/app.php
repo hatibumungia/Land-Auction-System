@@ -167,6 +167,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Bus\BusServiceProvider::class,
         'Maatwebsite\Excel\ExcelServiceProvider',
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*
          *--------------Genarate Data PDF-----------------
@@ -222,6 +223,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Excel' => 'Maatwebsite\Excel\Facades\Excel',
         'PDF'  => Barryvdh\DomPDF\Facade::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
 
     ],
 
