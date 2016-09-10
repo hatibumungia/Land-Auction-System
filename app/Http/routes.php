@@ -124,3 +124,8 @@ Route::post('/plot_transactions', 'PlotTransactionController@store');
 
 Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');
 
+$router->group([
+    'namespace' => 'reports'
+], function(){
+    Route::get('/reports/reservations', 'ReservationController@index');
+});
