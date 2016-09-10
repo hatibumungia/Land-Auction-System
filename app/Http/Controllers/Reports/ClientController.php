@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Reports;
 
+use App\ReservedPlotsStatusView;
 use App\UserDetail;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,8 @@ class ClientController extends Controller
     {
         $user = UserDetail::findOrFail($user_detail_id);
 
-        return view('reports.clients.show', compact('user'));
+        $user_reservations = ReservedPlotsStatusView::getClientReservations($user->user_detail_id);
+
+        return view('reports.clients.show', compact('user', 'user_reservations'));
     }
 }

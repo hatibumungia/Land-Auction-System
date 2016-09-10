@@ -120,59 +120,82 @@
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-1">
 
+                            @if(count($user_reservations) > 0)
 
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">#1</h3>
-                                </div>
-                                <div class="panel-body">
 
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-bordered">
-                                            <tbody>
-                                            <tr>
-                                                <td><strong>Plot #</strong></td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Block</strong></td>
-                                                <td>A</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Area</strong></td>
-                                                <td>Kisasa</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Land use</strong></td>
-                                                <td>Makazi</td>
-                                            </tr>                                            
-                                            <tr>
-                                                <td><strong>Size (Sqr meter)</strong></td>
-                                                <td>567</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Price (TZS)</strong></td>
-                                                <td>456, 896</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Reservation date</strong></td>
-                                                <td>34/34/65</td>
-                                            </tr>           
-                                            <tr>
-                                                <td><strong>Deadline</strong></td>
-                                                <td>456, 896</td>
-                                            </tr>
-                                            <tr>
-                                                <td><strong>Status</strong></td>
-                                                <td>Paid</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                @foreach($user_reservations as $user_reservation)
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">{{ $user_reservation->areaname }}</h3>
+                                        </div>
+                                        <div class="panel-body">
+
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-bordered">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><strong>Plot #</strong></td>
+                                                        <td>{{ $user_reservation->plotno }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Block</strong></td>
+                                                        <td>{{ $user_reservation->blockname }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Area</strong></td>
+                                                        <td>{{ $user_reservation->areaname }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Land use</strong></td>
+                                                        <td>{{ $user_reservation->areatypename }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Size (Sqr meter)</strong></td>
+                                                        <td>{{ $user_reservation->size }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Price (TZS)</strong></td>
+                                                        <td>{{ number_format($user_reservation->size * $user_reservation->price) }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Reservation date</strong></td>
+                                                        <td>{{ $user_reservation->created_at }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Deadline</strong></td>
+                                                        <td>{{ $user_reservation->deadline }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Status</strong></td>
+                                                        <td>
+                                                            @if($user_reservation->status ==0)
+                                                                Unpaid
+                                                            @else
+                                                                Paid
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
                                     </div>
 
+                                @endforeach
 
+
+                            @else
+
+                                <div class="jumbotron">
+                                    <div class="container text-center">
+                                        <h3>No Reservations</h3>
+                                    </div>
                                 </div>
-                            </div>
+
+                            @endif
 
 
                         </div>
