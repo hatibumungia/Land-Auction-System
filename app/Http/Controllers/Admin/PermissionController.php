@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CreateRoleRequest;
+use App\Http\Requests\CreatePermissionRequest;
 use App\Permission;
-use App\Role;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class RoleController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-        return view('admin.roles.index', compact('roles'));
+        $permissions = Permission::all();
+        return view('admin.permissions.index', compact('permissions'));
     }
 
     /**
@@ -30,24 +29,24 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.roles.create');
+        return view('admin.permissions.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateRoleRequest|Request $request
+     * @param CreatePermissionRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRoleRequest $request)
+    public function store(CreatePermissionRequest $request)
     {
-        Role::create([
+        Permission::create([
             'name' => str_slug($request->input('name'), '-'),
             'display_name' => $request->input('display_name'),
             'description' => $request->input('description')
         ]);
 
-        return redirect('admin.roles');
+        return redirect('admin/permissions');
     }
 
     /**
@@ -58,10 +57,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::findOrFail($id);
-        $permissions = Permission::getRolePermissions($role->id);
-        $new_permissions = Permission::getNewPermissions($role->id);
-        return view('admin.roles.show', compact('role', 'permissions', 'new_permissions'));
+        //
     }
 
     /**
@@ -72,7 +68,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.roles.edit');
+        //
     }
 
     /**
@@ -97,15 +93,4 @@ class RoleController extends Controller
     {
         //
     }
-
-    public function attachPermission(Request $request)
-    {
-        $role = Role::findOrFail($request->input('role_id'));
-        $permission = Permission::findOrFail($request->input('permission_id'));
-
-        $role->attachPermission($permission);
-
-        return redirect('admin/roles');
-    }
-
 }

@@ -19,16 +19,16 @@
                     <div class="col-md-12">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Add a Role</div>
+                            <div class="panel-heading">Add a Permission</div>
                             <div class="panel-body">
 
                                 @include('errors.list')
 
-                                <form class="form-horizontal" method="post" action="{{ url('admin/roles') }}">
+                                <form class="form-horizontal" method="post" action="{{ url('admin/permissions') }}">
 
                                     {{ csrf_field() }}
 
-                                    @include('admin.roles._form')
+                                    @include('admin.permissions._form')
 
                                     <div class="form-group">
                                         <div class="col-sm-offset-3 col-sm-9">

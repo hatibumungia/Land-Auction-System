@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.entrust')
 
 @section('content')
     <div class="container-fluid">
@@ -55,8 +55,8 @@
 
                                                             <div class="form-group">
                                                                 <label for="permission_id"
-                                                                       class="col-sm-3 control-label">Permission</label>
-                                                                <div class="col-sm-9">
+                                                                       class="col-sm-4 control-label">Permission</label>
+                                                                <div class="col-sm-8">
                                                                     <select name="permission_id" id="permission_id"
                                                                             class="form-control">
                                                                         @if(count($new_permissions) > 0)
@@ -70,7 +70,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <div class="col-sm-9 col-sm-offset-3">
+                                                                <div class="col-sm-8 col-sm-offset-4">
                                                                     <button type="submit" class="btn btn-primary">Assign
                                                                     </button>
                                                                 </div>

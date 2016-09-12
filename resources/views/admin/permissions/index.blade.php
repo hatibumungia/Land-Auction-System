@@ -9,7 +9,7 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ url('admin/roles/create') }}" class="btn btn-primary pull-right"><i
+                        <a href="{{ url('admin/permissions/create') }}" class="btn btn-primary pull-right"><i
                                     class="fa fa-plus"></i>
                             Add</a>
                     </div>
@@ -19,9 +19,9 @@
                     <div class="col-md-12">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Roles</div>
+                            <div class="panel-heading">Permissions</div>
                             <div class="panel-body">
-                                @if(count($roles) > 0)
+                                @if(count($permissions) > 0)
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <thead>
@@ -37,16 +37,14 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($roles as $role)
+                                            @foreach($permissions as $permission)
                                                 <tr>
-                                                    <td>{{ $role->id }}</td>
-                                                    <td>{{ $role->name }}</td>
-                                                    <td>
-                                                        <a href="{{ url('admin/roles/' . $role->id) }}">{{ $role->display_name }}</a>
-                                                    </td>
-                                                    <td>{{ $role->description }}</td>
-                                                    <td>{{ $role->created_at }}</td>
-                                                    <td>{{ $role->updated_at }}</td>
+                                                    <td>{{ $permission->id }}</td>
+                                                    <td>{{ $permission->name }}</td>
+                                                    <td>{{ $permission->display_name }}</td>
+                                                    <td>{{ $permission->description }}</td>
+                                                    <td>{{ $permission->created_at }}</td>
+                                                    <td>{{ $permission->updated_at }}</td>
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
