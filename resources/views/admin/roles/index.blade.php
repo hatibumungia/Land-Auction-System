@@ -58,7 +58,7 @@
                                                     <td>{{ $role->description }}</td>
                                                     <td>{{ $role->created_at }}</td>
                                                     <td>{{ $role->updated_at }}</td>
-                                                    <td></td>
+                                                    <td><a href="{{ url('admin/roles/' . $role->id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach

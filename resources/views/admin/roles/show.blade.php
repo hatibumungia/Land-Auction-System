@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-12">
-                        <a href="{{ url('/roles/create') }}" class="btn btn-primary pull-right"><i
+                    <div class="col-md-12 pull-right">
+                        <a href="{{ url('/roles/create') }}" class="btn btn-primary"><i
                                     class="fa fa-plus"></i>
                             Add</a>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="col-md-12">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Show a Role</div>
+                            <div class="panel-heading">Show a Role <a href="{{ url('admin/roles/' . $role->id . '/edit') }}" class="pull-right"><i class="fa fa-pencil"></i> Edit</a></div>
                             <div class="panel-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-bordered">
