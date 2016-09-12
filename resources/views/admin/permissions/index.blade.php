@@ -55,7 +55,7 @@
                                                     <td>{{ $permission->description }}</td>
                                                     <td>{{ $permission->created_at }}</td>
                                                     <td>{{ $permission->updated_at }}</td>
-                                                    <td></td>
+                                                    <td><a href="{{ url('admin/permissions/' . $permission->id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach

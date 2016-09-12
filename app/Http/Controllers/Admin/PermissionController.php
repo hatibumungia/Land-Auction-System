@@ -68,19 +68,23 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return view('admin.permissions.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CreatePermissionRequest|Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePermissionRequest $request, $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        $permission->update($request->all());
+
+        return redirect('admin/permissions');
     }
 
     /**
