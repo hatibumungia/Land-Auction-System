@@ -56,7 +56,7 @@
                                                     Empty
                                                 @endif
                                                 <div class="row">
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-6">
                                                         <h4>Add</h4>
                                                         <form class="form-horizontal" method="post"
                                                               action="{{ action('Admin\UserController@attachRole') }}">

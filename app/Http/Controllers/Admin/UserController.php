@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CreateUserRequest;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -35,12 +37,20 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param CreateUserRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $password = $request->input('email');
+
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($password)
+        ]);
+
+        return redirect('admin/staff');
     }
 
     /**
@@ -65,7 +75,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.staff.edit');
+        $user = User::findOrFail($id);
+        
+        return view('admin.staff.edit', compact('user'));
     }
 
     /**
@@ -77,7 +89,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        return redirect('admin/staff');
     }
 
     /**
@@ -98,6 +113,6 @@ class UserController extends Controller
 
         $user->attachRole($role);
 
-        return redirect('admin.staff');
+        return redirect('admin/staff');
     }
 }

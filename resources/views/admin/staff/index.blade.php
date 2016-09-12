@@ -55,7 +55,7 @@
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>{{ $user->updated_at }}</td>
-                                                    <td></td>
+                                                    <td><a href="{{ url('admin/staff/' . $user->id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach
