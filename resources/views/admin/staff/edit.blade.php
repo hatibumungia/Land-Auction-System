@@ -1,11 +1,21 @@
-@extends('layouts.entrust')
+@extends('layouts.admin')
 
-@section('content')
-    <div class="container-fluid">
+@section('page_title' , ' - Admin')
+
+@section('nav_bar')
+
+    @include('admin.common.nav_bar')
+
+@endsection
+
+@section('side_bar')
+
+    @include('admin.common.nav_side_menu')
+
+@endsection
+
+@section('main_content')
         <div class="row">
-            <div class="col-md-2">
-                @include('admin.common.side_bar')
-            </div>
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-12">
@@ -29,5 +39,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
