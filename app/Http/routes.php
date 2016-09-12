@@ -136,5 +136,7 @@ $router->group([
     'namespace' => 'Admin'
 ], function () {
     Route::resource('admin/staff', 'UserController');
+    Route::resource('admin/roles', 'RoleController');
+    Route::post('admin/roles/attachPermission', 'RoleController@attachPermission');
     Route::post('users/attachRole', 'UserController@attachRole');
 });
