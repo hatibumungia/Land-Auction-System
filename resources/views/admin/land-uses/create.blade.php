@@ -25,7 +25,7 @@
                 <a href="/admin/dashboard">Home</a>
             </li>
             <li>
-                <a href="/admin/land-uses">Land use</a>
+                <a href="/admin/land-uses">Matumizi ya ardhi</a>
             </li>
             <li class="active">Add</li>
         </ol>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
             </div>
         </div>
 

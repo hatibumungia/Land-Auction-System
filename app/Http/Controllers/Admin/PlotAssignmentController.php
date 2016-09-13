@@ -84,9 +84,10 @@ class PlotAssignmentController extends Controller
             }
 
             $plot_assignment->save();
+
         }
 
-        flash()->success('Added successfully');
+        flash()->success('Imefanikiwa kuwekwa');
 
         return redirect('admin/plot-assignments');
 

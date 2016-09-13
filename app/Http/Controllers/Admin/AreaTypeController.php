@@ -42,7 +42,7 @@ class AreaTypeController extends Controller
     {
         AreaType::create($request->all());
 
-        flash()->success($request->input('name'). ' added successfully');
+        flash()->success($request->input('name'). ' imefanikiwa kuongezwa');
 
         return redirect('admin/land-uses/create');
     }
@@ -89,7 +89,7 @@ class AreaTypeController extends Controller
 
         $land_use->update($request->all());
 
-        flash()->success('Updated successfully');
+        flash()->success('Imefanikiwa kuhaririwa');
 
         return redirect('admin/land-uses');
     }
@@ -107,7 +107,7 @@ class AreaTypeController extends Controller
 
         $land_use->delete();
 
-        flash()->success($land_use->name . ' deleted successfully');
+        flash()->success($land_use->name . ' imefanikiwa kufutwa.');
 
         return redirect('admin/land-uses');
     }

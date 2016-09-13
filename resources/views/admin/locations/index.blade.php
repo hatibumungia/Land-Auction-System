@@ -20,16 +20,16 @@
 
 		<ol class="breadcrumb">
 			<li>
-				<a href="/admin/dashboard">Home</a>
+				<a href="/admin/dashboard">Nyumbani</a>
 			</li>
 			<li>
-				<a href="/admin/locations">Locations</a>
+				<a href="/admin/locations">Maeneo</a>
 			</li>
-			<li class="active">All</li>
+			<li class="active">Yote</li>
 		</ol>
 
-        <a href="/admin/locations/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Add</a>
+        <a href="/admin/locations/create" class="btn btn-primary"><i class="fa fa-plus-square-o"></i>
+            Ongeza</a>
     </div>
 
     <br>
@@ -42,9 +42,9 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Added</th>
-                    <th>Updated</th>
+                    <th>Eneo</th>
+                    <th>Liliongezwa</th>
+                    <th>Lilihaririwa</th>
                     <th><i class="fa fa-cog"></i></th>
                     <th><i class="fa fa-cog"></i></th>
                 </tr>
@@ -52,9 +52,9 @@
                 <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Added</th>
-                    <th>Updated</th>
+                    <th>Eneo</th>
+                    <th>Liliongezwa</th>
+                    <th>Lilihaririwa</th>
                     <th><i class="fa fa-cog"></i></th>
                     <th><i class="fa fa-cog"></i></th>
                 </tr>
@@ -68,12 +68,12 @@
                         <td><a href="/admin/locations/{{ $location->area_id }}">{{ $location->name }}</a></td>
                         <td>{{ $location->created_at->diffForHumans() }}</td>
                         <td>{{ $location->updated_at->diffForHumans() }}</td>
-                        <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/locations/{{ $location->area_id }}/edit" class="btn btn-default"><i
+                        <td><a data-toggle="tooltip" data-placement="right" title="Hariri" href="/admin/locations/{{ $location->area_id }}/edit"><i
                                         class="fa fa-edit"></i></a></td>
                         <td>
 
 
-                            <a title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $location->area_id }}'><i
+                            <a title="Futa" class="btn btn-danger" data-toggle="modal" href='#{{ $location->area_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $location->area_id }}">
                                 <div class="modal-dialog">
@@ -85,17 +85,17 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            <p class="lead">Are you sure that you want to delete
+                                            <p class="lead">Je, una uhakika kwamba unataka kufuta eneo la
                                                 <strong>{{ $location->name }}</strong> ?</p>
 
                                         </div>
                                         <div class="modal-footer">
 
                                             {!! Form::open(['method' => 'DELETE', 'route' => ['admin.locations.destroy', $location->area_id]]) !!}
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Acha
                                             </button>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                Delete
+                                                Futa
                                             </button>
                                             {!! Form::close() !!}
 
@@ -116,7 +116,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3 class="text-center">No location added yet</h3>
+                <h3 class="text-center">Hakuna eneo lolote lililowekwa kwa muda huu.</h3>
             </div>
 
         @endif

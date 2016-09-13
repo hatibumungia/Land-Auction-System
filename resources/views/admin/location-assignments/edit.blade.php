@@ -23,12 +23,12 @@
                 <a href="/admin/dashboard">Home</a>
             </li>
             <li>
-                <a href="/admin/location-assignments">Location Assignments</a>
+                <a href="/admin/location-assignments">Gharama za maeneo</a>
             </li>
-            <li class="active">Edit</li>
+            <li class="active">Hariri</li>
         </ol>
 
-        <h3>Edit Location Assignment</h3>
+        <h3>Hariri gharama za eneo</h3>
     </div>
 
     <div class="row">

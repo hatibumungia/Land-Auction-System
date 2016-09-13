@@ -94,7 +94,7 @@ $(function () {
 
                 var html = "";
 
-                html += "<div class='panel-heading'><h3 class='panel-title'>Plots</h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Plot #</th><th>Block</th><th>Location</th><th>Size (sq. m)</th><th>Price (TZS)</th><th>Reservation</th></tr></thead><tbody>";
+                html += "<div class='panel-heading'><h3 class='panel-title'><strong>Orodha ya Viwanja</strong></h3></div><ul class='list-group'><table id='plotDataTable' class='table table-hover display' cellspacing='0' width='100%'><thead><tr><th>Namba ya Kiwanja</th><th>Kitalu</th><th>Eneo</th><th>Ukubwa (Mita za Mraba)</th><th>Gharama (TZS)</th><th>Hifadhi</th></tr></thead><tbody>";
 
 
                 for (var i = 0; i < jsonData.length; i++) {
@@ -109,7 +109,7 @@ $(function () {
 
                     html += "<td>";
 
-                    html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_no + "'>Reserve</a>";
+                    html += "<a class='btn btn-primary' data-toggle='modal' href='" + "#" + counter.plot_no + "'>Hifadhi</a>";
 
                     html += "</td>";
 
@@ -118,18 +118,16 @@ $(function () {
                     html += "<div class='modal-content'>";
                     html += "<div class='modal-header'>";
                     html += "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>";
-                    html += "<h4 class='modal-title'>" + "#" + counter.plot_no + "</h4>";
+                    html += "<h4 class='modal-title'>Taarifa za kiwanja ulichochagua</h4>";
                     html += "</div>";
                     html += "<div class='modal-body'>";
 
-                    html += "<h4>Reservation Summary</h4>";
-
                     html += "<div class='row'>";
-                    html += "<div class='col-sm-2'><strong>Plot #</strong></div>";
-                    html += "<div class='col-sm-2'><strong>Block</strong></div>";
-                    html += "<div class='col-sm-2'><strong>Location</strong></div>";
-                    html += "<div class='col-sm-2'><strong>Size (sqm)</strong></div>";
-                    html += "<div class='col-sm-2'><strong>Price (TZS)</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Namba ya kiwanja</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Kitalu</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Eneo</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Ukubwa (mita za mraba)</strong></div>";
+                    html += "<div class='col-sm-2'><strong>Gharama (TZS)</strong></div>";
                     html += "</div>";
 
                     html += "<div class='row'>";
@@ -142,11 +140,11 @@ $(function () {
 
                     html += "</div>";
                     html += "<div class='modal-footer'>";
-                    html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Cancel</button>";
+                    html += "<button type='button' class='btn btn-default' data-dismiss='modal'><i class='fa fa-remove'></i> Sitisha</button>";
 
-                    var reservation_url = "/reservation?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_no;
+                    var reservation_url = "/createreservationsessioncontroller?areaId=" + areaId + "&area_type_id=" + area_type_id + "&block_id=" + block_id + "&plot_id=" + counter.plot_id;
 
-                    var reservation_text = "<i class='fa fa-check'></i> Continue";
+                    var reservation_text = "<i class='fa fa-check'></i> Endelea";
                     html += "<a id='btn_front_confirm' href='" + reservation_url + "' class='btn btn-primary'>" + reservation_text + "</a>";
 
                     html += "</div>";
@@ -172,7 +170,7 @@ $(function () {
             }else{
 
                 $("#site-plan").html("");
-                $("#plotPanel").html("<div class='alert alert-info'>Not Found</div>");
+                $("#plotPanel").html("<div class='alert alert-info'>Hakipatikani</div>");
 
 
             }

@@ -25,7 +25,7 @@ $(document).ready(function () {
                     html += "<option value='" + jsonData[i].areas_type_id + "'>" + jsonData[i].name + "</option>";
                 }
             } else {
-                html += "<option>All land uses has already been assigned</option>";
+                html += "<option>Hakuna maeneo ya kuweka gharama zake kwa sasa</option>";
                 $("#btn-submit").attr("disabled", "disabled");
             }
 
@@ -57,7 +57,7 @@ $(document).ready(function () {
                     html += "<option value='" + jsonData[i].areas_type_id + "'>" + jsonData[i].name + "</option>";
                 }
             } else {
-                html += "<option>All land uses has already been assigned</option>";
+                html += "<option>Hakuna maeneo ya kuweka gharama zake kwa sasa</option>";
                 $("#btn-submit").attr("disabled", "disabled");
             }
 
@@ -93,7 +93,7 @@ $(document).ready(function () {
                     html += "<option value='" + jsonData[i].block_id + "'>" + jsonData[i].name + "</option>";
                 }
             } else {
-                html += "<option>All land uses has already been assigned</option>";
+                html += "<option>Hakuna maeneo ya kuweka gharama zake kwa sasa</option>";
                 $("#btn-submit").attr("disabled", "disabled");
             }
 
@@ -152,53 +152,5 @@ $(document).ready(function () {
 
 
     });
-
-    function areaTypeIdOnChange() {
-
-/*        var area_id = $("#area_id").val();
-        var areas_type_id = $("#newDiv").val();
-
-        console.log(area_id + "\n" + areas_type_id);*/
-        console.log("here");
-
-    };
-
-/*
-    $("#areas_type_id").change(function () {
-
-        var area_id = $("#area_id").val();
-        var areas_type_id = $("#areas_type_id").val();
-
-        console.log(" area_id = " + area_id + "\nareas_type_id = " + areas_type_id);
-
-        var url = "/admin/ajax/blockAssignmentsGetBlock";
-
-        console.log(" url = " + url);
-
-        $.get(url, {area_id: area_id, areas_type_id: block_assignment_areas_type_id}, function (data, status) {
-
-            console.log(" json status = " + status);
-            console.log(" json received = " + data);
-
-            var jsonData = JSON.parse(data);
-
-            var html = "";
-
-            if (jsonData.length > 0) {
-                $("#btn-submit").removeAttr("disabled");
-                for (var i = 0; i < jsonData.length; i++) {
-                    html += "<option value='" + jsonData[i].block_id + "'>" + jsonData[i].name + "</option>";
-                }
-            } else {
-                html += "<option>All land uses has already been assigned</option>";
-                $("#btn-submit").attr("disabled", "disabled");
-            }
-
-            $("#block_assignment_areas_type_id_div").html(html);
-
-        });
-
-    });
-*/
 
 });

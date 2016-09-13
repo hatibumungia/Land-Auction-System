@@ -7,8 +7,6 @@
 
     <title>Print Preview</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
         body {
             font-family: "Times New Roman";
@@ -50,10 +48,31 @@
             height: 100px;
             position: block;
             float: left;
-            padding-left: 40%;
+            padding-left: 45%;
+        }
+        .photo-date {
+            width: 200px;
+            height: 180px;
+            float: right;
+            padding-top: 0.5%;
+        }
+        .header-content-div-photo {
+            width: 120px;
+            height: 150px;
+            padding-left: 39%;
+            padding-top: 0.5%;
+        }
+         .header-content-div-date {
+            width: 200px;
+            height: 20px;
+            padding-left: 0%;
+            text-align: right;
         }
         .uppercase { 
             text-transform: uppercase; 
+        }
+        .yah-header {
+            text-align: center;
         }
     
     </style>
@@ -77,7 +96,7 @@
                     </strong>
                 </div>
                 <div class="header-content-div2">
-                    <img src="E:\PROJECTS\Land-Auction-System\public\img\logo.PNG">
+                    <img src="../public/img/logo.png">
                 </div>
                 <div class="header-content-div">
                     <strong>
@@ -96,26 +115,32 @@
                     www.cda.go.tz
                 </div>
             </div>
+            <div class="photo-date">
+                    <div class="col-sm-4 header-content-div-date">
+                    Tarehe&nbsp;&nbsp;&nbsp;<strong>{{ date('d/m/Y', strtotime($data[0]->created_at)) }}</strong>
+                </div>
+                <div class="header-content-div-photo">
+                    <img src="../public/img/uploads/avatars/{{ $data[0]->photo }}" height=150 width=120>
+                </div>
+                </div> 
             <br><br>
             <div class="row">
                 <div class="col-sm-8">
                     <strong>Kumb. Na. CDA/ED/LA-15/</strong>..............................
-                </div>
-                <div class="col-sm-4">
-                    Tarehe&nbsp;&nbsp;&nbsp;<strong>{{ date('d/m/Y', strtotime($data[0]->created_at)) }}</strong>
-                </div>
+                </div> 
             </div>
             <br><br>
             <div class="row">
                 <div class="col-sm-12">
                     Ndugu&nbsp;&nbsp;<strong>{{ $data[0]->first_name }}&nbsp;&nbsp;{{ $data[0]->middle_name }}&nbsp;&nbsp;{{ $data[0]->last_name }}</strong>
                     <br>
-                    S.L.P {{ $data[0]->address }}
+                    S.L.P {{ $data[0]->address }}<br>
+                    {{ $data[0]->region }}.
                 </div>
             </div>
             <br><br>
             <div class="row text-center">
-                <div class="col-sm-12">
+                <div class="col-sm-12 yah-header">
                     <u class="text-uppercase">
                         Yah:&nbsp;KUPEWA KIWANJA NA.&nbsp;
                         <strong>{{ $data[0]->plot_no }}</strong>&nbsp;
@@ -195,13 +220,5 @@
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="pull-right">
-
-        </div>
-    </div>
-</div>
-
 </body>
 </html>

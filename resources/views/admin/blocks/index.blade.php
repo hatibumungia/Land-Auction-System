@@ -20,16 +20,16 @@
 
 <ol class="breadcrumb">
 	<li>
-		<a href="/admin/dashboard">Home</a>
+		<a href="/admin/dashboard">Nyumbani</a>
 	</li>
 	<li>
-		<a href="/admin/blocks">Blocks</a>
+		<a href="/admin/blocks">Vitalu</a>
 	</li>
-	<li class="active">All</li>
+	<li class="active">Vyote</li>
 </ol>
 
-        <a href="/admin/blocks/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Add</a>
+        <a href="/admin/blocks/create" class="btn btn-primary"><i class="fa fa-plus-square-o"></i>
+            Ongeza</a>
     </div>
 
     <br>
@@ -43,9 +43,9 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Added</th>
-                    <th>Updated</th>
+                    <th>Kitalu</th>
+                    <th>Kiliongezwa</th>
+                    <th>Kilihaririwa</th>
                     <th><i class="fa fa-cog"></i></th>
                     <th><i class="fa fa-cog"></i></th>
                 </tr>
@@ -53,9 +53,9 @@
                 <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Added</th>
-                    <th>Updated</th>
+                    <th>Kitalu</th>
+                    <th>Kiliongezwa</th>
+                    <th>Kilihaririwa</th>
                     <th><i class="fa fa-cog"></i></th>
                     <th><i class="fa fa-cog"></i></th>
                 </tr>
@@ -69,12 +69,12 @@
                         <td><a href="/admin/blocks/{{ $block->block_id }}">{{ $block->name }}</a></td>
                         <td>{{ $block->created_at->diffForHumans() }}</td>
                         <td>{{ $block->updated_at->diffForHumans() }}</td>
-                        <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/blocks/{{ $block->block_id }}/edit" class="btn btn-default"><i
+                        <td><a data-toggle="tooltip" data-placement="right" title="Hariri" href="/admin/blocks/{{ $block->block_id }}/edit"><i
                                         class="fa fa-edit"></i></a></td>
                         <td>
 
 
-                            <a title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $block->block_id }}'><i
+                            <a title="Futa" class="btn btn-danger" data-toggle="modal" href='#{{ $block->block_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $block->block_id }}">
                                 <div class="modal-dialog">
@@ -82,21 +82,21 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"
                                                     aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Deleting {{ $block->name }}</h4>
+                                            <h4 class="modal-title">Kufuta {{ $block->name }}</h4>
                                         </div>
                                         <div class="modal-body">
 
-                                            <p class="lead">Are you sure that you want to delete
+                                            <p class="lead">Je, una uhakika kwamba unataka kufuta kitalu
                                                 <strong>{{ $block->name }}</strong> ?</p>
 
                                         </div>
                                         <div class="modal-footer">
 
                                             {!! Form::open(['method' => 'DELETE', 'route' => ['admin.blocks.destroy', $block->block_id]]) !!}
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Acha
                                             </button>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                Delete
+                                                Futa
                                             </button>
                                             {!! Form::close() !!}
 
@@ -117,7 +117,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3>No block added yet</h3>
+                <h3>Hakuna kitalu kilichowekwa kwa sasa</h3>
             </div>
 
         @endif

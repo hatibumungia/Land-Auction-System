@@ -20,16 +20,16 @@
 
         <ol class="breadcrumb">
             <li>
-                <a href="/admin/dashboard">Home</a>
+                <a href="/admin/dashboard">Nyumbani</a>
             </li>
             <li>
-                <a href="/admin/location-assignments">Location Assignments</a>
+                <a href="/admin/location-assignments">Gharama za maeneo</a>
             </li>
-            <li class="active">All</li>
+            <li class="active">Zote</li>
         </ol>
 
-        <a href="/admin/location-assignments/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Assign</a>
+        <a href="/admin/location-assignments/create" class="btn btn-primary"><i class="fa fa-plus-square-o"></i>
+            Weka</a>
     </div>
 
     <br>
@@ -41,20 +41,20 @@
             <table id="locationsTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Location</th>
-                    <th>Land use</th>
-                    <th>Price</th>
+                    <th>Eneo</th>
+                    <th>Matumizi ya ardhi</th>
+                    <th>Gharama</th>
                     <th><i class="fa fa-cog"></i></th>
-                    <th><i class="fa fa-cog"></i></th>
+                    {{--<th><i class="fa fa-cog"></i></th>--}}
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <th>Location</th>
-                    <th>Land use</th>
-                    <th>Price</th>
+                    <th>Eneo</th>
+                    <th>Matumizi ya ardhi</th>
+                    <th>Gharama</th>
                     <th><i class="fa fa-cog"></i></th>
-                    <th><i class="fa fa-cog"></i></th>
+                    {{--<th><i class="fa fa-cog"></i></th>--}}
                 </tr>
                 </tfoot>
                 <tbody>
@@ -67,44 +67,44 @@
                         <td>{{ $location_assignment->price }}</td>
                         <td>
                             <a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/location-assignments/{{ $location_assignment->location }}/{{ $location_assignment->land_use }}/{{ $location_assignment->price }}/edit"
-                               class="btn btn-default"><i
+                               ><i
                                         class="fa fa-edit"></i></a></td>
-                        <td>
+                        {{--<td>--}}
 
 
-                            <a title="Delete" class="btn btn-danger" data-toggle="modal" href='#1'><i
-                                        class="fa fa-trash"></i></a>
-                            <div class="modal fade" id="1">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                    aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Deleting {{ $location_assignment->location }}</h4>
-                                        </div>
-                                        <div class="modal-body">
+                            {{--<a title="Delete" class="btn btn-danger" data-toggle="modal" href='#1'><i--}}
+                                        {{--class="fa fa-trash"></i></a>--}}
+                            {{--<div class="modal fade" id="1">--}}
+                                {{--<div class="modal-dialog">--}}
+                                    {{--<div class="modal-content">--}}
+                                        {{--<div class="modal-header">--}}
+                                            {{--<button type="button" class="close" data-dismiss="modal"--}}
+                                                    {{--aria-hidden="true">&times;</button>--}}
+                                            {{--<h4 class="modal-title">Futa {{ $location_assignment->location }}</h4>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="modal-body">--}}
 
-                                            <p class="lead">Are you sure that you want to delete
-                                                <strong>{{ $location_assignment->location }}</strong> ?</p>
+                                            {{--<p class="lead">Je, una uhakika kwamba unataka kufuta--}}
+                                                {{--<strong>{{ $location_assignment->location }}</strong> ?</p>--}}
 
-                                        </div>
-                                        <div class="modal-footer">
+                                        {{--</div>--}}
+                                        {{--<div class="modal-footer">--}}
 
-                                            {!! Form::open(['method' => 'DELETE', 'url' => ['admin\location-assignments\destroy', $location_assignment->location]]) !!}
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
-                                            </button>
-                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                Delete
-                                            </button>
-                                            {!! Form::close() !!}
+                                            {{--{!! Form::open(['method' => 'DELETE', 'url' => ['admin\location-assignments\destroy', $location_assignment->location]]) !!}--}}
+                                            {{--<button type="button" class="btn btn-default" data-dismiss="modal">Acha--}}
+                                            {{--</button>--}}
+                                            {{--<button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>--}}
+                                                {{--Futa--}}
+                                            {{--</button>--}}
+                                            {{--{!! Form::close() !!}--}}
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
 
-                        </td>
+                        {{--</td>--}}
                     </tr>
 
                 @endforeach
@@ -115,7 +115,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3 class="text-center">No location added yet</h3>
+                <h3 class="text-center">Kwa muda huu hakuna</h3>
             </div>
 
         @endif

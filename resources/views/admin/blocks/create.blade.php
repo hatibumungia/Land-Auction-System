@@ -16,7 +16,7 @@
 
 @section('main_content')
 
-	<h3>Add a block</h3>
+	<h3>Ongeza kitalu</h3>
 
 	<div class="well">
 
@@ -28,7 +28,7 @@
 
 		<div class="form-group">
 			<div class="col-sm-6 col-sm-offset-3">
-				<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
 			</div>
 		</div>
 

@@ -52,7 +52,7 @@ class SearchController extends Controller
         $area_id['block_id'] = $_GET['block_id'];
 
         $sql = "
-SELECT plots.plot_no as plot_no, 
+SELECT plots.plot_id, plots.plot_no as plot_no, 
 blocks.name as block, 
 areas.name as location, 
 plot_assignment.size as size, 

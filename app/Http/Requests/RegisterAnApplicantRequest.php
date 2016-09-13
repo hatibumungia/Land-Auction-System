@@ -33,4 +33,19 @@ class RegisterAnApplicantRequest extends Request
             'password' => 'required|min:6|max:32|confirmed',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'first_name.required' => 'Jina la kwanza linahitajika',
+            'last_name.required' => 'Jina la mwisho linahitajika',
+            'email_address.required' => 'Barua pepe inahitajika',
+            'email_address.unique' => 'Anuani ya barua pepe imeshatumika. Weka nyingine.',
+            'phone_number.required' => 'Namba ya simu inahitajika',
+            'phone_number.unique' => 'Namba ya simu imeshatumika. Weka nyingine',
+            'password.required' => 'Nywila inahitajika',
+            'password.confirmed' => 'Nywila hazifanani'
+        ];
+    }
+
 }

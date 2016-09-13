@@ -12,120 +12,111 @@ use DB;
 class PlotTransactionController extends Controller
 {
 
-    protected $params = [];
-
-    protected $debug_msg = "";
-
     public function store(PlotTransactionRequest $request)
     {
 
-        // Get all the passed parameters
-        $this->params = $request->all();
-
-        // capture the transaction number
-        $transaction_number = $this->params['transaction_number'];
-
-        // check if the transaction number exists and has not been used
-        $status = DB::select('SELECT * FROM transaction_numbers WHERE transaction_number=:transaction_number AND status=0', ['transaction_number' => $transaction_number]);
+        $transaction_number = $request->input('transaction_number');
+        $plot_id = $request->input('plot_id');
+        $user_detail_id = Session('id');
 
 
-        if (sizeof($status) == 1) {
-            // both transaction number and status are ok
+        DB::beginTransaction();
+        try {
 
-            //echo $this->updateTransactionNumbers();
-            //echo $this->insertIntoPlotReservation();
-            //echo $this->updatePlotAssignment();
-            //check if all three operations are successfully
-            if($this->updateTransactionNumbers() && $this->insertIntoPlotReservation() && $this->updatePlotAssignment()){
-                // return 'all operations succeeded';
-                
+            // get the ID of the transaction number
+            $transaction_number_id = DB::SELECT('SELECT transaction_number_id FROM transaction_numbers WHERE transaction_number =:transaction_number AND status=0', ['transaction_number' => $transaction_number]);
 
-                flash()->success('All operations succeeded', compact('plot_reservations'));
-
-                return redirect('/reservation');
-            }else{
-                return 'one of the operations failed';
+            if (sizeof($transaction_number_id) == 1) {
+                $transaction_number_id[0]->transaction_number_id;
+            } else {
+                // has already been used
+                throw new \Exception('Transaction number already used');
             }
 
-        } else {
-            flash()->error('That transaction number has already been used or does not exist');
 
+            $sql = "
+                  UPDATE transaction_numbers SET
+                  status = '1',
+                  user_detail_id = Session('id'),
+                  updated_at = NOW()
+                  WHERE transaction_numbers.transaction_number_id = $transaction_number_id
+                ";
+            $affected = DB::update($sql);
+
+            if ($affected == 0) {
+                throw new \Exception('Failed in updating transaction number status');
+            }
+
+
+            $params['plot_id'] = $plot_id;
+            $params['user_detail_id'] = $user_detail_id;
+
+            $sql = 'UPDATE plot_reservation SET plot_reservation.status=1 WHERE plot_reservation.plot_id=:plot_id AND plot_reservation.user_detail_id=:user_detail_id';
+
+            $affected = DB::update($sql, $params);
+
+            if ($affected == 0) {
+                throw new \Exception('Failed in updating plot reservation status');
+            }
+
+            flash()->success('Hongera, Umefanikiwa kulipia.');
+            return redirect('/reservation');
+        }catch(\Exception $e)
+        {
+            DB::rollback();
+            flash()->error($e->getMessage());
             return redirect('/reservation');
         }
     }
 
-    public function updatePlotAssignment()
+    public function checkforTransactionNumberStatus($transaction_number)
     {
-        $area_id = $this->params['area_id'];
-        $areas_type_id = $this->params['areas_type_id'];
-        $block_id = $this->params['block_id'];
-        $plot_id = $this->params['plot_id'];
-
-        $sql = "
-            UPDATE plot_assignment SET status = '1' 
-            WHERE 
-            plot_assignment.area_id = $area_id AND 
-            plot_assignment.areas_type_id = $areas_type_id AND 
-            plot_assignment.block_id = $block_id AND 
-            plot_assignment.plot_id = $plot_id         
-        ";
-
-        $affected = DB::update($sql);
-
-        if(sizeof($affected) == 1){
-            $this->debug_msg += "updatePlotAssignment succeeded";
-            return "true";
-        }else{
-            return "false";
-        }
-    }
-
-    public function insertIntoPlotReservation()
-    {
-
-        PlotReservation::create([
-            'area_id' => $this->params['area_id'],
-            'areas_type_id' => $this->params['areas_type_id'],
-            'block_id' => $this->params['block_id'],
-            'plot_id' => $this->params['plot_id'],
-            'user_detail_id' => $this->params['user_detail_id'],
-            'deadline' => date('Y-m-d H:i:s', strtotime('+5 hours')),
-            'created_at' => date('Y-m-d H:i:s')
-        ]);
-
-        $this->debug_msg += "insertIntoPlotReservation succeeded";
-
-        return "true";
-    }
-
-    public function updateTransactionNumbers()
-    {
-
         // get the ID of the transaction number
-
-        $transaction_number_id = DB::SELECT('SELECT transaction_number_id FROM transaction_numbers WHERE transaction_number =:transaction_number AND status=0', ['transaction_number' => $this->params['transaction_number']]);
+        $transaction_number_id = DB::SELECT('SELECT transaction_number_id FROM transaction_numbers WHERE transaction_number =:transaction_number AND status=0', ['transaction_number' => $transaction_number]);
 
         if (sizeof($transaction_number_id) == 1) {
-            $transaction_number_id = $transaction_number_id[0]->transaction_number_id;
-
-            $sql = "
-          UPDATE transaction_numbers SET 
-          status = '1', 
-          updated_at = date('Y-m-d H:i:s')
-          WHERE transaction_numbers.transaction_number_id = $transaction_number_id
-        ";
-
-            $affected = DB::update($sql);
-
-            // return "updateTransactionNumbers affected rows = " . $affected;
-            if ($affected == 1) {
-                $this->debug_msg += "updateTransactionNumbers succeeded";
-                return "true";
-            } else {
-                return "false";
-            }
+            // has not been used
+            return $transaction_number_id[0]->transaction_number_id;
         } else {
-            return 'false';
+            // has already been used
+            return 0;
+        }
+
+    }
+
+    public function updateTransactionNumbers($transaction_number_id, $user_detail_id)
+    {
+
+        $sql = "
+                  UPDATE transaction_numbers SET
+                  status = '1',
+                  user_detail_id = $user_detail_id,
+                  updated_at = NOW()
+                  WHERE transaction_numbers.transaction_number_id = $transaction_number_id
+                ";
+        $affected = DB::update($sql);
+
+        if ($affected == 1) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+
+    public function updatePlotReservation($plot_id, $user_detail_id)
+    {
+        $params['plot_id'] = $plot_id;
+        $params['user_detail_id'] = $user_detail_id;
+
+        $sql = 'UPDATE plot_reservation SET plot_reservation.status=1 WHERE plot_reservation.plot_id=:plot_id AND plot_reservation.user_detail_id=:user_detail_id';
+
+        $affected = DB::update($sql, $params);
+
+        if ($affected == 1) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 }

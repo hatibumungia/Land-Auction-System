@@ -23,12 +23,12 @@
                 <a href="/admin/dashboard">Home</a>
             </li>
             <li>
-                <a href="/admin/locations">Locations</a>
+                <a href="/admin/locations">Maeneo</a>
             </li>
             <li>
                 <a href="/admin/locations/{{ $location->area_id }}">{{ $location->name }}</a>
             </li>            
-            <li class="active">Edit</li>
+            <li class="active">Hariri</li>
         </ol>
 
     <h3>Edit {{ $location->name }}</h3>

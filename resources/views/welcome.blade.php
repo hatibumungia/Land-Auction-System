@@ -6,10 +6,36 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-success">
+                    <div class="panel-body">
+                        <h3>1. Chagua kiwanja</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-success">
+                    <div class="panel-body">
+                        <h3>2. Lipia ya maombi ya kiwanja</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-success">
+                    <div class="panel-body">
+                        <h3>3. Print barua na iupeleke cda</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Location</h3>
+                        <h3 class="panel-title">Chagua Eneo</h3>
                     </div>
                     <ul id="areaListView" class="list-group">
                         @foreach($areas as $area)
@@ -21,7 +47,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Land Use</h3>
+                        <h3 class="panel-title">Matumizi ya Ardhi</h3>
                     </div>
                     <ul id="areaTypeListView" class="list-group">
                         <li class="list-group-item">...</li>
@@ -35,7 +61,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Block</h3>
+                        <h3 class="panel-title">Kitalu</h3>
                     </div>
                     <ul id="blockListView" class="list-group">
                         <li class="list-group-item">...</li>
@@ -55,7 +81,7 @@
                 <div id="site-plan">
                     <div id="sitePlanPanel" class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Siteplan</h3>
+                            <h3 class="panel-title">Mpango Mji</h3>
                         </div>
 
                     </div>

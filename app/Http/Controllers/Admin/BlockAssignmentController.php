@@ -65,12 +65,12 @@ class BlockAssignmentController extends Controller
                 'file_name' => $new_file
             ]);
 
-            flash()->success('Assigned successfully');
+            flash()->success('Imefanikiwa');
 
             return redirect('admin/block-assignments/create');
 
         } else {
-            flash()->error('File upload failed. Please try again later.');
+            flash()->error('Imeshindwa kupakia picha. Tafadhali jaribu tena baadae.');
 
             return redirect('admin/block-assignments/create');
         }

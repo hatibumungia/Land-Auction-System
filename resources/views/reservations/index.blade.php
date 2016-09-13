@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth-user')
 
 @section('page_title', 'Reservation')
 
@@ -19,10 +19,10 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                         <tr>
+                            <th>Plot number</th>
+                            <th>Block</th>
                             <th>Location</th>
                             <th>Land use</th>
-                            <th>Block</th>
-                            <th>Plot number</th>
                             <th>Size (sqm)</th>
                             <th>Price (TZS)</th>
                             <th>Application Payment</th>
@@ -35,16 +35,17 @@
                         --}}
                         @foreach($unconfirmed_reservation as $row)
                             <tr>
+                                <td>{{ $row->plot_no }}</td>
+                                <td>{{ $row->block }}</td>
                                 <td>{{ $row->location }}</td>
                                 <td>{{ $row->land_use }}</td>
-                                <td>{{ $row->block }}</td>
-                                <td>{{ $row->plot_no }}</td>
                                 <td>{{ $row->size }}</td>
                                 <td>{{ $row->price }}</td>
                                 <td>
 
 
-                                    <a class="btn btn-primary" data-toggle="modal" href='#modal-id'><i class="fa fa-money"></i> Pay</a>
+                                    <a class="btn btn-primary" data-toggle="modal" href='#modal-id'><i
+                                                class="fa fa-money"></i> Pay</a>
                                     <div class="modal fade" id="modal-id">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -54,8 +55,6 @@
                                                     <h4 class="modal-title">Application Payment</h4>
                                                 </div>
                                                 <div class="modal-body">
-
-                                                    @include('common.errors')
 
                                                     {!! Form::open(['action' => ['PlotTransactionController@store']]) !!}
                                                     <div class="form-group">

@@ -1,16 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.auth-user')
 
 @section('page_title', 'Complete Registration')
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             @include('reservations.common.sidebar')
         </div>        
-        <div class="col-sm-9">
-            <h3>Complete your registration</h3>
+        <div class="col-sm-6">
+            <h3>Kamilisha Usajili</h3>
 
              @include('common.errors')
 
@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
                     </div>
                 </div>
 

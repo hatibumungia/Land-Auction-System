@@ -42,7 +42,7 @@ class AreaController extends Controller
     {
         Area::create($request->all());
 
-        flash()->success($request->input('name') . ' added successfully');
+        flash()->success($request->input('name') . ' imefanikiwa kuongezwa');
 
         return redirect('admin/locations/create');
     }
@@ -89,7 +89,7 @@ class AreaController extends Controller
 
         $location->update($request->all());
 
-        flash()->success('Updated successfully');
+        flash()->success('Imefanikiwa kuhaririwa');
 
         return redirect('admin/locations');
 
@@ -108,7 +108,7 @@ class AreaController extends Controller
 
         $location->delete();
 
-        flash()->success($location->name . ' deleted successfully');
+        flash()->success($location->name . ' imefanikiwa kufutwa.');
 
         return redirect('admin/locations');
 

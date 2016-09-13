@@ -20,16 +20,16 @@
 
 		<ol class="breadcrumb">
 			<li>
-				<a href="/admin/dashboard">Home</a>
+				<a href="/admin/dashboard">Nyumbani</a>
 			</li>
 			<li>
-				<a href="/admin/land-uses">Land use</a>
+				<a href="/admin/land-uses">Matumizi ya ardhi</a>
 			</li>
-			<li class="active">All</li>
+			<li class="active">Yote</li>
 		</ol>
 
-        <a href="/admin/land-uses/create" class="btn btn-primary btn-lg"><i class="fa fa-plus-square-o"></i>
-            Add</a>
+        <a href="/admin/land-uses/create" class="btn btn-primary"><i class="fa fa-plus-square-o"></i>
+            Ongeza</a>
     </div>
 
     <br>
@@ -43,9 +43,9 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Added</th>
-                    <th>Updated</th>
+                    <th>Matumizi</th>
+                    <th>Iliongezwa</th>
+                    <th>Ilihaririwa</th>
                     <th><i class="fa fa-cog"></i></th>
                     <th><i class="fa fa-cog"></i></th>
                 </tr>
@@ -53,9 +53,9 @@
                 <tfoot>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Added</th>
-                    <th>Updated</th>
+                    <th>Matumizi</th>
+                    <th>Iliongezwa</th>
+                    <th>Ilihaririwa</th>
                     <th><i class="fa fa-cog"></i></th>
                     <th><i class="fa fa-cog"></i></th>
                 </tr>
@@ -69,14 +69,14 @@
                         <td><a href="/admin/land-uses/{{ $land_use->areas_type_id }}">{{ $land_use->name }}</a></td>
                         <td>{{ $land_use->created_at->diffForHumans() }}</td>
                         <td>{{ $land_use->updated_at->diffForHumans() }}</td>
-                        <td><a data-toggle="tooltip" data-placement="right" title="Edit" href="/admin/land-uses/{{ $land_use->areas_type_id }}/edit"><i
+                        <td><a data-toggle="tooltip" data-placement="right" title="Hariri" href="/admin/land-uses/{{ $land_use->areas_type_id }}/edit"><i
                                         class="fa fa-edit"></i></a>
                         </td>
 
                         <td>
 
 
-                            <a title="Delete" class="btn btn-danger" data-toggle="modal" href='#{{ $land_use->areas_type_id }}'><i
+                            <a title="Futa" class="btn btn-danger" data-toggle="modal" href='#{{ $land_use->areas_type_id }}'><i
                                         class="fa fa-trash"></i></a>
                             <div class="modal fade" id="{{ $land_use->areas_type_id }}">
                                 <div class="modal-dialog">
@@ -84,21 +84,21 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"
                                                     aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Deleting {{ $land_use->name }}</h4>
+                                            <h4 class="modal-title">Kufuta {{ $land_use->name }}</h4>
                                         </div>
                                         <div class="modal-body">
 
-                                            <p class="lead">Are you sure that you want to delete
+                                            <p class="lead">Je, una uhakika kwamba unataka kufuta matumizi ya ardhi ya
                                                 <strong>{{ $land_use->name }}</strong> ?</p>
 
                                         </div>
                                         <div class="modal-footer">
 
                                             {!! Form::open(['method' => 'DELETE', 'route' => ['admin.land-uses.destroy', $land_use->areas_type_id]]) !!}
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Acha
                                             </button>
                                             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                Delete
+                                                Futa
                                             </button>
                                             {!! Form::close() !!}
 
@@ -121,7 +121,7 @@
         @else
 
             <div class="alert alert-info">
-                <h3>No land use added yet</h3>
+                <h3>Hakuna matumizi ya ardhi yaliwekwa sasa hivi.</h3>
             </div>
 
         @endif

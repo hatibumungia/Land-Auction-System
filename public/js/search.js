@@ -8,11 +8,12 @@ $(function () {
 
     add_params = "min_size=" + min_size + "&max_size=" + max_size;
 
-    getSearchResults(add_params);
+    getSearchResults({params: add_params});
 
-    function getSearchResults(params = '') {
+    function getSearchResults(parameters) {
+        var params = parameters.params;
 
-        $('#searchResults').html("<table id='example' class='display' cellspacing='0' width='100%'><thead><tr><th>Location</th><th>Land use</th><th>Block</th><th>Plot#</th><th>Size</th><th>Price</th></tr></thead><tfoot><tr><th>Location</th><th>Land use</th><th>Block</th><th>Plot#</th><th>Size</th><th>Price</th></tr></tfoot></table>");
+        $('#searchResults').html("<table id='example' class='display' cellspacing='0' width='100%'><thead><tr><th>Eneo</th><th>Matumizi ya Ardhi</th><th>Kitalu</th><th>Namba ya Kiwanja</th><th>Ukubwa</th><th>Gharama</th></tr></thead><tfoot><tr><th>Eneo</th><th>Matumizi ya Ardhi</th><th>kitalu</th><th>Namba ya Kiwanja</th><th>Ukubwa</th><th>Gharama</th></tr></tfoot></table>");
 
         var url = '/search/performSearch?' + params;
         $('#example').DataTable({
@@ -34,16 +35,16 @@ $(function () {
 
         // check if user has not specified both the area name and area type name
         if ($('#area_id').val() == 0 && $('#area_type_id').val() == 0) {
-            getSearchResults(add_params);
+            getSearchResults({params: add_params});
             // check if user has specified both the area name and area type name
         } else if ($('#area_id').val() != 0 && $('#area_type_id').val() != 0) {
-            getSearchResults('area_id=' + $('#area_id').val() + '&area_type_id=' + $('#area_type_id').val() + "&" + add_params);
+            getSearchResults({params: 'area_id=' + $('#area_id').val() + '&area_type_id=' + $('#area_type_id').val() + "&" + add_params});
             // check if user has specified the area name only
         } else if ($('#area_id').val() != 0) {
-            getSearchResults('area_id=' + $('#area_id').val() + "&" + add_params);
+            getSearchResults({params: 'area_id=' + $('#area_id').val() + "&" + add_params});
             // check if user has specified the area type name only
         } else if ($('#area_type_id').val() != 0) {
-            getSearchResults('area_type_id=' + $('#area_type_id').val() + "&" + add_params);
+            getSearchResults({params: 'area_type_id=' + $('#area_type_id').val() + "&" + add_params});
         }
 
     });
