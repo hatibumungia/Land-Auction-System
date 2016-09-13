@@ -96,7 +96,8 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     @if(Session::has('username'))
-                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Akaunti Yangu</a>
+                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Akaunti
+                                Yangu</a>
                         </li>
                     @endif
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>
@@ -107,12 +108,21 @@
 
 
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (!Session::has('username'))
-                        <li @if(Request::is('applicants/register')) class="active" @endif><a
-                                    href="{{ url('/applicants/register') }}">Jisajili</a></li>
-
-                        <li @if(Request::is('applicants/login')) class="dropdown" @endif>
+                    @if(Session::has('username'))
+                            <!-- Authentication Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">
+                            <i class="fa fa-user"></i> {{ Session::get('username') }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/reservation/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Toka</a>
+                            </li>
+                        </ul>
+                    </li>
+                    @else
+                        <li><a href="{{ url('applicant/register') }}">Jisajili</a></li>
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingia <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
                                 <div class="col-lg-12">
@@ -149,18 +159,6 @@
                                 </div>
                             </ul>
 
-                        </li>
-
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                                <i class="fa fa-user"></i> {{ Session::get('username') }} <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/reservation/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Toka</a>
-                                </li>
-                            </ul>
                         </li>
                     @endif
                 </ul>
