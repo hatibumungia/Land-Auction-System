@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -47,7 +48,7 @@ class RoleController extends Controller
             'description' => $request->input('description')
         ]);
 
-        return redirect('admin.roles');
+        return redirect('admin/roles');
     }
 
     /**
@@ -99,7 +100,11 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id); // Pull back a given role
+
+        DB::statement('DELETE FROM roles WHERE id=:id', ['id' => $role->id]);
+        
+        return redirect('admin/roles');
     }
 
     public function attachPermission(Request $request)
