@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\UserDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ use App\Area;
 use App\Http\Requests\CreateBlockAssignmentRequest;
 use App\BlockAssignment;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class BlockAssignmentController extends Controller
 {
@@ -27,7 +29,9 @@ class BlockAssignmentController extends Controller
 
         $block_assignments = DB::select($sql);
 
-        return view('admin.block-assignments.index', compact('block_assignments'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.block-assignments.index', compact('block_assignments', 'user'));
     }
 
     /**

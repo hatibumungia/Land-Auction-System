@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\CreateRoleRequest;
 use App\Permission;
 use App\Role;
+use App\UserDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class RoleController extends Controller
 {
@@ -21,7 +23,8 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin.roles.index', compact('roles'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.roles.index', compact('roles', 'user'));
     }
 
     /**

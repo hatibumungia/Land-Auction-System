@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\UserDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,6 +12,7 @@ use App\Area;
 use App\Http\Requests\CreateAreaAssignmentRequest;
 use App\AreaAssignment;
 use DB;
+use Illuminate\Support\Facades\Session;
 use phpDocumentor\Reflection\Types\Integer;
 
 class AreaAssignmentController extends Controller
@@ -26,7 +28,9 @@ class AreaAssignmentController extends Controller
 
         $location_assignments = DB::select($sql);
 
-        return view('admin.location-assignments.index', compact('location_assignments'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.location-assignments.index', compact('location_assignments', 'user'));
     }
 
     /**

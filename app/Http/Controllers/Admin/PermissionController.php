@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreatePermissionRequest;
 use App\Permission;
+use App\UserDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class PermissionController extends Controller
 {
@@ -19,7 +21,8 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::all();
-        return view('admin.permissions.index', compact('permissions'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.permissions.index', compact('permissions', 'user'));
     }
 
     /**

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Area;
 use App\AreaImage;
 use App\Http\Requests\CreateAreaImageRequest;
+use App\UserDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class AreaImageController extends Controller
 {
@@ -22,7 +24,9 @@ class AreaImageController extends Controller
     {
         $area_images = DB::select('SELECT areas.area_id, areas.name, area_image.file_name, area_image.created_at, area_image.updated_at FROM areas, area_image WHERE areas.area_id=area_image.area_id ORDER BY areas.name ASC');
 
-        return view('admin.area-images.index', compact('area_images'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.area-images.index', compact('area_images', 'user'));
     }
 
     /**

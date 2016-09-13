@@ -140,9 +140,9 @@ order by plot_reservation.created_at desc
 
         $plot_reservations = DB::select($sql, ['user_detail_id' => Session::get('id')]);
 
-        // return $plot_reservations;
+        $user = UserDetail::findOrFail(Session::get('id'));
 
-        return view('reservations.all', compact('plot_reservations'));
+        return view('reservations.all', compact('plot_reservations', 'user'));
 
 
     }
@@ -192,7 +192,9 @@ order by plot_reservation.created_at desc
     {
         $user_detail = UserDetail::findOrFail(Session::get('id'));
 
-        return view('reservations.complete_registration', compact('user_detail'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('reservations.complete_registration', compact('user_detail', 'user'));
     }
 
     public

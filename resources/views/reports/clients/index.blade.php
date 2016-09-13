@@ -4,7 +4,7 @@
 
 @section('side_bar')
 
-    @include('reports.common.side_bar')
+    @include('admin.common.nav_side_menu')
 
 @endsection
 
@@ -31,10 +31,10 @@
                         <a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a>
                     </li>
                     <li role="presentation">
-                        <a href="#reserved" aria-controls="reserved" role="tab" data-toggle="tab">Reserved</a>
+                        <a href="#reserved" aria-controls="reserved" role="tab" data-toggle="tab">Partially Registered</a>
                     </li>
                     <li role="presentation">
-                        <a href="#unreserved" aria-controls="unreserved" role="tab" data-toggle="tab">Unreserved</a>
+                        <a href="#unreserved" aria-controls="unreserved" role="tab" data-toggle="tab">Fully Registered</a>
                     </li>
                 </ul>
 

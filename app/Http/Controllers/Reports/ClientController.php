@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -15,7 +16,9 @@ class ClientController extends Controller
     {
         $clients = UserDetail::paginate(15);
 
-        return view('reports.clients.index', compact('clients'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('reports.clients.index', compact('clients', 'user'));
     }
 
     public function show($user_detail_id)

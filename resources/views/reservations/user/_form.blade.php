@@ -1,8 +1,6 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Taarifa Binafsi</h3>
-    </div>
     <div class="panel-body">
+        <h3>Taarifa Binafsi</h3>
         <div class="form-group">
             <label for="first_name" class="col-sm-3 control-label">Jina la Kwanza * </label>
             <div class="col-sm-9">
@@ -23,7 +21,7 @@
         </div>
         @if($user_detail->photo == null)
             <div class="form-group">
-                <label for="photo" class="col-sm-3 control-label">Badilisha</label>
+                <label for="photo" class="col-sm-3 control-label">Picha</label>
                 <div class="col-sm-9">
                     <input type="file" name="photo" value="{{ $user_detail->photo }}">
                 </div>
@@ -46,11 +44,10 @@
 </div>
 
 <div class="panel panel-info">
-    <div class="panel-heading">
-        <h3 class="panel-title">Taarifa za Mawasiliano</h3>
-    </div>
     <div class="panel-body">
+        <h3>Taarifa za Mawasiliano</h3>
         <div class="form-group">
+
             <label for="phone_number" class="col-sm-3 control-label">Namba ya Simu</label>
             <div class="col-sm-9">
                 {!! Form::text('phone_number', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
@@ -75,27 +72,24 @@
 </div>
 
 <div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title">Mahali Unapoishi</h3>
-    </div>
     <div class="panel-body">
-
+        <h3>Mahali Unapoishi</h3>
         <div class="form-group">
             <label for="region" class="col-sm-3 control-label">Mkoa * </label>
             <div class="col-sm-9">
-                {!! Form::text('region',null, ['class' => 'form-control', 'placeholder' => 'Mfano. Tabora']) !!}
+                {!! Form::text('region',null, ['class' => 'form-control', 'placeholder' => 'Mfano. Dodoma']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="district" class="col-sm-3 control-label">Wilaya * </label>
             <div class="col-sm-9">
-                {!! Form::text('district',null, ['class' => 'form-control', 'placeholder' => 'Mfano. Urambo']) !!}
+                {!! Form::text('district',null, ['class' => 'form-control', 'placeholder' => 'Mfano. Dodoma Mjini']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="ward" class="col-sm-3 control-label">Kata * </label>
             <div class="col-sm-9">
-                {!! Form::text('ward', null, ['class' => 'form-control', 'placeholder' => 'Mfano. Urambo Mjini']) !!}
+                {!! Form::text('ward', null, ['class' => 'form-control', 'placeholder' => 'Mfano. Kisasa']) !!}
             </div>
         </div>
         <div class="form-group">

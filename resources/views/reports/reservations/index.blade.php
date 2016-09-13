@@ -4,7 +4,7 @@
 
 @section('side_bar')
 
-    @include('reports.common.side_bar')
+    @include('admin.common.nav_side_menu')
 
 @endsection
 
@@ -170,7 +170,7 @@
 
                         @else
 
-                            <h3 class="text-center">Empty</h3>
+                            <h3>Empty</h3>
 
                         @endif
 

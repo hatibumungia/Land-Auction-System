@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                @include('reservations.common.sidebar')
+                @include('admin.common.nav_side_menu')
             </div>
             <div class="col-sm-9">
 

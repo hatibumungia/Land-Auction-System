@@ -6,10 +6,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-2">
-                @include('reservations.common.sidebar')
+            <div class="col-sm-3">
+                @include('admin.common.nav_side_menu')
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-9">
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -38,7 +38,7 @@
                             @include('common.errors')
 
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table table-hover table-bordered">
                                     <thead>
                                     <tr>
                                         <th>Namba ya Kiwanja</th>
@@ -46,7 +46,7 @@
                                         <th>Eneo</th>
                                         <th>Matumizi ya Ardhi</th>
                                         <th>Ukubwa (Mita za Mraba)</th>
-                                        <th>Gharama</th>
+                                        <th>Gharama (TZS)</th>
                                         <th>Mwisho wa Kulipia</th>
                                         <th><i class="fa fa-print"></i></th>
                                     </tr>
@@ -59,7 +59,7 @@
                                             <td class="text-center">{{ $plot_reservation->location  }}</td>
                                             <td class="text-center">{{ $plot_reservation->land_use  }}</td>
                                             <td class="text-center">{{ $plot_reservation->size  }}</td>
-                                            <td class="text-center">{{ $plot_reservation->size * $plot_reservation->price  }}</td>
+                                            <td class="text-center">{{ number_format($plot_reservation->size * $plot_reservation->price)  }}</td>
                                             <td class="text-center">{{ $plot_reservation->deadline  }}</td>
                                             <td>
                                                 @if($plot_reservation->status == 0)

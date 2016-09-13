@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreatePlotAssignmentRequest;
+use App\UserDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,6 +14,7 @@ use App\AreaType;
 use App\Block;
 use DB;
 use App\Plot;
+use Illuminate\Support\Facades\Session;
 
 class PlotAssignmentController extends Controller
 {
@@ -28,7 +30,9 @@ class PlotAssignmentController extends Controller
 
         $plot_assignments = DB::select($sql);
 
-        return view('admin.plot-assignments.index', compact('plot_assignments'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.plot-assignments.index', compact('plot_assignments', 'user'));
     }
 
     /**

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\AreaType;
 
 use App\Http\Requests\CreateAreaTypeRequest;
+use App\UserDetail;
+use Illuminate\Support\Facades\Session;
 
 class AreaTypeController extends Controller
 {
@@ -19,7 +21,9 @@ class AreaTypeController extends Controller
     {
         $land_uses = AreaType::all();
 
-        return view('admin.land-uses.index', compact('land_uses'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.land-uses.index', compact('land_uses', 'user'));
     }
 
     /**

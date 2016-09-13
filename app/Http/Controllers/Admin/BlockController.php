@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Block;
 
 use App\Http\Requests\CreateBlockRequest;
+use App\UserDetail;
+use Illuminate\Support\Facades\Session;
 
 class BlockController extends Controller
 {
@@ -19,7 +21,9 @@ class BlockController extends Controller
     {
         $blocks = Block::all();
 
-        return view('admin.blocks.index', compact('blocks'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.blocks.index', compact('blocks', 'user'));
     }
 
     /**

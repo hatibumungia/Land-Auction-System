@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CreateLocationRequest;
 use App\Http\Controllers\Controller;
 use App\Area;
+use Illuminate\Support\Facades\Session;
 
 class AreaController extends Controller
 {
@@ -19,7 +21,9 @@ class AreaController extends Controller
     {
         $locations = Area::all();
 
-        return view('admin.locations.index', compact('locations'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.locations.index', compact('locations', 'user'));
     }
 
     /**

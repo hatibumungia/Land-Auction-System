@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -23,7 +24,9 @@ class UserController extends Controller
     {
         $users = UserDetail::all();
 
-        return view('admin.staff.index', compact('users'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.staff.index', compact('users', 'user'));
     }
 
     /**
