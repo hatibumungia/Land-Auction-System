@@ -1,23 +1,10 @@
 body {
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
-  font-family: 'Times New Roman'
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman'
 }
-footer {
-  padding: 2.5%;
-  background-color: rgba(114, 186, 219, 1);
-  color: #fff;
-}
-footer ul li a {
-  color: #fff;
-  font-size: 20px;
-}
-footer ul li a:hover {
-  text-decoration: none;
-}
-.footer-bottom {
-  padding: 2%;
-  background-color: rgba(118, 186, 219, 1);
-  color: #fff;
+
+.not-plots {
+    padding: 10% 0 5% 0;
 }

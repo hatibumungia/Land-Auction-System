@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Taarifa Binafsi</h3>
     </div>
@@ -6,19 +6,19 @@
         <div class="form-group">
             <label for="first_name" class="col-sm-3 control-label">Jina la Kwanza * </label>
             <div class="col-sm-9">
-                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Hatibu']) !!}
+                {!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Mfano. Hatibu']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="middle_name" class="col-sm-3 control-label">Jina la kati</label>
             <div class="col-sm-9">
-                {!! Form::text('middle_name', null, ['class' => 'form-control', 'placeholder' => 'Mungia']) !!}
+                {!! Form::text('middle_name', null, ['class' => 'form-control', 'placeholder' => 'Mfano. Mungia']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="last_name" class="col-sm-3 control-label">Jina la Ukoo * </label>
             <div class="col-sm-9">
-                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Hatibu']) !!}
+                {!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Mfano. Hatibu']) !!}
             </div>
         </div>
         @if($user_detail->photo == null)
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading">
         <h3 class="panel-title">Taarifa za Mawasiliano</h3>
     </div>
@@ -63,15 +63,18 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="address" class="col-sm-3 control-label">Anuwani * </label>
+            <label for="address" class="col-sm-3 control-label">Anuani</label>
             <div class="col-sm-9">
-                {!! Form::textarea('address', null, ['class' => 'form-control', 'placeholder' => '5500']) !!}
+                <div class="input-group">
+                    <div class="input-group-addon">S.L.P *</div>
+                    {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 'Mfano. 259']) !!}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">Mahali Unapoishi</h3>
     </div>
@@ -80,25 +83,25 @@
         <div class="form-group">
             <label for="region" class="col-sm-3 control-label">Mkoa * </label>
             <div class="col-sm-9">
-                {!! Form::text('region',null, ['class' => 'form-control', 'placeholder' => 'Dodoma']) !!}
+                {!! Form::text('region',null, ['class' => 'form-control', 'placeholder' => 'Mfano. Tabora']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="district" class="col-sm-3 control-label">Wilaya * </label>
             <div class="col-sm-9">
-                {!! Form::text('district',null, ['class' => 'form-control', 'placeholder' => 'Dodoma Mjini']) !!}
+                {!! Form::text('district',null, ['class' => 'form-control', 'placeholder' => 'Mfano. Urambo']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="ward" class="col-sm-3 control-label">Kata * </label>
             <div class="col-sm-9">
-                {!! Form::text('ward', null, ['class' => 'form-control', 'placeholder' => 'Kizota']) !!}
+                {!! Form::text('ward', null, ['class' => 'form-control', 'placeholder' => 'Mfano. Urambo Mjini']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="house_number" class="col-sm-3 control-label">Namba ya Nyumba * </label>
             <div class="col-sm-9">
-                {!! Form::text('house_number', null, ['class' => 'form-control', 'placeholder' => '357']) !!}
+                {!! Form::text('house_number', null, ['class' => 'form-control', 'placeholder' => 'Mfano. 357']) !!}
             </div>
         </div>
 

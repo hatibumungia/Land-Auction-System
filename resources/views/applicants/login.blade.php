@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Ingia</h3>
                     </div>
@@ -18,7 +18,7 @@
                         {!! Form::open(['url' => '/applicants/auth/login']) !!}
                         <div class="form-group">
                             {!! Form::label('username', 'Namba ya Simu') !!}
-                            {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => '+255719961077']) !!}
+                            {!! Form::text('username', null, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('password', 'Neno la Siri') !!}

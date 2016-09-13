@@ -38,16 +38,9 @@ class PlotAssignmentController extends Controller
      */
     public function create()
     {
-
-        // TODO: don't fetch the rows which are already assigned
-
         $areas = Area::all();
 
-        $area_types = AreaType::all();
-
-        $blocks = Block::all();
-
-        return view('admin.plot-assignments.create', compact('areas', 'area_types', 'blocks'));
+        return view('admin.plot-assignments.create', compact('areas'));
     }
 
     /**
@@ -58,30 +51,39 @@ class PlotAssignmentController extends Controller
      */
     public function store(CreatePlotAssignmentRequest $request)
     {
+
+        // load the rows
         $results = \Excel::load($request->file('user_file'), function ($reader) {
 
         })->get();
 
+        // iterate through the rows
         foreach ($results as $row) {
-            /** @var TYPE_NAME $plot_assignment */
 
-            $plot_id = DB::table('plots')->where('plot_no',$row->plot)->value('plot_id');
+            // get the plot_id of the plot_no uploaded
+            $plot_id = DB::select('SELECT plots.plot_id FROM plots WHERE plots.plot_no = :plot_no', ['plot_no' => $row->plot]);
 
-
+            // initialize insertion in plot_assignment
             $plot_assignment = new PlotAssignment();
             $plot_assignment->area_id = $request->input('area_id');
             $plot_assignment->areas_type_id = $request->input('areas_type_id');
             $plot_assignment->block_id = $request->input('block_id');
             $plot_assignment->size = $row->size;
-            if(sizeof($plot_id) > 0){
-                $plot_assignment->plot_id = $plot_id;
-            }else{
+
+            // check if that plot_no exist or not in plots table
+            if (count($plot_id) == 1) {
+                //that plot_no exists, you have to fetch its id and assign
+                $plot_assignment->plot_id = $plot_id[0]->plot_id;
+            } else {
+                // that plot_no does not exists, create it then fetch its id
                 $plot = new Plot();
                 $plot->plot_no = $row->plot;
                 $plot->save();
-                $insertedId  = $plot->id;
-                $plot_assignment->plot_id = $insertedId ;
+
+                $plot_id = DB::select('SELECT plots.plot_id FROM plots WHERE plots.plot_no = :plot_no', ['plot_no' => $row->plot]);
+                $plot_assignment->plot_id = $plot_id[0]->plot_id;
             }
+
 
             $plot_assignment->save();
 

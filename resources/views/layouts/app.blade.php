@@ -38,6 +38,21 @@
             color: #fff;
         }
 
+        ul.dropdown-lr {
+            width: 300px;
+        }
+
+        /* mobile fix */
+        @media (max-width: 768px) {
+            .dropdown-lr h3 {
+                color: #eee;
+            }
+
+            .dropdown-lr label {
+                color: #eee;
+            }
+        }
+
     </style>
 
     <script src="/js/jquery.min.js"></script>
@@ -85,36 +100,57 @@
                         </li>
                     @endif
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>
-                </ul>
-
-                {{--
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                                <i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                    @if(!Auth::guest())
+                        <li><a href="/admin/dashboard">Dashboard</a></li>
                     @endif
                 </ul>
-                --}}
+
 
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (!Session::has('username'))
-                        <li @if(Request::is('applicants/login')) class="active" @endif><a
-                                    href="{{ url('/applicants/login') }}">Ingia</a></li>
                         <li @if(Request::is('applicants/register')) class="active" @endif><a
                                     href="{{ url('/applicants/register') }}">Jisajili</a></li>
+
+                        <li @if(Request::is('applicants/login')) class="dropdown" @endif>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingia <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+                                <div class="col-lg-12">
+                                    <div class="text-center">
+                                        <h3><b>Ingia</b></h3>
+                                    </div>
+
+                                    @include('common.errors')
+
+                                    {!! Form::open(['url' => '/applicants/auth/login']) !!}
+                                    <div class="form-group">
+                                        {!! Form::label('username', 'Namba ya Simu') !!}
+                                        {!! Form::text('username', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {!! Form::label('password', 'Neno la Siri') !!}
+                                        {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-5 pull-right">
+                                                <button type="submit" class="btn btn-primary"><i
+                                                            class="fa fa-sign-in"></i> Ingia
+                                                </button>
+                                            </div>
+                                            {!! Form::close() !!}
+                                            <div class="col-xs-7">
+                                                Hujajisajili? Jisajili <a href="/applicants/register"> hapa </a>.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+
+                        </li>
+
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -160,6 +196,7 @@
 <script src="{{ URL::to('js/reservation.js') }}"></script>
 <script src="{{ URL::to('js/front-button-confirm.js') }}"></script>
 <script src="/js/zoom.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>

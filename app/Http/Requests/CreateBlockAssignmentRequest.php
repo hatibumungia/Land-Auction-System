@@ -26,8 +26,7 @@ class CreateBlockAssignmentRequest extends Request
         return [
             'area_id' => 'required',
             'areas_type_id' => 'required',
-            'block_id' => 'required',
-            'file_name' => 'required|image|max:2000'
+            'block_id' => 'required'
         ];
     }
 }

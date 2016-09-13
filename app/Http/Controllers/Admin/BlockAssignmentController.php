@@ -70,9 +70,17 @@ class BlockAssignmentController extends Controller
             return redirect('admin/block-assignments/create');
 
         } else {
-            flash()->error('Imeshindwa kupakia picha. Tafadhali jaribu tena baadae.');
 
-            return redirect('admin/block-assignments/create');
+            BlockAssignment::create([
+                'area_id' => $request->input('area_id'),
+                'areas_type_id' => $request->input('areas_type_id'),
+                'block_id' => $request->input('block_id')
+            ]);
+
+            // flash()->error('Imeshindwa kupakia picha. Tafadhali jaribu tena baadae.');
+            flash()->success('Imefanikiwa');
+
+            return redirect('admin/block-assignments');
         }
 
     }

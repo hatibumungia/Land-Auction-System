@@ -12,10 +12,10 @@ class CreateReservationSessionController extends Controller
     {
 
         session([
-            'temp_reservation_areaId' => $_GET['areaId'],
-            'temp_reservation_area_type_id' => $_GET['area_type_id'],
-            'temp_reservation_block_id' => $_GET['block_id'],
-            'temp_reservation_plot_id' => $_GET['plot_id'],
+            'temp_reservation_areaId' => $_POST['areaid'],
+            'temp_reservation_area_type_id' => $_POST['areatypeid'],
+            'temp_reservation_block_id' => $_POST['blockid'],
+            'temp_reservation_plot_id' => $_POST['plotid'],
         ]);
 
         return redirect('/reservation');

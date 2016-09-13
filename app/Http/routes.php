@@ -90,6 +90,8 @@ $router->group([
 
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
     Route::get('/admin/location-assignments/getLandUse', 'AreaAssignmentController@getLandUse');
+
+    Route::resource('/admin/location-images', 'AreaImageController');
 });
 
 // Routes for ajax requests
@@ -100,6 +102,8 @@ $router->group([
     Route::get('/admin/ajax/locationAssignmentsGetLandUse', 'AjaxController@locationAssignmentsGetLandUse');
     Route::get('/admin/ajax/blockAssignmentsGetLandUse', 'AjaxController@blockAssignmentsGetLandUse');
     Route::get('/admin/ajax/blockAssignmentsGetBlock', 'AjaxController@blockAssignmentsGetBlock');
+    Route::get('/admin/ajax/plotAssignmentsGetLandUses', 'AjaxController@plotAssignmentsGetLandUses');
+    Route::get('/admin/ajax/plotAssignmentsGetBlock', 'AjaxController@plotAssignmentsGetBlock');
 });
 
 Route::get('/reservation', 'ReservationController@index');
@@ -118,5 +122,24 @@ Route::post('/applicants/auth/register', 'ApplicantsController@processRegister')
 
 Route::post('/plot_transactions', 'PlotTransactionController@store');
 
-Route::get('/createreservationsessioncontroller', 'CreateReservationSessionController@index');
+Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');
 
+$router->group([
+    'namespace' => 'reports'
+], function () {
+    Route::get('/reports/reservations', 'ReservationController@index');
+    Route::get('/reports/clients', 'ClientController@index');
+    Route::get('/reports/clients/{id}', 'ClientController@show');
+});
+
+$router->group([
+    'namespace' => 'Admin'
+], function () {
+    Route::resource('admin/staff', 'UserController');
+    Route::post('admin/staff/attachRole', 'UserController@attachRole');
+
+    Route::resource('admin/roles', 'RoleController');
+    Route::post('admin/roles/attachPermission', 'RoleController@attachPermission');
+
+    Route::resource('admin/permissions', 'PermissionController');
+});

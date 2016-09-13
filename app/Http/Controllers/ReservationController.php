@@ -257,6 +257,6 @@ order by plot_reservation.created_at desc
 
         Session::flush();
 
-        return redirect('/applicants/login');
+        return redirect('/');
     }
 }

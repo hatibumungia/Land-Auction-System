@@ -52,7 +52,7 @@ class AreaAssignmentController extends Controller
 
         AreaAssignment::create($request->all());
 
-        flash()->success('Added successfully');
+        flash()->success('Umefanikiwa Kuongeza');
 
         return redirect('admin/location-assignments/create');
     }
@@ -117,11 +117,11 @@ class AreaAssignmentController extends Controller
         $affected = DB::update('update area_assignment set price = ? where area_id = ? and areas_type_id = ?', $data);
 
         if($affected == 1){
-            flash()->success('Edited successfully');
+            flash()->success('Umefanikiwa Kuhariri');
 
             return redirect('admin/location-assignments');
         }else{
-            flash()->error('Failed to edit');
+            flash()->error('Haijafanikiwa Kuhariri');
 
             return redirect('admin/location-assignments');
         }
@@ -136,6 +136,6 @@ class AreaAssignmentController extends Controller
      */
     public function destroy($location)
     {
-        return 'deleting ' . $location;
+        return 'Imefuta...' . $location;
     }
 }
