@@ -41,10 +41,12 @@ class PermissionController extends Controller
     public function store(CreatePermissionRequest $request)
     {
         Permission::create([
-            'name' => str_slug($request->input('name'), '-'),
+            'name' => str_slug($request->input('display_name'), '-'),
             'display_name' => $request->input('display_name'),
             'description' => $request->input('description')
         ]);
+
+        flash()->success('Success');
 
         return redirect('admin/permissions');
     }
@@ -83,6 +85,8 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
         $permission->update($request->all());
+
+        flash()->success('Success');
 
         return redirect('admin/permissions');
     }

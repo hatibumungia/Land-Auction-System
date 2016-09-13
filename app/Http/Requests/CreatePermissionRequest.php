@@ -24,8 +24,15 @@ class CreatePermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
             'display_name' => 'required|unique:permissions'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'display_name.required' => 'Permission Name is required',
+            'display_name.unique' => 'That permission already exists'
         ];
     }
 }
