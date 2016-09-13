@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Zizaco\Entrust\Traits\EntrustUserTrait;
+
 class UserDetail extends Model
 {
+    use EntrustUserTrait;
 
     protected $table = 'user_details';
 

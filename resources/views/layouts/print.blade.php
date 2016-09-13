@@ -8,7 +8,7 @@
     <title>@yield('page_title')</title>
 
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     {{--<link href="/css/bootstrap.min.css" rel="stylesheet">--}}
     <style>
         body {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\CreateUserRequest;
 use App\Role;
 use App\User;
+use App\UserDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = UserDetail::all();
+
         return view('admin.staff.index', compact('users'));
     }
 
@@ -44,7 +46,7 @@ class UserController extends Controller
     {
         $password = $request->input('email');
 
-        User::create([
+        UserDetail::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($password)
@@ -61,9 +63,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        $roles = Role::getUserRoles($user->id);
-        $new_roles = Role::getNewRules($user->id);
+        $user = UserDetail::findOrFail($id);
+        $roles = Role::getUserRoles($user->user_detail_id);
+        $new_roles = Role::getNewRules($user->user_detail_id);
         return view('admin.staff.show', compact('user', 'roles', 'new_roles'));
     }
 
@@ -75,7 +77,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = UserDetail::findOrFail($id);
         
         return view('admin.staff.edit', compact('user'));
     }
@@ -89,7 +91,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = UserDetail::findOrFail($id);
         $user->update($request->all());
 
         return redirect('admin/staff');
@@ -108,10 +110,13 @@ class UserController extends Controller
 
     public function attachRole(Request $request)
     {
-        $user = User::findOrFail($request->input('user_id'));
+        $user = UserDetail::findOrFail($request->input('user_id'));
+
         $role = Role::findOrFail($request->input('role_id'));
 
         $user->attachRole($role);
+
+        flash()->success('Success');
 
         return redirect('admin/staff');
     }

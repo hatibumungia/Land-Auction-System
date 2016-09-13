@@ -29,12 +29,12 @@
                     <div class="col-md-12">
 
                         <div class="panel panel-default">
-                            <div class="panel-heading">Edit a User</div>
+                            <div class="panel-heading">Edit {{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</div>
                             <div class="panel-body">
 
                                 @include('errors.list')
 
-                                {!! Form::model($user, ['method' => 'PATCH', 'action' => ['Admin\UserController@update', $user->id] , 'class' => 'form-horizontal']) !!}
+                                {!! Form::model($user, ['method' => 'PATCH', 'action' => ['Admin\UserController@update', $user->user_detail_id] , 'class' => 'form-horizontal']) !!}
 
                                 @include('admin.staff._form')
 

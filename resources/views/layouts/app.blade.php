@@ -121,7 +121,7 @@
                         </ul>
                     </li>
                     @else
-                        <li><a href="{{ url('applicant/register') }}">Jisajili</a></li>
+                        <li><a href="{{ url('applicants/register') }}">Jisajili</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ingia <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">

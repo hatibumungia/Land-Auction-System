@@ -133,7 +133,8 @@ $router->group([
 });
 
 $router->group([
-    'namespace' => 'Admin'
+    'namespace' => 'Admin',
+    'middleware' => 'applicant'
 ], function () {
     Route::resource('admin/staff', 'UserController');
     Route::post('admin/staff/attachRole', 'UserController@attachRole');

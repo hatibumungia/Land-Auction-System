@@ -48,14 +48,14 @@
                                             <tbody>
                                             @foreach($users as $user)
                                                 <tr>
-                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->user_detail_id }}</td>
                                                     <td>
-                                                        <a href="{{ url('admin/staff/' . $user->id) }}">{{ $user->name }}</a>
+                                                        <a href="{{ url('admin/staff/' . $user->user_detail_id) }}">{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</a>
                                                     </td>
-                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->email_address }}</td>
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>{{ $user->updated_at }}</td>
-                                                    <td><a href="{{ url('admin/staff/' . $user->id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
+                                                    <td><a href="{{ url('admin/staff/' . $user->user_detail_id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach
