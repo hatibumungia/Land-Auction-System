@@ -67,7 +67,7 @@ Route::get('/search/getReservationSummaryNames', 'SearchController@getReservatio
 
 $router->group([
     'namespace' => 'Admin',
-    'middleware' => 'auth',
+    'middleware' => 'applicant',
 ], function () {
     Route::get('/admin/dashboard', 'DashboardController@index');
     Route::resource('/admin/locations', 'AreaController');
@@ -97,7 +97,7 @@ $router->group([
 // Routes for ajax requests
 $router->group([
     'namespace' => 'Admin',
-    'middleware' => 'auth',
+    'middleware' => 'applicant',
 ], function () {
     Route::get('/admin/ajax/locationAssignmentsGetLandUse', 'AjaxController@locationAssignmentsGetLandUse');
     Route::get('/admin/ajax/blockAssignmentsGetLandUse', 'AjaxController@blockAssignmentsGetLandUse');

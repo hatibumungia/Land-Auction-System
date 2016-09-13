@@ -24,8 +24,15 @@ class CreateRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'display_name' => 'required'
+            'display_name' => 'required|unique:roles'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'display_name.required' => 'Role Name is required',
+            'display_name.unique' => 'That role already exists'
         ];
     }
 }

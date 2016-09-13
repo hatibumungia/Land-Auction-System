@@ -43,10 +43,12 @@ class RoleController extends Controller
     public function store(CreateRoleRequest $request)
     {
         Role::create([
-            'name' => str_slug($request->input('name'), '-'),
+            'name' => str_slug($request->input('display_name'), '-'),
             'display_name' => $request->input('display_name'),
             'description' => $request->input('description')
         ]);
+
+        flash()->success('Success');
 
         return redirect('admin/roles');
     }
@@ -89,6 +91,8 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->update($request->all());
 
+        flash()->success('Success');
+
         return redirect('admin/roles');
     }
 
@@ -103,6 +107,8 @@ class RoleController extends Controller
         $role = Role::findOrFail($id); // Pull back a given role
 
         DB::statement('DELETE FROM roles WHERE id=:id', ['id' => $role->id]);
+
+        flash()->success('Success');
         
         return redirect('admin/roles');
     }
@@ -113,6 +119,8 @@ class RoleController extends Controller
         $permission = Permission::findOrFail($request->input('permission_id'));
 
         $role->attachPermission($permission);
+
+        flash()->success('Success');
 
         return redirect('admin/roles');
     }
