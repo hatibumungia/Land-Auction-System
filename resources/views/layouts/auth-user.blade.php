@@ -71,7 +71,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     @if(Session::has('username'))
-                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Nyumbani</a>
+                        <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Akaunti Yangu</a>
                         </li>
                     @endif
                     <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>
