@@ -33,7 +33,9 @@ class BlockController extends Controller
      */
     public function create()
     {
-        return view('admin.blocks.create');
+        $user = UserDetail::findOrFail(Session::get('id'));
+        
+        return view('admin.blocks.create', compact('user'));
     }
 
     /**
@@ -62,7 +64,9 @@ class BlockController extends Controller
     {
         $block = Block::findOrFail($block_id);
 
-        return view('admin.blocks.show', compact('block'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.blocks.show', compact('block', 'user'));
     }
 
     /**
@@ -76,7 +80,9 @@ class BlockController extends Controller
     {
         $block = Block::findOrFail($block_id);
 
-        return view('admin.blocks.edit', compact('block'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.blocks.edit', compact('block', 'user'));
     }
 
     /**

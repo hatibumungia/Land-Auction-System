@@ -10,7 +10,7 @@
             </div>
         @else
             <div class="thumbnail">
-                <img data-src="#" alt="No Photo">
+                <img data-src="#" alt="Hakuna picha">
             </div>
         @endif
     </a>
@@ -59,7 +59,6 @@
                     class="fa fa-folder-open-o fa-fw"></i> Reservations</a>
         <a href="{{ url('reports/clients') }}" class="list-group-item @if(Request::is('reports/clients')) active @endif"><i
                     class="fa fa-users fa-fw"></i> Clients</a>
-        <a href="#" class="list-group-item">Item 3</a>
     </div>
 
 @endif

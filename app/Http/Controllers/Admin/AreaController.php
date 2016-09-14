@@ -33,7 +33,9 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('admin.locations.create');
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.locations.create', compact('user'));
     }
 
     /**
@@ -44,6 +46,8 @@ class AreaController extends Controller
      */
     public function store(CreateLocationRequest $request)
     {
+
+
         Area::create($request->all());
 
         flash()->success($request->input('name') . ' imefanikiwa kuongezwa');
@@ -60,9 +64,11 @@ class AreaController extends Controller
      */
     public function show($area_id)
     {
+        $user = UserDetail::findOrFail(Session::get('id'));
+
         $location = Area::findOrFail($area_id);
 
-        return view('admin.locations.show', compact('location'));
+        return view('admin.locations.show', compact('location', 'user'));
     }
 
     /**
@@ -76,7 +82,9 @@ class AreaController extends Controller
     {
         $location = Area::findOrFail($area_id);
 
-        return view('admin.locations.edit', compact('location'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.locations.edit', compact('location', 'user'));
     }
 
     /**

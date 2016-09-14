@@ -27,6 +27,8 @@ class ClientController extends Controller
 
         $user_reservations = ReservedPlotsStatusView::getClientReservations($user->user_detail_id);
 
+//        return $user_reservations;
+
         return view('reports.clients.show', compact('user', 'user_reservations'));
     }
 }

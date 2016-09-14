@@ -100,7 +100,7 @@
                                 Yangu</a>
                         </li>
                     @endif
-                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>
+                    {{--<li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>--}}
                     @if(!Auth::guest())
                         <li><a href="/admin/dashboard">Dashboard</a></li>
                     @endif

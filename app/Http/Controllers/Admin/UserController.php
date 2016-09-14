@@ -36,7 +36,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.staff.create');
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.staff.create', 'user');
     }
 
     /**
@@ -81,6 +82,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = UserDetail::findOrFail($id);
+        
         
         return view('admin.staff.edit', compact('user'));
     }

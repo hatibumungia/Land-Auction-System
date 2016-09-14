@@ -74,7 +74,7 @@
                         <li @if(Request::is('reservation')) class="active" @endif><a href="{{ url('/reservation') }}">Akaunti Yangu</a>
                         </li>
                     @endif
-                    <li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>
+                    {{--<li @if(Request::is('search')) class="active" @endif><a href="{{ url('/search') }}">Tafuta</a></li>--}}
                 </ul>
 
                 {{--

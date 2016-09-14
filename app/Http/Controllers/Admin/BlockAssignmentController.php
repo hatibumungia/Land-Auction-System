@@ -43,7 +43,9 @@ class BlockAssignmentController extends Controller
     {
         $locations = Area::all();
 
-        return view('admin.block-assignments.create', compact('locations'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.block-assignments.create', compact('locations', 'user'));
     }
 
     /**

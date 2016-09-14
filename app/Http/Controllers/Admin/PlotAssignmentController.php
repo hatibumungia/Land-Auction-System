@@ -44,7 +44,9 @@ class PlotAssignmentController extends Controller
     {
         $areas = Area::all();
 
-        return view('admin.plot-assignments.create', compact('areas'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.plot-assignments.create', compact('areas', 'user'));
     }
 
     /**

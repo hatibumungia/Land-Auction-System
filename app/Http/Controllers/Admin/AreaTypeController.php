@@ -33,7 +33,9 @@ class AreaTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.land-uses.create');
+        $user = UserDetail::findOrFail(Session::get('id'));
+        
+        return view('admin.land-uses.create', compact('user'));
     }
 
     /**
@@ -62,7 +64,9 @@ class AreaTypeController extends Controller
     {
         $land_use = AreaType::findOrFail($areas_type_id);
 
-        return view('admin.land-uses.show', compact('land_use'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.land-uses.show', compact('land_use', 'user'));
     }
 
     /**
@@ -76,7 +80,9 @@ class AreaTypeController extends Controller
     {
         $land_use = AreaType::findOrFail($areas_type_id);
 
-        return view('admin.land-uses.edit', compact('land_use'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.land-uses.edit', compact('land_use', 'user'));
     }
 
     /**

@@ -32,7 +32,8 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('admin.permissions.create');
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.permissions.create', compact('user'));
     }
 
     /**
@@ -74,7 +75,9 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permission = Permission::findOrFail($id);
-        return view('admin.permissions.edit', compact('permission'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+        
+        return view('admin.permissions.edit', compact('permission', 'user'));
     }
 
     /**

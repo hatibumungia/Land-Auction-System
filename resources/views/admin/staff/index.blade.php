@@ -19,9 +19,9 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ url('admin/staff/create') }}" class="btn btn-primary pull-right"><i
+                        {{--<a href="{{ url('admin/staff/create') }}" class="btn btn-primary pull-right"><i
                                     class="fa fa-plus"></i>
-                            Add</a>
+                            Add</a>--}}
                     </div>
                 </div>
                 <br>

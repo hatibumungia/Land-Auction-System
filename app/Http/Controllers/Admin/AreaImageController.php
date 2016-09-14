@@ -36,8 +36,10 @@ class AreaImageController extends Controller
      */
     public function create()
     {
+        $user = UserDetail::findOrFail(Session::get('id'));
+
         $areas = Area::all();
-        return view('admin.area-images.create', compact('areas'));
+        return view('admin.area-images.create', compact('areas', 'user'));
     }
 
     /**

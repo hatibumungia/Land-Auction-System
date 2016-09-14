@@ -42,7 +42,9 @@ class AreaAssignmentController extends Controller
     {
         $locations = Area::all();
 
-        return view('admin.location-assignments.create', compact('locations'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.location-assignments.create', compact('locations', 'user'));
     }
 
     /**
@@ -89,7 +91,9 @@ class AreaAssignmentController extends Controller
             'price' => $price
         ];
 
-        return view('admin.location-assignments.edit', compact('data'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('admin.location-assignments.edit', compact('data', 'user'));
     }
 
     /**

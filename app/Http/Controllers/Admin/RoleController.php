@@ -34,7 +34,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.roles.create');
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.roles.create', compact('user'));
     }
 
     /**
@@ -67,7 +68,8 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::getRolePermissions($role->id);
         $new_permissions = Permission::getNewPermissions($role->id);
-        return view('admin.roles.show', compact('role', 'permissions', 'new_permissions'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.roles.show', compact('role', 'permissions', 'new_permissions', 'user'));
     }
 
     /**
@@ -79,7 +81,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        return view('admin.roles.edit', compact('role'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+        return view('admin.roles.edit', compact('role', 'user'));
     }
 
     /**
