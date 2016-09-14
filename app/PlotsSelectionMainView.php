@@ -18,12 +18,12 @@ class PlotsSelectionMainView extends Model
     {
         if (isset($params['areaname']) && isset($params['matumizi-ya-ardhi'])) {
             return DB::table('plots_selection_main_view')
-                ->where('areaname', $params['areaname'])->where('areatypename', $params['matumizi-ya-ardhi'])->paginate(50);
+                ->where('areaname', $params['areaname'])->where('areatypename', $params['matumizi-ya-ardhi'])->paginate(15);
         }
         if (isset($params['areaname'])) {
-            return DB::table('plots_selection_main_view')->where('areaname', '=', $params['areaname'])->paginate(50);
+            return DB::table('plots_selection_main_view')->where('areaname', '=', $params['areaname'])->paginate(15);
         }
-        return PlotsSelectionMainView::paginate(50);
+        return PlotsSelectionMainView::paginate(15);
 
     }
 

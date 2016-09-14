@@ -75,7 +75,7 @@
                                                                     <button type="button" class="close"
                                                                             data-dismiss="modal"
                                                                             aria-hidden="true">&times;</button>
-                                                                    <h4 class="modal-title">Malipa ya maombi ya
+                                                                    <h4 class="modal-title">Malipo ya maombi ya
                                                                         kiwanja</h4>
                                                                 </div>
                                                                 <div class="modal-body">
