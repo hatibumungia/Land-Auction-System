@@ -41,26 +41,26 @@
                                 <table class="table table-hover table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Namba ya Kiwanja</th>
+                                        <th class="text-right">Namba ya Kiwanja</th>
                                         <th>Kitalu</th>
                                         <th>Eneo</th>
                                         <th>Matumizi ya Ardhi</th>
-                                        <th>Ukubwa (Mita za Mraba)</th>
-                                        <th>Gharama (TZS)</th>
-                                        <th>Mwisho wa Kulipia</th>
+                                        <th class="text-right">Ukubwa (Mita za Mraba)</th>
+                                        <th class="text-right">Gharama (TZS)</th>
+                                        <th class="text-right">Mwisho wa Kulipia</th>
                                         <th><i class="fa fa-print"></i></th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($plot_reservations as $plot_reservation)
                                         <tr>
-                                            <td class="text-center">{{ $plot_reservation->plot_no  }}</td>
-                                            <td class="text-center">{{ $plot_reservation->block  }}</td>
-                                            <td class="text-center">{{ $plot_reservation->location  }}</td>
-                                            <td class="text-center">{{ $plot_reservation->land_use  }}</td>
-                                            <td class="text-center">{{ $plot_reservation->size  }}</td>
-                                            <td class="text-center">{{ number_format($plot_reservation->size * $plot_reservation->price)  }}</td>
-                                            <td class="text-center">{{ $plot_reservation->deadline  }}</td>
+                                            <td class="text-right">{{ $plot_reservation->plot_no  }}</td>
+                                            <td>{{ $plot_reservation->block  }}</td>
+                                            <td>{{ $plot_reservation->location  }}</td>
+                                            <td>{{ $plot_reservation->land_use  }}</td>
+                                            <td class="text-right">{{ $plot_reservation->size  }}</td>
+                                            <td class="text-right">{{ number_format($plot_reservation->size * $plot_reservation->price)  }}</td>
+                                            <td class="text-right">{{ $plot_reservation->deadline  }}</td>
                                             <td>
                                                 @if($plot_reservation->status == 0)
 
