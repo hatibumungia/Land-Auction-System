@@ -44,7 +44,7 @@ class CreateUserDetailRequest extends Request
             'district.required' => 'Wilaya inahitajika',
             'ward.required' => 'Kata inahitajika',
             'house_number.required' => 'Namba ya nyumba inahitajika',
-            'address.required' => 'Unuani inahitajika',
+            'address.required' => 'Anuani inahitajika',
             'photo.required' => 'Pasipoti inahitajika',
         ];
     }

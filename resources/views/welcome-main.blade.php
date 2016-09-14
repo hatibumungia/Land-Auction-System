@@ -144,7 +144,7 @@
 
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">
-                                                            <i class="fa fa-remove"></i> Ghairisha
+                                                            <i class="fa fa-remove"></i> Ahirisha
                                                         </button>
                                                         <button type="submit" class="btn btn-primary"><i
                                                                     class="fa fa-check"></i> Endelea
