@@ -49,17 +49,17 @@ class ApplicantsController extends Controller
 
         $user = UserCredential::checkLogin($request->input('username'), $request->input('password'));
 
-        $user_details = DB::select("SELECT * FROM user_details WHERE user_details.user_detail_id=$user->id");
-
-        $first_name = $user_details[0]->first_name;
-        $last_name = $user_details[0]->last_name;
 
         if (!$user) {
-            flash()->error('Umekosea namba ya simu au nywila');
+            flash()->error('Umekosea namba ya simu au neno la siri.');
 
             return redirect('/applicants/login');
 
         } else {
+            $user_details = DB::select("SELECT * FROM user_details WHERE user_details.user_detail_id=$user->id");
+            $first_name = $user_details[0]->first_name;
+            $last_name = $user_details[0]->last_name;
+
             $request->session()->put('id', $user->id);
             $request->session()->put('username', $first_name . " " . $last_name);
 
