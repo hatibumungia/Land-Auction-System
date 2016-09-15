@@ -18,28 +18,42 @@ class WelcomeController extends Controller
         $params = [];
         $areatypenames = [];
 
-        if(isset($_GET['eneo'])){
+        if (isset($_GET['eneo'])) {
             $params['areaname'] = $_GET['eneo'];
             $areatypenames = PlotsSelectionMainView::getLandUses($params);
         }
-        if(isset($_GET['matumizi-ya-ardhi'])){
+        if (isset($_GET['matumizi-ya-ardhi'])) {
             $params['matumizi-ya-ardhi'] = $_GET['matumizi-ya-ardhi'];
         }
 
         $available_plots = PlotsSelectionMainView::getPlots($params);
 
-        return view('welcome-main', compact('areas_locations','available_plots', 'areatypenames'));
+        $area_maps = [];
+
+        foreach ($available_plots as $available_plot) {
+            $area_maps[] = [
+                'area' => $available_plot->areaname,
+                'map' => $available_plot->areafilename,
+            ];
+        }
+
+        $block_maps = [];
+        foreach ($available_plots as $available_plot) {
+            $block_maps[] = [
+                'block' => $available_plot->blockname,
+                'map' => $available_plot->blockfilename,
+            ];
+        }
+
+        return view('welcome-main', compact('areas_locations', 'available_plots', 'areatypenames', 'area_maps', 'block_maps'));
 
     }
 
     public function checkAuth()
     {
-        if(Auth::guest())
-        {
+        if (Auth::guest()) {
             return 'guest';
-        }
-        else
-        {
+        } else {
             return 'logged in';
         }
     }
