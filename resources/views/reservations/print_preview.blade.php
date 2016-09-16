@@ -122,14 +122,14 @@
                 <div class="header-content-div-photo">
                     <img src="../public/img/uploads/avatars/{{ $data[0]->photo }}" height=150 width=120>
                 </div>
-                </div> 
+            </div>
             <br><br>
             <div class="row">
                 <div class="col-sm-8">
                     <strong>Kumb. Na. CDA/ED/LA-15/</strong>..............................
                 </div> 
             </div>
-            <br><br>
+            <br>
             <div class="row">
                 <div class="col-sm-12">
                     Ndugu&nbsp;&nbsp;<strong>{{ $data[0]->first_name }}&nbsp;&nbsp;{{ $data[0]->middle_name }}&nbsp;&nbsp;{{ $data[0]->last_name }}</strong>
@@ -138,7 +138,7 @@
                     {{ $data[0]->region }}.
                 </div>
             </div>
-            <br><br>
+            <br><br><br>
             <div class="row text-center">
                 <div class="col-sm-12 yah-header">
                     <u class="text-uppercase">
@@ -197,7 +197,6 @@
                     </p>
                 </div>
             </div>
-            <br><br>
             <div class="row">
                 <div class="col-sm-12">
                     <p>

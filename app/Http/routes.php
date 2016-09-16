@@ -63,7 +63,6 @@ Route::get('/search/performSearch', 'SearchController@performSearch');
 
 Route::get('/search/getReservationSummaryNames', 'SearchController@getReservationSummaryNames');
 
-// Admin only routes
 
 $router->group([
     'namespace' => 'Admin',
@@ -88,11 +87,13 @@ $router->group([
     Route::get('/admin/plot-assignments/create', 'PlotAssignmentController@create');
     Route::get('/plot-assignments/download-sample', 'PlotAssignmentController@downloadSample');
 
+
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
     Route::get('/admin/location-assignments/getLandUse', 'AreaAssignmentController@getLandUse');
 
     Route::resource('/admin/location-images', 'AreaImageController');
 });
+
 
 // Routes for ajax requests
 $router->group([
@@ -143,4 +144,10 @@ $router->group([
     Route::post('admin/roles/attachPermission', 'RoleController@attachPermission');
 
     Route::resource('admin/permissions', 'PermissionController');
+});
+
+$router->group([
+    'namespace' => 'Admin'
+], function(){
+    Route::post('/admin/plot-assignments/publish', 'PlotAssignmentController@publish');
 });

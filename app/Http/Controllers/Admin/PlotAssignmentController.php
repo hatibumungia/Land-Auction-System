@@ -25,8 +25,8 @@ class PlotAssignmentController extends Controller
      */
     public function index()
     {
-        $sql = "SELECT areas.name AS location, area_types.name
- as land_use, blocks.name as block, plot_assignment.size, plots.plot_no FROM areas, area_types, blocks, plots, plot_assignment WHERE plot_assignment.plot_id=plots.plot_id and areas.area_id=plot_assignment.area_id AND area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id;";
+        $sql = "SELECT plot_assignment.plot_id, areas.name AS location, area_types.name
+ as land_use, blocks.name as block, plot_assignment.size, plots.plot_no, plot_assignment.published as published, plot_assignment.created_at, plot_assignment.updated_at FROM areas, area_types, blocks, plots, plot_assignment WHERE plot_assignment.plot_id=plots.plot_id and areas.area_id=plot_assignment.area_id AND area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id ORDER BY plot_assignment.updated_at DESC;";
 
         $plot_assignments = DB::select($sql);
 
@@ -149,5 +149,10 @@ class PlotAssignmentController extends Controller
     public function downloadSample()
     {
         return response()->download(public_path() . "/contents/samples/plot assignment.xlsx");
+    }
+
+    public function publish()
+    {
+        return $_POST;
     }
 }

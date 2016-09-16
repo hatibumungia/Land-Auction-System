@@ -30,6 +30,10 @@ class PlotAssignment extends Migration
 
             $table->tinyInteger('status')->unsigned()->default(0);
 
+            $table->boolean('published')->default(false);
+
+            $table->timestamps();
+
             //making composite keys
             $table->primary(['area_id', 'areas_type_id', 'plot_id', 'block_id']);
 

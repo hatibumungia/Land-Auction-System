@@ -132,23 +132,23 @@
                         </div>
                         <div class="panel-body">
 
-                            <div class="table-responsive">
-                                <table class="table table-hover table-bordered">
-                                    <tr>
-                                        <thead>
-                                        <th>Plot #</th>
-                                        <th>Block</th>
-                                        <th>Area</th>
-                                        <th>Land use</th>
-                                        <th>Size (Sqm)</th>
-                                        <th>Price (TZS)</th>
-                                        <th>Reservation Date</th>
-                                        <th>Deadline</th>
-                                        <th>Status</th>
-                                        </thead>
-                                    </tr>
-                                    <tbody>
-                                    @if(count($user_reservations) > 0)
+                            @if(count($user_reservations) > 0)
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered">
+                                        <tr>
+                                            <thead>
+                                            <th>Plot #</th>
+                                            <th>Block</th>
+                                            <th>Area</th>
+                                            <th>Land use</th>
+                                            <th>Size (Sqm)</th>
+                                            <th>Price (TZS)</th>
+                                            <th>Reservation Date</th>
+                                            <th>Deadline</th>
+                                            <th>Status</th>
+                                            </thead>
+                                        </tr>
+                                        <tbody>
                                         @foreach($user_reservations as $user_reservation)
                                             <tr>
                                                 <td>{{ $user_reservation->plotno }}</td>
@@ -168,14 +168,12 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
-                                        <h3>This user has not made any reservation yet.</h3>
-                                    @endif
-                                    </tbody>
-                                </table>
-                            </div>
-
-
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @else
+                                <h3>This user has not made any reservation yet.</h3>
+                            @endif
                         </div>
                     </div>
 

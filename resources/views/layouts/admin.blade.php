@@ -17,6 +17,7 @@
     {{--<link href="/css/bootstrap.min.css" rel="stylesheet">--}}
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/css/admin.css">
+    <script src="/js/jquery-2.2.3.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -55,7 +56,7 @@
     </div>
 </div>
 
-<script src="/js/jquery-2.2.3.min.js"></script>
+
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
 <script src="/js/admin.js"></script>
