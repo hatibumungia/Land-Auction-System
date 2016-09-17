@@ -4,12 +4,20 @@
 
 @section('side_bar')
 
-    <div class="list-group">
-        <a href="#" class="list-group-item">Today</a>
-        <a href="#" class="list-group-item">This Week</a>
-        <a href="#" class="list-group-item">This Month</a>
-        <a href="#" class="list-group-item">Past Six Months</a>
-        <a href="#" class="list-group-item">This Year</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Current Time:</strong><br> {{ \Carbon\Carbon::now() }}
+        </div>
+        <div class="panel-body">
+            <div class="list-group">
+                <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/' . \Carbon\Carbon::now()) }}"
+                   class="list-group-item">Today</a>
+                <a href="#" class="list-group-item">This Week</a>
+                <a href="#" class="list-group-item">This Month</a>
+                <a href="#" class="list-group-item">Past Six Months</a>
+                <a href="#" class="list-group-item">This Year</a>
+            </div>
+        </div>
     </div>
 
 @endsection
@@ -18,9 +26,6 @@
 
     <div class="row">
         <div class="col-sm-12">
-
-
-
             <!-- Split button -->
             <div class="btn-group pull-right">
                 <button type="button" class="btn btn-primary">Export</button>
@@ -31,9 +36,13 @@
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ url('/reports/reservations/today/print') }}"><i class="fa fa-file-excel-o"></i>
+                    <li>
+                        <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/'.\Carbon\Carbon::now().'/xlsx/print') }}"><i
+                                    class="fa fa-file-excel-o"></i>
                             Excel</a></li>
-                    <li><a href="#"><i class="fa fa-file-pdf-o"></i> PDF</a>
+                    <li>
+                        <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/'.\Carbon\Carbon::now().'/pdf/print') }}"><i
+                                    class="fa fa-file-pdf-o"></i> PDF</a>
                 </ul>
             </div>
 

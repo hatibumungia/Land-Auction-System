@@ -45,19 +45,22 @@
 
 
     <div class="list-group">
-        <a href="{{ url('admin/roles') }}" class="list-group-item @if(Request::is('admin/roles')) active @endif">Roles</a>
+        <a href="{{ url('admin/roles') }}"
+           class="list-group-item @if(Request::is('admin/roles')) active @endif">Roles</a>
         <a href="{{ url('admin/permissions') }}"
            class="list-group-item @if(Request::is('admin/permissions')) active @endif">Permissions</a>
-        <a href="{{ url('admin/staff') }}" class="list-group-item @if(Request::is('admin/staff')) active @endif">Staff</a>
+        <a href="{{ url('admin/staff') }}"
+           class="list-group-item @if(Request::is('admin/staff')) active @endif">Staff</a>
     </div>
 
     <div class="list-group">
         <a href="#" class="list-group-item"><i
                     class="fa fa-file-text-o"></i> Reports</a>
-        <a href="{{ url('reports/reservations') }}"
-           class="list-group-item @if(Request::is('reports/reservations')) active @endif"><i
-                    class="fa fa-folder-open-o fa-fw"></i> Reservations</a>
-        <a href="{{ url('reports/clients') }}" class="list-group-item @if(Request::is('reports/clients')) active @endif"><i
+        <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/' . \Carbon\Carbon::now()) }}"
+           target="_blank"
+           class="list-group-item">Reservations</a>
+        <a href="{{ url('reports/clients') }}"
+           class="list-group-item @if(Request::is('reports/clients')) active @endif"><i
                     class="fa fa-users fa-fw"></i> Clients</a>
     </div>
 
