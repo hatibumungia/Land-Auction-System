@@ -129,6 +129,9 @@ $router->group([
     'namespace' => 'reports'
 ], function () {
     Route::get('/reports/reservations', 'ReservationController@index');
+    Route::get('/reports/reservations/today', 'ReservationController@today');
+    Route::get('/reports/reservations/today/print', 'ReservationController@today_print');
+
     Route::get('/reports/clients', 'ClientController@index');
     Route::get('/reports/clients/{id}', 'ClientController@show');
 });
@@ -151,3 +154,4 @@ $router->group([
 ], function(){
     Route::post('/admin/plot-assignments/publish', 'PlotAssignmentController@publish');
 });
+
