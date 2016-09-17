@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page_title' , ' - Admin')
+@section('page_title', 'Admin')
 
 @section('nav_bar')
 
@@ -17,38 +17,36 @@
 @section('main_content')
 
     <div class="row">
-        <ol class="breadcrumb">
-            <li>
-                <a href="/admin/dashboard">Home</a>
-            </li>
-            <li>
-                <a href="/admin/plot-assignments">Ukubwa wa viwanja</a>
-            </li>
-            <li class="active">Weka</li>
-        </ol>
+        <div class="col-xs-12">
+            <h2>Add a new area</h2>
+            <a href="{{ url('/admin/plot-assignments') }}" class="btn btn-primary pull-right">View All</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">#</h3>
+                </div>
+                <div class="panel-body">
+                    @include('common.errors')
 
+                    {!! Form::open(['url' => 'admin/plot-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-        <h3>Ukubwa wa viwanja</h3>
+                    @include('admin.plot-assignments._form')
 
-        <div class="well">
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-upload"></i>
+                                Pakia
+                            </button>
+                        </div>
+                    </div>
 
-            @include('common.errors')
-
-            {!! Form::open(['url' => 'admin/plot-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
-
-            @include('admin.plot-assignments._form')
-
-            <div class="form-group">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <button type="submit" id="btn-submit" class="btn btn-primary"><i class="fa fa-upload"></i> Pakia</button>
+                    {!! Form::close() !!}
                 </div>
             </div>
-
-            {!! Form::close() !!}
-
         </div>
-
     </div>
-
-
 @endsection
