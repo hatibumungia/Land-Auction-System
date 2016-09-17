@@ -142,7 +142,9 @@ order by plot_reservation.created_at desc
 
         $user = UserDetail::findOrFail(Session::get('id'));
 
-        return view('reservations.all', compact('plot_reservations', 'user'));
+        $i = 1;
+
+        return view('reservations.all', compact('plot_reservations', 'user', 'i'));
 
 
     }

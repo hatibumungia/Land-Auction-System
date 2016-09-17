@@ -12,29 +12,35 @@
                 <table class="table">
                     <tr>
                         <td>
+                            <span class="glyphicon glyphicon-book text-primary"></span><a
+                                    href="{{ url('/reservation') }}">Reservations</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <span class="glyphicon glyphicon-pencil text-primary"></span><a
-                                    href="http://www.jquery2dotnet.com">Articles</a>
+                                    href="{{ url('/reservation/complete-registration') }}">Complete Registration</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <span class="glyphicon glyphicon-flash text-success"></span><a
-                                    href="http://www.jquery2dotnet.com">News</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="glyphicon glyphicon-file text-info"></span><a
-                                    href="http://www.jquery2dotnet.com">Newsletters</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="glyphicon glyphicon-comment text-success"></span><a
-                                    href="http://www.jquery2dotnet.com">Comments</a>
-                            <span class="badge">42</span>
-                        </td>
-                    </tr>
+                    {{--                    <tr>
+                                            <td>
+                                                <span class="glyphicon glyphicon-flash text-success"></span><a
+                                                        href="http://www.jquery2dotnet.com">News</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="glyphicon glyphicon-file text-info"></span><a
+                                                        href="http://www.jquery2dotnet.com">Newsletters</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="glyphicon glyphicon-comment text-success"></span><a
+                                                        href="http://www.jquery2dotnet.com">Comments</a>
+                                                <span class="badge">42</span>
+                                            </td>
+                                        </tr>--}}
                 </table>
             </div>
         </div>
