@@ -17,6 +17,21 @@
                 <a href="#" class="list-group-item">Past Six Months</a>
                 <a href="#" class="list-group-item">This Year</a>
             </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Choose date range
+                </li>
+                <li class="list-group-item">
+                    <div class="form-group">
+                        {!! Form::label('from', 'From') !!}
+                        {{ Form::date('from', null, ['class' => 'form-control']) }}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('to', 'To') !!}
+                        {{ Form::date('to', null, ['class' => 'form-control']) }}
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 
