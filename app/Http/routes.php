@@ -129,6 +129,7 @@ $router->group([
     'namespace' => 'reports'
 ], function () {
     Route::get('/reports/reservations', 'ReservationController@index');
+    Route::post('/reports/reservations', 'ReservationController@index');
     Route::get('/reports/reservations/plots/{from}/to/{to}', 'ReservationController@plots');
     Route::get('/reports/reservations/plots/{from}/to/{to}/{format}/print', 'ReservationController@plots_print')
         ->where(['format' => 'xlsx|pdf']);

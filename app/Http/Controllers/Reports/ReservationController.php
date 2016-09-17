@@ -2,30 +2,49 @@
 
 namespace App\Http\Controllers\Reports;
 
-use App\AllPlotsStatusReportView;
 use App\ReservedPlotsStatusView;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\UserDetail;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReservationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        $all_plots_statuses = AllPlotsStatusReportView::paginate(50);
+        $areas = DB::table('areas')->orderBy('name')->get();
+        $blocks = DB::table('blocks')->orderBy('name')->get();
+        $landuses = DB::table('area_types')->orderBy('name')->get();
 
-        $unreserved_plots = AllPlotsStatusReportView::getUnreserved();
+        $reservedPlotsStatusView = new ReservedPlotsStatusView();
+        $reservedPlotsStatusView = $reservedPlotsStatusView->newQuery();
 
-        $reserved_plots_statuses = ReservedPlotsStatusView::paginate(50);
+        $reserved_plots_statuses = $this->search($reservedPlotsStatusView, $request);
 
-        $user = UserDetail::findOrFail(Session::get('id'));
+        $i = 1;
 
-        return view('reports.reservations.index', compact('all_plots_statuses', 'unreserved_plots', 'reserved_plots_statuses', 'user'));
+        return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses'));
+    }
+
+    public function search($reservedPlotsStatusView, $request)
+    {
+        if ($request->has('plotno') && $request->has('plotno') != '') {
+            $reservedPlotsStatusView->where('plotno', $request->input('plotno'));
+        }
+        if ($request->has('area') && $request->has('area') != '') {
+            $reservedPlotsStatusView->orWhere('areaname', $request->input('area'));
+        }
+        if ($request->has('block') && $request->has('block') != '') {
+            $reservedPlotsStatusView->orWhere('blockname', $request->input('block'));
+        }
+        if ($request->has('landuse') && $request->has('landuse') != '') {
+            $reservedPlotsStatusView->orWhere('areatypename', $request->input('landuse'));
+        }
+
+        return $reservedPlotsStatusView->get();
     }
 
     public function plots($from, $to)
