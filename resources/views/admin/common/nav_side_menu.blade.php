@@ -137,7 +137,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
+                            <span class="glyphicon glyphicon-tasks"></span><a href="{{ url('/reports/reservations') }}">Reservations</a>
                         </td>
                     </tr>
                     <tr>
