@@ -18,7 +18,16 @@
 
     <div class="row">
         <div class="col-xs-12">
+            <div class="btn-group pull-right" role="group" aria-label="...">
+                <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/' . \Carbon\Carbon::now()) }}"
+                   class="btn btn-default">Today</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
             <h2>Plot Details</h2>
+
             {!! Form::open(['url' => '/reports/reservations', 'class' => 'form-inline']) !!}
             <div class="form-group">
                 <label for="plotno">Plot #</label>

@@ -138,7 +138,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
+                            <span class="glyphicon glyphicon-user"></span><a href="{{ url('/reports/clients') }}">Clients</a>
                         </td>
                     </tr>
                     <tr>

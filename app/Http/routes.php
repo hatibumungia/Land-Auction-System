@@ -135,6 +135,7 @@ $router->group([
         ->where(['format' => 'xlsx|pdf']);
 
     Route::get('/reports/clients', 'ClientController@index');
+    Route::post('/reports/clients', 'ClientController@index');
     Route::get('/reports/clients/{id}', 'ClientController@show');
 });
 

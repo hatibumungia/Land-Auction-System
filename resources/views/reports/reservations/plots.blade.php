@@ -1,46 +1,28 @@
-@extends('layouts.reports')
+@extends('layouts.admin')
 
-@section('page_title', 'Today Reservations')
+@section('page_title', 'Admin')
 
-@section('side_bar')
+@section('nav_bar')
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <strong>Current Time:</strong><br> {{ \Carbon\Carbon::now() }}
-        </div>
-        <div class="panel-body">
-            <div class="list-group">
-                <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/' . \Carbon\Carbon::now()) }}"
-                   class="list-group-item">Today</a>
-                <a href="#" class="list-group-item">This Week</a>
-                <a href="#" class="list-group-item">This Month</a>
-                <a href="#" class="list-group-item">Past Six Months</a>
-                <a href="#" class="list-group-item">This Year</a>
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    Choose date range
-                </li>
-                <li class="list-group-item">
-                    <div class="form-group">
-                        {!! Form::label('from', 'From') !!}
-                        {{ Form::date('from', null, ['class' => 'form-control']) }}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('to', 'To') !!}
-                        {{ Form::date('to', null, ['class' => 'form-control']) }}
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+    @include('admin.common.nav_bar')
 
 @endsection
 
-@section('content')
+@section('side_bar')
+
+    @include('admin.common.nav_side_menu')
+
+@endsection
+
+@section('main_content')
 
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xs-12">
+
+            <div class="btn-group" role="group" aria-label="...">
+                <a href="{{ url('/reports/reservations/plots/'.\Carbon\Carbon::today().'/to/' . \Carbon\Carbon::now()) }}"
+                   class="btn btn-default">Today</a>
+            </div>
             <!-- Split button -->
             <div class="btn-group pull-right">
                 <button type="button" class="btn btn-primary">Export</button>
@@ -68,7 +50,7 @@
         <div class="col-xs-12">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Today Reservations</h3>
+                    <h3 class="panel-title">Reservations</h3>
                 </div>
                 <div class="panel-body">
                     @if(count($today_reservations) > 0)
@@ -107,7 +89,7 @@
                             </tbody>
                         </table>
                     @else
-                        <h3 class="text-center">No one made a reservation today.</h3>
+                        <h3 class="text-center">No reservation</h3>
                     @endif
                 </div>
                 <div class="panel-footer">
