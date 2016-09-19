@@ -24,6 +24,10 @@
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Login</button>
                     {!! Form::close() !!}
+                    <br><br>
+                    <p>
+                        Haujajisajili? <a href="{{ url('/applicants/register') }}">Jisajili</a>.
+                    </p>
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@
                     <div class="form-group">
                         {!! Form::label('phone_number', 'Namba ya simu * ', ['class' => 'col-sm-3 control-label']) !!}
                         <div class="col-sm-9">
-                            {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Mfano. 0719961077']) !!}
+                            {!! Form::text('phone_number', null, ['class' => 'form-control', 'placeholder' => 'Format. 0719961077']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -60,6 +60,10 @@
                         <div class="col-sm-9 col-sm-offset-3">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-pencil"></i> Jisajili
                             </button>
+                            <br><br>
+                            <p>
+                                Umeshajisajili? <a href="{{ url('/applicants/login') }}">Ingia</a>
+                            </p>
                         </div>
                     </div>
                     {!! Form::close() !!}
