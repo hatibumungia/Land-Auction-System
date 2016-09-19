@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page_title' , ' - Admin')
+@section('page_title', 'Admin')
 
 @section('nav_bar')
 
@@ -17,38 +17,34 @@
 @section('main_content')
 
     <div class="row">
-
-        <ol class="breadcrumb">
-            <li>
-                <a href="/admin/dashboard">Nyumbani</a>
-            </li>
-            <li>
-                <a href="/admin/location-images">Ramani za maeneo</a>
-            </li>
-            <li class="active">Weka</li>
-        </ol>
+        <div class="col-xs-12">
+            <h2>Add a new area</h2>
+            <a href="{{ url('/admin/location-images') }}" class="btn btn-primary pull-right">View All</a>
+        </div>
     </div>
-
     <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">#</h3>
+                </div>
+                <div class="panel-body">
+                    @include('common.errors')
 
-    <h3>Ongeza Ramani ya eneo</h3>
+                    {!! Form::open(['url' => 'admin/location-images', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-    <div class="well">
+                    @include('admin.area-images._form')
 
-        @include('common.errors')
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
+                        </div>
+                    </div>
 
-        {!! Form::open(['url' => 'admin/location-images', 'class' => 'form-horizontal', 'files' => true]) !!}
-
-        @include('admin.area-images._form')
-
-        <div class="form-group">
-            <div class="col-sm-6 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Hifadhi</button>
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
-
-        {!! Form::close() !!}
-
     </div>
-
 @endsection

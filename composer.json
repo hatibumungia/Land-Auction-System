@@ -14,7 +14,9 @@
         "laravelcollective/bus": "^5.2",
         "mpdf/mpdf": "^6.1",
         "barryvdh/laravel-dompdf": "^0.7.0",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "tecnick.com/tcpdf": "~6.0.0",
+        "dompdf/dompdf": "^0.7.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

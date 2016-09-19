@@ -5,31 +5,29 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Ingia</h3>
-                    </div>
-                    <div class="panel-body">
+        <div class="well">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-sm-offset-4">
 
-                        @include('common.errors')
+                    <h1 class="text-center">Login</h1>
 
-                        {!! Form::open(['url' => '/applicants/auth/login']) !!}
-                        <div class="form-group">
-                            {!! Form::label('username', 'Namba ya Simu') !!}
-                            {!! Form::text('username', null, ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group">
-                            {!! Form::label('password', 'Neno la Siri') !!}
-                            {!! Form::password('password', ['class' => 'form-control']) !!}
-                        </div>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Ingia</button>
-                        {!! Form::close() !!}
+                    @include('common.errors')
+
+                    {!! Form::open(['url' => '/applicants/auth/login']) !!}
+                    <div class="form-group">
+                        {!! Form::label('username', 'Namba ya Simu') !!}
+                        {!! Form::text('username', null, ['class' => 'form-control']) !!}
                     </div>
-                    <div class="panel-footer">
-                       Hujajisajili?  Jisajili <a href="/applicants/register"> hapa </a>.
+                    <div class="form-group">
+                        {!! Form::label('password', 'Neno la Siri') !!}
+                        {!! Form::password('password', ['class' => 'form-control']) !!}
                     </div>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Login</button>
+                    {!! Form::close() !!}
+                    <br><br>
+                    <p>
+                        Haujajisajili? <a href="{{ url('/applicants/register') }}">Jisajili</a>.
+                    </p>
                 </div>
             </div>
         </div>

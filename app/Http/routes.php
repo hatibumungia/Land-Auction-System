@@ -129,7 +129,13 @@ $router->group([
     'namespace' => 'reports'
 ], function () {
     Route::get('/reports/reservations', 'ReservationController@index');
+    Route::post('/reports/reservations', 'ReservationController@index');
+    Route::get('/reports/reservations/plots/{from}/to/{to}', 'ReservationController@plots');
+    Route::get('/reports/reservations/plots/{from}/to/{to}/{format}/print', 'ReservationController@plots_print')
+        ->where(['format' => 'xlsx|pdf']);
+
     Route::get('/reports/clients', 'ClientController@index');
+    Route::post('/reports/clients', 'ClientController@index');
     Route::get('/reports/clients/{id}', 'ClientController@show');
 });
 
@@ -148,6 +154,13 @@ $router->group([
 
 $router->group([
     'namespace' => 'Admin'
-], function(){
+], function () {
     Route::post('/admin/plot-assignments/publish', 'PlotAssignmentController@publish');
 });
+
+$router->group([
+    'namespace' => 'Reports'
+], function () {
+    Route::get('/reports/print', 'PrintController@index');
+});
+

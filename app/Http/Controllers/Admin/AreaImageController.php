@@ -38,7 +38,9 @@ class AreaImageController extends Controller
     {
         $user = UserDetail::findOrFail(Session::get('id'));
 
+        // TODO: displayed areas should be that are not assigned maps
         $areas = Area::all();
+
         return view('admin.area-images.create', compact('areas', 'user'));
     }
 

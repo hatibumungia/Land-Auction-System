@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page_title' , ' - Admin')
+@section('page_title', 'Admin')
 
 @section('nav_bar')
 
@@ -17,27 +17,21 @@
 @section('main_content')
 
     <div class="row">
-
-<ol class="breadcrumb">
-	<li>
-		<a href="/admin/dashboard">Nyumbani</a>
-	</li>
-	<li>
-		<a href="/admin/block-assignments">Picha za Vitalu</a>
-	</li>
-	<li class="active">Zote</li>
-</ol>
-
-        <a href="/admin/block-assignments/create" class="btn btn-primary"><i class="fa fa-plus-square-o"></i>
-            Weka</a>
+        <div class="col-xs-12">
+            <h2>Block maps</h2>
+            <a href="{{ url('/admin/block-assignments/create') }}" class="btn btn-primary pull-right">New</a>
+        </div>
     </div>
-
     <br>
-
     <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Total = </strong> {{ count($block_assignments) }}</h3>
+                </div>
+                <div class="panel-body">
+
         @if(count($block_assignments) > 0)
-
-
             <table id="locationsTable" class="display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
@@ -80,6 +74,12 @@
             </div>
 
         @endif
+                </div>
+                <div class="panel-footer">
+                    <strong>Total = </strong> {{ count($block_assignments) }}
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
