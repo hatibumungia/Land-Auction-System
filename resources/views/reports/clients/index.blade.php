@@ -81,14 +81,14 @@
                     <td class="text-right">
                         <div class="form-group">
                             <input type="text" class="form-control" name="particular_value" id="particular_value"
-                                   value="@if(isset($_POST['particular_value'])) {{ $_POST['particular_value'] }} @endif">
+                                   value="@if(isset($_POST['particular_value'])){{ $_POST['particular_value'] }}@endif">
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="form-group">
                             <label for="region">Region</label>
                             <input type="text" name="region" id="region" class="form-control"
-                                   value="@if(isset($_POST['region'])) {{ $_POST['region'] }} @endif">
+                                   value="@if(isset($_POST['region'])){{ $_POST['region'] }}@endif">
                         </div>
                     </td>
                 </tr>
@@ -123,8 +123,15 @@
                     <td></td>
                     <td></td>
                     <td class="text-right">
-                        <button type="submit" class="btn btn-default">Search</button>
-                        <button type="submit" class="btn btn-success">Export</button>
+                        <button type="submit" class="btn btn-primary" name="search_button"><i class="fa fa-search"></i>
+                            Search
+                        </button>
+                        <button type="submit" class="btn btn-success" name="export_excel_button"><i
+                                    class="fa fa-file-excel-o"></i> Export
+                        </button>
+                        <button type="submit" class="btn btn-success" name="export_pdf_button"><i
+                                    class="fa fa-file-pdf-o"></i> Export
+                        </button>
                     </td>
                 </tr>
                 </tbody>

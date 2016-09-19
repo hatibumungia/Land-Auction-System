@@ -158,9 +158,3 @@ $router->group([
     Route::post('/admin/plot-assignments/publish', 'PlotAssignmentController@publish');
 });
 
-$router->group([
-    'namespace' => 'Reports'
-], function () {
-    Route::get('/reports/print', 'PrintController@index');
-});
-

@@ -31,10 +31,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-xs-2">
             @yield('side_bar')
         </div>
-        <div class="col-xs-9">
+        <div class="col-xs-10">
 
             <div class="row text-center">
                 <div class="col-sm-6 col-sm-offset-3">
