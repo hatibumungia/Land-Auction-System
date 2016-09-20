@@ -16,6 +16,7 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
+
         $locations = Area::all();
         $landuses = AreaType::all();
         $i = 1;
@@ -25,9 +26,15 @@ class ClientController extends Controller
 
         $clients = $this->search($userdetails, $request);
 
-        //return $clients;
+        if (isset($_POST['export_excel_button'])) {
+            PrintController::index($clients, 'xlsx');
+        }
+        if (isset($_POST['export_pdf_button'])) {
+            PrintController::index($clients, 'pdf');
+        }
 
         return view('reports.clients.index', compact('clients', 'locations', 'landuses', 'i'));
+
     }
 
     public function search($userdetails, $request)

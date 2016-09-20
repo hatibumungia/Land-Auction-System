@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Reports;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PrintController extends Controller
 {
-    public function index($model, $format)
+    public static function index($model, $format)
     {
 
         $filename = 'Report - ' . Carbon::now();
