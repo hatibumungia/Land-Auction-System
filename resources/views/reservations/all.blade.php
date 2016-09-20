@@ -133,7 +133,7 @@
                     @else
 
                         <div class="text-center" style="padding: 4em 0 4em 0;">
-                            <p class="lead">Paka sasa haujachagua kiwanja chochote.</p>
+                            <p class="lead">Mpaka sasa hauna kiwanja chochote.</p>
                             <h2>Bonyeza <a href="/">hapa</a> kuchagua kiwanja.</h2>
                         </div>
 

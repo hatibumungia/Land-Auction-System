@@ -4,7 +4,7 @@
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span
                             class="glyphicon glyphicon-folder-close">
-                            </span>Content</a>
+                            </span>Akaunti Yangu</a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in">
@@ -13,13 +13,13 @@
                     <tr>
                         <td>
                             <span class="glyphicon glyphicon-book text-primary"></span><a
-                                    href="{{ url('/reservation') }}">Reservations</a>
+                                    href="{{ url('/reservation') }}">Viwanja Vyangu</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <span class="glyphicon glyphicon-pencil text-primary"></span><a
-                                    href="{{ url('/reservation/complete-registration') }}">Complete Registration</a>
+                                    href="{{ url('/reservation/complete-registration') }}">Kamilisha Usajili</a>
                         </td>
                     </tr>
                     {{--                    <tr>
