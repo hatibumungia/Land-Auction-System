@@ -7,7 +7,7 @@
                             </span>Akaunti Yangu</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse @if(Request::segment(1) == 'reservation') in @endif">
             <div class="panel-body">
                 <table class="table">
                     <tr>
@@ -53,7 +53,7 @@
                             </span>Admin</a>
             </h4>
         </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
+        <div id="collapseTwo" class="panel-collapse collapse @if(Request::segment(1) == 'admin') in @endif">
             <div class="panel-body">
                 <table class="table">
                     <tr>
@@ -175,7 +175,7 @@
                             </span>Reports</a>
             </h4>
         </div>
-        <div id="collapseFour" class="panel-collapse collapse">
+        <div id="collapseFour" class="panel-collapse collapse @if(Request::segment(1) == 'reports') in @endif">
             <div class="panel-body">
                 <table class="table">
                     <tr>
