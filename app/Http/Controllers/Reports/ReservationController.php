@@ -6,9 +6,11 @@ use App\ReservedPlotsStatusView;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\UserDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
@@ -31,9 +33,11 @@ class ReservationController extends Controller
         }
         if (isset($_POST['export_pdf_button'])) {
             PrintController::index($reserved_plots_statuses, 'pdf');
-        }        
+        }
 
-        return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses'));
+        $user = UserDetail::findOrFail(Session::get('id'));        
+
+        return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses', 'user'));
     }
 
     public function search($reservedPlotsStatusView, $request)
