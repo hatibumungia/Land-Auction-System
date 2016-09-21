@@ -18,7 +18,7 @@ class ReservationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('applicant');
+        // $this->middleware('applicant');
     }
 
     public function checkForParameters()

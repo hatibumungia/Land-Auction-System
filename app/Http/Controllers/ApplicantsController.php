@@ -11,6 +11,7 @@ use App\Http\Requests;
 use App\UserDetail;
 use App\UserCredential;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Hash;
 

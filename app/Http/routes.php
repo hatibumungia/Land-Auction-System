@@ -107,9 +107,9 @@ $router->group([
     Route::get('/admin/ajax/plotAssignmentsGetBlock', 'AjaxController@plotAssignmentsGetBlock');
 });
 
-$router->group([
+/*$router->group([
     'middleware' => 'applicant'
-], function() {
+], function() {*/
     Route::get('/reservation', 'ReservationController@index');
     Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
     Route::get('/reservation/logout', 'ReservationController@logout');
@@ -118,7 +118,7 @@ $router->group([
     Route::patch('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
 
     Route::post('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
-    Route::get('/applicants/login', 'ApplicantsController@login');
+    
     Route::post('/applicants/auth/login', 'ApplicantsController@processLogin');
 
     Route::get('/applicants/register', 'ApplicantsController@register');
@@ -127,7 +127,9 @@ $router->group([
     Route::post('/plot_transactions', 'PlotTransactionController@store');
 
     Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');    
-});
+/*});*/
+
+Route::get('/applicants/login', 'ApplicantsController@login');
 
 $router->group([
     'namespace' => 'reports',

@@ -17,7 +17,7 @@ class RedirectApplicantIfNotLoggedIn
     public function handle($request, Closure $next)
     {
         if (!Session::has('username')) {
-            return redirect('/applicants/login');
+            return redirect('/');
         }
 
         return $next($request);
