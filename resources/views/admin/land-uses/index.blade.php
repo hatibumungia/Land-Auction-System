@@ -121,9 +121,7 @@
 
                     @else
 
-                        <div class="alert alert-info">
-                            <h3>Hakuna matumizi ya ardhi yaliwekwa sasa hivi.</h3>
-                        </div>
+                            <h3 class="text-center">Hakuna matumizi ya ardhi yaliwekwa sasa hivi.</h3>
 
                     @endif
                 </div>

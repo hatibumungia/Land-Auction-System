@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>All Areas</h2>
+            <h2>All Prices per square meters</h2>
             <a href="{{ url('/admin/location-assignments/create') }}" class="btn btn-primary pull-right">New</a>
         </div>
     </div>
@@ -37,7 +37,7 @@
                             <tr>
                                 <th>Eneo</th>
                                 <th>Matumizi ya ardhi</th>
-                                <th>Gharama</th>
+                                <th>Gharama (TZS)</th>
                                 <th><i class="fa fa-cog"></i></th>
                                 {{--<th><i class="fa fa-cog"></i></th>--}}
                             </tr>
@@ -46,7 +46,7 @@
                             <tr>
                                 <th>Eneo</th>
                                 <th>Matumizi ya ardhi</th>
-                                <th>Gharama</th>
+                                <th>Gharama (TZS)</th>
                                 <th><i class="fa fa-cog"></i></th>
                                 {{--<th><i class="fa fa-cog"></i></th>--}}
                             </tr>
@@ -109,9 +109,7 @@
 
                     @else
 
-                        <div class="alert alert-info">
                             <h3 class="text-center">Kwa muda huu hakuna</h3>
-                        </div>
 
                     @endif
                 </div>

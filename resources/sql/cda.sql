@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2016 at 07:43 PM
+-- Generation Time: Sep 21, 2016 at 10:05 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -23,6 +23,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `all_plots_status_report_view`
+--
+CREATE TABLE `all_plots_status_report_view` (
+`areaid` int(10) unsigned
+,`areaname` varchar(255)
+,`areatypeid` int(10) unsigned
+,`areatypename` varchar(255)
+,`blockid` int(10) unsigned
+,`blockname` varchar(255)
+,`plotid` int(10) unsigned
+,`plotno` int(11)
+,`size` double
+,`status` tinyint(3) unsigned
+,`price` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `areas`
 --
 
@@ -38,8 +57,11 @@ CREATE TABLE `areas` (
 --
 
 INSERT INTO `areas` (`area_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Kisasa', '2016-09-01 12:25:22', '2016-09-01 12:25:22'),
-(2, 'Nkuhungu', '2016-09-01 12:25:34', '2016-09-01 12:25:34');
+(1, 'Kisasa West', '2016-09-20 15:53:59', '2016-09-21 05:29:18'),
+(2, 'Mtumba', '2016-09-21 06:06:07', '2016-09-21 06:06:07'),
+(3, 'Nkuhungu', '2016-09-21 06:06:16', '2016-09-21 06:06:16'),
+(4, 'Area D', '2016-09-21 06:06:26', '2016-09-21 06:06:26'),
+(5, 'Majengo', '2016-09-21 06:06:38', '2016-09-21 06:06:38');
 
 -- --------------------------------------------------------
 
@@ -58,10 +80,43 @@ CREATE TABLE `area_assignment` (
 --
 
 INSERT INTO `area_assignment` (`areas_type_id`, `area_id`, `price`) VALUES
-(1, 1, '250'),
-(2, 1, '350'),
-(1, 2, '500'),
-(2, 2, '450');
+(1, 1, '5500'),
+(2, 1, '3500'),
+(3, 1, '6300'),
+(4, 1, '5700'),
+(5, 1, '4900'),
+(6, 1, '4700'),
+(1, 2, '4500'),
+(2, 2, '3700'),
+(3, 2, '5000'),
+(4, 2, '3000'),
+(5, 2, '5200'),
+(6, 2, '4800');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `area_image`
+--
+
+CREATE TABLE `area_image` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `area_id` int(10) UNSIGNED NOT NULL,
+  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `area_image`
+--
+
+INSERT INTO `area_image` (`id`, `area_id`, `file_name`, `created_at`, `updated_at`) VALUES
+(1, 1, '1474435246 - image.jpg', '2016-09-21 05:20:46', '2016-09-21 05:20:46'),
+(2, 2, '1474438309 - PJ000310_map_1.jpg', '2016-09-21 06:11:49', '2016-09-21 06:11:49'),
+(3, 3, '1474438325 - map.jpg', '2016-09-21 06:12:05', '2016-09-21 06:12:05'),
+(4, 4, '1474438336 - image.jpg', '2016-09-21 06:12:17', '2016-09-21 06:12:17'),
+(5, 5, '1474438353 - 13533_Image.jpg', '2016-09-21 06:12:33', '2016-09-21 06:12:33');
 
 -- --------------------------------------------------------
 
@@ -81,8 +136,12 @@ CREATE TABLE `area_types` (
 --
 
 INSERT INTO `area_types` (`areas_type_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Residential', '2016-09-01 12:25:47', '2016-09-01 12:25:47'),
-(2, 'Commercial', '2016-09-01 12:25:53', '2016-09-01 12:25:53');
+(1, 'Makazi', '2016-09-20 15:55:36', '2016-09-20 15:55:36'),
+(2, 'Taasisi', '2016-09-21 06:06:48', '2016-09-21 06:06:48'),
+(3, 'Biashara', '2016-09-21 06:06:55', '2016-09-21 06:06:55'),
+(4, 'Makazi na Biashara', '2016-09-21 06:07:05', '2016-09-21 06:07:05'),
+(5, 'Pastoralism', '2016-09-21 06:07:16', '2016-09-21 06:07:16'),
+(6, 'Open Spaces', '2016-09-21 06:07:24', '2016-09-21 06:07:24');
 
 -- --------------------------------------------------------
 
@@ -102,8 +161,10 @@ CREATE TABLE `blocks` (
 --
 
 INSERT INTO `blocks` (`block_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'A', '2016-09-01 12:26:07', '2016-09-01 12:26:07'),
-(2, 'B', '2016-09-01 12:26:14', '2016-09-01 12:26:14');
+(1, 'A', '2016-09-20 15:56:41', '2016-09-20 15:56:41'),
+(2, 'B', '2016-09-21 06:07:34', '2016-09-21 06:07:34'),
+(3, 'C', '2016-09-21 06:07:37', '2016-09-21 06:07:37'),
+(4, 'D', '2016-09-21 06:07:40', '2016-09-21 06:07:40');
 
 -- --------------------------------------------------------
 
@@ -123,14 +184,15 @@ CREATE TABLE `block_assignment` (
 --
 
 INSERT INTO `block_assignment` (`area_id`, `areas_type_id`, `block_id`, `file_name`) VALUES
-(1, 1, 1, '1472743795 - 1472709052 - 2index.jpg'),
-(1, 1, 2, '1472743814 - 1472709052 - 2index.jpg'),
-(1, 2, 1, '1472743764 - 1472709052 - 2index.jpg'),
-(1, 2, 2, '1472743780 - 1472709052 - 2index.jpg'),
-(2, 1, 1, '1472743873 - 1472709052 - 2index.jpg'),
-(2, 1, 2, '1472743892 - 1472709052 - 2index.jpg'),
-(2, 2, 1, '1472743839 - 1472709052 - 2index.jpg'),
-(2, 2, 2, '1472743857 - 1472709052 - 2index.jpg');
+(1, 1, 1, '1474435275 - JiHZoyePnloDqJSRIvb8location-map.jpg'),
+(1, 1, 2, '1474438393 - JiHZoyePnloDqJSRIvb8location-map.jpg'),
+(1, 3, 1, '1474438375 - 13533_Image.jpg'),
+(1, 3, 2, '1474438413 - map.jpg'),
+(1, 3, 3, '1474438423 - image.jpg'),
+(1, 3, 4, '1474438437 - 13533_Image.jpg'),
+(2, 2, 1, '1474438476 - map.jpg'),
+(2, 3, 1, '1474438452 - map.jpg'),
+(2, 6, 1, '1474438500 - image.jpg');
 
 -- --------------------------------------------------------
 
@@ -164,7 +226,14 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_08_27_092156_create_plot_transactions_table', 1),
 ('2016_08_27_145945_create_transaction_numbers_table', 1),
 ('2016_08_28_080050_create_user_credentials_trigger', 1),
-('2016_09_01_151128_create_plot_reservation_view', 1);
+('2016_09_01_151127_create_plot_reservation_view', 1),
+('2016_09_05_083423_create_clears_out_plot_status_event', 1),
+('2016_09_05_084626_create_update_plot_plot_assigment_trigger', 1),
+('2016_09_05_084627_create_area_image', 1),
+('2016_09_06_082951_create_plots_selection_main_view', 1),
+('2016_09_10_063712_entrust_setup_tables', 1),
+('2016_09_10_071747_create_all_plots_status_report_view_table', 1),
+('2016_09_10_075127_create_reserved_plots_status_view_table', 1);
 
 -- --------------------------------------------------------
 
@@ -176,6 +245,39 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'add-plots', 'Add Plots', 'User can add plots', '2016-09-21 05:26:46', '2016-09-21 05:37:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission_role`
+--
+
+CREATE TABLE `permission_role` (
+  `permission_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -196,26 +298,37 @@ CREATE TABLE `plots` (
 --
 
 INSERT INTO `plots` (`plot_id`, `plot_no`, `created_at`, `updated_at`) VALUES
-(1, 1, '2016-09-01 12:32:26', '2016-09-01 12:32:26'),
-(2, 2, '2016-09-01 12:32:26', '2016-09-01 12:32:26'),
-(3, 3, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(4, 4, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(5, 5, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(6, 6, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(7, 7, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(8, 8, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(9, 9, '2016-09-01 12:32:27', '2016-09-01 12:32:27'),
-(10, 10, '2016-09-01 12:32:28', '2016-09-01 12:32:28'),
-(11, 11, '2016-09-01 12:33:02', '2016-09-01 12:33:02'),
-(12, 12, '2016-09-01 12:33:02', '2016-09-01 12:33:02'),
-(13, 13, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(14, 14, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(15, 15, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(16, 16, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(17, 17, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(18, 18, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(19, 19, '2016-09-01 12:33:03', '2016-09-01 12:33:03'),
-(20, 20, '2016-09-01 12:33:03', '2016-09-01 12:33:03');
+(1, 1, '2016-09-21 05:41:52', '2016-09-21 05:41:52'),
+(2, 2, '2016-09-21 05:41:52', '2016-09-21 05:41:52'),
+(3, 3, '2016-09-21 05:41:52', '2016-09-21 05:41:52'),
+(4, 4, '2016-09-21 05:41:52', '2016-09-21 05:41:52'),
+(5, 5, '2016-09-21 05:41:52', '2016-09-21 05:41:52'),
+(6, 6, '2016-09-21 05:41:53', '2016-09-21 05:41:53'),
+(7, 7, '2016-09-21 05:41:53', '2016-09-21 05:41:53'),
+(8, 8, '2016-09-21 05:41:53', '2016-09-21 05:41:53'),
+(9, 9, '2016-09-21 05:41:53', '2016-09-21 05:41:53'),
+(10, 10, '2016-09-21 05:41:53', '2016-09-21 05:41:53');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `plots_selection_main_view`
+--
+CREATE TABLE `plots_selection_main_view` (
+`areaid` int(10) unsigned
+,`areaname` varchar(255)
+,`areatypeid` int(10) unsigned
+,`areatypename` varchar(255)
+,`blockid` int(10) unsigned
+,`blockname` varchar(255)
+,`plotid` int(10) unsigned
+,`plotno` int(11)
+,`size` double
+,`status` tinyint(3) unsigned
+,`price` varchar(255)
+,`blockfilename` text
+,`areafilename` varchar(255)
+);
 
 -- --------------------------------------------------------
 
@@ -229,64 +342,47 @@ CREATE TABLE `plot_assignment` (
   `block_id` int(10) UNSIGNED NOT NULL,
   `plot_id` int(10) UNSIGNED NOT NULL,
   `size` double NOT NULL,
-  `status` tinyint(3) UNSIGNED NOT NULL DEFAULT '0'
+  `status` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `published` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `plot_assignment`
 --
 
-INSERT INTO `plot_assignment` (`area_id`, `areas_type_id`, `block_id`, `plot_id`, `size`, `status`) VALUES
-(1, 1, 1, 1, 572, 0),
-(1, 1, 1, 2, 327, 0),
-(1, 1, 1, 3, 475, 0),
-(1, 1, 1, 4, 530, 1),
-(1, 1, 1, 5, 380, 0),
-(1, 1, 1, 6, 650, 0),
-(1, 1, 1, 7, 430, 1),
-(1, 1, 1, 8, 100, 1),
-(1, 1, 1, 9, 150, 0),
-(1, 1, 1, 10, 400, 0),
-(1, 1, 2, 11, 572, 0),
-(1, 1, 2, 12, 327, 0),
-(1, 1, 2, 13, 475, 0),
-(1, 1, 2, 14, 530, 1),
-(1, 1, 2, 15, 380, 1),
-(1, 1, 2, 16, 650, 0),
-(1, 1, 2, 17, 430, 1),
-(1, 1, 2, 18, 100, 0),
-(1, 1, 2, 19, 150, 0),
-(1, 1, 2, 20, 400, 0),
-(1, 2, 1, 11, 572, 0),
-(1, 2, 1, 12, 327, 0),
-(1, 2, 1, 13, 475, 0),
-(1, 2, 1, 14, 530, 0),
-(1, 2, 1, 15, 380, 1),
-(1, 2, 1, 16, 650, 0),
-(1, 2, 1, 17, 430, 0),
-(1, 2, 1, 18, 100, 0),
-(1, 2, 1, 19, 150, 0),
-(1, 2, 1, 20, 400, 0),
-(2, 1, 1, 1, 572, 0),
-(2, 1, 2, 1, 572, 0),
-(2, 1, 1, 2, 327, 0),
-(2, 1, 2, 2, 327, 0),
-(2, 1, 1, 3, 475, 0),
-(2, 1, 2, 3, 475, 0),
-(2, 1, 1, 4, 530, 1),
-(2, 1, 2, 4, 530, 0),
-(2, 1, 1, 5, 380, 1),
-(2, 1, 2, 5, 380, 1),
-(2, 1, 1, 6, 650, 0),
-(2, 1, 2, 6, 650, 0),
-(2, 1, 1, 7, 430, 0),
-(2, 1, 2, 7, 430, 0),
-(2, 1, 1, 8, 100, 0),
-(2, 1, 2, 8, 100, 0),
-(2, 1, 1, 9, 150, 0),
-(2, 1, 2, 9, 150, 0),
-(2, 1, 1, 10, 400, 0),
-(2, 1, 2, 10, 400, 0);
+INSERT INTO `plot_assignment` (`area_id`, `areas_type_id`, `block_id`, `plot_id`, `size`, `status`, `published`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 572, 1, 0, NULL, NULL),
+(1, 1, 1, 2, 327, 1, 0, NULL, NULL),
+(1, 1, 1, 3, 475, 1, 0, NULL, NULL),
+(1, 1, 1, 4, 530, 1, 0, NULL, NULL),
+(1, 1, 1, 5, 380, 1, 0, NULL, NULL),
+(1, 1, 1, 6, 650, 1, 0, NULL, NULL),
+(1, 1, 1, 7, 430, 1, 0, NULL, NULL),
+(1, 1, 1, 8, 100, 1, 0, NULL, NULL),
+(1, 1, 1, 9, 150, 0, 0, NULL, NULL),
+(1, 1, 1, 10, 400, 1, 0, NULL, NULL),
+(2, 2, 1, 1, 572, 1, 0, NULL, NULL),
+(2, 2, 1, 2, 327, 0, 0, NULL, NULL),
+(2, 2, 1, 3, 475, 0, 0, NULL, NULL),
+(2, 2, 1, 4, 530, 0, 0, NULL, NULL),
+(2, 2, 1, 5, 380, 0, 0, NULL, NULL),
+(2, 2, 1, 6, 650, 0, 0, NULL, NULL),
+(2, 2, 1, 7, 430, 0, 0, NULL, NULL),
+(2, 2, 1, 8, 100, 0, 0, NULL, NULL),
+(2, 2, 1, 9, 150, 0, 0, NULL, NULL),
+(2, 2, 1, 10, 400, 0, 0, NULL, NULL),
+(2, 3, 1, 1, 572, 0, 0, NULL, NULL),
+(2, 3, 1, 2, 327, 0, 0, NULL, NULL),
+(2, 3, 1, 3, 475, 0, 0, NULL, NULL),
+(2, 3, 1, 4, 530, 0, 0, NULL, NULL),
+(2, 3, 1, 5, 380, 0, 0, NULL, NULL),
+(2, 3, 1, 6, 650, 0, 0, NULL, NULL),
+(2, 3, 1, 7, 430, 0, 0, NULL, NULL),
+(2, 3, 1, 8, 100, 0, 0, NULL, NULL),
+(2, 3, 1, 9, 150, 0, 0, NULL, NULL),
+(2, 3, 1, 10, 400, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -301,19 +397,37 @@ CREATE TABLE `plot_reservation` (
   `plot_id` int(10) UNSIGNED NOT NULL,
   `user_detail_id` int(10) UNSIGNED NOT NULL,
   `deadline` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` tinyint(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` tinyint(3) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `plot_reservation`
+--
+
+INSERT INTO `plot_reservation` (`area_id`, `areas_type_id`, `block_id`, `plot_id`, `user_detail_id`, `deadline`, `created_at`, `status`) VALUES
+(1, 1, 1, 1, 1, '2016-09-21 05:46:34', '2016-09-21 05:45:31', 1),
+(1, 1, 1, 2, 1, '2016-09-21 05:46:38', '2016-09-21 05:45:37', 1),
+(1, 1, 1, 3, 1, '2016-09-21 05:46:25', '2016-09-21 05:45:19', 1),
+(1, 1, 1, 4, 1, '2016-09-21 05:46:20', '2016-09-21 05:45:13', 1),
+(1, 1, 1, 5, 1, '2016-09-21 05:46:04', '2016-09-21 05:42:51', 1),
+(1, 1, 1, 6, 1, '2016-09-21 05:46:15', '2016-09-21 05:45:05', 1),
+(1, 1, 1, 7, 1, '2016-09-21 05:46:29', '2016-09-21 05:45:25', 1),
+(1, 1, 1, 8, 1, '2016-09-21 05:46:42', '2016-09-21 05:45:43', 1),
+(1, 1, 1, 10, 1, '2016-09-21 05:46:10', '2016-09-21 05:44:57', 1),
+(2, 2, 1, 1, 2, '2016-09-21 06:32:38', '2016-09-21 06:29:33', 1);
 
 --
 -- Triggers `plot_reservation`
 --
 DELIMITER $$
-CREATE TRIGGER `plot_assignment_rollback` BEFORE DELETE ON `plot_reservation` FOR EACH ROW UPDATE plot_assignment SET plot_assignment.status = 0 
-WHERE plot_assignment.area_id = OLD.area_id
-AND plot_assignment.areas_type_id = OLD.areas_type_id
-AND plot_assignment.block_id=OLD.block_id
-AND plot_assignment.plot_id=OLD.plot_id
+CREATE TRIGGER `tr_plot_assignment_rollback` BEFORE DELETE ON `plot_reservation` FOR EACH ROW BEGIN
+                UPDATE plot_assignment SET plot_assignment.status = 0
+                WHERE plot_assignment.area_id = OLD.area_id
+                AND plot_assignment.areas_type_id = OLD.areas_type_id
+                AND plot_assignment.block_id=OLD.block_id
+                AND plot_assignment.plot_id=OLD.plot_id;
+            END
 $$
 DELIMITER ;
 
@@ -359,13 +473,6 @@ CREATE TABLE `plot_status` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `plot_status`
---
-
-INSERT INTO `plot_status` (`area_id`, `areas_type_id`, `block_id`, `plot_id`, `balance`, `user_detail_id`, `deadline`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 300, 4, '2016-09-03 14:26:18', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -388,6 +495,71 @@ CREATE TABLE `plot_transactions` (
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `reserved_plots_status_view`
+--
+CREATE TABLE `reserved_plots_status_view` (
+`areaid` int(10) unsigned
+,`areaname` varchar(255)
+,`areatypeid` int(10) unsigned
+,`areatypename` varchar(255)
+,`blockid` int(10) unsigned
+,`blockname` varchar(255)
+,`plotid` int(10) unsigned
+,`plotno` int(11)
+,`size` double
+,`status` tinyint(3) unsigned
+,`price` varchar(255)
+,`userdetailid` int(10) unsigned
+,`fname` varchar(255)
+,`mname` varchar(255)
+,`lname` varchar(255)
+,`deadline` timestamp
+,`created_at` timestamp
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `display_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'Admin', 'System admini', '2016-09-21 05:24:43', '2016-09-21 05:34:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_user`
+--
+
+CREATE TABLE `role_user` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `role_user`
+--
+
+INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transaction_numbers`
 --
 
@@ -395,7 +567,6 @@ CREATE TABLE `transaction_numbers` (
   `transaction_number_id` int(10) UNSIGNED NOT NULL,
   `transaction_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
-  `user_detail_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -404,13 +575,17 @@ CREATE TABLE `transaction_numbers` (
 -- Dumping data for table `transaction_numbers`
 --
 
-INSERT INTO `transaction_numbers` (`transaction_number_id`, `transaction_number`, `status`, `user_detail_id`, `created_at`, `updated_at`) VALUES
-(1, '1', 1, 5, NULL, NULL),
-(2, '2', 1, 5, NULL, NULL),
-(3, '3', 1, 7, NULL, NULL),
-(4, '4', 0, 0, NULL, NULL),
-(5, '5', 0, 0, NULL, NULL),
-(6, '6', 0, 0, NULL, NULL);
+INSERT INTO `transaction_numbers` (`transaction_number_id`, `transaction_number`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1', 1, NULL, '2016-09-21 05:46:04'),
+(2, '2', 1, NULL, '2016-09-21 05:46:10'),
+(3, '3', 1, NULL, '2016-09-21 05:46:15'),
+(4, '4', 1, NULL, '2016-09-21 05:46:20'),
+(5, '5', 1, NULL, '2016-09-21 05:46:25'),
+(6, '6', 1, NULL, '2016-09-21 05:46:29'),
+(7, '7', 1, NULL, '2016-09-21 05:46:34'),
+(8, '8', 1, NULL, '2016-09-21 05:46:38'),
+(9, '9', 1, NULL, '2016-09-21 05:46:42'),
+(10, '10', 1, NULL, '2016-09-21 06:32:38');
 
 -- --------------------------------------------------------
 
@@ -427,13 +602,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@cda.co.tz', '$2y$10$ib2fSlRCKn50SgeIzmeA7.obMWe577AZFpAIPG5AVJ5FqdvCNq4HW', 'eZ2JjGVQcqz2w9x76uytOeGqqbB0pZRWobB1PIKWEeF3kBNOISlWNDkSvH4l', '2016-09-01 12:24:50', '2016-09-01 12:35:29');
 
 -- --------------------------------------------------------
 
@@ -455,12 +623,9 @@ CREATE TABLE `user_credentials` (
 --
 
 INSERT INTO `user_credentials` (`id`, `username`, `password`, `user_detail_id`, `created_at`, `updated_at`) VALUES
-(1, '0767259025', '$2y$10$y1LV7hc/SX.7KIcLjV.yHOuHCsZOATYnPgFum1kYcYlyUsZ3sdCKe', 1, '2016-09-01 15:38:34', '2016-09-01 15:38:34'),
-(3, '0719961077', '$2y$10$XPLPqRz072QbxGJuXZSIY.Td0mb0J7mTDHu0wUjPK6tlnTF3ajk1a', 3, '2016-09-02 19:41:07', '2016-09-02 19:41:07'),
-(4, '0713882972', '$2y$10$1lyst9pOAvODIOft5AOL2e1GDhGkEYDn6dOoeyGlfF44jqQfYbk.u', 4, '2016-09-03 09:03:31', '2016-09-03 09:03:31'),
-(5, '0789106396', '$2y$10$uRqto9Hri2USdUXw2V6Z/uY/54w3By.Kef0k6.N7ZzYg1Wrs.IExC', 5, '2016-09-03 14:38:41', '2016-09-03 14:38:41'),
-(6, '0712882972', '$2y$10$iCpGG..k3I8H36Ut9ctFvuRBdkpKkH7I7QB6VE9FUuFY4QfoAHb4y', 6, '2016-09-03 16:46:51', '2016-09-03 16:46:51'),
-(7, '0769370256', '$2y$10$zSPB0sXvcMrtk8x4dewPB.OJltvG8ETcV1RxkZzDPUKn2c25Q9WMK', 7, '2016-09-03 16:56:50', '2016-09-03 16:56:50');
+(1, '0719961077', '$2y$10$2iu1qxpaCpn.lJsK6mqlXOCfVsymE./aVHZEoTj1q/RsE0GvtVOgO', 1, '2016-09-20 04:49:27', '2016-09-20 04:49:27'),
+(2, '0683005051', '$2y$10$Sir9wvBS3G6nRBlOvjt.y.qgLEp4UvptDxVgtyvs5ZMK6gB1zLRES', 2, '2016-09-21 06:29:13', '2016-09-21 06:29:13'),
+(3, '0769370256', '$2y$10$T5clgtm/zg8lup8l99hi4.lk.9EE/uvJuyKsRPIYoykp6kR0bh/lG', 3, '2016-09-21 07:02:28', '2016-09-21 07:02:28');
 
 -- --------------------------------------------------------
 
@@ -492,12 +657,9 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`user_detail_id`, `first_name`, `middle_name`, `last_name`, `email_address`, `phone_number`, `password`, `district`, `region`, `ward`, `house_number`, `address`, `photo`, `registration_status`, `created_at`, `updated_at`) VALUES
-(1, 'Cyrus', 'Simon Maddox', 'Velasquez', 'biniwyre@yahoo.com', '0767259025', '$2y$10$y1LV7hc/SX.7KIcLjV.yHOuHCsZOATYnPgFum1kYcYlyUsZ3sdCKe', 'Placeat dolor incididunt dolore sint mollit voluptate et ab incididunt aliquam dignissimos quod quasi fugit dolorum', 'Sed reiciendis consectetur minima sint reprehenderit illum officia est adipisicing qui amet blanditiis neque et', 'Eos voluptas ab minima mollitia dolores aut dolore aspernatur', '136', 'Ipsam est minim minus incidunt, qui ducimus, cupidatat non id eum illo.', '11472844008 - DSC06775.JPG', 0, '2016-09-01 12:38:34', '2016-09-02 16:20:08'),
-(3, 'Joseph', 'P', 'Mtinangi', 'josephmtinangi@gmail.com', '0719961077', '$2y$10$XPLPqRz072QbxGJuXZSIY.Td0mb0J7mTDHu0wUjPK6tlnTF3ajk1a', 'Manyoni', 'Singida', 'Relini', '4657', 'The University of Dodoma,\r\nCollege of Informatics and Virtual Education,\r\nP. O. Box 359,\r\nDodoma,\r\nTanzania', '3 @ 1472886089 - DSC06775.JPG', 1, '2016-09-02 16:41:07', '2016-09-03 04:01:29'),
-(4, 'MASOUD', 'MICKIDARD', 'MASOUD', 'bigutu@yahoo.com', '0713882972', '$2y$10$1lyst9pOAvODIOft5AOL2e1GDhGkEYDn6dOoeyGlfF44jqQfYbk.u', 'DODOMA MJINI', 'DODOMA', 'KISASA', '251', 'P,O.BOX 490\r\nDODOMA', '4 @ 1472894720 - DSC06775.JPG', 1, '2016-09-03 06:03:31', '2016-09-03 06:25:20'),
-(5, 'Joseph', 'P', 'Mtinangi', 'josephmtinangi@outlook.com', '0789106396', '$2y$10$uRqto9Hri2USdUXw2V6Z/uY/54w3By.Kef0k6.N7ZzYg1Wrs.IExC', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2016-09-03 11:38:41', '2016-09-03 11:38:41'),
-(6, 'TUNU', 'JUMA', 'SIZA', 'mmasoud@yahoo.com', '0712882972', '$2y$10$iCpGG..k3I8H36Ut9ctFvuRBdkpKkH7I7QB6VE9FUuFY4QfoAHb4y', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2016-09-03 13:46:51', '2016-09-03 13:46:51'),
-(7, 'First', 'Middle', 'Last', 'fml@gmail.com', '0769370256', '$2y$10$zSPB0sXvcMrtk8x4dewPB.OJltvG8ETcV1RxkZzDPUKn2c25Q9WMK', 'Dodoma Mjini', 'Dodoma', 'Kisasa', 'Street', '677', '7 @ 1472922466 - DSC06775.JPG', 1, '2016-09-03 13:56:50', '2016-09-03 14:07:46');
+(1, 'Joseph', 'Peter', 'Mtinangi', 'josephmtinangi@gmail.com', '0719961077', '$2y$10$2iu1qxpaCpn.lJsK6mqlXOCfVsymE./aVHZEoTj1q/RsE0GvtVOgO', 'Urambo', 'Tabora', 'Urambo Mashariki', '4u2', '02', '1 @ 1474437280 - Joseph Mtinangi.JPG', 1, '2016-09-20 14:49:27', '2016-09-21 05:54:40'),
+(2, 'GOTIFRIDI', 'FESTO', 'TARIMO', 'tarimo@live.com', '0683005051', '$2y$10$Sir9wvBS3G6nRBlOvjt.y.qgLEp4UvptDxVgtyvs5ZMK6gB1zLRES', 'DOM', 'DOM', 'GDF', '23', '32 DOM', '2 @ 1474439622 - Joseph Mtinangi.JPG', 1, '2016-09-21 06:29:13', '2016-09-21 06:33:42'),
+(3, 'Jeffrey', '', 'Way', 'jeff_way@laracasts.com', '0769370256', '$2y$10$T5clgtm/zg8lup8l99hi4.lk.9EE/uvJuyKsRPIYoykp6kR0bh/lG', NULL, NULL, NULL, NULL, NULL, NULL, 0, '2016-09-21 07:02:28', '2016-09-21 07:02:28');
 
 --
 -- Triggers `user_details`
@@ -512,11 +674,38 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Structure for view `all_plots_status_report_view`
+--
+DROP TABLE IF EXISTS `all_plots_status_report_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `all_plots_status_report_view`  AS  (select `areas`.`area_id` AS `areaid`,`areas`.`name` AS `areaname`,`area_types`.`areas_type_id` AS `areatypeid`,`area_types`.`name` AS `areatypename`,`blocks`.`block_id` AS `blockid`,`blocks`.`name` AS `blockname`,`plots`.`plot_id` AS `plotid`,`plots`.`plot_no` AS `plotno`,`plot_assignment`.`size` AS `size`,`plot_assignment`.`status` AS `status`,`area_assignment`.`price` AS `price` from ((((((`areas` join `area_assignment`) join `area_types`) join `blocks`) join `block_assignment`) join `plots`) join `plot_assignment`) where ((`areas`.`area_id` = `area_assignment`.`area_id`) and (`area_types`.`areas_type_id` = `area_assignment`.`areas_type_id`) and (`areas`.`area_id` = `area_assignment`.`area_id`) and (`area_types`.`areas_type_id` = `area_assignment`.`areas_type_id`) and (`blocks`.`block_id` = `block_assignment`.`block_id`) and (`area_assignment`.`area_id` = `block_assignment`.`area_id`) and (`area_assignment`.`areas_type_id` = `block_assignment`.`areas_type_id`) and (`plots`.`plot_id` = `plot_assignment`.`plot_id`) and (`block_assignment`.`area_id` = `plot_assignment`.`area_id`) and (`block_assignment`.`areas_type_id` = `plot_assignment`.`areas_type_id`) and (`block_assignment`.`block_id` = `plot_assignment`.`block_id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `plots_selection_main_view`
+--
+DROP TABLE IF EXISTS `plots_selection_main_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plots_selection_main_view`  AS  (select `areas`.`area_id` AS `areaid`,`areas`.`name` AS `areaname`,`area_types`.`areas_type_id` AS `areatypeid`,`area_types`.`name` AS `areatypename`,`blocks`.`block_id` AS `blockid`,`blocks`.`name` AS `blockname`,`plots`.`plot_id` AS `plotid`,`plots`.`plot_no` AS `plotno`,`plot_assignment`.`size` AS `size`,`plot_assignment`.`status` AS `status`,`area_assignment`.`price` AS `price`,`block_assignment`.`file_name` AS `blockfilename`,`area_image`.`file_name` AS `areafilename` from (((((((`areas` join `area_assignment`) join `area_types`) join `blocks`) join `block_assignment`) join `plots`) join `plot_assignment`) join `area_image`) where ((`areas`.`area_id` = `area_assignment`.`area_id`) and (`area_types`.`areas_type_id` = `area_assignment`.`areas_type_id`) and (`areas`.`area_id` = `area_assignment`.`area_id`) and (`area_types`.`areas_type_id` = `area_assignment`.`areas_type_id`) and (`blocks`.`block_id` = `block_assignment`.`block_id`) and (`area_assignment`.`area_id` = `block_assignment`.`area_id`) and (`area_assignment`.`areas_type_id` = `block_assignment`.`areas_type_id`) and (`plots`.`plot_id` = `plot_assignment`.`plot_id`) and (`block_assignment`.`area_id` = `plot_assignment`.`area_id`) and (`block_assignment`.`areas_type_id` = `plot_assignment`.`areas_type_id`) and (`block_assignment`.`block_id` = `plot_assignment`.`block_id`) and (`plot_assignment`.`status` = 0) and (`area_image`.`area_id` = `areas`.`area_id`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `plot_reservation_view`
 --
 DROP TABLE IF EXISTS `plot_reservation_view`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `plot_reservation_view`  AS  (select `plots`.`plot_no` AS `plot_no`,`blocks`.`name` AS `block`,`areas`.`name` AS `location`,`area_types`.`name` AS `land_use`,`plot_assignment`.`size` AS `size`,`area_assignment`.`price` AS `price`,(`plot_assignment`.`size` * `area_assignment`.`price`) AS `total_price`,`plot_reservation`.`deadline` AS `deadline`,`user_details`.`first_name` AS `first_name`,`user_details`.`middle_name` AS `middle_name`,`user_details`.`last_name` AS `last_name`,`user_details`.`address` AS `address`,`user_details`.`region` AS `region`,`plot_reservation`.`created_at` AS `created_at`,`plot_reservation`.`user_detail_id` AS `user_credential_id`,`user_details`.`photo` AS `photo` from (((((((`user_details` join `plots`) join `blocks`) join `areas`) join `area_types`) join `plot_assignment`) join `area_assignment`) join `plot_reservation`) where ((`user_details`.`user_detail_id` = `plot_reservation`.`user_detail_id`) and (`plots`.`plot_id` = `plot_reservation`.`plot_id`) and (`blocks`.`block_id` = `plot_reservation`.`block_id`) and (`areas`.`area_id` = `plot_reservation`.`area_id`) and (`area_types`.`areas_type_id` = `plot_reservation`.`areas_type_id`) and (`plot_assignment`.`area_id` = `plot_reservation`.`area_id`) and (`plot_assignment`.`areas_type_id` = `plot_reservation`.`areas_type_id`) and (`plot_assignment`.`block_id` = `plot_reservation`.`block_id`) and (`plot_assignment`.`plot_id` = `plot_reservation`.`plot_id`) and (`area_assignment`.`areas_type_id` = `plot_reservation`.`areas_type_id`) and (`area_assignment`.`area_id` = `plot_reservation`.`area_id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `reserved_plots_status_view`
+--
+DROP TABLE IF EXISTS `reserved_plots_status_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reserved_plots_status_view`  AS  (select `areas`.`area_id` AS `areaid`,`areas`.`name` AS `areaname`,`area_types`.`areas_type_id` AS `areatypeid`,`area_types`.`name` AS `areatypename`,`blocks`.`block_id` AS `blockid`,`blocks`.`name` AS `blockname`,`plots`.`plot_id` AS `plotid`,`plots`.`plot_no` AS `plotno`,`plot_assignment`.`size` AS `size`,`plot_reservation`.`status` AS `status`,`area_assignment`.`price` AS `price`,`plot_reservation`.`user_detail_id` AS `userdetailid`,`user_details`.`first_name` AS `fname`,`user_details`.`middle_name` AS `mname`,`user_details`.`last_name` AS `lname`,`plot_reservation`.`deadline` AS `deadline`,`plot_reservation`.`created_at` AS `created_at` from ((((((((`areas` join `area_assignment`) join `area_types`) join `blocks`) join `block_assignment`) join `plots`) join `plot_assignment`) join `user_details`) join `plot_reservation`) where ((`areas`.`area_id` = `area_assignment`.`area_id`) and (`area_types`.`areas_type_id` = `area_assignment`.`areas_type_id`) and (`areas`.`area_id` = `area_assignment`.`area_id`) and (`area_types`.`areas_type_id` = `area_assignment`.`areas_type_id`) and (`blocks`.`block_id` = `block_assignment`.`block_id`) and (`area_assignment`.`area_id` = `block_assignment`.`area_id`) and (`area_assignment`.`areas_type_id` = `block_assignment`.`areas_type_id`) and (`plots`.`plot_id` = `plot_assignment`.`plot_id`) and (`block_assignment`.`area_id` = `plot_assignment`.`area_id`) and (`block_assignment`.`areas_type_id` = `plot_assignment`.`areas_type_id`) and (`block_assignment`.`block_id` = `plot_assignment`.`block_id`) and (`plot_reservation`.`user_detail_id` = `user_details`.`user_detail_id`) and (`plot_reservation`.`area_id` = `plot_assignment`.`area_id`) and (`plot_reservation`.`areas_type_id` = `plot_assignment`.`areas_type_id`) and (`plot_reservation`.`block_id` = `plot_assignment`.`block_id`) and (`plot_reservation`.`plot_id` = `plot_assignment`.`plot_id`))) ;
 
 --
 -- Indexes for dumped tables
@@ -535,6 +724,13 @@ ALTER TABLE `areas`
 ALTER TABLE `area_assignment`
   ADD PRIMARY KEY (`area_id`,`areas_type_id`),
   ADD KEY `area_assignment_areas_type_id_foreign` (`areas_type_id`);
+
+--
+-- Indexes for table `area_image`
+--
+ALTER TABLE `area_image`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `area_image_area_id_foreign` (`area_id`);
 
 --
 -- Indexes for table `area_types`
@@ -564,6 +760,20 @@ ALTER TABLE `block_assignment`
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_unique` (`name`);
+
+--
+-- Indexes for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `permission_role_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `plots`
@@ -613,6 +823,20 @@ ALTER TABLE `plot_transactions`
   ADD KEY `plot_transactions_user_detail_id_foreign` (`user_detail_id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_unique` (`name`);
+
+--
+-- Indexes for table `role_user`
+--
+ALTER TABLE `role_user`
+  ADD PRIMARY KEY (`user_id`,`role_id`),
+  ADD KEY `role_user_role_id_foreign` (`role_id`);
+
+--
 -- Indexes for table `transaction_numbers`
 --
 ALTER TABLE `transaction_numbers`
@@ -647,42 +871,57 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `area_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `area_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `area_image`
+--
+ALTER TABLE `area_image`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `area_types`
 --
 ALTER TABLE `area_types`
-  MODIFY `areas_type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `areas_type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `block_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `block_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `plots`
 --
 ALTER TABLE `plots`
-  MODIFY `plot_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `plot_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `transaction_numbers`
 --
 ALTER TABLE `transaction_numbers`
-  MODIFY `transaction_number_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `transaction_number_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_credentials`
 --
 ALTER TABLE `user_credentials`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `user_detail_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_detail_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
@@ -695,12 +934,25 @@ ALTER TABLE `area_assignment`
   ADD CONSTRAINT `area_assignment_areas_type_id_foreign` FOREIGN KEY (`areas_type_id`) REFERENCES `area_types` (`areas_type_id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `area_image`
+--
+ALTER TABLE `area_image`
+  ADD CONSTRAINT `area_image_area_id_foreign` FOREIGN KEY (`area_id`) REFERENCES `areas` (`area_id`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `block_assignment`
 --
 ALTER TABLE `block_assignment`
   ADD CONSTRAINT `block_assignment_area_id_foreign` FOREIGN KEY (`area_id`) REFERENCES `area_assignment` (`area_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `block_assignment_areas_type_id_foreign` FOREIGN KEY (`areas_type_id`) REFERENCES `area_assignment` (`areas_type_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `block_assignment_block_id_foreign` FOREIGN KEY (`block_id`) REFERENCES `blocks` (`block_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `permission_role`
+--
+ALTER TABLE `permission_role`
+  ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `plot_assignment`
@@ -742,6 +994,13 @@ ALTER TABLE `plot_transactions`
   ADD CONSTRAINT `plot_transactions_user_detail_id_foreign` FOREIGN KEY (`user_detail_id`) REFERENCES `user_details` (`user_detail_id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `role_user`
+--
+ALTER TABLE `role_user`
+  ADD CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `user_details` (`user_detail_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `user_credentials`
 --
 ALTER TABLE `user_credentials`
@@ -751,7 +1010,10 @@ DELIMITER $$
 --
 -- Events
 --
-CREATE DEFINER=`root`@`localhost` EVENT `e_hourly` ON SCHEDULE EVERY 3 MINUTE STARTS '2016-09-03 17:31:53' ON COMPLETION NOT PRESERVE ENABLE COMMENT 'Clears out plot status table each hour.' DO DELETE FROM plot_reservation WHERE plot_reservation.status = 0 AND now()>=ADDTIME(plot_reservation.created_at, '0:03:00')$$
+CREATE DEFINER=`root`@`localhost` EVENT `e_hourly` ON SCHEDULE EVERY 3 MINUTE STARTS '2016-09-20 07:46:39' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+                DELETE FROM plot_reservation WHERE plot_reservation.status = 0 AND
+                NOW()>=ADDTIME(plot_reservation.created_at, '0:03:00');
+            END$$
 
 DELIMITER ;
 

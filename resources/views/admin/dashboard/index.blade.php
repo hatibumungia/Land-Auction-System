@@ -21,9 +21,15 @@
             <a href="/admin/dashboard">Nyumbani</a>
         </li>
         <li>
-            Admini
+            Admin
         </li>
     </ol>
+
+    <div class="row">
+        <div class="col-xs-12">
+            @if(Request::segment(1) == 'admin') in @endif
+        </div>
+    </div>
 
     <div class="row text-center">
         <div class="col-xs-12 col-sm-3">
@@ -55,5 +61,6 @@
             </div>
         </div>
     </div>
+
 
 @endsection

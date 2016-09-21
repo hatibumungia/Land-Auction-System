@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>All Areas</h2>
+            <h2>All Plots</h2>
             <a href="{{ url('/admin/plot-assignments/create') }}" class="btn btn-primary pull-right">New</a>
         </div>
     </div>
@@ -91,11 +91,7 @@
                         </table>
 
                     @else
-
-                        <div class="alert alert-info alert-important">
-                            <h3 class="text-center">Hakuna kiwanja chochote kilichowekwa kwa muda huu</h3>
-                        </div>
-
+                        <h3 class="text-center">Hakuna kiwanja chochote kilichowekwa kwa muda huu</h3>
                     @endif
 
                     <script type="text/javascript">

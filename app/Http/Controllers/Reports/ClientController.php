@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -29,11 +29,13 @@ class ClientController extends Controller
         if (isset($_POST['export_excel_button'])) {
             PrintController::index($clients, 'xlsx');
         }
-        if (isset($_POST['export_pdf_button'])) {
+        if (isset($_POST['export_pdf_button'])) { 
             PrintController::index($clients, 'pdf');
         }
 
-        return view('reports.clients.index', compact('clients', 'locations', 'landuses', 'i'));
+        $user = UserDetail::findOrFail(Session::get('id'));
+
+        return view('reports.clients.index', compact('clients', 'locations', 'landuses', 'i', 'user'));
 
     }
 

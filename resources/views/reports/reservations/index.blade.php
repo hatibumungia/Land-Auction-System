@@ -88,8 +88,15 @@
                     @endif
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-            <button type="submit" class="btn btn-success pull-right">Export</button>
+                <button type="submit" class="btn btn-primary" name="search_button"><i class="fa fa-search"></i>
+                    Search
+                </button>
+                <button type="submit" class="btn btn-success" name="export_excel_button"><i
+                            class="fa fa-file-excel-o"></i> Export
+                </button>
+                <button type="submit" class="btn btn-success" name="export_pdf_button"><i
+                            class="fa fa-file-pdf-o"></i> Export
+                </button>
             </form>
         </div>
     </div>

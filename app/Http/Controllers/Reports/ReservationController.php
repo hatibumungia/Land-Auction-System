@@ -6,16 +6,18 @@ use App\ReservedPlotsStatusView;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\UserDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
     public function index(Request $request)
     {
 
-        $areas = DB::table('areas')->orderBy('name')->get();
+        $areas = DB::table('areas')->orderBy('name')->get(); 
         $blocks = DB::table('blocks')->orderBy('name')->get();
         $landuses = DB::table('area_types')->orderBy('name')->get();
 
@@ -26,7 +28,16 @@ class ReservationController extends Controller
 
         $i = 1;
 
-        return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses'));
+        if (isset($_POST['export_excel_button'])) {
+            PrintController::index($reserved_plots_statuses, 'xlsx');
+        }
+        if (isset($_POST['export_pdf_button'])) {
+            PrintController::index($reserved_plots_statuses, 'pdf');
+        }
+
+        $user = UserDetail::findOrFail(Session::get('id'));        
+
+        return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses', 'user'));
     }
 
     public function search($reservedPlotsStatusView, $request)

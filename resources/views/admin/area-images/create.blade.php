@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>Add a new area</h2>
+            <h2>Add a new area map</h2>
             <a href="{{ url('/admin/location-images') }}" class="btn btn-primary pull-right">View All</a>
         </div>
     </div>
@@ -30,6 +30,7 @@
                     <h3 class="panel-title">#</h3>
                 </div>
                 <div class="panel-body">
+                    <br><br>
                     @include('common.errors')
 
                     {!! Form::open(['url' => 'admin/location-images', 'class' => 'form-horizontal', 'files' => true]) !!}

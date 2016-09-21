@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreateRoleRequest;
+use App\Http\Requests\EditRoleRequest;
 use App\Permission;
 use App\Role;
 use App\UserDetail;
@@ -92,9 +93,10 @@ class RoleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateRoleRequest $request, $id)
+    public function update(EditRoleRequest $request, $id)
     {
         $role = Role::findOrFail($id);
+
         $role->update($request->all());
 
         flash()->success('Success');

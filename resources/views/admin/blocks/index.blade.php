@@ -114,9 +114,7 @@
 
                     @else
 
-                        <div class="alert alert-info">
-                            <h3>Hakuna kitalu kilichowekwa kwa sasa</h3>
-                        </div>
+                            <h3 class="text-center">Hakuna kitalu kilichowekwa kwa sasa</h3>
 
                     @endif
                 </div>

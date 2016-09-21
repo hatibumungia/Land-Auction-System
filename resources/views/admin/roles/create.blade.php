@@ -31,7 +31,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Add a Role</div>
                             <div class="panel-body">
-
+                                <br><br>
                                 @include('errors.list')
 
                                 <form class="form-horizontal" method="post" action="{{ url('admin/roles') }}">

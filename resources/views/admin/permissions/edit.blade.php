@@ -31,7 +31,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Edit {{ $permission->display_name }}</div>
                         <div class="panel-body">
-
+                            <br><br>
                             @include('errors.list')
 
                             {!! Form::model($permission, ['method' => 'PATCH', 'action' => ['Admin\PermissionController@update', $permission->id] , 'class' => 'form-horizontal']) !!}

@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>Add a new area</h2>
+            <h2>Add a block map</h2>
             <a href="{{ url('/admin/block-assignments') }}" class="btn btn-primary pull-right">View All</a>
         </div>
     </div>
@@ -30,11 +30,12 @@
                     <h3 class="panel-title">#</h3>
                 </div>
                 <div class="panel-body">
-        @include('common.errors')
+                    <br><br>
+                    @include('common.errors')
 
-        {!! Form::open(['url' => 'admin/block-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
+                    {!! Form::open(['url' => 'admin/block-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-        @include('admin.block-assignments._form')
+                    @include('admin.block-assignments._form')
 
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-3">

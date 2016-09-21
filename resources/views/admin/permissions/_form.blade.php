@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="description" class="col-sm-3 control-label">Description (Option)</label>
+    <label for="description" class="col-sm-3 control-label">Description (Optional)</label>
     <div class="col-sm-9">
         {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
     </div>

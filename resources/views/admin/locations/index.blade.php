@@ -114,9 +114,7 @@
 
                     @else
 
-                        <div class="alert alert-info">
                             <h3 class="text-center">Hakuna eneo lolote lililowekwa kwa muda huu.</h3>
-                        </div>
 
                     @endif
                 </div>
