@@ -20,6 +20,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
+                    <h2>All Roles</h2>
                     <a href="{{ url('admin/roles/create') }}" class="btn btn-primary pull-right"><i
                                 class="fa fa-plus"></i>
                         Add</a>

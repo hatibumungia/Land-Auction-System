@@ -118,11 +118,7 @@
                         </table>
 
                     @else
-
-                        <div class="alert alert-info">
-                            <h3 class="text-center">Hakuna ramani za eneo lolote zilizowekwa kwa muda huu.</h3>
-                        </div>
-
+                        <h3 class="text-center">Hakuna ramani za eneo lolote zilizowekwa kwa muda huu.</h3>
                     @endif
                 </div>
                 <div class="panel-footer">

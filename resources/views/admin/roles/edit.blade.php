@@ -31,7 +31,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Edit {{ $role->display_name }}</div>
                         <div class="panel-body">
-
+                            <br><br>
                             @include('errors.list')
 
                             {!! Form::model($role, ['method' => 'PATCH', 'action' => ['Admin\RoleController@update', $role->id] , 'class' => 'form-horizontal']) !!}

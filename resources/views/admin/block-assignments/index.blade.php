@@ -69,9 +69,7 @@
 
         @else
 
-            <div class="alert alert-info">
                 <h3 class="text-center">Hakuna picha yoyote ya kitalu iliyowekwa.</h3>
-            </div>
 
         @endif
                 </div>

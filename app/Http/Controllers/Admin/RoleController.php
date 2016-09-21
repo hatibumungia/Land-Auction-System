@@ -95,6 +95,7 @@ class RoleController extends Controller
     public function update(CreateRoleRequest $request, $id)
     {
         $role = Role::findOrFail($id);
+
         $role->update($request->all());
 
         flash()->success('Success');
