@@ -30,6 +30,7 @@
                     <h3 class="panel-title">#</h3>
                 </div>
                 <div class="panel-body">
+                    <br><br>
                     @include('common.errors')
 
                     {!! Form::open(['url' => 'admin/plot-assignments', 'class' => 'form-horizontal', 'files' => true]) !!}
