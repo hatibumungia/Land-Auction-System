@@ -107,26 +107,31 @@ $router->group([
     Route::get('/admin/ajax/plotAssignmentsGetBlock', 'AjaxController@plotAssignmentsGetBlock');
 });
 
-Route::get('/reservation', 'ReservationController@index');
-Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
-Route::get('/reservation/logout', 'ReservationController@logout');
+$router->group([
+    'middleware' => 'applicant'
+], function() {
+    Route::get('/reservation', 'ReservationController@index');
+    Route::get('/reservation/print-preview/{plot_no}', 'ReservationController@print_preview');
+    Route::get('/reservation/logout', 'ReservationController@logout');
 
-Route::get('/reservation/complete-registration', 'ReservationController@completeRegistration');
-Route::patch('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
+    Route::get('/reservation/complete-registration', 'ReservationController@completeRegistration');
+    Route::patch('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
 
-Route::post('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
-Route::get('/applicants/login', 'ApplicantsController@login');
-Route::post('/applicants/auth/login', 'ApplicantsController@processLogin');
+    Route::post('/reservation/processCompleteRegistration', 'ReservationController@processCompleteRegistration');
+    Route::get('/applicants/login', 'ApplicantsController@login');
+    Route::post('/applicants/auth/login', 'ApplicantsController@processLogin');
 
-Route::get('/applicants/register', 'ApplicantsController@register');
-Route::post('/applicants/auth/register', 'ApplicantsController@processRegister');
+    Route::get('/applicants/register', 'ApplicantsController@register');
+    Route::post('/applicants/auth/register', 'ApplicantsController@processRegister');
 
-Route::post('/plot_transactions', 'PlotTransactionController@store');
+    Route::post('/plot_transactions', 'PlotTransactionController@store');
 
-Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');
+    Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');    
+});
 
 $router->group([
-    'namespace' => 'reports'
+    'namespace' => 'reports',
+    'middleware' => 'applicant'
 ], function () {
     Route::get('/reports/reservations', 'ReservationController@index');
     Route::post('/reports/reservations', 'ReservationController@index');
@@ -153,7 +158,8 @@ $router->group([
 });
 
 $router->group([
-    'namespace' => 'Admin'
+    'namespace' => 'Admin',
+    'middleware' => 'applicant'
 ], function () {
     Route::post('/admin/plot-assignments/publish', 'PlotAssignmentController@publish');
 });
