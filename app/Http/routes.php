@@ -66,7 +66,7 @@ Route::get('/search/getReservationSummaryNames', 'SearchController@getReservatio
 
 $router->group([
     'namespace' => 'Admin',
-    'middleware' => 'applicant',
+    'middleware' => ['applicant', 'staff'],
 ], function () {
     Route::get('/admin/dashboard', 'DashboardController@index');
     Route::resource('/admin/locations', 'AreaController');
