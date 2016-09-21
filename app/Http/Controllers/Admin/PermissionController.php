@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreatePermissionRequest;
+use App\Http\Requests\EditPermissionRequest;
 use App\Permission;
 use App\UserDetail;
 use Illuminate\Http\Request;
@@ -87,7 +88,7 @@ class PermissionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreatePermissionRequest $request, $id)
+    public function update(EditPermissionRequest $request, $id)
     {
         $permission = Permission::findOrFail($id);
         $permission->update($request->all());
