@@ -11,6 +11,7 @@ use App\AreaType;
 use App\Block;
 use App\Plot;
 use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -25,7 +26,12 @@ class DashboardController extends Controller
     					->select('areaname', DB::raw('COUNT(*) as total_plots'))
     					->groupBy('areaname')
     					->get();
+
+        $today_total_reservations = DB::table('reserved_plots_status_view')
+                                        ->where('created_at', '>=', Carbon::today())
+                                        ->count();                                             
+
         $user = UserDetail::findOrFail(Session::get('id'));
-        return view('admin.dashboard.index', compact('user', 'total_areas', 'total_land_uses', 'total_blocks', 'total_plots', 'all_plots'));
+        return view('admin.dashboard.index', compact('user', 'total_areas', 'total_land_uses', 'total_blocks', 'total_plots', 'all_plots', 'today_total_reservations'));
     }
 }

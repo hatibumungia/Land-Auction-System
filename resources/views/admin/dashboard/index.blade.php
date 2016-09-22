@@ -29,6 +29,13 @@
                     <h3 class="panel-title">Summary</h3>
                 </div>
                 <div class="panel-body">
+                    <div class="row text-center" style="padding: 2.5em">
+                        <div class="col-sm-3">
+                            <h1>Today</h1>
+                            <h1>{{ $today_total_reservations }}</h1>
+                            <h5>Reservations</h5>
+                        </div>
+                    </div>
                     <div class="row" style="padding: 2.5em;">
                         @foreach($all_plots as $plot)
                             <div class="col-sm-3 text-center">
