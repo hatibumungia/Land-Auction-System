@@ -39,6 +39,9 @@
                 <div class="panel-body">
                     <table class="table">
                         <tr>
+                            <td><a href="{{ url('/admin/dashboard') }}">Overview</a></td>
+                        </tr>
+                        <tr>
                             <td>
                                 <a href="{{ url('/admin/locations') }}">Areas</a> <span
                                         class="label label-success">0</span>
