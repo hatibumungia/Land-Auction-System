@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page_title', ' - Admin')
+@section('page_title', 'Admin')
 
 @section('nav_bar')
 
@@ -16,51 +16,72 @@
 
 @section('main_content')
 
-    <ol class="breadcrumb">
-        <li>
-            <a href="/admin/dashboard">Nyumbani</a>
-        </li>
-        <li>
-            Admin
-        </li>
-    </ol>
-
     <div class="row">
         <div class="col-xs-12">
-            @if(Request::segment(1) == 'admin') in @endif
+            <h2>Overview</h2>
         </div>
     </div>
-
-    <div class="row text-center">
-        <div class="col-xs-12 col-sm-3">
-            <div class="well">
-                <small>Jumla ya Maeneo</small>
-                <h2>10</h2>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <div class="well">
-                <small>Jumla ya Matumizi ya ardhi</small>
-                <h2>7</h2>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <div class="well">
-                <small>Jumla ya Vitalu</small>
-                <h2>15</h2>
-
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <div class="well">
-                <small>Jumla ya Viwanja</small>
-                <h2>43</h2>
-
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Summary</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row" style="padding: 2.5em;">
+                        @foreach($all_plots as $plot)
+                            <div class="col-sm-3 text-center">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <h1>{{ $plot->areaname }}</h1>
+                                        <h2>{{ $plot->total_plots }} Plots</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div> 
+                    <hr>               
+                    <div class="row" style="padding: 2.5em;">
+                        <div class="col-sm-3 text-center">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <h1>{{ $total_areas }} </h1>
+                                    <h3>Areas</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <h1>{{ $total_land_uses }} </h1>
+                                    <h3>Land uses</h3>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <h1>{{ $total_blocks }} </h1>
+                                    <h3>Blocks</h3>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="col-sm-3 text-center">
+                            <div class="panel panel-info">
+                                <div class="panel-body">
+                                    <h1>{{ $total_plots }} </h1>
+                                    <h3>Plots</h3>
+                                </div>    
+                            </div>
+                        </div>                                                                        
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    
+                </div>
             </div>
         </div>
     </div>
-
 
 @endsection
