@@ -186,6 +186,16 @@
 
 @yield('content')
 
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="footer">
+                <p class="text-center">CDA <i class="fa fa-copyright"></i> {{ date("Y") }} All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</div>
         <!-- JavaScripts -->
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>

@@ -55,6 +55,15 @@
         </div>
     </div>
 </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="footer">
+                <p class="text-center">CDA <i class="fa fa-copyright"></i> {{ date("Y") }} All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script src="/js/bootstrap.min.js"></script>
