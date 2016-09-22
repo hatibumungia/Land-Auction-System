@@ -29,9 +29,21 @@ class DashboardController extends Controller
 
         $today_total_reservations = DB::table('reserved_plots_status_view')
                                         ->where('created_at', '>=', Carbon::today())
-                                        ->count();                                             
+                                        ->count();
+        $yesterday_total_reservations = DB::table('reserved_plots_status_view')
+                                        ->where('created_at', '>=', Carbon::today()->subDay())
+                                        ->where('created_at', '<=', Carbon::today())
+                                        ->count();
+        $this_week_total_reservations = DB::table('reserved_plots_status_view')
+                                        ->where('created_at', '>=', Carbon::today()->subWeek())
+                                        ->where('created_at', '<=', Carbon::now())
+                                        ->count(); 
+        $this_month_total_reservations = DB::table('reserved_plots_status_view')
+                                        ->where('created_at', '>=', Carbon::today()->subWeeks(4))
+                                        ->where('created_at', '<=', Carbon::now())
+                                        ->count();                                                                                                                                                                      
 
         $user = UserDetail::findOrFail(Session::get('id'));
-        return view('admin.dashboard.index', compact('user', 'total_areas', 'total_land_uses', 'total_blocks', 'total_plots', 'all_plots', 'today_total_reservations'));
+        return view('admin.dashboard.index', compact('user', 'total_areas', 'total_land_uses', 'total_blocks', 'total_plots', 'all_plots', 'today_total_reservations', 'yesterday_total_reservations', 'this_week_total_reservations', 'this_month_total_reservations'));
     }
 }

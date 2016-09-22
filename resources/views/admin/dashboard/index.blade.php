@@ -35,6 +35,21 @@
                             <h1>{{ $today_total_reservations }}</h1>
                             <h5>Reservations</h5>
                         </div>
+                        <div class="col-sm-3">
+                            <h1>Yesterday</h1>
+                            <h1>{{ $yesterday_total_reservations }}</h1>
+                            <h5>Reservations</h5>
+                        </div>
+                        <div class="col-sm-3">
+                            <h1>This week</h1>
+                            <h1>{{ $this_week_total_reservations }}</h1>
+                            <h5>Reservations</h5>
+                        </div> 
+                        <div class="col-sm-3">
+                            <h1>This month</h1>
+                            <h1>{{ $this_month_total_reservations }}</h1>
+                            <h5>Reservations</h5>
+                        </div>                                                                       
                     </div>
                     <div class="row" style="padding: 2.5em;">
                         @foreach($all_plots as $plot)
