@@ -28,6 +28,9 @@ class ReservationController extends Controller
 
     public function index()
     {
+        if(Session::has('id')){
+
+
         if (Session::has('temp_reservation_areaId') && Session::has('temp_reservation_area_type_id') && Session::has('temp_reservation_block_id') && Session::has('temp_reservation_plot_id')) {
 
 
@@ -146,7 +149,9 @@ order by plot_reservation.created_at desc
 
         return view('reservations.all', compact('plot_reservations', 'user', 'i'));
 
-
+        }else{
+            return redirect('/applicants/login');
+        }
     }
 
     public function print_preview($plot_no)
