@@ -8,7 +8,8 @@ use DB;
 class Area extends Model
 {
     protected $fillable = ['name'];
-    protected $table = "role_user";
+
+    protected $table = "areas";
 
     protected $primaryKey = 'area_id';
 
