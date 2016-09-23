@@ -2,7 +2,15 @@
 
 namespace App\Providers;
 
+use App\Area;
+use App\AreaAssignment;
+use App\AreaImage;
+use App\AreaType;
+use App\Block;
+use App\BlockAssignment;
+use App\PlotAssignment;
 use Illuminate\Support\ServiceProvider;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +21,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share([
+            'totalLocations' => Area::count(),
+            'totalLandUses' => AreaType::count(),
+            'totalBlocks' => Block::count(),
+            'totalPrices' => AreaAssignment::count(),
+            'totalPlots' => PlotAssignment::count(),
+            'totalAreaMaps' => AreaImage::count(),
+            'totalBlockMaps' => BlockAssignment::count(),
+            'totalStaff' => DB::table('role_user')->count(),
+            'totalRoles' => DB::table('roles')->count(),
+            'totalPermissions' => DB::table('permissions')->count()
+        ]);
     }
 
     /**
@@ -23,9 +42,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-		if ($this->app->environment() == 'local') {
-			$this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
-			$this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-		}
+        if ($this->app->environment() == 'local') {
+            $this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 }

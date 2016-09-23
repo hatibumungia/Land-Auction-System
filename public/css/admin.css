@@ -11,3 +11,8 @@ background-color: #0fb2fc;
     color: white;
     border-radius: 2px;
 }
+
+.floatSnan {
+    float: right;
+    padding: 3% 5% 3% 5%;
+}

@@ -17,13 +17,17 @@ class AreaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+
         $locations = Area::all();
 
         $user = UserDetail::findOrFail(Session::get('id'));
 
         return view('admin.locations.index', compact('locations', 'user'));
+
+
     }
 
     /**
@@ -64,6 +68,8 @@ class AreaController extends Controller
      */
     public function show($area_id)
     {
+
+
         $user = UserDetail::findOrFail(Session::get('id'));
 
         $location = Area::findOrFail($area_id);
@@ -125,4 +131,5 @@ class AreaController extends Controller
         return redirect('admin/locations');
 
     }
+
 }

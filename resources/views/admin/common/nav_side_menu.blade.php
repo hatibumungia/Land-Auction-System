@@ -44,49 +44,43 @@
                         <tr>
                             <td>
                                 <a href="{{ url('/admin/locations') }}">Areas</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalLocations }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('/admin/land-uses') }}">Land uses</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalLandUses }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('/admin/blocks') }}">Blocks</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalBlocks }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('/admin/location-assignments') }}">Prices</a> <span
-                                        class="label label-success">0</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#">Sizes</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalPrices }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('/admin/location-images') }}">Area maps</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalAreaMaps }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('/admin/block-assignments') }}">Block Maps</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalBlockMaps }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('admin/plot-assignments') }}">Plots</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalPlots }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -95,19 +89,19 @@
                         <tr>
                             <td>
                                 <a href="{{ url('admin/roles') }}">Roles</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalRoles }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('admin/permissions') }}">Permissions</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalPermissions }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <a href="{{ url('admin/staff') }}">Staff</a> <span
-                                        class="label label-success">0</span>
+                                        class="label label-success floatSnan">{{ $totalStaff }}</span>
                             </td>
                         </tr>
                     </table>
