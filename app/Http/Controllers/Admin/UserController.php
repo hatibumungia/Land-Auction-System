@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class UserController extends Controller
 {
@@ -22,7 +23,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = UserDetail::all();
+        $users = DB::table('user_details')
+                    ->join('role_user', 'user_details.user_detail_id', '=', 'role_user.user_id')
+                    ->select('user_details.*')
+                    ->get();
 
         $user = UserDetail::findOrFail(Session::get('id'));
 

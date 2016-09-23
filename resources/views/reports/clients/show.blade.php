@@ -19,6 +19,9 @@
     <div class="row">
         <div class="col-xs-12">
             <h2>{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</h2>
+            <p>
+                <a href="{{ url('admin/staff/' . $user->user_detail_id) }}" class="btn btn-primary">Promote</a>
+            </p>
             <a href="{{ url('/reports/clients') }}" class="btn btn-primary pull-right">View All</a>
         </div>
     </div>
