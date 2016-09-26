@@ -13,7 +13,7 @@ class CreateReservedPlotsStatusViewTable extends Migration
     public function up()
     {
         DB::statement('
-        CREATE VIEW reserved_plots_status_view AS (
+CREATE VIEW reserved_plots_status_view AS (
         
         SELECT
             areas.area_id AS areaid, 
@@ -27,12 +27,17 @@ class CreateReservedPlotsStatusViewTable extends Migration
             plot_assignment.size AS size, 
             plot_reservation.status AS status,
             area_assignment.price as price,
+            (plot_assignment.size * area_assignment.price) as total_price,
             plot_reservation.user_detail_id AS userdetailid,
             user_details.first_name AS fname,
             user_details.middle_name AS mname,
             user_details.last_name AS lname,
+            user_details.photo,
+            user_details.region,
+            user_details.address,
             plot_reservation.deadline,
-            plot_reservation.created_at
+            plot_reservation.created_at,
+            user_details.registration_status
             FROM 
             areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment, user_details, plot_reservation WHERE 
             areas.area_id = area_assignment.area_id AND 
@@ -52,7 +57,7 @@ class CreateReservedPlotsStatusViewTable extends Migration
             plot_reservation.block_id = plot_assignment.block_id AND
             plot_reservation.plot_id = plot_assignment.plot_id        
         
-        )
+        )        
         ');
     }
 
