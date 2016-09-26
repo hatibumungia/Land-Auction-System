@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Session;
+use App\UserDetail;
 use App\Area;
 use App\AreaAssignment;
 use App\AreaImage;
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->share([
+            'user' => $user = UserDetail::findOrFail(1/*Session::get('id')*/),
             'totalLocations' => Area::count(),
             'totalLandUses' => AreaType::count(),
             'totalBlocks' => Block::count(),

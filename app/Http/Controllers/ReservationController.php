@@ -143,7 +143,7 @@ order by plot_reservation.created_at desc
 
         $plot_reservations = DB::select($sql, ['user_detail_id' => Session::get('id')]);
 
-        $user = UserDetail::findOrFail(Session::get('id'));
+        
 
         $i = 1;
 

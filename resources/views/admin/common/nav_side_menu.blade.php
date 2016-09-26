@@ -7,7 +7,7 @@
                             </span>Akaunti Yangu</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse @if(Request::segment(1) == 'reservation') in @endif">
+        <div id="collapseOne" class="panel-collapse collapse @if(Request::segment(1) == 'reservation' || Request::segment(1) == 'account') in @endif">
             <div class="panel-body">
                 <table class="table">
                     <tr>
@@ -22,6 +22,11 @@
                                     href="{{ url('/reservation/complete-registration') }}">Kamilisha Usajili</a>
                         </td>
                     </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-lock text-primary"></span><a href="{{ url('/account/change-password') }}">Badilisha neno la siri</a>
+                            </td>
+                        </tr>                    
                 </table>
             </div>
         </div>
@@ -108,6 +113,7 @@
                 </div>
             </div>
         </div>
+        {{--
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -146,6 +152,7 @@
                 </div>
             </div>
         </div>
+        --}}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">

@@ -50,7 +50,6 @@ class ApplicantsController extends Controller
 
         $user = UserCredential::checkLogin($request->input('username'), $request->input('password'));
 
-
         if (!$user) {
             flash()->error('Umekosea namba ya simu au neno la siri.');
 
@@ -60,9 +59,11 @@ class ApplicantsController extends Controller
             $user_details = DB::select("SELECT * FROM user_details WHERE user_details.user_detail_id=$user->id");
             $first_name = $user_details[0]->first_name;
             $last_name = $user_details[0]->last_name;
+            $phone_number = $user_details[0]->phone_number;
 
             $request->session()->put('id', $user->id);
             $request->session()->put('username', $first_name . " " . $last_name);
+            $request->session()->put('phone_number', $phone_number);
 
             return redirect('/reservation');
         }

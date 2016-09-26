@@ -18,10 +18,6 @@ class UserCredential extends Model
         'user_detail_id',
     ];
 
-    protected $hidden = [
-        'password'
-    ];
-
     public static function checkLogin($username, $password)
     {
         $user = UserCredential::whereUsername($username)->first();

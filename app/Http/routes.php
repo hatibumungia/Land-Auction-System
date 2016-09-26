@@ -166,3 +166,6 @@ $router->group([
     Route::post('/admin/plot-assignments/publish', 'PlotAssignmentController@publish');
 });
 
+Route::get('account/change-password', 'AccountController@change_password');
+
+Route::post('account/process_change_password', 'AccountController@process_change_password');
