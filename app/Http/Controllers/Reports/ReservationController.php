@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers;
+use PDF;
 
 class ReservationController extends Controller
 {
@@ -35,7 +37,7 @@ class ReservationController extends Controller
             PrintController::index($reserved_plots_statuses, 'pdf');
         }
 
-        $user = UserDetail::findOrFail(Session::get('id'));        
+        $user = UserDetail::findOrFail(Session::get('id'));      
 
         return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses', 'user'));
     }
@@ -80,5 +82,41 @@ class ReservationController extends Controller
             });
 
         })->download($format);
+    }
+
+    public function letters()
+    {
+        $letters = ReservedPlotsStatusView::where('registration_status', 1)->get();
+
+        $i = 1;
+
+        return view('reports/reservations/letters', compact('letters', 'i'));
+    }
+
+    public function print_letter_reports($areaid, $areatypeid, $blockid, $plotid)
+    {
+        $data = ReservedPlotsStatusView::where('areaid', $areaid)
+                                    ->where('areatypeid', $areatypeid)
+                                    ->where('blockid', $blockid)
+                                    ->where('plotid', $plotid)
+                                    ->get([
+                                        'created_at',
+                                        'photo',
+                                        'fname as first_name',
+                                        'mname as middle_name',
+                                        'lname as last_name',
+                                        'address',
+                                        'region',
+                                        'plotno as plot_no',
+                                        'blockname as block',
+                                        'areaname as location',
+                                        'size',
+                                        'total_price',
+                                        'price'
+                                        ]);                            
+
+        $getPDF = PDF::loadView('reservations.print_preview', compact('data'));
+        return $getPDF->stream('reservations.print_preview.pdf', ['Attachment' => 0], compact('data'));
+
     }
 }

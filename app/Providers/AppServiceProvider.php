@@ -23,8 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $user = UserDetail::findOrFail(1/*Session::get('id')*/);
+
         view()->share([
-            'user' => $user = UserDetail::findOrFail(1/*Session::get('id')*/),
+            'user' => $user,
             'totalLocations' => Area::count(),
             'totalLandUses' => AreaType::count(),
             'totalBlocks' => Block::count(),

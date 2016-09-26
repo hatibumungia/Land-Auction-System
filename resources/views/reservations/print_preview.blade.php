@@ -90,9 +90,9 @@
                     <strong>
                         CAPITAL<br>
                         DEVELOPMENT<br>
-                        AUTHORITY <br>
-                        POBOX 1 &amp; 913<br>
-                        DODOMA
+                        AUTHORITY, <br>
+                        P.O.BOX 1 &amp; 913,<br>
+                        DODOMA.
                     </strong>
                 </div>
                 <div class="header-content-div2">
@@ -164,7 +164,7 @@
                             Umefaninikiwa kupewa kiwanja hiki chenye ukubwa wa mita za mraba
                             <strong>{{ $data[0]->size }}</strong>
                             Jumla
-                            ya <strong>Tsh {{ $data[0]->total_price }}</strong> zikiwa ni sawa na Tsh
+                            ya <strong>Tsh {{ number_format($data[0]->total_price) }}</strong> zikiwa ni sawa na Tsh
                             <strong>{{ $data[0]->price }}</strong> kwa kila meta moja ya
                             mraba.
                             Malipo

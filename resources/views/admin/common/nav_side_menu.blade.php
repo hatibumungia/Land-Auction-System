@@ -166,12 +166,6 @@
                     <table class="table">
                         <tr>
                             <td>
-                                <span class="glyphicon glyphicon-usd"></span><a
-                                        href="http://www.jquery2dotnet.com">Sales</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <span class="glyphicon glyphicon-user"></span><a href="{{ url('/reports/clients') }}">Clients</a>
                             </td>
                         </tr>
@@ -182,8 +176,8 @@
                         </tr>
                         <tr>
                             <td>
-                                <span class="glyphicon glyphicon-shopping-cart"></span><a
-                                        href="http://www.jquery2dotnet.com">Shopping Cart</a>
+                                <span class="glyphicon glyphicon-pencil"></span><a
+                                        href="{{ url('reports/reservations/letters') }}">Letters</a>
                             </td>
                         </tr>
                     </table>

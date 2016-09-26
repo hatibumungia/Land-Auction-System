@@ -7,9 +7,17 @@ use Carbon\Carbon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class PrintController extends Controller
 {
+
+    public function print_letter($data)
+    {
+        $getPDF = PDF::loadView('reservations.print_preview', compact('data'));
+        return $getPDF->stream('reservations.print_preview.pdf', ['Attachment' => 0], compact('data'));
+    }
+
     public static function index($model, $format)
     {
 
@@ -25,4 +33,5 @@ class PrintController extends Controller
 
         })->download($format);
     }
+
 }

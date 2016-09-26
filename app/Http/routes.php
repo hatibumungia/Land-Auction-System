@@ -169,3 +169,10 @@ $router->group([
 Route::get('account/change-password', 'AccountController@change_password');
 
 Route::post('account/process_change_password', 'AccountController@process_change_password');
+
+$router->group([
+    'namespace' => 'Reports'
+], function() {
+    Route::get('reports/reservations/letters', 'ReservationController@letters');
+    Route::get('reports/reservations/print-letter-reports/{areaid}/{areatypeid}/{blockid}/{plotid}', 'ReservationController@print_letter_reports');
+});
