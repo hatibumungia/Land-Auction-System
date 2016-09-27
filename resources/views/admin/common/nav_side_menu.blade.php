@@ -31,7 +31,8 @@
             </div>
         </div>
     </div>
-    @if($user->hasRole('admin'))
+    @if(Session::has('id'))
+        @if((App\UserDetail::find(Session::get('id')))->hasRole('admin'))
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -183,6 +184,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div>            
+        @endif
     @endif
 </div>

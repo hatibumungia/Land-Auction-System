@@ -61,7 +61,7 @@ class ApplicantsController extends Controller
             $last_name = $user_details[0]->last_name;
             $phone_number = $user_details[0]->phone_number;
 
-            $request->session()->put('id', $user->id);
+            $request->session()->put('id', $user_details[0]->user_detail_id);
             $request->session()->put('username', $first_name . " " . $last_name);
             $request->session()->put('phone_number', $phone_number);
 
