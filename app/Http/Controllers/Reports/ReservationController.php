@@ -37,7 +37,7 @@ class ReservationController extends Controller
             PrintController::index($reserved_plots_statuses, 'pdf');
         }
 
-        $user = UserDetail::findOrFail(Session::get('id'));  
+        $user = UserDetail::findOrFail(Session::get('id'));
 
         return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses', 'user'));
     }
@@ -65,7 +65,7 @@ class ReservationController extends Controller
             'fname as First_name',
             'mname as Middle_name',
             'lname as Last_name',
-            'status as Status',
+            'new_status as Status',
             'created_at as Reservation_date',
             'deadline as Due_date'
             ]);

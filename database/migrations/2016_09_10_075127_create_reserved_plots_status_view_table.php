@@ -37,7 +37,8 @@ CREATE VIEW reserved_plots_status_view AS (
             user_details.address,
             plot_reservation.deadline,
             plot_reservation.created_at,
-            user_details.registration_status
+            user_details.registration_status,
+            if(plot_reservation.status=1,"Paid","Unpaid") as new_status
             FROM 
             areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment, user_details, plot_reservation WHERE 
             areas.area_id = area_assignment.area_id AND 

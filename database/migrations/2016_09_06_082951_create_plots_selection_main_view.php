@@ -28,7 +28,9 @@ class CreatePlotsSelectionMainView extends Migration
             plot_assignment.status AS status,
             area_assignment.price as price,
             block_assignment.file_name AS blockfilename,
-            area_image.file_name AS areafilename
+            area_image.file_name AS areafilename,
+            if(status=1,"Paid","Unpaid") as new_status
+            
             FROM 
             areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment, area_image WHERE 
             areas.area_id = area_assignment.area_id AND 
