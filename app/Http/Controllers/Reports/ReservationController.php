@@ -37,7 +37,7 @@ class ReservationController extends Controller
             PrintController::index($reserved_plots_statuses, 'pdf');
         }
 
-        $user = UserDetail::findOrFail(Session::get('id'));      
+        $user = UserDetail::findOrFail(Session::get('id'));  
 
         return view('reports.reservations.index', compact('reserved_plots_statuses', 'i', 'areas', 'blocks', 'landuses', 'user'));
     }
@@ -57,7 +57,18 @@ class ReservationController extends Controller
             $reservedPlotsStatusView->orWhere('areatypename', $request->input('landuse'));
         }
 
-        return $reservedPlotsStatusView->get();
+        return $reservedPlotsStatusView->get([
+            'plotno as Plot_No',
+            'blockname as Block',
+            'areaname as Area',
+            'areatypename as Land_use',
+            'fname as First_name',
+            'mname as Middle_name',
+            'lname as Last_name',
+            'status as Status',
+            'created_at as Reservation_date',
+            'deadline as Due_date'
+            ]);
     }
 
     public function plots($from, $to)
