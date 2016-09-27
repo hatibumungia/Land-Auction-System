@@ -55,7 +55,21 @@ class ClientController extends Controller
             $userdetails->orWhere('region', $request->input('region'));
         }
 
-        return $userdetails->get();
+        return $userdetails->get([
+            'user_detail_id as client_id',
+            'first_name as First_name',
+            'middle_name as Middle_name',
+            'last_name as Last_name',
+            'email_address as Email',
+            'phone_number as Phone',
+            'district as District',
+            'region as Region',
+            'ward as Ward',
+            'house_number as House',
+            'address as Address',
+            'registration_status as Registration_status',
+            'created_at as Joined'
+            ]);
     }
 
     public function show($user_detail_id)

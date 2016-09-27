@@ -162,6 +162,10 @@
                                     <th>Email Address</th>
                                     <th>Phone Number</th>
                                     <th>Region</th>
+                                    <th>District</th>
+                                    <th>Ward</th>
+                                    <th>Joined</th>
+                                    <th>Registration Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -169,11 +173,15 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>
-                                            <a href="{{ url('/reports/clients/' . $client->user_detail_id) }}">{{ $client->first_name }} {{ $client->middle_name }} {{ $client->last_name }}</a>
+                                            <a href="{{ url('/reports/clients/' . $client->client_id) }}">{{ $client->First_name }} {{ $client->Middle_name }} {{ $client->Last_name }}</a>
                                         </td>
-                                        <td>{{ $client->email_address }}</td>
-                                        <td>{{ $client->phone_number }}</td>
-                                        <td>{{ $client->region }}</td>
+                                        <td>{{ $client->Email }}</td>
+                                        <td>{{ $client->Phone }}</td>
+                                        <td>{{ $client->Region }}</td>
+                                        <td>{{ $client->District }}</td>
+                                        <td>{{ $client->Ward }}</td>
+                                        <td>{{ $client->Joined }}</td>
+                                        <td>{{ $client->Registration_status }}</td>
                                     </tr>
 
                                 @endforeach
