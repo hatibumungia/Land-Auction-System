@@ -119,19 +119,23 @@
                                 <th>Land Use</th>
                                 <th>Client</th>
                                 <th>Status</th>
+                                <th>Reservation Date</th>
+                                <th>Due Date</th>
                                 </thead>
                                 <tbody>
                                 @foreach($reserved_plots_statuses as $reserved_plots_status)
                                     <tr>
                                         <td>{{ $i++ }}</td>
-                                        <td class="text-right">{{ $reserved_plots_status->plotno }}</td>
-                                        <td>{{ $reserved_plots_status->blockname }}</td>
-                                        <td>{{ $reserved_plots_status->areaname }}</td>
-                                        <td>{{ $reserved_plots_status->areatypename }}</td>
+                                        <td class="text-right">{{ $reserved_plots_status->Plot_No }}</td>
+                                        <td>{{ $reserved_plots_status->Block }}</td>
+                                        <td>{{ $reserved_plots_status->Area }}</td>
+                                        <td>{{ $reserved_plots_status->Land_use }}</td>
                                         <td>
-                                            <a href="{{ url('/') }}">{{ $reserved_plots_status->fname }} {{ $reserved_plots_status->mname }} {{ $reserved_plots_status->lname }}</a>
+                                            {{ $reserved_plots_status->First_name }} {{ $reserved_plots_status->Middle_name }} {{ $reserved_plots_status->Last_name }}
                                         </td>
-                                        <td>{{ $reserved_plots_status->status }}</td>
+                                        <td>{{ $reserved_plots_status->Status }}</td>
+                                        <td>{{ $reserved_plots_status->Reservation_date }}</td>
+                                        <td>{{ $reserved_plots_status->Due_date }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
