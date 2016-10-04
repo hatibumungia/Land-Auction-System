@@ -26,7 +26,8 @@ class CreateAllPlotsStatusReportViewTable extends Migration
                         plots.plot_no AS plotno, 
                         plot_assignment.size AS size, 
                         plot_assignment.status AS status,
-                        area_assignment.price as price
+                        area_assignment.price as price,
+                        if(status=1,"Paid","Unpaid") as new_status
                         FROM 
                         areas, area_assignment, area_types, blocks, block_assignment, plots, plot_assignment WHERE 
                         areas.area_id = area_assignment.area_id AND 

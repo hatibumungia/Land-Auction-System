@@ -15,8 +15,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
+   <!-- <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" href="/css/admin.css">
     <link href="/css/zoom.css" rel="stylesheet">
 
