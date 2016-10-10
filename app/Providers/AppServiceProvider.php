@@ -23,7 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         view()->share([
             'totalLocations' => Area::count(),
             'totalLandUses' => AreaType::count(),
