@@ -4,8 +4,10 @@
 
 @section('content')
 
-    <div class="container welcome-page">
+    <div class="container">
 
+    <div class="panel panel-default" style="padding: 2em;">
+        
         @if(count($areas_locations) > 0)
 
             <div class="row">
@@ -227,6 +229,9 @@
 
         @endif
 
+    </div>
+            
+        
     </div>
 
 @endsection
