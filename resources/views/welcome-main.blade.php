@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container welcome-page">
 
         @if(count($areas_locations) > 0)
 

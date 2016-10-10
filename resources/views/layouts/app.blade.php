@@ -27,7 +27,6 @@
             padding: 0 0;
             margin: 0 0;
             font-family: 'OpenSans-Regular';
-
         }
 
         li.list-group-item:hover,

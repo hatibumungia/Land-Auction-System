@@ -31,8 +31,9 @@
             </div>
         </div>
     </div>
-    @if(Session::has('id'))
-        @if((App\UserDetail::find(Session::get('id')))->hasRole('admin'))
+
+
+        {{-- Admin Only --}}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -114,46 +115,6 @@
                 </div>
             </div>
         </div>
-        {{--
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span
-                                class="glyphicon glyphicon-user">
-                                </span>Account</a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <table class="table">
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Change Password</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Notifications</a> <span
-                                        class="label label-info">5</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Import/Export</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="glyphicon glyphicon-trash text-danger"></span><a
-                                        href="http://www.jquery2dotnet.com" class="text-danger">
-                                    Delete Account</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        --}}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -184,7 +145,8 @@
                     </table>
                 </div>
             </div>
-        </div>            
-        @endif
-    @endif
+        </div>
+        
+        {{-- // Admin Only --}}
+
 </div>

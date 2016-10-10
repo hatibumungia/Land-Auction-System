@@ -132,7 +132,7 @@ $router->group([
 Route::get('/applicants/login', 'ApplicantsController@login');
 
 $router->group([
-    'namespace' => 'reports',
+    'namespace' => 'Reports',
     'middleware' => ['applicant', 'staff'],
 ], function () {
     Route::get('/reports/reservations', 'ReservationController@index');
