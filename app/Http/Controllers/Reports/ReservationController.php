@@ -90,7 +90,7 @@ class ReservationController extends Controller
             $excel->setCreator('CDA Director')->setCompany('CDA');
 
             $excel->sheet('Plot Reservations', function ($sheet) use ($plots_reservations) {
-                $sheet->fromModel($plots_reservations);
+                $sheet->fromModel($plots_reservations, null, 'A1', false, false);
             });
 
         })->download($format);
