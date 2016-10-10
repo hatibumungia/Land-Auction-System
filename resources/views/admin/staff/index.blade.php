@@ -31,14 +31,15 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Staff</div>
                             <div class="panel-body">
-                                @if(count($users) > 0)
+                                @if(count($staffs) > 0)
                                     <div class="table-responsive">
-                                        <table class="table table-hover">
+                                        <table class="table table-bordered table-hover">
                                             <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
+                                                <th>Role</th>
                                                 <th>Registered</th>
                                                 <th>Last Login</th>
                                                 <th><i class="fa fa-edit"></i></th>
@@ -46,16 +47,17 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($users as $user)
+                                            @foreach($staffs as $staff)
                                                 <tr>
-                                                    <td>{{ $user->user_detail_id }}</td>
+                                                    <td>{{ $staff->user_detail_id }}</td>
                                                     <td>
-                                                        <a href="{{ url('admin/staff/' . $user->user_detail_id) }}">{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</a>
+                                                        <a href="{{ url('admin/staff/' . $staff->user_detail_id) }}">{{ $staff->first_name }} {{ $staff->middle_name }} {{ $staff->last_name }}</a>
                                                     </td>
-                                                    <td>{{ $user->email_address }}</td>
-                                                    <td>{{ $user->created_at }}</td>
-                                                    <td>{{ $user->updated_at }}</td>
-                                                    <td><a href="{{ url('admin/staff/' . $user->user_detail_id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
+                                                    <td>{{ $staff->email_address }}</td>
+                                                    <td>{{ $staff->display_name }}</td>
+                                                    <td>{{ $staff->created_at }}</td>
+                                                    <td>{{ $staff->updated_at }}</td>
+                                                    <td><a href="{{ url('admin/staff/' . $staff->user_detail_id . '/edit') }}"><i class="fa fa-pencil"></i> Edit</a></td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach
