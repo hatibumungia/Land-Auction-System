@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers;
 use PDF;
+use App\PlotReservation;
 
 class ReservationController extends Controller
 {
@@ -106,6 +107,14 @@ class ReservationController extends Controller
 
     public function print_letter_reports($areaid, $areatypeid, $blockid, $plotid)
     {
+        $plots_reservation =PlotReservation::where('area_id', $areaid)
+                                            ->where('areas_type_id', $areatypeid)
+                                            ->where('block_id', $blockid)
+                                            ->where('plot_id', $plotid)
+                                            ->update([
+                                                'registry_print_status' => true
+                                                ]);
+
         $data = ReservedPlotsStatusView::where('areaid', $areaid)
                                     ->where('areatypeid', $areatypeid)
                                     ->where('blockid', $blockid)
