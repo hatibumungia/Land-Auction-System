@@ -28,6 +28,8 @@ class WelcomeController extends Controller
 
         $available_plots = PlotsSelectionMainView::getPlots($params);
 
+        $area_maps = [];
+
         foreach ($available_plots as $available_plot) {
 
             $area_maps[] = [
@@ -37,6 +39,7 @@ class WelcomeController extends Controller
         }
 
         $area_maps = array_unique($area_maps, SORT_REGULAR);
+
 
         $block_maps = [];
         foreach ($available_plots as $available_plot) {
