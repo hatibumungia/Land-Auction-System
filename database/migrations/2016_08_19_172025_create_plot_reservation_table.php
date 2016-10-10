@@ -36,6 +36,8 @@ class CreatePlotReservationTable extends Migration
             $table->timestamp('created_at');
 
             $table->tinyInteger('status')->unsigned()->length(1)->defalt(0);
+            
+            $table->boolean('registry_print_status')->default(false);
 
             $table->primary(['area_id','areas_type_id','plot_id','block_id']);
         });

@@ -172,7 +172,7 @@ return [
         /*
          *--------------Genarate Data PDF-----------------
         */
-        Barryvdh\DomPDF\serviceProvider::class,
+        //Barryvdh\DomPDF\serviceProvider::class,
     ],
 
     /*

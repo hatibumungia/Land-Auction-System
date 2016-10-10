@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share([
+        /*view()->share([
             'totalLocations' => Area::count(),
             'totalLandUses' => AreaType::count(),
             'totalBlocks' => Block::count(),
@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             'totalStaff' => DB::table('role_user')->count(),
             'totalRoles' => DB::table('roles')->count(),
             'totalPermissions' => DB::table('permissions')->count()
-        ]);
+        ]);*/
     }
 
     /**
