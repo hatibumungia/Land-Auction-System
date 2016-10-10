@@ -18,7 +18,7 @@ Route::get('/', "WelcomeController@index");
 // Check if a user is logged in
 Route::get('/welcome/checkAuth', 'WelcomeController@checkAuth');
 
-Route::auth();
+// Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
