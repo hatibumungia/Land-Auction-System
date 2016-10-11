@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $staffs = DB::table('role_user')
                    ->join('user_details', 'role_user.user_id', '=', 'user_details.user_detail_id')
-                   ->join('roles', 'role_user.user_id', '=', 'roles.id')
+                   ->join('roles', 'role_user.role_id', '=', 'roles.id')
                    ->select('user_details.*', 'roles.display_name')
                    ->get();
 
