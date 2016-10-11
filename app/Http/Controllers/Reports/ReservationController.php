@@ -39,7 +39,7 @@ class ReservationController extends Controller
             PrintController::index($reserved_plots_statuses, 'xlsx', $headersLabel);
         }
         if (isset($_POST['export_pdf_button'])) {
-            PrintController::index($reserved_plots_statuses, 'pdf');
+            PrintController::index($reserved_plots_statuses, 'pdf', $headersLabel);
         }
 
         $user = UserDetail::findOrFail(Session::get('id'));
