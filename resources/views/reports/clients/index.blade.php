@@ -92,34 +92,6 @@
                         </div>
                     </td>
                 </tr>
-                {{--
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td class="text-right">
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <select name="location" id="location" class="form-control">
-                                <option value="">Any</option>
-                                @foreach($locations as $location)
-                                    <option value="{ $location->name }}">{{ $location->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </td>
-                    <td class="text-right">
-                        <div class="form-group">
-                            <label for="landuse">Land use</label>
-                            <select name="landuse" id="landuse" class="form-control">
-                                <option value="">Any</option>
-                                @foreach($landuses as $landuse)
-                                    <option value="{{ $landuse->name }}">{{ $landuse->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                --}}
                 <tr>
                     <td></td>
                     <td></td>
@@ -129,10 +101,10 @@
                             Search
                         </button>
                         <button type="submit" class="btn btn-success" name="export_excel_button"><i
-                                    class="fa fa-file-excel-o"></i> Export
+                                    class="fa fa-file-excel-o"></i> Excel
                         </button>
-                        <button type="submit" class="btn btn-success" name="export_pdf_button"><i
-                                    class="fa fa-file-pdf-o"></i> Export
+                        <button type="submit" class="btn btn-danger" name="export_pdf_button"><i
+                                    class="fa fa-file-pdf-o"></i> PDF
                         </button>
                     </td>
                 </tr>
