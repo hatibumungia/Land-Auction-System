@@ -20,7 +20,6 @@ class PrintController extends Controller
 
     public static function index($model, $format)
     {
-
         $filename = 'Report - ' . Carbon::now();
         Excel::create($filename, function ($excel) use ($model) {
 
@@ -28,7 +27,10 @@ class PrintController extends Controller
             $excel->setCreator('CDA Director')->setCompany('CDA');
 
             $excel->sheet('Plot Reservations', function ($sheet) use ($model) {
-                $sheet->fromModel($model);
+                $sheet->fromModel($model, null, 'A1', false, false);
+                $sheet->prependRow([
+                    'Namba ya kiwanja', 'Kitalu', 'Eneo', 'Matumizi ya ardhi', 'Jina la kwanza', 'Jina la kati', 'Jina la ukoo', 'Hadhi', 'Kilihifadhiwa', 'Kinaharibika'
+                ]);
             });
 
         })->download($format);
