@@ -26,11 +26,13 @@ class ClientController extends Controller
 
         $clients = $this->search($userdetails, $request);
 
+        $headersLabel = ['ID', 'Jina la kwanza', 'Jina la kati', 'Jina la ukoo', 'Barua pepe', 'Namba ya simu', 'Wilaya', 'Mkoa', 'Kata', 'Namba ya nyumba', 'Sanduku la barua', 'Usajili kamilifu', 'Alijiunga'];
+
         if (isset($_POST['export_excel_button'])) {
-            PrintController::index($clients, 'xlsx');
+            PrintController::index($clients, 'xlsx', $headersLabel);
         }
         if (isset($_POST['export_pdf_button'])) { 
-            PrintController::index($clients, 'pdf');
+            PrintController::index($clients, 'pdf', $headersLabel);
         }
 
         $user = UserDetail::findOrFail(Session::get('id'));

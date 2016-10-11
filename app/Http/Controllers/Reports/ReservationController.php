@@ -31,8 +31,12 @@ class ReservationController extends Controller
 
         $i = 1;
 
+        $headersLabel = [
+                    'Namba ya kiwanja', 'Kitalu', 'Eneo', 'Matumizi ya ardhi', 'Jina la kwanza', 'Jina la kati', 'Jina la ukoo', 'Hadhi', 'Kilihifadhiwa', 'Kinaharibika'
+                ];
+
         if (isset($_POST['export_excel_button'])) {
-            PrintController::index($reserved_plots_statuses, 'xlsx');
+            PrintController::index($reserved_plots_statuses, 'xlsx', $headersLabel);
         }
         if (isset($_POST['export_pdf_button'])) {
             PrintController::index($reserved_plots_statuses, 'pdf');
