@@ -65,6 +65,8 @@ class ApplicantsController extends Controller
             $request->session()->put('username', $first_name . " " . $last_name);
             $request->session()->put('phone_number', $phone_number);
 
+            
+
             return redirect('/reservation');
         }
     }

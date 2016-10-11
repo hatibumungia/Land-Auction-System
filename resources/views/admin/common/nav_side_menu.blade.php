@@ -32,6 +32,8 @@
         </div>
     </div>
 
+    @if(App\UserDetail::findOrFail(Session::get('id'))->hasRole('admin'))
+
 
         {{-- Admin Only --}}
         <div class="panel panel-default">
@@ -147,6 +149,8 @@
             </div>
         </div>
         
-        {{-- // Admin Only --}}
+        {{-- // Admin Only --}}    
+
+    @endif      
 
 </div>
