@@ -23,14 +23,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::table('user_details')
-                    ->join('role_user', 'user_details.user_detail_id', '=', 'role_user.user_id')
-                    ->select('user_details.*')
-                    ->get();
+        $staffs = DB::table('role_user')
+                   ->join('user_details', 'role_user.user_id', '=', 'user_details.user_detail_id')
+                   ->join('roles', 'role_user.role_id', '=', 'roles.id')
+                   ->select('user_details.*', 'roles.display_name')
+                   ->get();
 
         $user = UserDetail::findOrFail(Session::get('id'));
 
-        return view('admin.staff.index', compact('users', 'user'));
+        return view('admin.staff.index', compact('staffs', 'user'));
     }
 
     /**

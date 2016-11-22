@@ -6,6 +6,8 @@
 
     <div class="container">
 
+    <div class="panel panel-default" style="padding: 2em;">
+        
         @if(count($areas_locations) > 0)
 
             <div class="row">
@@ -63,7 +65,7 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">Ramani</h3>
                             </div>
-                            <div class="panel-body" style="height: 300px; overflow: scroll;">
+                            <div class="panel-body" style="height: 300px; overflow: scroll; padding: 1em;">
                                 <h4>Maeneo</h4>
                                 <ol>
                                     @foreach($area_maps as $area_map)
@@ -73,17 +75,23 @@
                                         </li>
                                     @endforeach
                                 </ol>
-{{--                                 @if(count($block_maps) > 0)
+
+                                @if(count($block_maps) > 0)
                                     <h4>Vitalu</h4>
                                     <ol>
                                         @foreach($block_maps as $block_map)
-                                            <li>
-                                                <a href="{{ url('img/uploads/plots/' . $block_map['map']) }}"
-                                                   target="_blank">{{ $block_map['block'] }}</a>
-                                            </li>
+                                            @if($block_map['map'] != null)
+                                                <li>
+                                                    <a href="{{ url('img/uploads/plots/' . $block_map['map']) }}"
+                                                       target="_blank">{{ $block_map['block'] }}</a>
+                                                </li>
+                                            @else
+                                                Hakuna ramani    
+                                            @endif    
                                         @endforeach
                                     </ol>
-                                @endif --}}
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -221,6 +229,9 @@
 
         @endif
 
+    </div>
+            
+        
     </div>
 
 @endsection

@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers;
 use PDF;
+use App\PlotReservation;
 
 class ReservationController extends Controller
 {
@@ -30,11 +31,15 @@ class ReservationController extends Controller
 
         $i = 1;
 
+        $headersLabel = [
+                    'Namba ya kiwanja', 'Kitalu', 'Eneo', 'Matumizi ya ardhi', 'Jina la kwanza', 'Jina la kati', 'Jina la ukoo', 'Hadhi', 'Kilihifadhiwa', 'Kinaharibika'
+                ];
+
         if (isset($_POST['export_excel_button'])) {
-            PrintController::index($reserved_plots_statuses, 'xlsx');
+            PrintController::index($reserved_plots_statuses, 'xlsx', $headersLabel);
         }
         if (isset($_POST['export_pdf_button'])) {
-            PrintController::index($reserved_plots_statuses, 'pdf');
+            PrintController::index($reserved_plots_statuses, 'pdf', $headersLabel);
         }
 
         $user = UserDetail::findOrFail(Session::get('id'));
@@ -89,7 +94,7 @@ class ReservationController extends Controller
             $excel->setCreator('CDA Director')->setCompany('CDA');
 
             $excel->sheet('Plot Reservations', function ($sheet) use ($plots_reservations) {
-                $sheet->fromModel($plots_reservations);
+                $sheet->fromModel($plots_reservations, null, 'A1', false, false);
             });
 
         })->download($format);
@@ -106,6 +111,14 @@ class ReservationController extends Controller
 
     public function print_letter_reports($areaid, $areatypeid, $blockid, $plotid)
     {
+        $plots_reservation =PlotReservation::where('area_id', $areaid)
+                                            ->where('areas_type_id', $areatypeid)
+                                            ->where('block_id', $blockid)
+                                            ->where('plot_id', $plotid)
+                                            ->update([
+                                                'registry_print_status' => true
+                                                ]);
+
         $data = ReservedPlotsStatusView::where('areaid', $areaid)
                                     ->where('areatypeid', $areatypeid)
                                     ->where('blockid', $blockid)

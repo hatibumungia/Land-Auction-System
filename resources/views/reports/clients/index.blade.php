@@ -92,34 +92,6 @@
                         </div>
                     </td>
                 </tr>
-                {{--
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td class="text-right">
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <select name="location" id="location" class="form-control">
-                                <option value="">Any</option>
-                                @foreach($locations as $location)
-                                    <option value="{ $location->name }}">{{ $location->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </td>
-                    <td class="text-right">
-                        <div class="form-group">
-                            <label for="landuse">Land use</label>
-                            <select name="landuse" id="landuse" class="form-control">
-                                <option value="">Any</option>
-                                @foreach($landuses as $landuse)
-                                    <option value="{{ $landuse->name }}">{{ $landuse->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                --}}
                 <tr>
                     <td></td>
                     <td></td>
@@ -129,10 +101,10 @@
                             Search
                         </button>
                         <button type="submit" class="btn btn-success" name="export_excel_button"><i
-                                    class="fa fa-file-excel-o"></i> Export
+                                    class="fa fa-file-excel-o"></i> Excel
                         </button>
-                        <button type="submit" class="btn btn-success" name="export_pdf_button"><i
-                                    class="fa fa-file-pdf-o"></i> Export
+                        <button type="submit" class="btn btn-danger" name="export_pdf_button"><i
+                                    class="fa fa-file-pdf-o"></i> PDF
                         </button>
                     </td>
                 </tr>
@@ -162,6 +134,10 @@
                                     <th>Email Address</th>
                                     <th>Phone Number</th>
                                     <th>Region</th>
+                                    <th>District</th>
+                                    <th>Ward</th>
+                                    <th>Joined</th>
+                                    <th>Registration Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -169,11 +145,15 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>
-                                            <a href="{{ url('/reports/clients/' . $client->user_detail_id) }}">{{ $client->first_name }} {{ $client->middle_name }} {{ $client->last_name }}</a>
+                                            <a href="{{ url('/reports/clients/' . $client->client_id) }}">{{ $client->First_name }} {{ $client->Middle_name }} {{ $client->Last_name }}</a>
                                         </td>
-                                        <td>{{ $client->email_address }}</td>
-                                        <td>{{ $client->phone_number }}</td>
-                                        <td>{{ $client->region }}</td>
+                                        <td>{{ $client->Email }}</td>
+                                        <td>{{ $client->Phone }}</td>
+                                        <td>{{ $client->Region }}</td>
+                                        <td>{{ $client->District }}</td>
+                                        <td>{{ $client->Ward }}</td>
+                                        <td>{{ $client->Joined }}</td>
+                                        <td>{{ $client->Registration_status }}</td>
                                     </tr>
 
                                 @endforeach

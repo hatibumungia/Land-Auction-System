@@ -18,7 +18,7 @@ Route::get('/', "WelcomeController@index");
 // Check if a user is logged in
 Route::get('/welcome/checkAuth', 'WelcomeController@checkAuth');
 
-Route::auth();
+// Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
@@ -132,8 +132,8 @@ $router->group([
 Route::get('/applicants/login', 'ApplicantsController@login');
 
 $router->group([
-    'namespace' => 'reports',
-    'middleware' => 'applicant'
+    'namespace' => 'Reports',
+    'middleware' => ['applicant', 'staff'],
 ], function () {
     Route::get('/reports/reservations', 'ReservationController@index');
     Route::post('/reports/reservations', 'ReservationController@index');
@@ -148,7 +148,7 @@ $router->group([
 
 $router->group([
     'namespace' => 'Admin',
-    'middleware' => 'applicant'
+    'middleware' => ['applicant', 'staff'],
 ], function () {
     Route::resource('admin/staff', 'UserController');
     Route::post('admin/staff/attachRole', 'UserController@attachRole');
@@ -171,7 +171,8 @@ Route::get('account/change-password', 'AccountController@change_password');
 Route::post('account/process_change_password', 'AccountController@process_change_password');
 
 $router->group([
-    'namespace' => 'Reports'
+    'namespace' => 'Reports',
+    'middleware' => ['applicant', 'staff'],
 ], function() {
     Route::get('reports/reservations/letters', 'ReservationController@letters');
     Route::get('reports/reservations/print-letter-reports/{areaid}/{areatypeid}/{blockid}/{plotid}', 'ReservationController@print_letter_reports');

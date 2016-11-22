@@ -15,6 +15,7 @@ class PlotReservation extends Model
         'deadline',
         'created_at',
         'status',
+        'registry_print_status',
     ];
 
     protected $table = "plot_reservation";

@@ -26,11 +26,13 @@ class ClientController extends Controller
 
         $clients = $this->search($userdetails, $request);
 
+        $headersLabel = ['ID', 'Jina la kwanza', 'Jina la kati', 'Jina la ukoo', 'Barua pepe', 'Namba ya simu', 'Wilaya', 'Mkoa', 'Kata', 'Namba ya nyumba', 'Sanduku la barua', 'Usajili kamilifu', 'Alijiunga'];
+
         if (isset($_POST['export_excel_button'])) {
-            PrintController::index($clients, 'xlsx');
+            PrintController::index($clients, 'xlsx', $headersLabel);
         }
         if (isset($_POST['export_pdf_button'])) { 
-            PrintController::index($clients, 'pdf');
+            PrintController::index($clients, 'pdf', $headersLabel);
         }
 
         $user = UserDetail::findOrFail(Session::get('id'));
@@ -55,7 +57,21 @@ class ClientController extends Controller
             $userdetails->orWhere('region', $request->input('region'));
         }
 
-        return $userdetails->get();
+        return $userdetails->get([
+            'user_detail_id as client_id',
+            'first_name as First_name',
+            'middle_name as Middle_name',
+            'last_name as Last_name',
+            'email_address as Email',
+            'phone_number as Phone',
+            'district as District',
+            'region as Region',
+            'ward as Ward',
+            'house_number as House',
+            'address as Address',
+            'registration_status as Registration_status',
+            'created_at as Joined'
+            ]);
     }
 
     public function show($user_detail_id)
