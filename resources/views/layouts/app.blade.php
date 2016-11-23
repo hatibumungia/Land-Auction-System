@@ -18,42 +18,9 @@
    <!-- <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" href="/css/admin.css">
-    <link href="/css/zoom.css" rel="stylesheet">
+    <link href="/css/lightbox.css" rel="stylesheet">
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style type="text/css">
-        body {
-            padding: 0 0;
-            margin: 0 0;
-            font-family: 'OpenSans-Regular';
-        }
-
-        li.list-group-item:hover,
-        li.list-group-item:focus,
-        li.list-group-item.active {
-            background-color: #337ab7;
-            border-color: #337ab7;
-            color: #fff;
-        }
-
-        ul.dropdown-lr {
-            width: 300px;
-        }
-
-        /* mobile fix */
-        @media (max-width: 768px) {
-            .dropdown-lr h3 {
-                color: #eee;
-            }
-
-            .dropdown-lr label {
-                color: #eee;
-            }
-        }
-
-    </style>
-
     <script src="/js/jquery.min.js"></script>
 
 </head>
@@ -202,7 +169,7 @@
 
 <script src="{{ URL::to('js/reservation.js') }}"></script>
 <script src="{{ URL::to('js/front-button-confirm.js') }}"></script>
-<script src="/js/zoom.js"></script>
+<script src="/js/lightbox.js"></script>
 <script src="/js/main.js"></script>
 
 </body>

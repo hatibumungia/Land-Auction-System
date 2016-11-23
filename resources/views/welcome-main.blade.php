@@ -67,29 +67,23 @@
                             </div>
                             <div class="panel-body" style="height: 300px; overflow: scroll; padding: 1em;">
                                 <h4>Maeneo</h4>
-                                <ol>
                                     @foreach($area_maps as $area_map)
-                                        <li>
-                                            <a href="{{ url('img/uploads/areas/' . $area_map['map']) }}"
-                                               target="_blank">{{ $area_map['area'] }}</a>
-                                        </li>
+                                            <div class="thumbnail">
+                                                <a href="{{ url('img/uploads/areas/' . $area_map['map']) }}" data-lightbox="area-maps" data-title="{{ $area_map['map'] }}"><img src="{{ url('img/uploads/areas/' . $area_map['map']) }}" width="100" height="100" alt=""></a>
+                                            </div>   
                                     @endforeach
-                                </ol>
 
                                 @if(count($block_maps) > 0)
                                     <h4>Vitalu</h4>
-                                    <ol>
                                         @foreach($block_maps as $block_map)
                                             @if($block_map['map'] != null)
-                                                <li>
-                                                    <a href="{{ url('img/uploads/plots/' . $block_map['map']) }}"
-                                                       target="_blank">{{ $block_map['block'] }}</a>
-                                                </li>
+                                            <div class="thumbnail">
+                                                    <a href="{{ url('img/uploads/plots/' . $block_map['map']) }}" data-lightbox="block-maps" data-title="{{ $block_map['map'] }}"><img src="{{ url('img/uploads/plots/' . $block_map['map']) }}" width="100" height="100" alt=""></a>
+                                                </div>
                                             @else
                                                 Hakuna ramani    
                                             @endif    
                                         @endforeach
-                                    </ol>
                                 @endif
 
                             </div>
