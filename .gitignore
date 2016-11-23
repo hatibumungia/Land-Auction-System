@@ -54,7 +54,4 @@ Homestead.json
 
 # Logs and database
 *.log
-<<<<<<< HEAD
-
-=======
->>>>>>> 1a7c027d6e489381b92957c1b6fa62208fe8e751
+public/img

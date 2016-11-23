@@ -128,7 +128,7 @@
                                                     <td>{{ $available_plot->areaname }}</td>
                                                     <td>{{ $available_plot->areatypename }}</td>
                                                     <td>{{ $available_plot->blockname }}</td>
-                                                    <td>{{ $available_plot->size }}</td>
+                                                    <td>({{ ($available_plot->size/2) . ' x ' . ($available_plot->size/2) }})</td>
                                                     <td>{{ number_format($available_plot->size * $available_plot->price) }}</td>
                                                     <td>
 
