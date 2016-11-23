@@ -31,7 +31,7 @@
 								<td><a href={{ url('/plots/' . $plot->id) }}>{{ $plot->plot_no }}</a></td>
 								<td><a href="#">{{ $plot->area_id }}</a></td>
 								<td><a href="#">{{ $plot->area_type_id }}</a></td>
-								<td>{{ $plot->size }}</td>
+								<td>({{ ($plot->size/2) . ' x ' . ($plot->size/2) }})</td>
 								<td>{{ $plot->price }}</td>
 							</tr>
 						@endforeach

@@ -70,7 +70,7 @@
                                         <td>{{ $plot_reservation->block  }}</td>
                                         <td>{{ $plot_reservation->location  }}</td>
                                         <td>{{ $plot_reservation->land_use  }}</td>
-                                        <td class="text-right">{{ $plot_reservation->size  }}</td>
+                                        <td class="text-right">({{ $plot_reservation->size . ' X ' . $plot_reservation->size  }})</td>
                                         <td class="text-right">{{ number_format($plot_reservation->size * $plot_reservation->price)  }}</td>
                                         <td class="text-right">{{ $plot_reservation->deadline  }}</td>
                                         <td>
