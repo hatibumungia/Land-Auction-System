@@ -21,6 +21,54 @@
     <link href="/css/lightbox.css" rel="stylesheet">
 
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+    <style type="text/css">
+        body {
+            padding: 0 0;
+            margin: 0 0;
+            font-family: 'OpenSans-Regular';
+        }
+
+        li.list-group-item:hover,
+        li.list-group-item:focus,
+        li.list-group-item.active {
+            background-color: #337ab7;
+            border-color: #337ab7;
+            color: #fff;
+        }
+
+        ul.dropdown-lr {
+            width: 300px;
+        }
+
+        /* mobile fix */
+        @media (max-width: 768px) {
+            .dropdown-lr h3 {
+                color: #eee;
+            }
+
+            .dropdown-lr label {
+                color: #eee;
+            }
+        }
+        #topheader{
+            width:100%;
+            height:141px;
+            background:#2786C7;
+            margin:0px auto 0px;
+            color:white;
+        }
+ #flag{
+     float: right;
+ }
+        #welcome{
+            background: gray;
+            color: white;
+            width:100%;
+            margin:0px auto 0px;
+        }
+    </style>
+
     <script src="/js/jquery.min.js"></script>
 
 </head>
@@ -28,10 +76,13 @@
 
 {{--Banner--}}
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <img src="/img/banner.png" class="img-responsive" alt="Banner" style="width: 100%;">
+    <div class="row" id="topheader">
+        <div class="col-xs-8">
+           <center> <h1>LAND ACQUISITION SYSTEM(LAS)</h1></center>
+            </div>
+          <div class="col-xl-4"> <img src="img/flag.PNG" id="flag"></div>
         </div>
+   <div class="row" id="welcome"><marquee scrollamount="2">KARIBU KATIKA MFUMO WA KUNUNUA VIWANJA KWA NJIA YA MTANDAO</marquee> </div>
     </div>
 </div>
 {{--//Banner--}}
