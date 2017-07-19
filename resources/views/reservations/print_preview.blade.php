@@ -96,7 +96,7 @@
                     </strong>
                 </div>
                 <div class="header-content-div2">
-                    <img src="/public/img/logo.png">
+                    <!--<img src="/public/img/logo.png">-->
                 </div>
                 <div class="header-content-div">
                     <strong>
