@@ -31,5 +31,5 @@
 </footer>
 <div class="container text-center footer-bottom">
     <hr>
-    <p>CDA Land Acquisition System <i class="fa fa-copyright"></i> {{ date('Y') }}. All Rights Reserved</p>
+    <p>DMC Land Acquisition System <i class="fa fa-copyright"></i> {{ date('Y') }}. All Rights Reserved</p>
 </div>

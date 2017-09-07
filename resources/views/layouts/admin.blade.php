@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
 
-    <title>CDA @yield('page_title')</title>
+    <title>DMC @yield('page_title')</title>
 
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
@@ -17,7 +17,7 @@
     {{--<link href="/css/bootstrap.min.css" rel="stylesheet">--}}
     <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/css/admin.css">
-    <script src="/js/jquery-2.2.3.min.js"></script>
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -27,9 +27,10 @@
 </head>
 <body>
 
-@yield('nav_bar')
 
-<div class="container-fluid">
+
+<div class="container">
+@yield('nav_bar')
     <div class="row">
         <div class="col-xs-2">
             @yield('side_bar')
@@ -59,16 +60,18 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="footer">
-                <p class="text-center">CDA <i class="fa fa-copyright"></i> {{ date("Y") }} All Rights Reserved</p>
+                <p class="text-center">DMC <i class="fa fa-copyright"></i> {{ date("Y") }} All Rights Reserved</p>
             </div>
         </div>
     </div>
 </div>
 
-
-<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script src="/js/admin.js"></script>
-
+<script src="/js/adminajax.js"></script>
+<script src="/js/reservation_ajax.js"></script>
+<script src="/js/unreserved.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\CreatePlotAssignmentRequest;
 use App\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -25,14 +26,19 @@ class PlotAssignmentController extends Controller
      */
     public function index()
     {
-        $sql = "SELECT plot_assignment.plot_id, areas.name AS location, area_types.name
+      $sql = "SELECT plot_assignment.plot_id,plot_assignment.area_id,plot_assignment.areas_type_id,plot_assignment.block_id, areas.name AS location, area_types.name
  as land_use, blocks.name as block, plot_assignment.size, plots.plot_no, plot_assignment.published as published, plot_assignment.created_at, plot_assignment.updated_at FROM areas, area_types, blocks, plots, plot_assignment WHERE plot_assignment.plot_id=plots.plot_id and areas.area_id=plot_assignment.area_id AND area_types.areas_type_id=plot_assignment.areas_type_id and blocks.block_id=plot_assignment.block_id ORDER BY plot_assignment.updated_at DESC;";
 
+        
         $plot_assignments = DB::select($sql);
+        
 
         $user = UserDetail::findOrFail(Session::get('id'));
+         $areas = Area::all();
+        // $area_types = AreaType::all();
+        // $blocks = Block::all(); 
 
-        return view('admin.plot-assignments.index', compact('plot_assignments', 'user'));
+        return view('admin.plot-assignments.index', compact('plot_assignments', 'user','areas','area_types','blocks'));
     }
 
     /**
@@ -151,8 +157,61 @@ class PlotAssignmentController extends Controller
         return response()->download(public_path() . "/contents/samples/plot assignment.xlsx");
     }
 
-    public function publish()
+    public function published($area_id, $areas_type_id, $block_id, $plot_id)
     {
-        return $_POST;
+
+        $update = "UPDATE plot_assignment SET published = true WHERE area_id = '$area_id'&& areas_type_id = '$areas_type_id' && block_id = '$block_id' && plot_id = '$plot_id' ";
+        DB::UPDATE($update);
+         return redirect('admin/plot-assignments');
+
+        
+    }
+
+    public function unpublish($area_id, $areas_type_id, $block_id, $plot_id)
+    {
+        
+        $update = "UPDATE plot_assignment SET published = false WHERE area_id = '$area_id'&& areas_type_id = '$areas_type_id' && block_id = '$block_id' && plot_id = '$plot_id' ";
+        DB::UPDATE($update);
+         return redirect('admin/plot-assignments');
+
+        
+    }
+    public function publishAll(){
+        $update = "UPDATE plot_assignment SET published = true";
+        DB::UPDATE($update);
+        return redirect('admin/plot-assignments');
+    }
+    public function unpublishAll(){
+        $update = "UPDATE plot_assignment SET published = false";
+        DB::UPDATE($update);
+        return redirect('admin/plot-assignments');
+    }
+
+    public function check(Request $request, PlotAssignment $plot_assignment){
+
+      // $update = "UPDATE plot_assignment SET published = true WHERE area_id = '1'";
+      //  DB::UPDATE($update);
+          
+        
+            $area_id = $request->input('area_id');
+            $areas_type_id = $request->input('areas_type_id');
+            $block_id = $request->input('block_id');
+
+            if(!empty($area_id) && empty($areas_type_id) && empty($block_id)){
+                $update = "UPDATE plot_assignment SET published = true WHERE area_id = '$area_id'";
+                 DB::UPDATE($update);
+            }elseif (!empty($area_id) && !empty($areas_type_id) && empty($block_id)) {
+                $update = "UPDATE plot_assignment SET published = true WHERE area_id = '$area_id'&& areas_type_id = '$areas_type_id'";
+                DB::UPDATE($update);
+            }elseif (!empty($area_id) && !empty($areas_type_id) && !empty($block_id)) {
+                $update = "UPDATE plot_assignment SET published = true WHERE area_id = '$area_id'&& areas_type_id = '$areas_type_id' && block_id = '$block_id'";
+                    DB::UPDATE($update);
+            }else{
+                flash()->success("Select atleast one field");
+            }
+
+         return redirect('admin/plot-assignments');
+
+
     }
 }

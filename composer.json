@@ -10,7 +10,7 @@
         "doctrine/dbal": "^2.5",
         "laravelcollective/html": "5.2.*",
         "laracasts/flash": "^2.0",
-        "maatwebsite/excel": "~2.1.0",
+        "maatwebsite/excel": "^2.1",
         "laravelcollective/bus": "^5.2",
         "mpdf/mpdf": "^6.1",
         "barryvdh/laravel-dompdf": "^0.7.0",

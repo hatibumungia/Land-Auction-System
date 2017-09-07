@@ -8,7 +8,7 @@
 
     <link rel="icon" href="/favicon.ico">
 
-    <title>CDA Plots &middot; @yield('page_title')</title>
+    <title>DMC Plots &middot; @yield('page_title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="/css/font-awesome.min.css">

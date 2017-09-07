@@ -14,6 +14,8 @@ class PlotAssignment extends Migration
     {
         Schema::create('plot_assignment', function (Blueprint $table) {
 
+            // $table->integer('plot_assignment_id')->increments();
+
             $table->integer('area_id')->unsigned();
             $table->foreign('area_id')->references('area_id')->on('block_assignment')->onDelete('cascade');
 
@@ -33,7 +35,7 @@ class PlotAssignment extends Migration
             $table->boolean('published')->default(false);
 
             $table->timestamps();
-
+   
             //making composite keys
             $table->primary(['area_id', 'areas_type_id', 'plot_id', 'block_id']);
 

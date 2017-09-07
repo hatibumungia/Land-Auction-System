@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Request;
 use Auth;
 use App\PlotsSelectionMainView;
+use App\PlotAssignment;
+use DB;
 
 
 class WelcomeController extends Controller

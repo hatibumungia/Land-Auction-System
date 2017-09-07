@@ -63,6 +63,8 @@ Route::get('/search/performSearch', 'SearchController@performSearch');
 
 Route::get('/search/getReservationSummaryNames', 'SearchController@getReservationSummaryNames');
 
+Route::post('/admin/publish/report','ReportGeneratorController@publishExcel');
+
 
 $router->group([
     'namespace' => 'Admin',
@@ -79,6 +81,8 @@ $router->group([
     Route::patch('/admin/location-assignments/{location}/{land_use}', 'AreaAssignmentController@update');
     Route::get('/admin/location-assignments/{location}/{land_use}/{price}/edit', 'AreaAssignmentController@edit');
 
+
+
     Route::resource('/admin/land-uses', 'AreaTypeController');
     Route::resource('/admin/blocks', 'BlockController');
 
@@ -86,7 +90,13 @@ $router->group([
     Route::post('/admin/plot-assignments', 'PlotAssignmentController@store');
     Route::get('/admin/plot-assignments/create', 'PlotAssignmentController@create');
     Route::get('/plot-assignments/download-sample', 'PlotAssignmentController@downloadSample');
+    Route::post('/admin/plot-assignments/{area_id}/{areas_type_id}/{block_id}/{plot_id}/publish','PlotAssignmentController@published');
+    Route::post('/admin/plot-assignments/publishAll','PlotAssignmentController@publishAll');
 
+    Route::post('/admin/plot-assignments/unpublishAll','PlotAssignmentController@unpublishAll');
+
+    Route::post('/admin/plot-assignments/check','PlotAssignmentController@check');
+    Route::get('/admin/plot-assignments/publishblock','PlotAssignmentController@publishblock');
 
     Route::resource('/admin/block-assignments', 'BlockAssignmentController');
     Route::get('/admin/location-assignments/getLandUse', 'AreaAssignmentController@getLandUse');
@@ -101,10 +111,33 @@ $router->group([
     'middleware' => 'applicant',
 ], function () {
     Route::get('/admin/ajax/locationAssignmentsGetLandUse', 'AjaxController@locationAssignmentsGetLandUse');
+    Route::get('/admin/ajax/GetLandUse', 'AjaxController@GetLandUse');
+    Route::get('/admin/ajax/GetLndUse', 'ReportController@GetLandUse');
+    Route::get('/admin/ajax/LandUse', 'ReportController@GetLandUse');
+    Route::get('/admin/ajax/GetBlok', 'ReportController@GetBlock');
+    Route::get('/admin/ajax/GetSze', 'ReportController@GetSize');
+    Route::get('/admin/ajax/GetBlock', 'AjaxController@GetBlock');
+    Route::get('/admin/ajax/published', 'ReportController@published');
+    Route::get('/admin/ajax/trial', 'UnreservedController@trial');
+    Route::get('/admin/ajax/trial2', 'UnreservedController@trial2');
+    Route::get('/admin/ajax/triall', 'UnreservedController@triall');
+    Route::get('/admin/ajax/GetSize', 'AjaxController@GetSize');
+    Route::get('/admin/ajax/payment', 'ReservedController@payment');
     Route::get('/admin/ajax/blockAssignmentsGetLandUse', 'AjaxController@blockAssignmentsGetLandUse');
+    Route::get('/admin/ajax/blockAssignmentGetLandUse', 'ReportController@blockAssignmentsGetLandUse');
     Route::get('/admin/ajax/blockAssignmentsGetBlock', 'AjaxController@blockAssignmentsGetBlock');
+    Route::get('/admin/ajax/blockAssignmentGetBlock', 'ReportController@blockAssignmentsGetBlock');
     Route::get('/admin/ajax/plotAssignmentsGetLandUses', 'AjaxController@plotAssignmentsGetLandUses');
+    Route::get('/admin/ajax/plotAssignmentGetLandUses', 'ReportController@plotAssignmentsGetLandUses');
     Route::get('/admin/ajax/plotAssignmentsGetBlock', 'AjaxController@plotAssignmentsGetBlock');
+    Route::get('/admin/ajax/plotAssignmentGetBlock', 'ReportController@plotAssignmentsGetBlock');
+
+    //publish
+    Route::get('/admin/ajax/PublishlocationAssignmentsGetLandUse', 'PulishAjaxController@locationAssignmentsGetLandUse');
+    Route::get('/admin/ajax/PublishblockAssignmentsGetLandUse', 'PulishAjaxController@blockAssignmentsGetLandUse');
+    Route::get('/admin/ajax/PublishblockAssignmentsGetBlock', 'PulishAjaxController@blockAssignmentsGetBlock');
+    Route::get('/admin/ajax/PublishplotAssignmentsGetLandUses', 'PulishAjaxController@plotAssignmentsGetLandUses');
+    Route::get('/admin/ajax/PublishplotAssignmentsGetBlock', 'PulishAjaxController@plotAssignmentsGetBlock');
 });
 
 /*$router->group([
@@ -126,7 +159,13 @@ $router->group([
 
     Route::post('/plot_transactions', 'PlotTransactionController@store');
 
-    Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index');    
+    Route::post('/createreservationsessioncontroller', 'CreateReservationSessionController@index'); 
+ Route::get('/reportsGenerator/published','ReportGeneratorController@published');   
+ Route::get('/reportsGenerator/published/reserved','ReportGeneratorController@reserved');   
+ Route::get('/reportsGenerator/published/unreserved','ReportGeneratorController@unreserved'); 
+ Route::post('/admin/paid/excel','ReportGeneratorController@paidExcel'); 
+ Route::post('/admin/reserved/excel','ReportGeneratorController@reservedExcel'); 
+
 /*});*/
 
 Route::get('/applicants/login', 'ApplicantsController@login');
@@ -141,9 +180,13 @@ $router->group([
     Route::get('/reports/reservations/plots/{from}/to/{to}/{format}/print', 'ReservationController@plots_print')
         ->where(['format' => 'xlsx|pdf']);
 
+
+
     Route::get('/reports/clients', 'ClientController@index');
     Route::post('/reports/clients', 'ClientController@index');
     Route::get('/reports/clients/{id}', 'ClientController@show');
+
+
 });
 
 $router->group([

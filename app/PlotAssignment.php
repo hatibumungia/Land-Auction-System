@@ -18,4 +18,12 @@ class PlotAssignment extends Model
 
     protected $table = 'plot_assignment';
 
+    // protected $primaryKey = [
+
+    // 'area_id',
+    // 'areas_type_id',
+    // 'block_id',
+    // 'plot_id'
+    // ];
+
 }

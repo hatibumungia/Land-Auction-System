@@ -8,7 +8,7 @@
 
     <link rel="icon" href="/favicon.ico">
 
-    <title>CDA Plots &middot; @yield('page_title')</title>
+    <title>DMC Plots &middot; @yield('page_title')</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="/css/font-awesome.min.css">
@@ -51,16 +51,7 @@
                 color: #eee;
             }
         }
-        #topheader{
-            width:100%;
-            height:141px;
-            background:#2786C7;
-            margin:0px auto 0px;
-            color:white;
-        }
- #flag{
-     float: right;
- }
+       
         #welcome{
             background: gray;
             color: white;
@@ -76,12 +67,7 @@
 
 {{--Banner--}}
 <div class="container">
-    <div class="row" id="topheader">
-        <div class="col-xs-8">
-           <center> <h1>LAND ACQUISITION SYSTEM(LAS)</h1></center>
-            </div>
-          <div class="col-xl-4"> <img src="img/flag.PNG" id="flag"></div>
-        </div>
+    @include('../reservations/common/banner')
    <div class="row" id="welcome"><marquee scrollamount="2">KARIBU KATIKA MFUMO WA KUNUNUA VIWANJA KWA NJIA YA MTANDAO</marquee> </div>
     </div>
 </div>
@@ -105,7 +91,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    CDA Plots
+                    DMC Plots
                 </a>
             </div>
 
@@ -208,7 +194,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="footer">
-                <p class="text-center">CDA <i class="fa fa-copyright"></i> {{ date("Y") }} All Rights Reserved</p>
+                <p class="text-center">DMC <i class="fa fa-copyright"></i> {{ date("Y") }} All Rights Reserved</p>
             </div>
         </div>
     </div>

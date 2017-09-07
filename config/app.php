@@ -149,6 +149,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //add excel extension
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -166,7 +168,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Bus\BusServiceProvider::class,
-        'Maatwebsite\Excel\ExcelServiceProvider',
         Zizaco\Entrust\EntrustServiceProvider::class,
 
         /*

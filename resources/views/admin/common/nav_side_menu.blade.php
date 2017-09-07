@@ -125,7 +125,7 @@
                                 </span>Reports</a>
                 </h4>
             </div>
-            <div id="collapseFour" class="panel-collapse collapse @if(Request::segment(1) == 'reports') in @endif">
+            <div id="collapseFour" class="panel-collapse collapse">
                 <div class="panel-body">
                     <table class="table">
                         <tr>
@@ -141,9 +141,57 @@
                         <tr>
                             <td>
                                 <span class="glyphicon glyphicon-pencil"></span><a
+                                        href="{{ url('reportsGenerator/published') }}">Published</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-pencil"></span><a
+                                        href="{{ url('reports/reservations/letters') }}">Unplished</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-pencil"></span><a
+                                        href="{{ url('reports/reservations/letters') }}">Payments</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-pencil"></span><a
                                         href="{{ url('reports/reservations/letters') }}">Letters</a>
                             </td>
                         </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span
+                                class="glyphicon glyphicon-file">
+                                </span>Publish</a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-pencil"></span><a href="{{ url('reportsGenerator/published') }}">Published</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-tasks"></span><a href="{{ url('reportsGenerator/published/reserved') }}">Reserved</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="glyphicon glyphicon-pencil"></span><a
+                                        href="{{ url('/reportsGenerator/published/unreserved') }}">Unreserved</a>
+                            </td>
                     </table>
                 </div>
             </div>

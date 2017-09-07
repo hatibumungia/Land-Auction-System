@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/favicon.ico">
 
-    <title>CDA @yield('page_title')</title>
+    <title>DMC @yield('page_title')</title>
 
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->

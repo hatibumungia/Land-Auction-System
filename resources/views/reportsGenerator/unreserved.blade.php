@@ -20,19 +20,41 @@
     <div class="col-xs-12"><h2>All Plots</h2></div>
 </div>
 <div class="row">
-    <div class="col-xs-10">
+    <div class="col-xs-12">
 
-        {!! Form::open(['url' => '/admin/plot-assignments/check', 'class' => 'form-horizontal', 'files' => true]) !!}
+        {!! Form::open(['url' => '/admin/reserved/excel', 'class' => 'form-horizontal', 'files' => true]) !!}
         {{ csrf_field() }}
-        @include('admin.plot-assignments.publish')
+        <div class="form-group">
+    <label for="area_id" class="col-sm-3 control-label">choose to publish</label>
+    <div class="col-sm-6">
+
+        <select name="area_id" id="plot_area_id">
+            <option value="">-Chagua-</option>
+            @foreach($areas as $area)
+
+                <option value="{{ $area->area_id }}">{{ $area->name }}</option>
+
+            @endforeach
+        </select>
+   
+        <select name="areas_type_id" id="plot_areas_type_id">
+            <option value="">-Chagua-</option>
+        </select>
+        <select name="block_id" id="plot_block_id">
+            <option value="">-Chagua-</option>
+        </select>
+
+        <button type="submit" class="btn btn-success" name="reserved" value="excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</button>
+
+        <button type="submit" class="btn btn-danger" name="reserved" value="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Excel</button>
+{!! Form::close() !!}
+    </div>
+</div>
 
 
     </div>
 
-    <div class="col-xs-2">
-        <a href="{{ url('/admin/plot-assignments/create') }}" class="btn btn-primary pull-right">New</a>
-        
-    </div>
+    
 </div>
 <br>
 <div class="row">
@@ -70,29 +92,28 @@
                             </div>
 
                         </div>
-                        <form action="/admin/plot-assignments/unpublishAll" class="pull-right" method="POST" role="form">
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-warning">Unpublish All</button>
-                        </form>
+                        
                     </div>
                 </div>
 
             </div>
             <div class="panel-body">
-            <div id="cive">
+                <div id="cive">
                     @if(count($plot_assignments) > 0)
 
                     <table name="locationsTable"  class="table-responsive table-condensed table-striped " cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Eneo</th>
-                                <th>Matumizi ya kiwanja</th>
-                                <th>Kitalu</th>
-                                <th>Namba ya kiwanja</th>
-                                <th>Ukubwa</th>
-                                <th>Status</th>
-                                <th>Added</th>
+                                <th>SN</th>
+                                <th>Plot Number</th>
+                                <th>Block</th>
+                                <th>Area</th>
+                                
+                                <th>Land Use</th>
+                                <th>Plot Size</th>
                                 <th>Published</th>
+                                
+                                {{-- <th>Published</th> --}}
                                 {{-- <th><input type="checkbox" id="checkAll" ></th> --}}
                             </tr>
                         </thead>
@@ -102,33 +123,20 @@
                             @foreach($plot_assignments as $plot_assignment)
 
                             <tr>
-                                <td>{{ $plot_assignment->location }}</td>
-                                <td>{{ $plot_assignment->land_use }}</td>
+                                <td>{{$counts++}}</td>
                                 <td>{{ $plot_assignment->block }}</td>
                                 <td>{{ $plot_assignment->plot_no }}</td>
+                                <td>{{ $plot_assignment->location }}</td>
+                                <td>{{ $plot_assignment->land_use }}</td>
                                 <td>{{ $plot_assignment->size }}</td>
                                 <td>
-
+                                    @if($plot_assignment->published == 1)
+                                    Published
+                                    @else
+                                    Unpublished
+                                    @endif
                                 </td>
-                                <td>{{ $plot_assignment->created_at }}</td>
-
-                                <td>
-                                  @if($plot_assignment->published == 0)
-                                  <form action="{{ url('/admin/plot-assignments/'.$plot_assignment->area_id.'/'.$plot_assignment->areas_type_id.'/'.$plot_assignment->block_id.'/'.$plot_assignment->plot_id) }}/publish" method="POST" role="form">
-                                    {{ csrf_field() }}
-
-                                    <button type="submit" class="btn btn-primary">Publish</button>
-                                </form>
-                                @else
-                                <form action="{{ url('/admin/plot-assignments/'.$plot_assignment->area_id.'/'.$plot_assignment->areas_type_id.'/'.$plot_assignment->block_id.'/'.$plot_assignment->plot_id) }}/unpublish" method="POST" role="form">
-                                    {{ csrf_field() }}
-
-                                    <button type="submit" class="btn btn-warning">Published</button>
-                                </form>
-                                @endif
-                            </td>
-
-                            <td>{{ $plot_assignment->updated_at }}</td>
+                                
 
                        {{--  <td>
                             <input type="checkbox" name="plot" id="publish-checkbox"
@@ -145,7 +153,7 @@
             <h3 class="text-center">Hakuna kiwanja chochote kilichowekwa kwa muda huu</h3>
             @endif
 
-            <script type="text/javascript">
+            {{-- <script type="text/javascript">
                 $(function () {
 
                  $("#checkAll").click(function () {
@@ -193,7 +201,7 @@
                 });
              });
 
-         </script>
+         </script> --}}
      </div>
  </div>
  <div class="panel-footer">
