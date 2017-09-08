@@ -46,7 +46,7 @@
 
         <button type="submit" class="btn btn-success" name="reserved" value="excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</button>
 
-        <button type="submit" class="btn btn-danger" name="reserved" value="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Excel</button>
+        <button type="submit" class="btn btn-danger" name="reserved" value="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</button>
 {!! Form::close() !!}
     </div>
 </div>
@@ -69,27 +69,7 @@
 
                         <div class="btn-group pull-right">
 
-                            <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Publish All</a>
-                            <div class="modal fade" id="modal-id">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title">Alert</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure, you want to publish all !
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="/admin/plot-assignments/publishAll" method="POST" role="form">
-                                                {{ csrf_field() }}
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                                <button type="submit" class="btn btn-info">Yes</button>
-                                            </form> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                         </div>
                         

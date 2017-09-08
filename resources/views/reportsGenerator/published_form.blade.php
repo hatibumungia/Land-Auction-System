@@ -25,7 +25,7 @@
 
         <button type="submit" name="excel" value="excel" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</button>
 
-        <button type="submit" name="excel" value="pdf" class="btn btn-warning"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</button>
+        <button type="submit" name="excel" value="pdf" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</button>
 {!! Form::close() !!}
     </div>
 </div>

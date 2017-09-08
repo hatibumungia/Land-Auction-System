@@ -37,7 +37,7 @@
 
         <button type="submit" class="btn btn-success" name="paid" value="excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel</button>
 
-        <button type="submit" class="btn btn-danger" name="paid" value="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Excel</button>
+        <button type="submit" class="btn btn-danger" name="paid" value="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</button>
         {!! Form::close() !!}
     </div>
 </div>
